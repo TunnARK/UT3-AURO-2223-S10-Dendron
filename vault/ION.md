@@ -2,7 +2,7 @@
 id: mhm3nx178d68sz7b2336vbz
 title: ION - Introduction à l'Optimisation Numérique
 desc: ''
-updated: 1661869564667
+updated: 1661870213133
 created: 1661869542618
 ---
 
