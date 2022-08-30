@@ -1,9 +1,9 @@
 ---
-id: brwx5egxx9wy1how2r6eao1
+id: mhm3nx178d68sz7b2336vbz
 title: ION - Introduction à l'Optimisation Numérique
 desc: ''
-updated: 1661858665667
-created: 1661846475154
+updated: 1661869564667
+created: 1661869542618
 ---
 
 # Notes 2022/08/30
