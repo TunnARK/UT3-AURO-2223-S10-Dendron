@@ -2,7 +2,7 @@
 id: mhm3nx178d68sz7b2336vbz
 title: ION - Introduction à l'Optimisation Numérique
 desc: ''
-updated: 1661870213133
+updated: 1661870659883
 created: 1661869542618
 ---
 
@@ -140,7 +140,7 @@ Exemple 2,3 => Bloc 2
 
 - Direction en descente :
 
-  direction _d_ de descente si $d^t \cdot \grad f(x)$ 
+  direction _d_ de descente si $\quad d^t \cdot \nabla f(x) < 0$ 
 
 - Theorem :
 
