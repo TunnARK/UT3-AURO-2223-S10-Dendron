@@ -2,7 +2,7 @@
 id: xwu3g3jpcxdipzc4fdm0kvh
 title: COOSATR
 desc: ''
-updated: 1662024578162
+updated: 1662056237543
 created: 1662024458834
 ---
 
@@ -364,3 +364,158 @@ if __name__ == "__main__":
   robot.walk()
   print(robot.get_battery(), "% remaining")
 ```
+
+
+
+
+# Notes 2022/09/01 - Exemple Forges
+
+
+
+## GitHub
+
+Forges = type de logiciel de gestion de version et de projet.
+
+Ici on va utiliser GitHub.
+
+### Créer un projet GitHub
+
+- Créer un compte github.com
+- Configurer une clé crypto pour communiquer avec GitHub depuis le terminal
+- Create "New Repository"
+- Choisir l'owner
+  - peut etre une personne (compte perso)
+  - mais peut aussi etre une organisation (compte pro)
+- Choisir un nom pour le projet
+  - éviter les noms communs car il sera plus difficile à trouver
+  - ne mettre que des minuscule pour ne pas compliquer le site URL
+- Rajouter une description
+- Choisir si le projet sera privée ou public
+- Rajouter un README
+- Ignorer le gitignore pour maintenant
+- Pour le choix de licence, toute creation a droit a une licence toujours mieux de le faire ici on va choisir BSD 2 clause
+- Lancer le projet
+
+Le projet contiendra automatiquement un fichier license et un readme.
+
+### Commit
+
+- Visiter le lien https://github.com/nim65s/conception-orientee-objet
+
+- Cliquer sur commits
+
+- Lorsqu'on veut ajouter un fichier dans le projet on réalise un commit qui contient un titre et une description pour expliquer quest-ce qui est ajouté/modifié au projet
+
+### Include/SRC
+
+La structure du git sera expliqué plus tard.
+
+## Adder
+
+?
+
+## Include
+
+`#include file.hpp`
+
+dis au compilateur d'inclure le contenu de la librairie `file.hpp`
+
+Ce fichier commence avec un `#ifndef` pour dire au compuilateur que si cette librairie n'a pas déjà été crée alors il l'a définie sinon il ne l'inclut pas car elle a déjà était inclut précédemment.
+
+## CMake
+
+- Créer un fichier `CMakeList.txt`
+- On choisit la version de CMake (à décider avant de créer le projet selon ses besoins)
+  - `cmake_minimum_required(VERSION 3.18)`
+  - ici on prend une version récente pour voir les nouvelles fonctionnalités
+
+
+- Puis on déclare un projet CMake pour faire la bijection avec le projet Git
+  - ```
+project(
+  Conception-Orientee-Objet
+  VERSION 0.1.0 \\ semantic versionning
+  DESCRIPTION "example project for a class"
+  HOMEPAGE_URL "https://github.com/nim65s/conception-orientee-objet"
+  LANGUAGES CXX
+  )
+  ```
+
+- Il faut ensuite indiquer la librairie
+  - choisir si la lib est static (.a ou .o sur win) ou dynamic (.so)
+    - static on a tout sur le fichier exécutable
+    - dynamic va seulement faire des liens entre lib et exe donc il ne faudra pas à chaque fois recréer un exe
+  - ici on considère du dynamic ici donc on va rajouter `SHARED`
+  - ```
+  add_library(
+    example-adder SHARED include/conception-orientee-objet/example-adder.hpp
+                       src/example-adder.cpp
+    )
+  ```
+
+
+- Finalement il faut indiquer au projet CMake la target 
+
+  - ```
+  target_include_directories(
+    example-adder PUBLIC $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>
+    )
+  ```
+
+Maintenant on peut exécuter CMake avec la commande `cmake -S . -B build`
+  - elle va verifier que le projet a les bonnes versions ainsi que les bons compilateurs et les bonnes dépendances
+  - `-S .` informe CMake le path vers la source
+  - `-B build` créer un dossier build contenant les fichier temporaire sur les versions, compilateurs et dépendances que cmake à trouver
+
+- On lance ensuite la commande `cmake --build build`
+  - ceci va créer la lib dynamic `libexample-adder.so`
+
+
+## Executable
+
+- On crée un fichier main `adder.cpp`
+- ici on choisit d'utiliser `return EXIT_FAILURE;` `return EXIT_SUCCESS;` (donné de base par la lib cpp standard) au lieu de faire un `return 0;`
+
+- `argc` paramètre
+- `argv` _arg vemus_
+
+- si maintenant on lance `./adder 8 8` le compilateur va faire des liens dynamic entre la lib et l'exécutable
+
+- `ldd` va lancer un exécutable et vérifier ce que cette exe a besoin pour se lancer
+
+## PUSH/PULL
+
+- PUSH va synchroniser les modifs faite dans dossier local
+
+- PULL va récuperer les modifs faites par le collaborateur et donc synchroniser les nouveautés sur GitHub en les installant sur mon local
+
+- Commit correspond à unité de changment
+
+## Test
+
+- Ctest définie une option `BUILD_TESTING`
+- On crée un main test pour y faire des `assert`
+
+- `assert(coo::add())` on indique a assert de chercher la fct add du **namespace** coo
+- un namespace est un dossier contenant les listes des fct
+
+- En recompilant le dossier build les tests vont etre verifier (si on obtient aucune erreur alors penser un forcer un test false pour verifier que les test ont bien été réalisé)
+
+- On parle de test unitaire car le test va assertifié une partie (une unité) du programme (ou bien fonction par fonction ou classe par classe)
+
+
+## Module Python
+
+- On ajoute au `CMakeLists.txt` un build interface pour python
+  - ici on choisit de faire des bindings python avec `boost`
+    - Boost est une librairie Python contenant les dernières fctionnalités pas encore intégré sur le stable
+  - ici on garde boost mais plus tard on passera sur pybind11
+
+- `Boost` c'est le projet CMake
+- `boost` lui est un nom de fichier (souvent en minuscule)
+
+- `BOOST_PYTHON_MODULE` Macro CPP souvent en maj
+
+> Un jour CPP n'aura plus d'include ou de marco (qui viennent du C et que l'on cherche à supprimer)
+
+- ici on a code python binaire donc exe que sur un pc avec une architecture précise
