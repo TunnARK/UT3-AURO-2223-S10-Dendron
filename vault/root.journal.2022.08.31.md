@@ -2,10 +2,11 @@
 id: 58t7nh4l2dls68ut4nct9ah
 title: '2022-08-31'
 desc: ''
-updated: 1662025696759
+updated: 1662025978115
 created: 1661933499552
 traitIds:
   - journalNote
+publishing: private
 ---
 
 
