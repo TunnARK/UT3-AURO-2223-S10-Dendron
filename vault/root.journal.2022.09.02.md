@@ -68,6 +68,7 @@ AOH.Slide1.04
 
 Dev. avec le Cycle en V
 1. CdC
+  - parfois appele STB "Specificite technique des besoins" ?
   - Connaitre le client et comprendre son problème p.r.à ses clients
   - exemple 1: Fromagerie BEL son client c'est la distribution donc son problème c'est pas le produit mais la qualité des lots distribuer
   - exemple 2: Mesure
@@ -92,6 +93,12 @@ Dev. avec le Cycle en V
   - du coup plan B utiliser la cam chez ESA pour trier les infos utiles lors de l'observation de la terre (où les oceans et les nuages noient l'info utiles)
   - mais 0 vendus
   - Plan C Siemens Automotive a besoin de calculateur petit et rapide pour analyser les images d'une voiture à 130km/h
+
+- mangrador pays bas espagnol industrie cooperative
+
+- indicateur pour nos projets uni
+  - retard
+  - repartition des taches (pie charts)
 
  Project Management
 
