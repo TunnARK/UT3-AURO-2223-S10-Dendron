@@ -10,7 +10,7 @@ publishing: private
 ---
 
 Aspect Organisation et Humains
-
+---
 - P. FILLATREAU ens. cher. en vision robotique
 
 AOH.Slide1.0
@@ -100,7 +100,65 @@ Dev. avec le Cycle en V
   - retard
   - repartition des taches (pie charts)
 
- Project Management
+
+
+
+
+
+## Extra Notes du 09/05
+
+
+### Evaluation
+
+- QCM 
+- Comprehension des concepts
+- Question de reflexion (aussi dans le QCM)
+
+
+### Stage
+
+- Septembre un peu tot
+- Janvier trop tard
+
+### Organisation des industries
+
+#### Production
+
+![](/assets/images/AOH.OrgaIndus.01.png)
+
+De Gauche à Droite
+1. Constructeur
+  - Auto: PSA/NISSAN/GM/Ford
+  - Aero: Airbus/Boeing/Dassaud
+  - Space: SpaceX/ESA/NASA/CNES
+2. Sous-traitance (Niveau/Rang 1)
+  - Equipements: Continental/Faurecia/Actia
+    - en aero: Thales Aeronotics (Electronic) / Safran (Moteur)
+    - en space: Thales AleniaSpace
+  - SSI: CapGemini/AKKA/Altran
+3. Sous-traitance (Niveau/Rang 2)
+  - Delta DTSO (Info Engine Vision)
+  - forfait BE (attention aux heures sup !)
+  - Assistance Technique [AT] (tj rentable)
+4. Sous-traitance (Niveau/Rang 3)
+
+![](/assets/images/AOH.OrgaIndus.02.png)
+
+> Le plus à droite = le plus de stress car manque de temps en arrivant sur un projet tjt plus tard
+
+> Pour entrer dans les grandes boites aller chez les soustraitants (par ex via AT). Advantages suppl. apprantissage sur pl. domaines de l'industrie
+
+> Close sur l'impossibilité de travailler ailleurs est interdit (on peut changer de compagnie mais il ne faut juste pas prendre ses bagages avec)
+
+> CNES robo marsien sous traite chez CS !
+
+
+___
+
+
+
+
+Project Management
 
 ![](/assets/images/AOH.SlidePoly.01.TableOfContent.png)
 
