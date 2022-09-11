@@ -41,9 +41,9 @@ Marylyne Lopez U3 salle 112
 ![](/assets/images/reunion-rentree-slide4.png)
 
 
-# ION - 10H00/12H00
+# OE - 10H00/12H00
 
-![](/assets/images/ION.CoursSlide1.png)
+![](/assets/images/OE.CoursSlide1.png)
 
 - TP sur Python !!! cf. palteforme **fun mooc**
 - ROS utilise C++/Python
@@ -55,27 +55,27 @@ Marylyne Lopez U3 salle 112
 
 - Reveint à chercher le (ou les) minimum local (global)
 
-![](/assets/images/ION.Cours.PbGeneral.png)
+![](/assets/images/OE.Cours.PbGeneral.png)
 
 #### Objectif :
 
-![](/assets/images/ION.Cours.Objectif.png)
+![](/assets/images/OE.Cours.Objectif.png)
 
 - seulement minimiser car maximiser revient à minimiser -f
 
 ### 1.1 Modélisation mathématique
 
-![](/assets/images/ION.CoursSlide7.png)
+![](/assets/images/OE.CoursSlide7.png)
 
 #### Tableau Terminologie
 
-![](/assets/images/ION.CoursSlide8.TableauConceptsOpti.png)
+![](/assets/images/OE.CoursSlide8.TableauConceptsOpti.png)
 
 - méthode du gradient pour la 4D
 
 ### 1.2 Application
 
-![](/assets/images/ION.CoursSlide9.ApplicationsExemple.png)
+![](/assets/images/OE.CoursSlide9.ApplicationsExemple.png)
 
 #### Exemple 1 :
 
@@ -151,7 +151,7 @@ Exemple 2,3 => Bloc 2
 
 ### 1.3 Rappels et Compléments
 
-![](/assets/images/ION.CoursSlide10.Rappels.png)
+![](/assets/images/OE.CoursSlide10.Rappels.png)
 
 - Dérivation de fonction scalaire
 
@@ -167,7 +167,7 @@ Exemple 2,3 => Bloc 2
 
 - Attention dans le cas de fonction NL le gradient peut ne pas suffir pour minimiser
 
-![](/assets/images/ION.CoursSlide11.DeriveeDirectionnelle.png)
+![](/assets/images/OE.CoursSlide11.DeriveeDirectionnelle.png)
 
 - Dérivée directionnelle :
 
@@ -185,7 +185,7 @@ Exemple 2,3 => Bloc 2
 
 #### Exemple : Fonction Quadratique
 
-![](/assets/images/ION.CoursSlide12.FctQuadratic.png)
+![](/assets/images/OE.CoursSlide12.FctQuadratic.png)
 
 - Définition: Fonction Quadratique
 
@@ -193,7 +193,7 @@ Exemple 2,3 => Bloc 2
 
 ### 1.4 Vitesse de Convergence d'un algorithme
 
-![](/assets/images/ION.CoursSlide13.VistesseConvergence.png)
+![](/assets/images/OE.CoursSlide13.VistesseConvergence.png)
 
 - Pq plus pratique d'avoir une convergence quadratique ?
 
@@ -202,7 +202,7 @@ Exemple 2,3 => Bloc 2
 
 ### 1.5 Minimum
 
-![](/assets/images/ION.CoursSlide14.Minimum.png)
+![](/assets/images/OE.CoursSlide14.Minimum.png)
 
 - en NL les algo ne fonctionnent qu'en local (pas de global à moins d'avoir une chance) [sauf pour les focntions quadratiques ou linéaires]
 
@@ -212,13 +212,13 @@ Exemple 2,3 => Bloc 2
     - d'où l'utilisation d'algo génétique
     - ou méthode montécalor (rajoute de l'aléatoire donc accpete que la fonction croisse pour esperer qu'elle descende plus loin)
 
-![](/assets/images/ION.CoursSlide15.ExistenceMin.png)
+![](/assets/images/OE.CoursSlide15.ExistenceMin.png)
 
 - focntion coercive si sa limite tend vers l'infinie
 
 ### 1.6 Convexité
 
-![](/assets/images/ION.CoursSlide16.Convexite.png)
+![](/assets/images/OE.CoursSlide16.Convexite.png)
 
 - fonction convexe 
   - => tout min local est global et unique
@@ -226,7 +226,7 @@ Exemple 2,3 => Bloc 2
 
 ### 1.7 Optimisation d'une fonction d'une variable réelle
 
-![](/assets/images/ION.CoursSlide17.MethodeDichotomie.png)
+![](/assets/images/OE.CoursSlide17.MethodeDichotomie.png)
 
 - f fonction unimodale si :
   - f admet un min unique $x*$ dans $I$
@@ -236,17 +236,17 @@ Exemple 2,3 => Bloc 2
 
 - méthode dichotomie
 
-![](/assets/images/ION.CoursSlide18.MethodeSectionDoree.png)
+![](/assets/images/OE.CoursSlide18.MethodeSectionDoree.png)
 
 - plus éfficace que la méthode de dichotomie car utilise le nombre d'or pour la division dichotomique
 
-![](/assets/images/ION.CoursSlide19.MethodeRecherche.png)
+![](/assets/images/OE.CoursSlide19.MethodeRecherche.png)
 
 - méthode numérique itérative
 
 ### 1.8 Méthode de résolution
 
-![](/assets/images/ION.CoursSlide20.MethodeResolution.png)
+![](/assets/images/OE.CoursSlide20.MethodeResolution.png)
 
 - méhtode de _line search_
 
@@ -263,7 +263,7 @@ Exemple 2,3 => Bloc 2
 
 - principalement on utilisera la _line search_
 
-![](/assets/images/ION.CoursSlide21.PbHypothenuse.png)
+![](/assets/images/OE.CoursSlide21.PbHypothenuse.png)
 
 100m de plage
 
