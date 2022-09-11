@@ -2,13 +2,19 @@
 id: 2ptw0k5edovdl8fl7c1d5ev
 title: Commande Robuste 
 desc: ''
-updated: 1662926940858
+updated: 1662929666427
 created: 1662924852208
 ---
 
 > **Avertissement:** Cette page peut contenir des fautes ! Envoyez-moi un message sur `#UT3-AURO-M2-2223-Request:matrix.org` si vous en trouvez, merci.
 
 > Cours donné par D. Peaucelle
+
+# Support de cours
+
+- [CR.DP.NotesGEA.20220830.pdf](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/CR.DP.NotesGEA.20220830.pdf)
+- [CR.DP.BlackBoard.20220905.pdf](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/CR.DP.BlackBoard.20220905.pdf)
+- [CR.DP.NotesGEA.20220905.pdf](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/CR.DP.NotesGEA.20220905.pdf)
 
 ---
 
