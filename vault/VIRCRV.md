@@ -2,7 +2,7 @@
 id: 3nx1o8j8h3vbt6lu2fqlpq3
 title: VIRCRV - Vision Industrielle
 desc: ''
-updated: 1662930244075
+updated: 1662937808023
 created: 1662025359124
 ---
 
@@ -22,11 +22,12 @@ created: 1662025359124
 
 - [[Chap 1 - Introduction à la robotique|VIRCRV.CM.Intro]]
 - [[Chap 2 - Outils Fondamentaux|VIRCRV.CM.OutilsFondam]]
+- [[Chap 3 - Modélisation des Bras Manipulateurs|VIRCRV.BM]]
 
 
 # Travaux Dirigés
 
-
+- [[VIRCRV.TD1]]
 
 # Support de Cours
 
