@@ -2,7 +2,7 @@
 id: 2ptw0k5edovdl8fl7c1d5ev
 title: Commande Robuste 
 desc: ''
-updated: 1662929666427
+updated: 1662973182731
 created: 1662924852208
 ---
 
@@ -310,3 +310,259 @@ Cette formulation n'est clairement pas réalisable !
 
 Astuce:
 ![](/assets/images/CR.DP.CM.BlackBoard.20220905-22.png)
+
+
+
+# Notes 2022/09/12 - D.P.
+
+## Exemple avec Matlab
+
+On reprend l'exepmle dernier sur matlab pour l'analyser plus rapidement
+
+![](/assets/images/CR.DP.CM.BlackBoard.20220912-01.png)
+
+![](/assets/images/CR.DP.CM.BlackBoard.20220912-02.png)
+
+
+- $P\leq0$ = semi-positive (i.e. autorise une valeur propre egal a zero)
+
+- $P>0$ = positive strict. peut aussi s'ecrire $P>\epsilon$
+
+
+### Matlab Toolbox
+
+- [YALMIP](https://yalmip.github.io/download)
+  - aller à `SetPath` puis Select et penser à `AddWithSubfolders`
+  - permet de poser nos problèmes avec une ecriture matricielle mais necessite quand meme un solver
+
+- Solvers
+  - [YALMIP allsolvers](https://yalmip.github.io/allsolvers)
+  - [SDPT3](https://github.com/SQLP/SDPT3)
+  - [blog SDPT3](https://blog.nus.edu.sg/mattohkc/softwares/sdpt3/)
+
+
+### Code Matlab
+
+```matlab
+% Definition  des sommets
+A(:,:,1)=[0 1;-49 -21];
+A(:,:,2)=[0 1;-49 -3];
+A(:,:,3)=[0 1;-9 -3];
+A(:,:,4)=[0 1;-9 -21];
+
+vb = 4;
+
+% pt au hazard dans le polytope
+z=rand(1,4);
+z=z/sum(z); % verifier que la sum(z(i)) = 1
+Az=z(1)*A(:,:,1)+z(2)*A(:,:,2)+z(3)*A(:,:,3)+z(4)*A(:,:,4);
+eig(Az); % verifer si nos sommets sont stables
+% Construction des LMI pour le polytope
+P=sdpvar(2,2,'symmetric')
+quiz=[P>=eye(2)];
+for v=1:vb
+  quiz=quiz+[A(:,:,v)'*P+P*A(:,:,v)<=-eye(2)]
+end % retourne un tableau avec 5 contraintes une pour P et 4 pour les sommets
+
+% Resolution
+res=optimize(quiz)
+% Analyse du resultat
+checkset(quiz)
+% Si faisable obtention du resultat
+double(P)
+```
+
+### Conclusion
+
+- le rectangle rouge ne donne pas de solution
+- le sous espace jaune lui donne une solution
+
+$$
+P=
+\begin{bmatrix}
+51.5100 & 3.437\\
+3.477 &  2.4699
+\end{bmatrix}
+$$
+
+## Normes
+
+### Norme euclidienne
+
+$x\in\mathbb{C}^n$
+
+$$
+||x||_2^2 = \sum|x_i|^2 = x^*x = x^*\mathbb{I}x
+$$
+
+Ici, $x^* = \overline{x}^T$ le **conjugé transposé**
+
+### Norme induite L2
+
+$M\in\mathbb{C}^{p \times n} \quad \quad y = Mu$
+
+$$
+||M||_2^2 = sup\{\dfrac{||y||_2^2}{\;||u||_2^2\;} \;|\; ||u||_2 \neq 0\}
+$$
+
+![](/assets/images/CR.DP.CM.BlackBoard.20220912-03.png)
+
+
+
+$M^*M$ sym donc diag sur une base orthonormale donc on peut l'ecrire $T^*DT$ avec $T^*T = \mathbb{I}$ et $D=diag(\lambda(M^*M))$ 
+
+![](/assets/images/CR.DP.CM.BlackBoard.20220912-04.png)
+
+Or il se trouve que la pire des amplifications est donnée par $\lambda_{max}(M^*M)$
+
+$$
+||M||_2^2 = \sigma_{max}(M)^2
+$$
+
+où $\sigma_{max}(M)$ = la **valeur singulière** max de $M$
+
+![](/assets/images/CR.DP.CM.BlackBoard.20220912-05.png)
+
+Il se trouve que $u=(1,1)^T$ est la valeur propre de $M$ c'est pourquoi on avait aussi trouvé $4$
+
+### Signaux
+
+![](/assets/images/CR.DP.CM.BlackBoard.20220912-06.png)
+
+$X(s) = \int_0^{\infin} \; x(t)e^{-st} \; dt$
+
+$$
+||x||_2^2 =
+\int_0^{\infin} \; ||x(t)||_2^2 \; dt =
+\int_{-\infin}^{\infin} \; ||x(j\omega)||_2^2 \; d\omega =
+||X||_2^2
+$$
+
+### Norme induite L2 d'un système NL
+
+> Pour les systèmes linéaire, la norme induite L2 est appelée la **norme** $H_{\infin}$
+
+$$
+||H||_2^2 = sup\{ \dfrac{||y||_2^2}{\;||u||_2^2\;} \;|\; ||u||_2 \neq 0 \;\wedge\; x(0)=0 \}
+$$
+
+![](/assets/images/CR.DP.CM.BlackBoard.20220912-07.png)
+
+> **Attention:** lorsqu'on applique le laplace il faut toujours considérer des conditions initiales nulles
+
+![](/assets/images/CR.DP.CM.BlackBoard.20220912-08.png)
+
+$H^*H$ = module de la FT = Gain
+
+```matlab
+H=ss;
+% tracer de ses valeurs sing
+sigma(H)
+% 
+wcgain(H)
+
+.... !!!!
+
+% decale de +0.001 car on veut que le produit soit strict. plus petit que 1 et pas egal a 1
+% feedback de - D
+```
+
+## Thm du Petit Gain
+
+### Condition Suffisante
+
+Si $\; ||H||_2^2 < \sigma^2 \;$ alors la Boucle Fermée suivante est **robustement stable** quelque soit $\;\Delta \;$ tel que $\; ||\Delta||_2^2 \leq \dfrac{1}{\;\sigma^2\;} \;$
+
+![](/assets/images/CR.DP.CM.BlackBoard.20220912-09.png)
+
+### Condition Nécessaire
+
+Si $\; ||H||_2^2 < \sigma^2 \;$ alors il existe $\;\Delta \;$ tel que $\; ||\Delta||_2^2 \leq \dfrac{1}{\;\sigma^2\;} \;$ tel que la Boucle Fermée est "**instable**" (en limite de stabilité)
+
+**Attention:** Cela ne signifie pas que si pour tous $\Delta$ on a $\; ||\Delta||_2^2 \leq \dfrac{1}{\;\sigma^2\;} \;$ la boucle fermée est instable
+
+![](/assets/images/CR.DP.CM.BlackBoard.20220912-10.png)
+
+### Code Matlab
+
+#### Test Worst Case
+
+Pour taper sur la pire amplification
+- on tappe sur la valeur propre concernee
+- ca donne une matrice de rang 1 (car une seule valeur propre)
+- boucle fermee 
+  - elle est 'presque' stable
+  - mais tres proche de zero
+
+```
+l32 - l38
+```
+
+#### Test Matrice de norme 1
+
+Donne un systeme 'carrément' stable
+
+```
+l38 - l41
+```
+
+### Exemple Processus Biochimique
+
+> Conseil: donner des indices sur les matrices selon si elles correspondent à une entrée, une sortie ou un $\Delta$
+
+Imaginons un processus biochimique pour nettoyer les eaux usées
+
+Celui-ci dépendrait donc de la température et serait exposée à des incertitudes
+
+![](/assets/images/CR.DP.CM.BlackBoard.20220912-11.png)
+
+On cherche à controler ce processus donc on y implémente un correcteur
+
+![](/assets/images/CR.DP.CM.BlackBoard.20220912-12.png)
+
+Pour analyser sa stabilité, on va utiliser le **thm du petit gain**
+
+Pour cela il nous faut transformer le schema bloc en y incluant $H$
+
+Or, on a :
+$$
+U = K(y+w_{\Delta})
+$$
+$$
+U = KC_yX + Kw_{\Delta}
+$$
+
+Donc,
+
+![](/assets/images/CR.DP.CM.BlackBoard.20220912-13.png)
+
+
+**Par le thm du petit gain:**
+
+Si $||H||_2^2<\dfrac{1}{\;\mu^2\;}$ alors le système est **robustement stable**
+
+
+**Comment vérifier cette égalité ?**
+
+- En prenant sa fonction de transfert => Pb le système est temps variant donc on n'est pas autorisé à faire cette transformation
+- On ne pourrait meme pas utiliser la norme $H_{\infin}$ a la limite on pourrait appliquer la norme induite L2
+- Nous allons pour cela utiliser le thm suivant :
+![[CR.CM.DP#thm-de-stabilité-quadratique-pour-une-norme-induite-l2,0]]
+
+### Thm de Stabilité Quadratique pour une norme induite L2
+
+![](/assets/images/CR.DP.CM.BlackBoard.20220912-14.png)
+
+#### Preuve
+
+![](/assets/images/CR.DP.CM.BlackBoard.20220912-15.png)
+
+![](/assets/images/CR.DP.CM.BlackBoard.20220912-16.png)
+
+
+
+
+
+> Notes du 2022/09/12 - End
+
+---
