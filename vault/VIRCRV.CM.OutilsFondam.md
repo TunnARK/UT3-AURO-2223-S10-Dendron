@@ -2,8 +2,9 @@
 id: c8w59wkp2hs6zpwhjthixb2
 title: Chap 2 - Outils Fondamentaux
 desc: ''
-updated: 1662930712000
+updated: 1662980203982
 created: 1662929802355
+nav_order: 20
 ---
 
 > **Avertissement:** Cette page peut contenir des fautes ! Envoyez-moi un message sur `#UT3-AURO-M2-2223-Request:matrix.org` si vous en trouvez, merci.

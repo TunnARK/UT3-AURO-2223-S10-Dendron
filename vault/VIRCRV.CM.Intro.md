@@ -2,8 +2,9 @@
 id: pwedju8fzwfnj4ewt0li4pr
 title: Chap 1 - Introduction à la robotique
 desc: ''
-updated: 1662928623462
+updated: 1662980185235
 created: 1662927942052
+nav_order:10
 ---
 
 > **Avertissement:** Cette page peut contenir des fautes ! Envoyez-moi un message sur `#UT3-AURO-M2-2223-Request:matrix.org` si vous en trouvez, merci.

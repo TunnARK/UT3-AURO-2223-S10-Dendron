@@ -2,8 +2,9 @@
 id: 3nx1o8j8h3vbt6lu2fqlpq3
 title: VIRCRV - Vision Industrielle
 desc: ''
-updated: 1662937808023
+updated: 1662980134982
 created: 1662025359124
+has_collection: true
 ---
 
 > **Avertissement:** Cette page peut contenir des fautes ! Envoyez-moi un message sur `#UT3-AURO-M2-2223-Request:matrix.org` si vous en trouvez, merci.

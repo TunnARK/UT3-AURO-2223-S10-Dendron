@@ -2,8 +2,9 @@
 id: 79qv6ar44g8507aebvkrrbu
 title: Chap 3 - Modélisation des Bras Manipulateurs
 desc: ''
-updated: 1662937858192
+updated: 1662980221790
 created: 1662937716192
+nav_order: 30
 ---
 
 
