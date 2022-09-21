@@ -2,7 +2,7 @@
 id: j229zmpe39bvruoegljxl0c
 title: TD1 - Outils Mathématiques
 desc: ''
-updated: 1662936948442
+updated: 1663718000581
 created: 1662930808888
 ---
 
@@ -11,7 +11,10 @@ created: 1662930808888
 > Cours donné par V. Cadenat
 
 Support de cours:
-- ...
+![[VIRCRV#^vi-support-td1-start:#^vi-support-td1-end]]
+
+Scans
+![[VIRCRV#^vi-scangea-td1]]
 
 ---
 
