@@ -2,7 +2,7 @@
 id: 2ptw0k5edovdl8fl7c1d5ev
 title: Commande Robuste 
 desc: ''
-updated: 1662973182731
+updated: 1663777038418
 created: 1662924852208
 ---
 
@@ -564,5 +564,156 @@ Si $||H||_2^2<\dfrac{1}{\;\mu^2\;}$ alors le système est **robustement stable**
 
 
 > Notes du 2022/09/12 - End
+
+---
+
+> Notes du 2022/09/21 - Start
+
+
+
+<!-- # Notes 2022/09/21 - D.P. -->
+
+**Rappel:**
+
+$$
+||M||_{\infin} = ||M||_{2} < \sigma^2\\ \Longleftrightarrow \;\text{la boucle fermée est robustement stable}\; \forall \Delta \;\text{tq}\; ||\Delta||_{2}^{2} \leq \frac{1}{\;\sigma^2\;}
+$$
+
+
+#### Exemple d'utilisation
+
+![](/assets/images/CR.DP.CM.BB20220921-01.png)
+![](/assets/images/CR.DP.CM.BB20220921-02.png)
+![](/assets/images/CR.DP.CM.BB20220921-03.png)
+
+### Cas Général
+
+**Notation:**
+- $D_{\Delta u}$ le transfert entre $z_{\Delta}$ et $u$
+- $D_{\Delta }$ le transfert entre $z_{\Delta}$ et $u$
+
+![](/assets/images/CR.DP.CM.BB20220921-04.png)
+![](/assets/images/CR.DP.CM.BB20220921-05.png)
+
+Le problème de savoir si $(\mathbb{I}-D_{\Delta\Delta}\Delta)$ est inversible c'est le _**"problème du bien posé"**_ (c.a.d. que si elle n'est pas inversible alors c'est un système qui possede une infinité de solutions et a priori une infinité de points d'équilibre donc il ne fait plus de sens d'étudier leurs stabilité ; on aimerait plutôt avoir un point d'équilibre unique).
+
+![](/assets/images/CR.DP.CM.BB20220921-06.png)
+
+**Rem:** on peut voir $\Delta(\mathbb{I}-D_{\Delta\Delta}\Delta)^{-1}$ comme une **fraction rationnelle matricielle**
+
+Ceci nous rappelle la matrice fractionnelle en $s$ comme suit
+
+![](/assets/images/CR.DP.CM.BB20220921-07.png)
+
+Ici, le $\Delta$ du cas général est représenté par l'intégrateur en $s$
+
+Autre exemple, on peut aussi représenter $\Delta$ par un correcteur $K$ comme suit
+
+![](/assets/images/CR.DP.CM.BB20220921-08.png)
+
+
+## LFT - Linear Fractional Transform
+
+![](/assets/images/CR.DP.CM.BB20220921-09.png)
+
+> **Une représentation d'espace d'états est une LFT !**
+
+**Exemple:** De LFT vers la forme fractionnelle de $\Delta$
+
+![](/assets/images/CR.DP.CM.BB20220921-10.png)
+![](/assets/images/CR.DP.CM.BB20220921-11.png)
+![](/assets/images/CR.DP.CM.BB20220921-12.png)
+
+**Pb:** Construire une LFT à partir de forme fractionnelle est bcp plus dur (mais comme $\Delta\star M$ représente une algèbre du coup les ordinateurs arrivent à se débrouiller pour trouver une LFT)
+
+### Formule pour l'addition
+
+![](/assets/images/CR.DP.CM.BB20220921-13.png)
+![](/assets/images/CR.DP.CM.BB20220921-14.png)
+
+Du coup, par exemple pour $\left[ \delta_1 \; \delta_2 \right]$ on peut l'écrire ainsi
+
+![](/assets/images/CR.DP.CM.BB20220921-15.png)
+
+Pour mieux comprendre comment passer du matricielle à une structure avec le produit LFT voici un autre exemple d'égalité:
+
+![](/assets/images/CR.DP.CM.BB20220921-16.png)
+
+En effet, on essaie de faire apparaître la structure de la formule de la LFT comme suit pour utiliser le produit LFT
+
+$$
+TODO!!!
+$$
+
+### Formule LFT pour la soustraction
+
+![](/assets/images/CR.DP.CM.BB20220921-17.png)
+
+### Formule LFT pour la multiplication
+
+![](/assets/images/CR.DP.CM.BB20220921-18.png)
+
+### Formule LFT pour la division
+
+![](/assets/images/CR.DP.CM.BB20220921-19.png)
+
+### Exercice
+
+#### Cas Fonction Transfert
+
+On considère le système suivante :
+![](/assets/images/CR.DP.CM.BB20220921-20.png)
+
+On obtient l'équation suivante :
+![](/assets/images/CR.DP.CM.BB20220921-21.png)
+
+Donc, on en déduit que :
+![](/assets/images/CR.DP.CM.BB20220921-22.png)
+
+Ainsi, on peut construire la boucle fermée suivante :
+![](/assets/images/CR.DP.CM.BB20220921-23.png)
+
+#### Cas Matriciel
+
+On considère le système matriciel suivant :
+![](/assets/images/CR.DP.CM.BB20220921-24.png)
+
+Pour se débarasser de $\frac{\delta}{\;1+\delta\;}$, on va multiplier à gauche $\dot x$ par une matrice comme suit :
+![](/assets/images/CR.DP.CM.BB20220921-25.png)
+
+On cherche mtnt à extraire $w_{\Delta}$ comme suit :
+![](/assets/images/CR.DP.CM.BB20220921-26.png)
+
+Ceci pour ensuite trouver $z_{\Delta}$ comme suit :
+![](/assets/images/CR.DP.CM.BB20220921-27.png)
+
+Ainsi, on obtient le système suivant :
+![](/assets/images/CR.DP.CM.BB20220921-28.png)
+
+#### Cas Equation Dynamique
+
+Considérons le contexte suivant :
+![](/assets/images/CR.DP.CM.BB20220921-29.png)
+
+Tout d'abord, ramenons-nous à des inéquations d'incertitude tel qu'on impose $\delta_i\leq1$ :
+![](/assets/images/CR.DP.CM.BB20220921-30.png)
+
+La deuxième étape consiste à faire apparaître les $W_{\Delta}$ comme suit
+![](/assets/images/CR.DP.CM.BB20220921-31.png)
+
+On cherche à appliquer le théorème du petit gain comme suit :
+![](/assets/images/CR.DP.CM.BB20220921-32.png)
+
+Ainsi, on obtient le système suivant :
+![](/assets/images/CR.DP.CM.BB20220921-33.png)
+
+> N.B.:
+- La **théorie de la valeur singulière structuré** $\mu$ c'est l'équivalent du thm du petit gain mais prenant compte la structure du $\Delta$
+- Cela prend en compte la partie diagonale de delta et on adapte le critère mais on ne sait pas calculer $\mu$ de façon exacte
+![](/assets/images/CR.DP.CM.BB20220921-34.png)
+
+
+
+> Notes du 2022/09/21 - End
 
 ---
