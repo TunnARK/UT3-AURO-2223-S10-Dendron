@@ -2,8 +2,9 @@
 id: lhq34rny3j7tvmzjj1t4573
 title: TD1 - Examen 2021 (fev)
 desc: ''
-updated: 1663573762770
+updated: 1664187258395
 created: 1663571502617
+nav_exclude: true
 ---
 
 > **Avertissement:**
@@ -36,6 +37,8 @@ Trouver le rectangle de surface maximale inscrit dans l'ellipse $\frac{\;x^2\;}{
 
 5. Conclure
 
+![](/assets/images/OE.TD.ExoExam.2021Q2-Ans.png)
+
 ## Question 3: Optimum de f sur $\R^{2}$
 
 OE.TD.ExoExam.2021Q3-Question
@@ -48,7 +51,7 @@ OE.TD.ExoExam.2021Q3-Question
 
 3. Conclure
 
-OE.TD.ExoExam.2021Q3-Ansa
+![](/assets/images/OE.TD.ExoExam.2021Q3-Ansa.png)
 
 ### b) Caractériser les points critiques
 

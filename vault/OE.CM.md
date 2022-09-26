@@ -2,8 +2,9 @@
 id: yojgfew3rfjxo114lk7q9re
 title: Introduction à l'Optimisation Numérique
 desc: ''
-updated: 1663571482737
+updated: 1664185672582
 created: 1662932489444
+nav_exclude: true
 ---
 
 > **Avertissement:** Cette page peut contenir des fautes ! Envoyez-moi un message sur `#UT3-AURO-M2-2223-Request:matrix.org` si vous en trouvez, merci.
@@ -25,9 +26,13 @@ Support de cours:
 - [OE.NotesGEA.CM.20220919.pdf](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/OE.NotesGEA.CM.20220919.pdf)
 
 
+
 ---
 
 > Notes du 2022/08/30 - Start
+
+
+
 
 # Partie 1 - Concepts et ouitls de base pour l'optimisation
 
@@ -319,30 +324,32 @@ La matrice $Q$ (trouvé lors du calcul de la hessienne) contient l'information.
 
 Exemple 1:
 
-OE.
+![](/assets/images/OE.Slide-29-Ex1.png)
 
 Exemple 2:
 
-OE.
+![](/assets/images/OE.Slide-29-Ex2.png)
 
 ![](/assets/images/OE.Slide-30.png)
 
 Exemple 3:
 
-OE.
+![](/assets/images/OE.Slide-30-Ex3.png)![](/assets/images/OE.Slide-30-Ex3bis.png)
 
 > **Attention:** les algos nous donne un point critiques or ce point n'est qu'un candidat !
 
 
 Exemple 4 :
 
-OE.
+![](/assets/images/OE.Slide-31.png)
+
+![](/assets/images/OE.Slide-31-Ex4-01.png)
+![](/assets/images/OE.Slide-31-Ex4-02.png)
 
 > **Méthode:** VERIFIER si la hessienne est bien symmétrique !
 
 > Toute matrice de la forme $\begin{bmatrix}a & b\\ b & 0\end{bmatrix}$ aura toujours des valeurs propres de signes opposés quelque soit les signes de $a$ et $b$ !
 
-![](/assets/images/OE.Slide-31.png)
 
 ## B) Méthodes
 ![](/assets/images/OE.Slide-32.png)
@@ -380,7 +387,8 @@ Def - Direction de descente
 
 Exemple:
 
-OE.
+![](/assets/images/OE.Slide-41-Ex.png)
+![](/assets/images/OE.Slide-41-Exbis.png)
 
 - On calcule le gradient de $f$
 - On détermine le pas suivant $\quad x_{k+1} = x_k - \alpha_k \nabla f(x_k)$
@@ -430,7 +438,7 @@ Les boites à outils sont des algos automatiques qui vérifient des conditions s
 ### Exemple: Méthode du Gradient
 ![](/assets/images/OE.Slide-49.png)
 
-OE.
+![](/assets/images/OE.Slide-49-Ex.png)
 
 ![](/assets/images/OE.Slide-50.png)
 
@@ -453,11 +461,13 @@ OE.
 
 
 
+
 > Notes du 2022/09/07 - End
 
 ---
 
 > Notes du 2022/09/08 - Start
+
 
 
 
@@ -656,7 +666,6 @@ contraintes actives: $g_j(x)\leq0$
 
 ![](/assets/images/OE.Slide-75.png)
 
-OE.Slide75-Ex
 
 > $f(x)$ pour la fonctione étudié
 
@@ -690,7 +699,7 @@ $$
 \nabla f \pm \lambda \nabla h = 0
 $$
 
-OE.Slide76-Nota
+<!-- OE.Slide76-Nota -->
 
 
 #### Thm KKT (Condition Necessaire Karush-Kuhn-Tucker)
@@ -705,6 +714,13 @@ OE.Slide76-Nota
 
 ![](/assets/images/OE.Slide-79.png)
 
+![](/assets/images/OE.Slide79-Ex-01.png)
+![](/assets/images/OE.Slide79-Ex-02.png)
+![](/assets/images/OE.Slide79-Ex-03.png)
+![](/assets/images/OE.Slide79-Ex-04.png)
+![](/assets/images/OE.Slide79-Ex-05.png)
+
+<!-- 
 OE.Slide79-Ex01
 
 OE.Slide79-Ex02
@@ -714,10 +730,11 @@ OE.Slide79-Ex02
 OE.Slide79-GEA01
 
 OE.Slide79-GEA01
+-->
 
 #### Illustration de la direction admissible
 
-OE.Slide79-DirecAdmissible01.png)
+OE.Slide79-DirecAdmissible01
 
 OE.Slide79-DirecAdmissible02
 
