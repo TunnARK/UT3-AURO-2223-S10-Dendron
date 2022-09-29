@@ -2,14 +2,14 @@
 id: 3nx1o8j8h3vbt6lu2fqlpq3
 title: VIRCRV - Vision Industrielle
 desc: ''
-updated: 1663718465978
+updated: 1664451302977
 created: 1662025359124
 has_collection: true
 ---
 
 > **Avertissement:** Cette page peut contenir des fautes ! Envoyez-moi un message sur `#UT3-AURO-M2-2223-Request:matrix.org` si vous en trouvez, merci.
 
-> Cours donné par V. Cadenat
+> Cours donné par V. Cadenat et F. Lerasle
 
 ---
 
@@ -22,10 +22,15 @@ has_collection: true
 
 # Cours Magistraux
 
+## Partie Robotique
+
 - [[Chap 1 - Introduction à la robotique|VIRCRV.CM.Intro]]
 - [[Chap 2 - Outils Fondamentaux|VIRCRV.CM.OutilsFondam]]
-- [[Chap 3 - Modélisation des Bras Manipulateurs|VIRCRV.BM]]
+- [[Chap 3 - Modélisation des Bras Manipulateurs|VIRCRV.CM.ModelisationBM]]
 
+## Partie Vision
+
+- [[Chap 4 - Vision Industrielle|VIRCRV.CM.Vision]]
 
 # Travaux Dirigés
 

@@ -1,0 +1,25 @@
+---
+id: n7twshy2947h47a61iljff3
+title: TP1
+desc: ''
+updated: 1663755566479
+created: 1663742216706
+---
+
+# Travail à effectuer
+
+## 2.1 Modélisation du robot
+
+![](/assets/images/VIRCRV.TP1.Question21.png)
+
+1. Lancer `drawBM` pour visualiser chaque configuration offerte
+
+2. On calculer $T_{04}$
+
+3. On a donné une configuration $q = [pi\;\; pi/2 -1 0];$ puis vérifier que le point $\overrightarrow{O_0O_4}_{(4)} = [1   ; 0.5  ; 1   ; 1]$
+
+## 2.2 Modélisation de la tâche
+
+![](/assets/images/VIRCRV.TP1.Question22.png)
+
+1. 
