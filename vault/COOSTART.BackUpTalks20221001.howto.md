@@ -1,4 +1,16 @@
 ---
+id: bvbx3ektq0zva3zwyvafduz
+title: Quick MarkDown Reference
+desc: ''
+updated: 1664744395152
+created: 1664744363349
+---
+
+**Source:** [GitLab Repo 'Talks'](https://gitlab.laas.fr/gsaurel/talks)
+
+---
+
+<!--
 id: rvlr05jhkulo1uzm2rg9vy4
 title: Quick MarkDown Reference
 desc: ''
@@ -10,7 +22,7 @@ author: Guilhem Saurel
 date: '2021-10-08T00:00:00.000Z'
 mainfont: Source Serif 4
 monofont: Source Code Pro
----
+-->
 
 ## This presentation
 

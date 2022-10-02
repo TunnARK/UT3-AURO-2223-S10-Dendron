@@ -1,4 +1,16 @@
 ---
+id: er9im2cdllajr775yn2aisy
+title: Containers
+desc: ''
+updated: 1664744049427
+created: 1664744001280
+---
+
+**Source:** [GitLab Repo 'Talks'](https://gitlab.laas.fr/gsaurel/talks)
+
+---
+
+<!--
 title: Containers
 subtitle: what, how, which and when
 theme: laas
@@ -7,6 +19,7 @@ date: 10/02/2022
 mainfont: Source Serif 4
 monofont: Source Code Pro
 ...
+-->
 
 
 ### This presentation

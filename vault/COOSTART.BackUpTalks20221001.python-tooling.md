@@ -1,4 +1,16 @@
 ---
+id: 51ys7auzz57fpp0nk2dxnqf
+title: Python Tooling
+desc: ''
+updated: 1664744475227
+created: 1664744453030
+---
+
+**Source:** [GitLab Repo 'Talks'](https://gitlab.laas.fr/gsaurel/talks)
+
+---
+
+<!--
 id: u5fiyqsnwvglqvwg3zc12kv
 title: Python Tooling
 desc: ''
@@ -8,7 +20,7 @@ theme: laas
 author: Guilhem Saurel
 mainfont: Source Serif 4
 monofont: Source Code Pro
----
+-->
 
 ## This presentation
 

@@ -1,4 +1,16 @@
 ---
+id: 64dvwnykfenpzrfwf27yfr5
+title: Conception Orientée Objet, Outils
+desc: ''
+updated: 1664743994881
+created: 1664743967127
+---
+
+**Source:** [GitLab Repo 'Talks'](https://gitlab.laas.fr/gsaurel/talks)
+
+---
+
+<!--
 id: c0u829x8bg2xjzo8phnwq5h
 title: 'Conception Orientée Objet, Outils'
 desc: ''
@@ -9,7 +21,7 @@ theme: laas
 author: Guilhem Saurel
 mainfont: Source Serif 4
 monofont: Source Code Pro
----
+-->
 
 ## This presentation
 

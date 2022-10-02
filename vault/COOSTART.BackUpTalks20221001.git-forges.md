@@ -1,4 +1,16 @@
 ---
+id: 3wryq5w8arakua5etvj2dsi
+title: Git Forges
+desc: ''
+updated: 1664744357410
+created: 1664744320305
+---
+
+**Source:** [GitLab Repo 'Talks'](https://gitlab.laas.fr/gsaurel/talks)
+
+---
+
+<!--
 title: "Git: Forges"
 subtitle: Issues, Branches, Forks, Requests, CI, and Workflows
 theme: laas
@@ -7,6 +19,7 @@ date: 25/01/2022
 mainfont: Source Serif 4
 monofont: Source Code Pro
 ...
+-->
 
 ## This presentation
 

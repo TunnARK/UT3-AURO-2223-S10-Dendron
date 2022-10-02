@@ -1,4 +1,16 @@
 ---
+id: lixuerhxw6xs0n1v7pns10d
+title: Tooling
+desc: ''
+updated: 1664744505570
+created: 1664744482765
+---
+
+**Source:** [GitLab Repo 'Talks'](https://gitlab.laas.fr/gsaurel/talks)
+
+---
+
+<!--
 id: s2xc4iwmfsims2gvoxlr37k
 title: Tooling
 desc: ''
@@ -9,7 +21,7 @@ theme: laas
 author: Guilhem Saurel
 mainfont: Source Serif 4
 monofont: Source Code Pro
----
+-->
 
 ## This presentation
 

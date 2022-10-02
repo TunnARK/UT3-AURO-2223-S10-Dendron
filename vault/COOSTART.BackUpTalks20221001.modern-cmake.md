@@ -1,4 +1,16 @@
 ---
+id: pjl1ucyqo10aftc0e38qu4c
+title: Introduction to Modern CMake
+desc: ''
+updated: 1664744440648
+created: 1664744410693
+---
+
+**Source:** [GitLab Repo 'Talks'](https://gitlab.laas.fr/gsaurel/talks)
+
+---
+
+<!--
 id: trraffztts6499imvn5e1q0
 title: Introduction to Modern CMake
 desc: ''
@@ -9,7 +21,7 @@ theme: laas
 author: Guilhem Saurel
 mainfont: Source Serif 4
 monofont: Source Code Pro
----
+-->
 
 ## This presentation
 

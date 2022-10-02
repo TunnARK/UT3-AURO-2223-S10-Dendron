@@ -1,4 +1,16 @@
 ---
+id: 1j9qw4tjnf2db3mgqahsk13
+title: Conception Orientée Objet, Intro
+desc: ''
+updated: 1664743863612
+created: 1664743810224
+---
+
+**Source:** [GitLab Repo 'Talks'](https://gitlab.laas.fr/gsaurel/talks)
+
+---
+
+<!--
 id: nvf12dbqg08g7yxn0p0fqz5
 title: 'Conception Orientée Objet, Intro'
 desc: ''
@@ -10,7 +22,7 @@ date: '2022-08-31T00:00:00.000Z'
 author: Guilhem Saurel
 mainfont: Source Serif 4
 monofont: Source Code Pro
----
+-->
 
 ## This presentation
 
