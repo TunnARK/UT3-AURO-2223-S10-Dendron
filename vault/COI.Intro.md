@@ -2,7 +2,7 @@
 id: n9exhzncgo4w717syg47ojd
 title: Intro
 desc: ''
-updated: 1664354077846
+updated: 1664977028542
 created: 1663307233627
 ---
 
@@ -446,7 +446,14 @@ $$
 2. avec $T_f = 3$ et $R = 1$ et respectivement pour $P_{T_f}=0.1$, $P_{T_f}=10$ et $P_{T_f}=1000$ déterminer $x_3$ en fonction de $L_0$,$L_1$, $L_2$ et $x_0$
 3. Reprendre la question 1 avec $T_f \longrightarrow \infty$
 
-#### Deux méthodes de résolutions pour la question 1
+#### Solution Q1
+
+Pour $x_{k+1} = 2 x_k + u_k$, déterminer la commande optimale $u^*$ qui stabilise $x$ et minimise :
+$$
+J(x_k,k) = \frac{1}{2} \sum_{k=0}^{T_{f-1}} \Big( x_k^T\;x_k + u_k^T\;R\;u_k \Big) + \frac{1}{2}\;x_{T_f}^T\;P_{T_f}\;x_{T_f}
+$$ avec $T_f = 3$ et $P_{T_f} = 1$ montrer respectivement pour $R=1$, $R=10$ et $R=1000$ l'influence de la ponderation $R$ sur les pôles du système
+
+##### Deux méthodes de résolutions pour la question 1
 
 - Avec le critère optimale
     1. Calculer les $J(x_k,k)$
@@ -457,7 +464,7 @@ $$
     2. Appliquer la formule $u^*_k = -L_k\;x_k$
     3. Calculer $L_k$ (attention dépend de $P_k$) avec 
     $$
-    L_k = (R_k + B_k^T\;P_{k+1}\;B_k)^{-1}\;B^T\;P_{k+1}\;A_k
+    L_k = (R_k + B_k^T\;P_{k+1}\;B_k)^{-1}\;B_k^T\;P_{k+1}\;A_k
     $$
     4. Calculer $P_k$ avec
     $$
@@ -466,5 +473,131 @@ $$
 
 
 > Notes du 2022/09/28 - End
+
+---
+
+> Notes du 2022/10/05 - Start
+
+
+
+##### Réponse
+
+Pour $T_f=3$, $R=1$ et $P_f=P_3=1$ :
+1. Déterminer les commandes $u_0^*$, $u_1^*$, $u_2^*$ avec la méthode de Bellman
+
+    Pour $u_2^*$,
+
+    - On a sous la contrainte de $x_3=2x_2+u_2$
+    $$
+    J(x(2),2)
+    = \frac{1}{2} x_2^2 + \frac{1}{2} u_2^2 + J^*(x(3),3)
+    = \frac{1}{2} x_2^2 + \frac{1}{2} u_2^2 + \frac{1}{2} x_3^2
+    $$
+
+    - La commande est donnée par:
+    $$
+    \partial_{u_2} J(x(2),2) = \partial_{u_2} \frac{1}{2} x_2^2 + \frac{1}{2} u_2^2 + \frac{1}{2} \big(2x_2+u_2\big)^2 = 0
+    $$
+    Il vient que $u_2 + (2x_2+u_2)=0$ donc $$u_2^*=-x_2$$
+
+    > Attention: pour être rigoureux, il faut vérifier que $\partial_{u_2}^2J(x(2),2)>0$
+
+    - On calcule alors le coût optimal :
+    $$
+    J^*(x(2),2) = \frac{1}{2} x_2^2 + \frac{1}{2} u_2^{*2} + J^*(x(3),3) = \frac{1}{2} x_2^2 + \frac{1}{2} \big(-x_2\big)^2 + \frac{1}{2} \big(2x_2-u_2^*\big)^2 
+    $$
+    Ainsi,
+    $$
+    J^*(x(2),2) = \frac{3}{2} x_2^2
+    $$
+
+    Pour $u_1^*$,
+
+    - On a sous la contrainte de $x_2=2x_1+u_1$
+    $$
+    J(x(1),1)
+    = \frac{1}{2} x_1^2 + \frac{1}{2} u_1^2 + J^*(x(1),1)
+    $$
+
+    - La commande est donnée par:
+    $$
+    \partial_{u_1} J(x(1),1) = \partial_{u_1} \frac{1}{2} x_1^2 + \frac{1}{2} u_1^2 + \frac{1}{2} \big(2x_1+u_1\big)^2 = 0
+    $$
+    Il vient que 
+    $$u_1^*=-\frac{3}{2}x_1$$
+
+    - On calcule alors le coût optimal :
+    $$
+    J^*(x(2),2) = 2x_1^2
+    $$
+
+    Pour $u_0^*$,
+    
+    - On a sous la contrainte de $x_0=2x_0+u_0$
+    $$
+    J(x(0),0)
+    = \frac{1}{2} x_0^2 + \frac{1}{2} u_0^2 + J^*(x(1),1)
+    $$
+
+    - La commande est donnée par:
+    $$
+    \partial_{u_0} J(x(1),1) = \partial_{u_0} \frac{1}{2} x_0^2 + \frac{1}{2} u_0^2 + \frac{1}{2} \big(2x_0+u_0\big)^2 = 0
+    $$
+    Il vient que 
+    $$u_0^*=-\frac{8}{5}x_0$$
+
+    - On calcule alors le coût optimal :
+    $$
+    J^*(x(2),2) = \frac{21}{10}x_0^2 = \frac{1}{2}\;x_0^T\;\frac{21}{5}\;x_0
+    $$
+
+##### Discussion
+
+On constate que si l'on choisit **$R$ grand la commande optimale $u^*$ sera 'petite'**.
+
+Rappel :
+**On cherche à minimiser le $u$** donc il fait du sens de choisir un $R$ grand pour le sélectionner que des commandes petites
+
+**Probleme :** 
+**Si on force $u$ 'petit' alors on peut manquer d'énergie** pour amener notre système d'un état donné à un état final désiré
+
+**Advantage :** 
+Avoir un **$R$ grand garantie la non saturation** mais au prix d'avoir **moins d'influence sur la dynamique du système**
+
+#### Solution Q2
+
+Pour $x_{k+1} = 2 x_k + u_k$, déterminer la commande optimale $u^*$ qui stabilise $x$ et minimise :
+$$
+J(x_k,k) = \frac{1}{2} \sum_{k=0}^{T_{f-1}} \Big( x_k^T\;x_k + u_k^T\;R\;u_k \Big) + \frac{1}{2}\;x_{T_f}^T\;P_{T_f}\;x_{T_f}
+$$
+avec $T_f = 3$ et $R = 1$ et respectivement pour $P_{T_f}=0.1$, $P_{T_f}=10$ et $P_{T_f}=1000$ 
+
+Déterminer $x_3$ en fonction de $L_0$,$L_1$, $L_2$ et $x_0$
+
+##### Méthodes
+
+1. Écrire les $u_k^*=-L_k\;x_k$
+2. De $x_{k+1} = 2\;x_k + u_k$, calculer $x_3$ en fonction de $x_2$ et $x_1$
+3. le 2. nous donne alors une formule pour calculer $x_3$ en fonction des $L_k$ et de $x_0$
+
+
+##### Réponse
+
+On a :
+$$
+x_3 = (2-L_2)\;x_2\\[0.2cm]
+x_2 = (2-L_1)\;x_1\\[0.2cm]
+x_1 = (2-L_0)\;x_0
+$$
+
+D'où,
+$$
+x_3 = (2-L_2)\;(2-L_1)\;(2-L_0)\;x_0
+$$
+
+Il ne reste plus qu'à faire les calculs selon les valeurs de $P_{t_f}$
+
+
+> Notes du 2022/10/05 - End
 
 ---
