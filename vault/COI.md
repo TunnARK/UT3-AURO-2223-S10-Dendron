@@ -2,10 +2,12 @@
 id: 5ote9fvxjw9begskt3qf8gh
 title: COI
 desc: ''
-updated: 1663843799052
+updated: 1665483687132
 created: 1663229962310
-has_collection: true
+nav_exclude_children: true
 ---
+
+<!--has_collection: true-->
 
 > **Avertissement:** Cette page peut contenir des fautes ! Envoyez-moi un message sur `#UT3-AURO-M2-2223-Request:matrix.org` si vous en trouvez, merci.
 

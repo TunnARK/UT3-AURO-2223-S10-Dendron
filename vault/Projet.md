@@ -2,8 +2,9 @@
 id: nlx0gy6bhqyjfi7s3w73huq
 title: Projet
 desc: ''
-updated: 1665406237771
+updated: 1665483718507
 created: 1665403102621
+nav_exclude_children: true
 ---
 
 # Projet 1: Bloc 1 -> Bloc 2

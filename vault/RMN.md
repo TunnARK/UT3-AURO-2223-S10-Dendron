@@ -2,8 +2,9 @@
 id: sza9wglklg9mxzv0wx6hwgo
 title: RMN - Robotique Mobile & Navigation
 desc: ''
-updated: 1664796890261
+updated: 1665483726757
 created: 1662981723120
+nav_exclude_children: true
 ---
 
 > **Avertissement:** Cette page peut contenir des fautes ! Envoyez-moi un message sur `#UT3-AURO-M2-2223-Request:matrix.org` si vous en trouvez, merci.
@@ -35,6 +36,7 @@ created: 1662981723120
 
 - [[ROS - TP1|RMN.ROS.TP1]]
 - [[ROS - TP2|RMN.ROS.TP2]]
+- [[ROS - TP3|RMN.ROS.TP3]]
 
 # Support de Cours
 
