@@ -2,12 +2,13 @@
 id: p85rbwnti1ba3v7wlx9ae6w
 title: Code Management
 desc: ''
-updated: 1662938431060
+updated: 1663171161226
 created: 1662938135263
 ---
 
 
-> **Avertissement:** Cette page peut contenir des fautes ! Envoyez-moi un message sur `#UT3-AURO-M2-2223-Request:matrix.org` si vous en trouvez, merci.
+> **Avertissement:**
+Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-2223-Request:matrix.org`](https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org) si vous en trouvez, merci.
 
 > Cours donné par G. Saurel
 
@@ -24,22 +25,21 @@ Lien utile :
 
 # Code Management
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.01.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-01.png)
 > git a été developpe pour le noyau linux
 
-
-![](/assets/images/COOSTAR.SlideCodeMgmt.02.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-02.png)
 
 ## Agenda
-![](/assets/images/COOSTAR.SlideCodeMgmt.03.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-03.png)
 
 ## Introduction
-![](/assets/images/COOSTAR.SlideCodeMgmt.04.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-04.png)
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.05.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-05.png)
 
 ### Version Control Concepts
-![](/assets/images/COOSTAR.SlideCodeMgmt.06.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-06.png)
 
 - un commit = un freeze de l'état d'un dossier
   - prend la version parent
@@ -48,7 +48,7 @@ Lien utile :
   - lors de la creation avec `git init` on cree un revision parente ici A puis chaque commit donne l'etat B puis C
   
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.07.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-07.png)
 
 - possibilité de revenir sur un parent et faire une nouvelle branche
 - historiquement la branche principale en Forge était appelé `master` puis elle a été corrigé à `main`
@@ -56,29 +56,29 @@ Lien utile :
 
 ### Handling branches
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.08.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-08.png)
 
 ### Working in teams
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.09.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-09.png)
 
 ### Centralized model
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.10.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-10.png)
 
 ### Distributed model
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.11.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-11.png)
 
 - Advantage plus besoin d'etre directement connecter au serveur (donc transfert de fichier plus rapide)
 
 ## Git Concepts
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.12.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-12.png)
 
 **Def:** Repository / diff or patch / commit (verb and noun) / branch / tag 
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.13.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-13.png)
 
 - tag reste à jamais sur un commit alors que la branch change à chaque commit
   - interface tig
@@ -87,21 +87,21 @@ Lien utile :
 
 **Def:** Working Tree / Index / Blob
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.14.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-14.png)
 
 ### Git Interfaces
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.15.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-15.png)
 
 Autre interface: `git gui`
 
 ### Git Forges
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.16.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-16.png)
 
 ### Initial Setup
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.17.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-17.png)
 
 - `--global` configuration appliquée sur le pc
 - set favorite editor: `git config --global --add core.editor emacs -nw`
@@ -109,138 +109,140 @@ Autre interface: `git gui`
 
 ## Individual Developper
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.18.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-18.png)
 
 ### Creating repository
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.19.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-19.png)
 
 ### Adding files
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.20.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-20.png)
 
 ### Querying Status
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.21.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-21.png)
 
 > Pour montrer le status du dossier
 
 ### Committing changes
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.22.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-22.png)
 
 - `git commit -a` réalise un `add` et puis `commit` en une seule ligne
 - `-m` pour attacher un message au commit
 
 ### Git Index
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.23.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-23.png)
 
 ### Commits
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.24.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-24.png)
 
 - digital signature
   - permet de comparer un clone en l'identifier avec une cle
 
 ### Interactive add
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.25.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-25.png)
 
 - `-i` permet de visualiser quels fichiers selectionner pour le commit
 
 ### Looking Back
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.26.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-26.png)
 
 - `index 6bd8f3c..c0ee9ab 100644` indique qu'on compare commit 6bd8f3c avec c0ee9ab et donne l'attribut de c0ee9ab avec 100644 pour indiquer si les permissions sont read/write/exe
 
 ### Examining Changes
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.27.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-27.png)
 
 ### Marking a version
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.28.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-28.png)
 
 ### Fixing mistakes
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.29.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-29.png)
 
 ## Using Branches
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.30.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-30.png)
 
 ### Branches
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.31.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-31.png)
 
 ### Switching branches
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.32.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-32.png)
 
 ### Listing available branches
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.33.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-33.png)
 
 ### Merging changes from another branche
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.34.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-34.png)
 
 - fast forward vs normal merge
 - software meld montre bien le principe des "3 way merge"
 
 ### Handling conflicts
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.35.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-35.png)
 
 ### Tools to help with merge
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.36.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-36.png)
 
 ### Picking individual changes
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.37.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-37.png)
 
 - cherry-pick
 
 ### Replaying changes from a branch
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.38.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-38.png)
 
 ### Rebase
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.39.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-39.png)
 
 ### Interactive Rebase
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.40.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-40.png)
 
 > DON'T USE after pushing ! Why ?
 
 ## Working together
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.41.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-41.png)
 
 ### Copying a repository
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.42.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-42.png)
+
+- le protocol GIT n'existe plus car n'est pas sécurisé
 
 ### Remote repository
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.43.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-43.png)
 
 > La remote s'appelle par défaut `origin`
 
 ### Updating from a repository
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.44.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-44.png)
 
 ### Remote branches
 
-![](/assets/images/COOSTAR.SlideCodeMgmt.45.png)
+![](/assets/images/COOSATR.SlideCodeMgmt-45.png)
 
-
+`git branch -r`: va lister toutes les branche
 
 
 
@@ -248,47 +250,57 @@ Autre interface: `git gui`
 
 ---
 
-> Notes du 2022/09/? - Start
+> Notes du 2022/09/14 - Start
 
 
 
 
 
-###
+### Using rebase with remote branches
 
-COOSTAR.SlideCodeMgmt.
+![](/assets/images/COOSATR.SlideCodeMgmt-46.png)
 
-###
+`git pull --rebase` 
+- fait un `git fetch` comme le pull
+- puis un `git rebase` au lieu du `merge` que pull fait par défaut
 
-COOSTAR.SlideCodeMgmt.
+### Sending changes to a repository
 
-###
+![](/assets/images/COOSATR.SlideCodeMgmt-47.png)
 
-COOSTAR.SlideCodeMgmt.
+### Managing remote repositories
 
-###
+![](/assets/images/COOSATR.SlideCodeMgmt-48.png)
 
-COOSTAR.SlideCodeMgmt.
+## Other goodies
 
-###
+![](/assets/images/COOSATR.SlideCodeMgmt-49.png)
 
-COOSTAR.SlideCodeMgmt.
+### Identifying authors
 
-###
+![](/assets/images/COOSATR.SlideCodeMgmt-50.png)
 
-COOSTAR.SlideCodeMgmt.
+### Making a relase with git
 
-###
+![](/assets/images/COOSATR.SlideCodeMgmt-51.png)
 
-COOSTAR.SlideCodeMgmt.
+### Submodules
 
-###
+![](/assets/images/COOSATR.SlideCodeMgmt-52.png)
 
-COOSTAR.SlideCodeMgmt.
+`git clone --recursive` pour cloner aussi les submodules s'il y en a
+
+## Appendix
+
+![](/assets/images/COOSATR.SlideCodeMgmt-53.png)
+
+### Git for CTS User
+
+![](/assets/images/COOSATR.SlideCodeMgmt-54.png)
 
 
 
 
-> Notes du 2022/09/? - End
+> Notes du 2022/09/14 - End
 
 ---

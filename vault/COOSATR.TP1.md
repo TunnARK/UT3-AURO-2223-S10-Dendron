@@ -2,7 +2,7 @@
 id: iy9te795w2b29chc3z2t7jr
 title: TP1 - Connect 4
 desc: ''
-updated: 1664626826945
+updated: 1664963428211
 created: 1664542327128
 ---
 > **Avertissement:**
@@ -12,19 +12,47 @@ Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-
 
 ---
 
-> Notes du 2022/09/30 - Start
+# Connect 4
+
+TP n°1 de Conception Orientée Objet pour le M2 auro.
+
+## Objectifs
+
+1. commenter le décorateur `skip` pour `tests.test_game.TestGame.test_dumb_6` et implémenter
+   `connect4.dump_ia.DumbIA.play` jusqu’à ce que `python -m unittest` fonctionne à nouveau
+2. commenter le décorateur `skip` pour `tests.test_game.TestGame.test_column_win` et améliorer
+   `connect4.game.Grid.win` jusqu’à ce que `python -m unittest` fonctionne à nouveau
+3. commenter le décorateur `skip` pour `tests.test_game.TestGame.test_tie` et implémenter
+   `connect4.game.Grid.tie` jusqu’à ce que `python -m unittest` fonctionne à nouveau. `python -m connect4` devrait
+   également fonctionner.
+4. implémenter `connect4.console_player.ConsolePlayer.play` jusqu’à ce que que le jeu soit utilisable avec
+   `python -m connect4 --player-a ConsolePlayer`
+5. commenter le décorateur `skip` pour `tests.test_game.TestGame.test_cheater` et implémenter `connect4.cheater_b` jusqu’à ce que `python -m unittest` fonctionne à nouveau.
+6. commenter le décorateur `skip` pour `tests.test_game.TestGame.test_diag_win` et améliorer
+   `connect4.game.Grid.win` jusqu’à ce que `python -m unittest` fonctionne à nouveau
+   - Completer la section `diagonal` de `connect4.game.Grid.win` jusqu'à ce que l'unittest fonctionne
 
 
+--- 
 
 # Informations utiles
 
 [Repo GitHub pour le TP1 Connect4](https://github.com/nim65s/connect4)
 
-[Repo GitHub Forked by TunnARK](https://github.com/TunnARK/connect4)
-
-> N.B.:
-    - Python fait croire que c'est un code interpreté (i.e. qui n'a pas besoin de compilation) alors quil conserve un cache de compilation en interne
-    - Pypy lui est un code interpreté car il exécute directement
+N.B.:
+- Python fait croire que c'est un code interpreté (i.e. qui n'a pas besoin de compilation) alors quil conserve un cache de compilation en interne
+- Pypy lui est un code interpreté car il exécute directement
+- Appeler des méthodes en COO:
+    
+    Grid est la classe    
+    
+    grid est une instance de la classe Grid
+    
+    Il y a deux manière d'appeler la méthode place de la classe Grid
+    
+    - Grid.place(grid,j,Cell.B) aura besoin que l'on précise sur quel objet appliquer cette méthode
+    
+    - grid.place(j,Cell.B) n'aura pas besoin de préciser l'objet
 
 # Presentation du projet
 
@@ -135,7 +163,7 @@ class Game:
 
 # Execution
 
-- [lien vers le fichier \_\_main\_\_.py](https://github.com/nim65s/connect4/blob/main/connect4/__main__.py)
+- [__main__.py]()
 
 Fichier qui crée un instance du jeu game avec un player A et B pour ensuite lancer le `game.main`
 
@@ -208,10 +236,7 @@ Lancer ce fichier ne fonctionnera pas plustot lancer les tests
    également fonctionner.
 4. implémenter `connect4.console_player.ConsolePlayer.play` jusqu’à ce que que le jeu soit utilisable avec
    `python -m connect4 --player-a ConsolePlayer`
-
-
-
-
-> Notes du 2022/09/30 - End 
-
----
+5. commenter le décorateur `skip` pour `tests.test_game.TestGame.test_cheater` et implémenter `connect4.cheater_b` jusqu’à ce que `python -m unittest` fonctionne à nouveau.
+6. commenter le décorateur `skip` pour `tests.test_game.TestGame.test_diag_win` et améliorer
+   `connect4.game.Grid.win` jusqu’à ce que `python -m unittest` fonctionne à nouveau
+   - Completer la section `diagonal` de `connect4.game.Grid.win` jusqu'à ce que l'unittest fonctionne

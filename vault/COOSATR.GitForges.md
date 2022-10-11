@@ -1,0 +1,172 @@
+---
+id: xxiy39a5991k9xr3wksqlvn
+title: GitForges
+desc: ''
+updated: 1663139820015
+created: 1663137090413
+---
+
+> **Avertissement:**
+Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-2223-Request:matrix.org`](https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org) si vous en trouvez, merci.
+
+> Cours donné par G. Saurel
+
+Support de cours:
+- [git-forges.pdf](https://homepages.laas.fr/gsaurel/talks/git-forges.pdf)
+- ...
+
+---
+
+
+> Notes du 2022/09/14 - Start
+
+
+# Git Forges
+![](/assets/images/COOSATR.SlideGitForges-01.png)
+
+## This presentation
+
+![](/assets/images/COOSATR.SlideGitForges-02.png)
+
+![](/assets/images/COOSATR.SlideGitForges-03.png)
+
+## Outline
+
+![](/assets/images/COOSATR.SlideGitForges-04.png)
+
+## Introduction 
+
+![](/assets/images/COOSATR.SlideGitForges-05.png)
+
+### What are software forges
+
+![](/assets/images/COOSATR.SlideGitForges-06.png)
+
+### Hiearchy
+
+![](/assets/images/COOSATR.SlideGitForges-07.png)
+
+### Issues
+
+![](/assets/images/COOSATR.SlideGitForges-08.png)
+
+## Branches
+
+![](/assets/images/COOSATR.SlideGitForges-09.png)
+
+### Goal
+
+![](/assets/images/COOSATR.SlideGitForges-10.png)
+
+[nvie](https://nvie.com/posts/a‑successful‑git‑branching‑model/) un utilisateur a proposé d'utiliser les branches d'une certaine façon pour traiter les issues 
+
+### Usual branches
+
+![](/assets/images/COOSATR.SlideGitForges-11.png)
+
+`issue/5` dossier pour fixer issue 5 (idéalement le dernier commit devienne le fix)
+
+après il n'y a pas de convention imposer/dominante sur comment gerer les branches pour traiter les issues
+
+## Forks
+
+![](/assets/images/COOSATR.SlideGitForges-12.png)
+
+### 2 types of fork
+
+![](/assets/images/COOSATR.SlideGitForges-13.png)
+
+Histoire de Scission:
+- SUN company super open soure createur MySQL, openoffice, langage java
+- autre companie oracle plus orientee business profit 
+- puis google a atteint une certaine taille
+- le langage java etait en partie libre donc google avait surrement utilise des parties de code non libre
+- du coup oracle veut acheter le langage java pour mettre en justice google
+- mais sun n'a pas voulu vendre le code
+- du coup oracle a racheté la compagnie sun en entière
+- du coup openoffice et mysql n'etait plus du tout utilisé et maintenu
+- donc les fondateurs de SUN ont crée une fork pour reprendre le projet
+
+![](/assets/images/COOSATR.SlideGitForges-14.png)
+
+### Work locally with multiple forks
+
+![](/assets/images/COOSATR.SlideGitForges-15.png)
+
+### SSH shortcut
+
+![](/assets/images/COOSATR.SlideGitForges-16.png)
+
+```
+# ~/.ssh/config
+Host gl
+    HostName gitlab.laas.fr
+    User git
+```
+
+## Requests
+
+![](/assets/images/COOSATR.SlideGitForges-17.png)
+
+### Gitlab
+
+![](/assets/images/COOSATR.SlideGitForges-18.png)
+
+### Gitlab from command line
+
+![](/assets/images/COOSATR.SlideGitForges-19.png)
+
+### Github
+
+![](/assets/images/COOSATR.SlideGitForges-20.png)
+
+### Github from command line
+
+
+![](/assets/images/COOSATR.SlideGitForges-21.png)
+
+## CI
+
+![](/assets/images/COOSATR.SlideGitForges-22.png)
+
+### Gitlab
+
+![](/assets/images/COOSATR.SlideGitForges-23.png)
+
+### Gitlab shortcut
+
+![](/assets/images/COOSATR.SlideGitForges-24.png)
+
+### Github
+
+![](/assets/images/COOSATR.SlideGitForges-25.png)
+
+## Workflows
+
+![](/assets/images/COOSATR.SlideGitForges-26.png)
+
+### Example
+
+![](/assets/images/COOSATR.SlideGitForges-27.png)
+
+## End notes
+
+![](/assets/images/COOSATR.SlideGitForges-28.png)
+
+## References
+
+![](/assets/images/COOSATR.SlideGitForges-29.png)
+
+https://learngitbranching.js.org/
+https://nvie.com/posts/a‑successful‑git‑branching‑model/
+https://docs.github.com/en/get‑started/quickstart/github‑flow
+
+## Questions
+
+![](/assets/images/COOSATR.SlideGitForges-30.png)
+
+
+
+> Notes du 2022/09/14 - End
+
+---
