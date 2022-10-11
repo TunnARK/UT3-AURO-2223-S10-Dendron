@@ -2,11 +2,12 @@
 id: y2ldpz4tnbwwv24y591rjtv
 title: Systèmes Multivariables
 desc: ''
-updated: 1662938041357
+updated: 1665483616450
 created: 1662925980552
 ---
 
-> **Avertissement:** Cette page peut contenir des fautes ! Envoyez-moi un message sur `#UT3-AURO-M2-2223-Request:matrix.org` si vous en trouvez, merci.
+> **Avertissement:**
+Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-2223-Request:matrix.org`](https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org) si vous en trouvez, merci.
 
 > Cours donné par F. Gouaisbaut
 
@@ -499,3 +500,97 @@ Q2) Appliquer la forme de compagne de commande à $H(s)$
 > Notes du 2022/09/08 - End
 
 ---
+
+> Hors programme
+
+---
+
+> Notes du 2022/09/20 - Start
+
+
+
+
+> **RAPPEL:**
+  - CdC: placer les valeurs propres (pour fixer le régime transitoire)
+  - On cherche $k\in\mathbb{R}^{m\times n}$ et $P_{A-Bk}(\lambda) = P_{des}(\lambda)$
+  - Or on a $mn$ inconnues et $n$ equations du coup on aura une infinité de solutions (en passant les $mn-n$ en paramètre)
+  - En faisant cela on peut:
+    - ???
+    - espace propre donne l'advantage de pouvoir se placer dans la direction d'un seul mode
+    - rejet total de perturbations (compliquer)
+      - place le mode??? dans le noyau de la matrice d'observation
+  - Ces methodes là ne sont pas très robustes car les espaces propres ne sont pas très robustes
+  - Pour rendre un système commandable il faut rajouter des actionneurs
+  - Forme compagne de commande utile car $A-Bk$ est encore sous forme de compagne (surtout en MIMO)
+    - comment se structure la matrice de commande A ?
+      CR.CM.FG.BB20220920
+    - première difficulté sera de trouver la taille des blocs
+
+# IV- Méthode d'une forme compagne de commande par blocs
+
+Hypothèses:
+1. le système est commandable
+2. $rang(B) = m$ si ce n'est pas le cas on réduit le nombre d'actionneurs (en enlevant les colonnes redondantes)
+
+Cette méthode ne dépend pas des changements de bases ni de ??? du coup on va introduire les indices de commandabilité
+
+**Def:**
+- **Indices de commandabilité**
+  
+  Pour $1\leq j \leq m$, l'indice de commandabilité $\rho_j\in\mathbb{N}^*$ est le plus petit indice tel que $A^{\rho_j}b_j$ est **linéairement dépendant** des colonnes situées à sa gauche dans la matrice de commandabilité ($b_j$ est la jème colone de B)
+
+- **Indices de commandabilité cumulés**
+
+  $$
+  G_i = \sum_{j=1}^{i} \rho_j \quad\text{avec}\quad G_1 = \rho_1 \quad\text{et}\quad G_m=n
+  $$
+
+**Apparté:**
+
+$$
+x(k+1) = Ax(k) + Bu(k) \quad\text{avec}\quad x(0) = 0 \\\text{donc}\quad x(1) = Bu(0) \quad\text{puis}\quad x(2) = ABu(0)+Bu(1)
+$$
+
+CR.CM.FG.ExempleIndicesCmblite
+
+En discret on peut montrer que en $n$ coup on peut atteindre tous l'espace de commande (cette méthode s'appelle la **commande à n coups** ou à p coups)
+
+Mtnt on va vouloir réorganiser les colonnes de la matrice de commandabilité pour grouper les vecteurs directeurs des actionneurs
+
+Pour ce faire, il nous faut calculer une matrice de changement de base:
+
+1. On extrait de la matrice de commandabilité, une matrice inversible suivante : 
+$$
+\mathcal{C}_{co} = 
+\begin{bmatrix}
+  b_1 & Ab_1 & \dots & A^{\rho_1-1}b_1 & \dots & b_m & \dots & A^{\rho_m-1}b_2
+\end{bmatrix}
+$$
+
+2. On calcule son inverse
+
+3. ...
+
+> la matrice B est triangulaire supérieure
+
+Problème la matrice possède encore des $\beta_{ij}$ que l'on cherche à ecarter, pour ce faire nous allons changer l'entrée en utilisant un pré-compensateur matriciel
+
+> Ce rajout de précompensateur est plus utile en MIMO qu'en SISO par sa structure matricielle
+
+$$u' = Ru \quad\text{et}\quad B_{cc} = B_c R$$
+
+La question qui reste à resoudre serait alors d'assurer qu'on puisse trouver $R$ tel que $B_{cc}$ 
+
+Cela revient à resoudre l'équation suivante :
+$$
+B_{cc} = B_c R \quad\text{soit une equation de la forme}\quad AX=Y \\\quad\text{solvable au sens des moindres carrés par}\quad X=(A^TA)^{-1}A^TY
+$$
+
+> Attention: $AX=Y \Longrightarrow A^TAX=A^TY$ ceci n'est pas une équivalence (c'est la différence principal de cette astuce p.r.à celle liée à l'inversion de matrice)
+
+> Projection selon la norme adapté au probleme (exemple de la balade le long du Tarn avec la norme 2 ou de l'Hudson avec la norme 1 [aussi appelé __the taxi cab norm__])
+
+...
+
+
+On choisit $k_{ij}=\tilde{a}_{ij}$ pour obtenir une matrice diagonale par blocs dont on connait le polynome caractéristique

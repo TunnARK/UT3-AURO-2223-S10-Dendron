@@ -32,10 +32,12 @@ Sur le planning: si CR avec CLA, cela indique alors Commande Linéaire Avancé.
 
 - [[FG TD2 - Forme Gilbert|CR.FG.TD2]]
 
+<!--
 # Travaux Pratiques
 
 - [[FG TP1 - Bac d'Eau|CR.FG.TP1]]
 - [[DP TP2 - Thm Stabilité Quadratique Normé|CR.DP.TP2]]
+-->
 
 # Support de Cours
 
@@ -71,7 +73,7 @@ $\ \\[-0.5cm]$
 
 ### RKA
 
-- [CR.FG.TD2.Sujet.pdf](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/CR.FG.TD2.Sujet.pdf)
+- [CR.FG.TD2.Sujet.pdf !](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/CR.FG.TD2.Sujet.pdf)
 - [CR.DP.TD2.Sujet.pdf ?](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/CR.DP.TD2.Sujet.pdf)
-- [CR.FG.TP1.Sujet.pdf](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/CR.FG.TP1.Sujet.pdf)
-- [CR.DP.TP2.Sujet.pdf](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/CR.FG.TP2.Sujet.pdf)
+- [CR.FG.TP1.Sujet.pdf !](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/CR.FG.TP1.Sujet.pdf)
+- [CR.DP.TP2.Sujet.pdf !](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/CR.FG.TP2.Sujet.pdf)
