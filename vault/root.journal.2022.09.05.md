@@ -6,7 +6,7 @@ updated: 1662366713034
 created: 1662357723113
 traitIds:
   - journalNote
-publishing: private
+published: false
 ---
 
 # Notes AOH - 8H00/12H00

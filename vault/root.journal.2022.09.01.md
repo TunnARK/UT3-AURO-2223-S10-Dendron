@@ -6,7 +6,7 @@ updated: 1662059303585
 created: 1662032369198
 traitIds:
   - journalNote
-publishing: private
+published: false
 ---
 
 # COOSATR 13H30/15H30

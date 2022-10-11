@@ -6,7 +6,7 @@ updated: 1662025978115
 created: 1661933499552
 traitIds:
   - journalNote
-publishing: private
+published: false
 ---
 
 

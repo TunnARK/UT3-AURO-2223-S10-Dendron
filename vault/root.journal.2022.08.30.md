@@ -6,7 +6,7 @@ updated: 1661868438355
 created: 1661840482827
 traitIds:
   - journalNote
-publishing: private
+published: false
 ---
 
 ## 08H45 - Reunion Rentrée

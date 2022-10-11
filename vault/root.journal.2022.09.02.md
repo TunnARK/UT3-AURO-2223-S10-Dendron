@@ -6,7 +6,7 @@ updated: 1662143674097
 created: 1662098138857
 traitIds:
   - journalNote
-publishing: private
+published: false
 ---
 
 Aspect Organisation et Humains
