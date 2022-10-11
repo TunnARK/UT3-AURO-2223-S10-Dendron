@@ -2,11 +2,12 @@
 id: 8xj6u3lhfzuvdndumpe341o
 title: Outils
 desc: ''
-updated: 1662934543565
+updated: 1665498202657
 created: 1662934434594
 ---
 
-> **Avertissement:** Cette page peut contenir des fautes ! Envoyez-moi un message sur `#UT3-AURO-M2-2223-Request:matrix.org` si vous en trouvez, merci.
+> **Avertissement:**
+Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-2223-Request:matrix.org`](https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org) si vous en trouvez, merci.
 
 > Cours donné par G. Saurel
 

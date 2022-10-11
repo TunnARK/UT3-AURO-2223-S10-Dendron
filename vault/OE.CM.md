@@ -2,12 +2,13 @@
 id: yojgfew3rfjxo114lk7q9re
 title: Introduction à l'Optimisation Numérique
 desc: ''
-updated: 1664185672582
+updated: 1665498202665
 created: 1662932489444
 nav_exclude: true
 ---
 
-> **Avertissement:** Cette page peut contenir des fautes ! Envoyez-moi un message sur `#UT3-AURO-M2-2223-Request:matrix.org` si vous en trouvez, merci.
+> **Avertissement:**
+Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-2223-Request:matrix.org`](https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org) si vous en trouvez, merci.
 
 > Cours donné par M. Thaix
 

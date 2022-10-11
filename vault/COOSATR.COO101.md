@@ -2,11 +2,12 @@
 id: jasu01wz4ukc3vc7qmh74iv
 title: COO 101
 desc: ''
-updated: 1662934194064
+updated: 1665498202671
 created: 1662933874608
 ---
 
-> **Avertissement:** Cette page peut contenir des fautes ! Envoyez-moi un message sur `#UT3-AURO-M2-2223-Request:matrix.org` si vous en trouvez, merci.
+> **Avertissement:**
+Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-2223-Request:matrix.org`](https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org) si vous en trouvez, merci.
 
 > Cours donné par G. Saurel
 

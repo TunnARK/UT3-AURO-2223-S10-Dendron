@@ -2,14 +2,15 @@
 id: 3nx1o8j8h3vbt6lu2fqlpq3
 title: VIRCRV - Vision Industrielle
 desc: ''
-updated: 1665483754788
+updated: 1665498202647
 created: 1662025359124
 nav_exclude_children: true
 ---
 
 <!--has_collection: true-->
 
-> **Avertissement:** Cette page peut contenir des fautes ! Envoyez-moi un message sur `#UT3-AURO-M2-2223-Request:matrix.org` si vous en trouvez, merci.
+> **Avertissement:**
+Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-2223-Request:matrix.org`](https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org) si vous en trouvez, merci.
 
 > Cours donné par V. Cadenat et F. Lerasle
 

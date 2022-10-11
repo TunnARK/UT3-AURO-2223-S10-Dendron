@@ -2,12 +2,13 @@
 id: la6ag2ji4x99olfq54dtpfy
 title: CR - Commandes Robots
 desc: ''
-updated: 1665483627743
+updated: 1665498202645
 created: 1661868245203
 nav_exclude_children: true
 ---
 
-> **Avertissement:** Cette page peut contenir des fautes ! Envoyez-moi un message sur `#UT3-AURO-M2-2223-Request:matrix.org` si vous en trouvez, merci.
+> **Avertissement:**
+Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-2223-Request:matrix.org`](https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org) si vous en trouvez, merci.
 
 ---
 

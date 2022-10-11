@@ -2,11 +2,12 @@
 id: j229zmpe39bvruoegljxl0c
 title: TD1 - Outils Mathématiques
 desc: ''
-updated: 1663718000581
+updated: 1665498202650
 created: 1662930808888
 ---
 
-> **Avertissement:** Cette page peut contenir des fautes ! Envoyez-moi un message sur `#UT3-AURO-M2-2223-Request:matrix.org` si vous en trouvez, merci.
+> **Avertissement:**
+Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-2223-Request:matrix.org`](https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org) si vous en trouvez, merci.
 
 > Cours donné par V. Cadenat
 

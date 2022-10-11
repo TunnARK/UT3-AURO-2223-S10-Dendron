@@ -2,12 +2,13 @@
 id: xwu3g3jpcxdipzc4fdm0kvh
 title: COOSATR - Conception Orientee Objet
 desc: ''
-updated: 1665483661461
+updated: 1665498202659
 created: 1662024458834
 nav_exclude_children: true
 ---
 
-> **Avertissement:** Cette page peut contenir des fautes ! Envoyez-moi un message sur `#UT3-AURO-M2-2223-Request:matrix.org` si vous en trouvez, merci.
+> **Avertissement:**
+Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-2223-Request:matrix.org`](https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org) si vous en trouvez, merci.
 
 > Cours donné par G. Saurel
 

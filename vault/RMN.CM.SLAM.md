@@ -2,11 +2,12 @@
 id: 0lfigiu2hovpehlxl2j0ce1
 title: SLAM - Simultaneous Localization and Mapping
 desc: ''
-updated: 1663783407152
+updated: 1665498202674
 created: 1663595387176
 ---
 
-> **Avertissement:** Cette page peut contenir des fautes ! Envoyez-moi un message sur `#UT3-AURO-M2-2223-Request:matrix.org` si vous en trouvez, merci.
+> **Avertissement:**
+Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-2223-Request:matrix.org`](https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org) si vous en trouvez, merci.
 
 > Cours donné par M. Thaix
 

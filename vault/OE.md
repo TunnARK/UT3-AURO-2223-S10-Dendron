@@ -2,12 +2,13 @@
 id: mhm3nx178d68sz7b2336vbz
 title: OE - Optimisation & Estimation
 desc: ''
-updated: 1665483654902
+updated: 1665498202669
 created: 1661869542618
 nav_exclude_children: true
 ---
 
-> **Avertissement:** Cette page peut contenir des fautes ! Envoyez-moi un message sur `#UT3-AURO-M2-2223-Request:matrix.org` si vous en trouvez, merci.
+> **Avertissement:**
+Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-2223-Request:matrix.org`](https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org) si vous en trouvez, merci.
 
 > Cours donné par M. Thaix
 
