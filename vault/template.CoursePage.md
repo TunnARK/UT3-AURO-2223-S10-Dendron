@@ -2,9 +2,9 @@
 id: 1pullb78tdce0ydk7vexe86
 title: CoursePage
 desc: ''
-updated: 1665483843438
+updated: 1665484740832
 created: 1664038479924
-publish: private
+published: false
 ---
 
 <!--nav_exclude_children: true-->
