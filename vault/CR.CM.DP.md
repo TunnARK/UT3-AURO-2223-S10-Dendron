@@ -2,7 +2,7 @@
 id: 2ptw0k5edovdl8fl7c1d5ev
 title: Commande Robuste 
 desc: ''
-updated: 1665483619200
+updated: 1665575417905
 created: 1662924852208
 ---
 
@@ -557,7 +557,6 @@ Si $||H||_2^2<\dfrac{1}{\;\mu^2\;}$ alors le système est **robustement stable**
 - En prenant sa fonction de transfert => Pb le système est temps variant donc on n'est pas autorisé à faire cette transformation
 - On ne pourrait meme pas utiliser la norme $H_{\infin}$ a la limite on pourrait appliquer la norme induite L2
 - Nous allons pour cela utiliser le thm suivant :
-![[CR.CM.DP#thm-de-stabilité-quadratique-pour-une-norme-induite-l2,0]]
 
 ### Thm de Stabilité Quadratique pour une norme induite L2
 
