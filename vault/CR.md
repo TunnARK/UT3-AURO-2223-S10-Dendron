@@ -2,7 +2,7 @@
 id: la6ag2ji4x99olfq54dtpfy
 title: CR - Commandes Robots
 desc: ''
-updated: 1665566286005
+updated: 1665576797221
 created: 1661868245203
 nav_exclude_children: true
 ---
@@ -60,6 +60,24 @@ Sur le planning: si CR avec CLA, cela indique alors Commande Linéaire Avancé.
 
 
 # Support de Cours
+
+## Website
+
+**Source:** [https://homepages.laas.fr/peaucell/teaching.php](https://homepages.laas.fr/peaucell/teaching.php)
+
+### CM
+
+- [CR.DP.CM2019.Intro19.pdf](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/CR.DP.CM2019.Intro19.pdf)
+- [CR.DP.CM2019.LFT19.pdf](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/CR.DP.CM2019.LFT19.pdf)
+- [CR.DP.CM2019.Mu19.pdf](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/CR.DP.CM2019.Mu19.pdf)
+- [CR.DP.CM2019.PetiGain19.pdf](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/CR.DP.CM2019.PetitGain19.pdf)
+- [CR.DP.CM2019.Polytopes19.pdf](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/CR.DP.CM2019.Polytopes19.pdf)
+
+
+### TD
+
+- [CR.DP.TD2016.SujetEtCorrection.pdf](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/CR.DP.TD2016.SujetEtCorrection.pdf)
+
 
 ## Scans
 
