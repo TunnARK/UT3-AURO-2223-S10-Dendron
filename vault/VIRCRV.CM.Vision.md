@@ -2,11 +2,12 @@
 id: 5ik24tbt9rliemwqv3srnf1
 title: Chap 4 - Vision Industrielle
 desc: ''
-updated: 1664458180987
+updated: 1665136096905
 created: 1664451302770
 ---
 
-> **Avertissement:** Cette page peut contenir des fautes ! Envoyez-moi un message sur `#UT3-AURO-M2-2223-Request:matrix.org` si vous en trouvez, merci.
+> **Avertissement:**
+Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-2223-Request:matrix.org`](https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org) si vous en trouvez, merci.
 
 > Cours donné par F. Lerasle
 
@@ -158,32 +159,144 @@ Taille de capteur très petite => trop peu sensible (donc très sombre)
 
 
 
+
 > Notes du 2022/09/29 - End
 
 ---
 
+> Notes du 2022/10/07 - Start
+
+
+
+
+# Capteurs vidéo
+
+![](/assets/images/VIRCRV.CM.Vision-25.png)
+
+- On dissocie l'optique du capteur
+- Le capteur contient la rétine
+
+## Technologie CCD
+
+![](/assets/images/VIRCRV.CM.Vision-26-notesprof.png)
+<!--![](/assets/images/VIRCRV.CM.Vision-26.png)-->
+
+- **photo-élément**: surface élementaire sur la rétine (analogie aux pixel sur les cams du smarthone)
+- Bande de valence: energie de la lumière impacte le comportement des electrons ce qui peut etre traduit en niveau de gris 
+- à la base (à la sortie de la rétine) on peut lire avec un oscilloscope une ondulation
+- **obturateur** paramètré par le temps d'exposition
+    - utile pour les scenes dynamiques
+- CCD est une technologie industrielle car la CMOS est moins chères
+
+## Capteur CMOS
+
+![](/assets/images/VIRCRV.CM.Vision-27-notesprof.png)
+<!--![](/assets/images/VIRCRV.CM.Vision-27.png)-->
+
+- CMOS complémentaire
+- Technologie moins chère
+- Différence principale: conversion directe de la charge avant transfert
+    - photo-élément à une double fonction la lecture en tension de la lumière et la conversion directe
+- _rolling shutter_
+    - propre au CMOS
+    - problème historique du CMOS: 
+        - photo element partage sa partie sensible avec une partie electronique
+        - du coup un photo-element est moins sensible qu'un CCD
+        - mais de nos jours il y a une tendance de faire du multi couche donc continue à s'améliorer
+    - obturateur déroulant: obturateur fonctionne ligne par ligne
+    - du coup probleme de floutage (trainée) dans les scenes dynamique avec obturateur deroullant
+
+## Numérisation
+
+![](/assets/images/VIRCRV.CM.Vision-32-notesprof.png)
+<!--![](/assets/images/VIRCRV.CM.Vision-32.png)-->
+
+- 4/3 dû au dimension de la rétine
+- Quantification:
+    - les tensions sont des valeurs non entières
+    - similaire à l'approximation d'une courbe par palier
+- Pourquoi un pixel est codé sur 8 bits ?
+    - Lié au rapport signal sur bruit
+    - Quantification de la tension en 256 niveaux donc 8 bits
+    
+## Caméra couleur
+
+![](/assets/images/VIRCRV.CM.Vision-28-notesprof.png)
+<!--![](/assets/images/VIRCRV.CM.Vision-28.png)-->
+
+- Mosäique Bayer très utilisée
+- Problème chaque photoE n'a qu'une couleur associée donc pour avoir sur chaque photoE les trois couleurs on fait un moyennage des vosins pour créer artificiellement un trio RVB
+- Video projecteur plus sensible au vert donc plus de vert dans la mosäique de Bayer
+- Probleme le moyennage introduit du floutage
+
+![](/assets/images/VIRCRV.CM.Vision-29-notesprof.png)
+<!--![](/assets/images/VIRCRV.CM.Vision-29.png)-->
+
+- Application très spécifique industrielle avec un besoin coloréfique important
+
+## Caméra linéaire
+
+![](/assets/images/VIRCRV.CM.Vision-30-notesprof.png)
+<!--![](/assets/images/VIRCRV.CM.Vision-30.png)-->
+
+- Scannères sont des caméras linéaires et non pas matricielle
+- Résolution horizental fixé par la caméra linéaire mais la résolution vertical est libre et dépend de l'application
+- Résolution image (en pixel) et différente de la résolution spatiale
+- Meme si on paramètre le groupe de lignes à 480 avec une caméra de 640 photoE (donc on aurait une résolution image en pixel de 640x480) il reste que l'on controle le mouvement et donc la résolution spatiale
+
+## Caméra Infra Rouge
+
+![](/assets/images/VIRCRV.CM.Vision-31-notesprof.png)
+<!--![](/assets/images/VIRCRV.CM.Vision-31.png)-->
+
+## Transmission de l'image
+
+![](/assets/images/VIRCRV.CM.Vision-33.png)
+
+## Exercices 
+
+![](/assets/images/VIRCRV.CM.Vision-34-notesprof.png)
+<!--![](/assets/images/VIRCRV.CM.Vision-34.png)-->
+
+### Solutions
+
+- [VIRCRV.Vision.ExoCapteurs2D.Correction.pdf](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/VIRCRV.Vision.ExoCapteurs2D.Correction.pdf)
+
+![](/assets/images/VIRCRV.CM.Vision-34-exonotesprof.png)
+
+
+#### Q1
+
+- Focal très grande car on veut bcp de précision sur la scène qui se trouve à 2m
+- si pixel n'était pas carré alors une boite carré apparaitré non carrée dans l'image idem pour un cercle qui sera vue comme une ellipse
+- On pourrait adapter ce probleme à une caméra linéaire
+
+#### Q2
+
+- F nombre d'ouverture
+- Coincé par le contexte pour faire la mise au point => solution ajouter une bague entre optique et capteur et ainsi pouvoir continuer à paramétrer $p_1$
+- Indirectement c'est un système de mesure/réalisation 3D car selon le floutage on peut déduire si la scène se trouve devant ou derrière le plan à 45mm
+
+
+
+
+> Notes du 2022/09/29 - End
+
+---
 <!--
-> Notes du 2022/09/??? - Start
 
-
-
-
+> Notes du 2022/ - Start
 
 VIRCRV.CM.Vision--notesprof
 
 
-# Capteurs vidéo
-![](/assets/images/VIRCRV.CM.Vision-25.png)
-![](/assets/images/VIRCRV.CM.Vision-26.png)
-![](/assets/images/VIRCRV.CM.Vision-27.png)
-![](/assets/images/VIRCRV.CM.Vision-28.png)
-![](/assets/images/VIRCRV.CM.Vision-29.png)
-![](/assets/images/VIRCRV.CM.Vision-30.png)
-![](/assets/images/VIRCRV.CM.Vision-31.png)
-![](/assets/images/VIRCRV.CM.Vision-32.png)
-![](/assets/images/VIRCRV.CM.Vision-33.png)
-![](/assets/images/VIRCRV.CM.Vision-34.png)
+
+# Techniques d'éclairage
+
 ![](/assets/images/VIRCRV.CM.Vision-35.png)
+
+## Types d'éclaire
+
 ![](/assets/images/VIRCRV.CM.Vision-36.png)
 ![](/assets/images/VIRCRV.CM.Vision-37.png)
 ![](/assets/images/VIRCRV.CM.Vision-38.png)
