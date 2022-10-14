@@ -41,6 +41,8 @@ Sur le planning: si CR avec CLA, cela indique alors Commande Linéaire Avancé.
 
 # Examen
 
+## Commande Robuste
+
 - [CR.DP.Exam201202.SujetEtCorrection.pdf](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/CR.DP.Exam201202.SujetEtCorrection.pdf)
 - [CR.DP.Exam201302.SujetEtCorrection.pdf](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/CR.DP.Exam201302.SujetEtCorrection.pdf)
 - [CR.DP.Exam201402.SujetEtCorrection.pdf](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/CR.DP.Exam201402.SujetEtCorrection.pdf)
@@ -56,6 +58,13 @@ Sur le planning: si CR avec CLA, cela indique alors Commande Linéaire Avancé.
 - [CR.DP.Exam202006.Rattrapage.pdf](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/CR.DP.Exam202006.Rattrapage.pdf)
 - [CR.DP.Exam202010.Sujet.pdf](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/CR.DP.Exam202010.Sujet.pdf)
 - [CR.DP.Exam202110.Sujet.pdf](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/CR.DP.Exam202110.Sujet.pdf)
+
+## Systèmes Multivariables
+
+- [CR.FG.Exam2015.Sujet.pdf](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/CR.FG.Exam2015.Sujet.pdf)
+- [CR.FG.Exam2015.Rattrapage.pdf](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/CR.FG.Exam2015.Rattrapage.pdf)
+- [CR.FG.Exam2017.Rattrapage.pdf](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/CR.FG.Exam2017.Rattrapage.pdf)
+- [CR.FG.Exam2020.Rattrapage.pdf](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/CR.FG.Exam2020.Rattrapage.pdf)
 
 
 
