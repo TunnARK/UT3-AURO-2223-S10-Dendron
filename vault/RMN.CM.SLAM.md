@@ -1,8 +1,8 @@
 ---
 id: 0lfigiu2hovpehlxl2j0ce1
-title: SLAM - Simultaneous Localization and Mapping
+title: Chap 5 - SLAM - Simultaneous Localization and Mapping
 desc: ''
-updated: 1665498202674
+updated: 1666011218332
 created: 1663595387176
 ---
 
@@ -88,12 +88,21 @@ Ceci dans le but d'optimiser la trajectoire du robot
 
 ## Probabilité
 
+![](/assets/images/RMN.CM.SLAM.Poly20220923-p2.png)
+
 ### Variables aléatoires
 
 - $x = X(\omega)\;$ : $\;X$ se réalise en $x$
     - Si une variable est en grand alors il s'agit d'une variable aléatoire
+    - Si la variable est petite alors il s'agit de la réalisation de la variable aléatoire assoicée
 - $P_X(x)$ fonction de répartition
+
 - $p_X(x)$ fonction de distribution (correspond à la dérivée de la fonction de répartition)
+
+![](/assets/images/RMN.CM.SLAM.BB20221017-01.jpg)
+> - en bleu fonction de répartition en rouge la distribution
+> - densité uniforme dans l'exemple car pour un interval de meme 'taille' on a la meme aire du rectangle comme proba
+
 - $P_X(x) = \int_{I} p_X(\xi)d\xi \quad \longleftarrow$ attention intégrale multivariable
 
 ### Gaussienne
@@ -111,6 +120,8 @@ Ceci dans le but d'optimiser la trajectoire du robot
 
 ### Espérance & Covariance
 
+![](/assets/images/RMN.CM.SLAM.Poly20220923-p3-02.png)
+
 - covariance = distribution de x p.r.à sa moyenne
 
 ![](/assets/images/RMN.CM.SLAM.BB20220919-2.png)
@@ -119,8 +130,25 @@ Ceci dans le but d'optimiser la trajectoire du robot
 
 ### Joint vs Marginal Distribution
 
+![](/assets/images/RMN.CM.SLAM.Poly20220923-p3-03.png)
 ![](/assets/images/RMN.CM.SLAM.BB20220919-4.png)
 ![](/assets/images/RMN.CM.SLAM.BB20220919-5.png)
+![](/assets/images/RMN.CM.SLAM.BB20221017-03.jpg)
+
+Exemple de variables dépendantes mais non corrélées:
+
+- [Simple examples of uncorrelated but not independent $X$
+and $Y$](https://stats.stackexchange.com/questions/85363/simple-examples-of-uncorrelated-but-not-independent-x-and-y)
+
+![](/assets/images/RMN.CM.SLAM.BB20221017-02.jpg)
+
+Important:
+$$
+m_{X|Z} = m_X + P_{XZ}P_{ZZ}^{-1}\big(z-m_z\big)\\[0.2cm]
+P_{X|Z} = P_{XX} - P_{XZ}P_{ZZ}^{-1}P_{ZX}
+$$
+- si $P_{XZ}$ et $P_{ZX}$ sont nulles alors $X$ et $Z$ sont mutuellement indépendant et on obtient bien sur que $m_{X|Z}=m_X$ tout comme $P_{X|Z}=P_XX$
+- En outre, si $P_{ZZ} = \infty$ alors Z peut etre sur tous l'espace avec la meme probabilité et comme on divise par $P_{ZZ}$ on en déduit que $Z$ n'apporte rien d'utile à la mesure (ce qui fait du sens)
 
 ### Estimation de Bayes
 
