@@ -2,7 +2,7 @@
 id: 0lfigiu2hovpehlxl2j0ce1
 title: Chap 5 - SLAM - Simultaneous Localization and Mapping
 desc: ''
-updated: 1666011218332
+updated: 1666170197477
 created: 1663595387176
 ---
 
@@ -150,7 +150,7 @@ $$
 - si $P_{XZ}$ et $P_{ZX}$ sont nulles alors $X$ et $Z$ sont mutuellement indépendant et on obtient bien sur que $m_{X|Z}=m_X$ tout comme $P_{X|Z}=P_XX$
 - En outre, si $P_{ZZ} = \infty$ alors Z peut etre sur tous l'espace avec la meme probabilité et comme on divise par $P_{ZZ}$ on en déduit que $Z$ n'apporte rien d'utile à la mesure (ce qui fait du sens)
 
-### Estimation de Bayes
+## Estimation de Bayes
 
 > ATTENTION : sur un evenement on ne peut pas connaitre la valeur de $X-\hat X$ mais on connait tres bien sa distribution
 
@@ -159,11 +159,79 @@ $$
 
 > En SLAM on utilise bcp le MAP
 
-...
+!!!
+
+### Cas Statique
+
+- Loi a priori nécessite un modèle d'observation donné
+- Problématique de nb de mesures prà la dimension du $x$ pour pouvoir résoudre le système
+- On décrit statistiquement le vrai paramètre à estimer
+    - comme dans l'exemple dé à couleurs changeantes
+    - lorsqu'on estime que sous une couleur qui cache la numéro il y a tant de chance d'avoir un certain numéro et pas un autre alors ceci est la loi posterieure
+    - cad on estime $x$ (le numéro) à travers la mesure $z$ (la couleur)
+![](/assets/images/RMN.CM.SLAM.BB20221019-01.png)
+![](/assets/images/RMN.CM.SLAM.BB20221019-02.png)
+- en générale déterministe (sans hasard)
+- Une fois la loi posterieur trouvée, il faut savoir passer à un estimé (càd trouver une fonction paramétré en $z$ qui retourne $\^x$)
+![](/assets/images/RMN.CM.SLAM.BB20221019-03.png)
+![](/assets/images/RMN.CM.SLAM.BB20221019-04.png)
+
+
+#### Exemple 10 mesures
+- 10 tirs lasers
+- fabriquant dit que chaque mesure donne une mesure vrai plus ou moins qlqs centimètres dans $x\%$ des cas
+- attention ces 10 mesures doivent être conjointement indépendante
+    - si on croit qu'elles ne sont pas conjointement indépendante alors qu'elles le sont alors ce sera un modèle optimiste
+        - ce pb est a faire attention quand on partage des estimations entre robot qui prennent des mesures indépendamment mais fusion leurs estimation régulièrement
+    - on evalue la différence statisque des moyennes de $X$ et $\^X$ mais aussi la densité de composant de $\^X$ (soit si les points sont dispercé ou regroupé) ceci à travers le calcul de la covariance de l'estimateur
+
+#### Généralité
+
+![](/assets/images/RMN.CM.SLAM.BB20221019-05.png)
+![](/assets/images/RMN.CM.SLAM.BB20221019-06.png)
+![](/assets/images/RMN.CM.SLAM.BB20221019-07.png)
+
+> Pic de la loi a posteriori est à la fois $X_{MAP}$ et $X_{MBSE}$
+
+#### Cas $m_z \geq m_x$
+
+![](/assets/images/RMN.CM.SLAM.BB20221019-08.png)
+
+> Rem: Faire le lien avec les **moindres carrés recursifs**
+
+![](/assets/images/RMN.CM.SLAM.BB20221019-09.png)
+![](/assets/images/RMN.CM.SLAM.BB20221019-10.png)
+
+> **Matrice d'information**: inverse des matrices de covariances
+> **MLE**: Maximum Likelyhood Estimate (pic de vraissemblance)
+$$
+\^x_{MLE} = \arg_{z} \min_{x} P_{Z|X}(z|x)
+$$
+
+### Cas Dynamique
+
+![](/assets/images/RMN.CM.SLAM.BB20221019-11.png)
+![](/assets/images/RMN.CM.SLAM.BB20221019-12.png)
+
+> **Attention**:
+en orange ce n'est pas du "conjointement indépendant" mais du "**conditionnellement indépendant**" lié à du **Bruit Blanc** (cf. Conditionning ci-dessous)
+![[Projet.Kalman.VideoLecture11#conditionning]]
+
+![](/assets/images/RMN.CM.SLAM.BB20221019-13.png)
+![](/assets/images/RMN.CM.SLAM.BB20221019-14.png)
+
+> Rem: on travaille ici que sur la marginale et non la jointe
+
+> Prediction = Time Update $\longrightarrow$ 2 equations
+
+> Filtrage = Measurement Update $\longrightarrow$ 3 equations
+
+> Sur matlab, bien ordonner les colonnes sur un instant 
+
 
 ## Exemple Dé à couleurs changeantes
 
-...
+!!!
 
 
 
