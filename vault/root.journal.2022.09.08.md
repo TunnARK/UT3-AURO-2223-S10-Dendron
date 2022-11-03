@@ -6,18 +6,18 @@ updated: 1662938731135
 created: 1662615930573
 traitIds:
   - journalNote
-publishing: private
+published: false
 ---
 
 # OE - 07H45/09H45
 
 #### Méthode de Newton
 
-![](/assets/images/OE.Slide56
+![](/assets/images/OE.Slide-56
 
 - En multidim on fait le dev limitee en fct du gradient
 
-![](/assets/images/OE.Slide57
+![](/assets/images/OE.Slide-57
 
 Def:
 
@@ -26,13 +26,13 @@ Def:
   d_k = -\Big(\nabla^2 f(x_k)\Big)^{-1}\nabla f(x_k)
   $$
 
-![](/assets/images/OE.Slide58
+![](/assets/images/OE.Slide-58
 
 OE.ExoSlide58
 
 - Ici nous avons convergé en une seule itération avec cette méthode
 
-![](/assets/images/OE.Slide59
+![](/assets/images/OE.Slide-59
 
 Pb: cette méthode nécéssite de calculer la hessienne et de l'imverse -> pour éviter cela on utilise la **méthode de quasi-newton**
 
@@ -41,7 +41,7 @@ Pb: cette méthode nécéssite de calculer la hessienne et de l'imverse -> pour 
 #### Méthode de quasi-Newton
 
 ##### Approximation des dérivées
-![](/assets/images/OE.Slide60
+![](/assets/images/OE.Slide-60
 
 - Utilise une approximation de la dérivée
 
@@ -63,20 +63,20 @@ Def:
 
 ##### Idée de Broyden
 
-![](/assets/images/OE.Slide61
+![](/assets/images/OE.Slide-61
 
 - **Idée de Broyden**: minimiser le nombre d'itération en utilisation l'itération précédente pour ne pas tous calculer à nouveau
 - Pb: cette idée fonctione pour chercher le zéro d'une fonction mais pas pour le zéro d'un gradient car cette idée ne garantit pas du tout que $A_k$ reste symmétrique
 
 ##### Broyden-Fletcher-Goldfarb-Shanno (BFGS)
 
-![](/assets/images/OE.Slide62
+![](/assets/images/OE.Slide-62
 
 #### Moindres Carrés
 
-![](/assets/images/OE.Slide63
+![](/assets/images/OE.Slide-63
 
-![](/assets/images/OE.Slide64
+![](/assets/images/OE.Slide-64
 
 **Prop:**
 $$
@@ -93,11 +93,11 @@ Rappel:
 
 ##### Moindres Carrés Linéaires
 
-![](/assets/images/OE.Slide65
+![](/assets/images/OE.Slide-65
 
 ##### Exercice: Cercle
 
-![](/assets/images/OE.Slide66
+![](/assets/images/OE.Slide-66
 
 1. Écrire l'équation du cercle $(a,b,R)$
 2. Définir le résidu
@@ -108,13 +108,13 @@ OE.ExoCercle
 
 ##### Moindres Carrés Pondérés
 
-![](/assets/images/OE.Slide67
+![](/assets/images/OE.Slide-67
 
 #### Moindres Carrés Non-Linéaires
 
 ##### Méthode de Gauss-Newton
 
-![](/assets/images/OE.Slide68
+![](/assets/images/OE.Slide-68
 
 - Idée: considérer négligeable la somme résiduelle dans le calcul de la hessienne dans la méthode de Newton
 
@@ -129,7 +129,7 @@ On suppose  $\sum_{j=1}^m r_j(x) \cdot \nabla^2 r_j(x) = 0$
 
 ##### Advantages/Inconvénient
 
-![](/assets/images/OE.Slide69
+![](/assets/images/OE.Slide-69
 
 ##### Exercice: Gauss-Newton
 

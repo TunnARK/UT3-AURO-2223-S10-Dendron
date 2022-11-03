@@ -6,41 +6,41 @@ updated: 1662551926647
 created: 1662529826478
 traitIds:
   - journalNote
-publishing: private
+published: false
 ---
 
 # OE - 07H45/09H45
 
 ## Part 2 - Optimisation sans contrainte
 
-![](/assets/images/OE.Slide22.png)
+![](/assets/images/OE.Slide-22.png)
 
 ### A) Conditions
 
-![](/assets/images/OE.Slide23.png)
+![](/assets/images/OE.Slide-23.png)
 
 Thm: CN1 - Condition nécessaire d'optimatilité du 1er odre
 
 $x^*$ min local ...
 
-![](/assets/images/OE.Slide24.png)
+![](/assets/images/OE.Slide-24.png)
 
-![](/assets/images/OE.Slide25.png)
+![](/assets/images/OE.Slide-25.png)
 
 Cas particulier
 matrice hessienne avec vp + et - alors ni def + ni def -
 
-![](/assets/images/OE.Slide26.png)
+![](/assets/images/OE.Slide-26.png)
 
-![](/assets/images/OE.Slide27.png)
+![](/assets/images/OE.Slide-27.png)
 
-![](/assets/images/OE.Slide28.png)
+![](/assets/images/OE.Slide-28.png)
 
 Thm: Condition suffisante d'optimalité gloabe
 
 La matrice $Q$ (trouvé lors du calcul de la hessienne) contient l'information.
 
-![](/assets/images/OE.Slide29.png)
+![](/assets/images/OE.Slide-29.png)
 
 Exemple 1:
 
@@ -50,7 +50,7 @@ Exemple 2:
 
 OE.
 
-![](/assets/images/OE.Slide30.png)
+![](/assets/images/OE.Slide-30.png)
 
 Exemple 3:
 
@@ -67,41 +67,41 @@ OE.
 
 > Toute matrice de la forme $\begin{bmatrix}a & b\\ b & 0\end{bmatrix}$ aura toujours des valeurs propres de signes opposés quelque soit les signes de $a$ et $b$ !
 
-![](/assets/images/OE.Slide31.png)
+![](/assets/images/OE.Slide-31.png)
 
 ### B) Méthodes
-![](/assets/images/OE.Slide32.png)
+![](/assets/images/OE.Slide-32.png)
 
 #### Méthode de recherche linéaire
-![](/assets/images/OE.Slide33.png)
+![](/assets/images/OE.Slide-33.png)
 
 Def - Direction de descente
 
 #### Algo général
-![](/assets/images/OE.Slide34.png)
+![](/assets/images/OE.Slide-34.png)
 
 > Attention: Travailler avec des erreurs relatives et non pas absolus !
 
 #### Thm du gradient
-![](/assets/images/OE.Slide35.png)
+![](/assets/images/OE.Slide-35.png)
 
 #### Méthode du gradient
-![](/assets/images/OE.Slide36.png)
+![](/assets/images/OE.Slide-36.png)
 
 ##### $\alpha$ bien calibré
-![](/assets/images/OE.Slide37.png)
+![](/assets/images/OE.Slide-37.png)
 
 ##### $\alpha$ trop grand
-![](/assets/images/OE.Slide38.png)
+![](/assets/images/OE.Slide-38.png)
 
 ##### $\alpha$ trop petit
-![](/assets/images/OE.Slide39.png)
+![](/assets/images/OE.Slide-39.png)
 
 ##### $\alpha$ variable
-![](/assets/images/OE.Slide40.png)
+![](/assets/images/OE.Slide-40.png)
 
 ##### $\alpha$ optimal
-![](/assets/images/OE.Slide41.png)
+![](/assets/images/OE.Slide-41.png)
 
 Exemple:
 
@@ -112,15 +112,15 @@ OE.
 - On évalue alors $f$ en $x_{k+1}$
 - Il faut alors trouver $\alpha$ en calculant $\quad \partial_{\alpha_k}f(x_{k+1}) = 0$
 
-![](/assets/images/OE.Slide42.png)
+![](/assets/images/OE.Slide-42.png)
 
 ##### Remarque
-![](/assets/images/OE.Slide43.png)
+![](/assets/images/OE.Slide-43.png)
 
 ![](/assets/images/OE.BlackBoard.RemAlphaOptimal.png)
 
 #### Conditionnment
-![](/assets/images/OE.Slide44.png)
+![](/assets/images/OE.Slide-44.png)
 
 On cherche à avoir un nombre de conditionnement égal à 1.
 
@@ -129,10 +129,10 @@ Or quand on inverse une matrice on obtient un det qui est proche de 0 ce qui ren
 Donc on va devoir faire un préconditionnement en otpimisant par un changement de variable pour éviter d'optimiser sur $f$.
 
 ##### Exemple
-![](/assets/images/OE.Slide45.png)
+![](/assets/images/OE.Slide-45.png)
 
 ##### Pas sur la longueur
-![](/assets/images/OE.Slide46.png)
+![](/assets/images/OE.Slide-46.png)
 
 > Première condition de Wolfe-Armijo (pas trop grand ?)
 
@@ -141,10 +141,10 @@ Donc on va devoir faire un préconditionnement en otpimisant par un changement d
 En général, les boites à outils implémente ces critères.
 
 ##### Exemple
-![](/assets/images/OE.Slide47.png)
+![](/assets/images/OE.Slide-47.png)
 
 #### Convergence globale
-![](/assets/images/OE.Slide48.png)
+![](/assets/images/OE.Slide-48.png)
 
 > Thm de Zoutendijk: convergence globale des algos de descente et pas de wolfe
 
@@ -153,27 +153,27 @@ Pb du thm: il est très difficile de prouver la condition du thm pour le moment.
 Les boites à outils sont des algos automatiques qui vérifient des conditions spécifiques.
 
 #### Exemple: Méthode du Gradient
-![](/assets/images/OE.Slide49.png)
+![](/assets/images/OE.Slide-49.png)
 
 OE.
 
-![](/assets/images/OE.Slide50.png)
+![](/assets/images/OE.Slide-50.png)
 
 > Selon le point de départ on tombera sur un des points critiques, donc il faut lancer le programme sur plusieurs points.
 
 #### Problématiques Quadratiques
-![](/assets/images/OE.Slide51.png)
+![](/assets/images/OE.Slide-51.png)
 
 #### Gradient conjugué
 > **Attention:** cette méthode n'est à utiliser qu'avec des fonctions quadratiques !
 
-![](/assets/images/OE.Slide52.png)
+![](/assets/images/OE.Slide-52.png)
 
-![](/assets/images/OE.Slide53.png)
+![](/assets/images/OE.Slide-53.png)
 
-![](/assets/images/OE.Slide54.png)
+![](/assets/images/OE.Slide-54.png)
 
-![](/assets/images/OE.Slide55.png)
+![](/assets/images/OE.Slide-55.png)
 
 ---
 
