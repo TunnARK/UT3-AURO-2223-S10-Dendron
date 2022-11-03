@@ -41,7 +41,7 @@ workspace:
     enableXVaultWikiLink: false
     enableRemoteVaultInit: true
     workspaceVaultSyncMode: noCommit
-    enableAutoFoldFrontmatter: true
+    enableAutoFoldFrontmatter: false
     maxPreviewsCached: 10
     maxNoteLength: 204800
     task:
@@ -72,7 +72,6 @@ workspace:
     dendronVersion: 0.95.0
     enableEditorDecorations: true
     enableFullHierarchyNoteTitle: false
-    enableSmartRefs: false
 preview:
     enableFMTitle: true
     enableNoteTitleForLink: true
