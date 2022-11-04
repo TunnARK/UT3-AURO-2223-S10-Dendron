@@ -1,8 +1,8 @@
 ---
-id: d5bz7pr1s70fuii32xleaow
-title: Probability Review, Bayes Filters and Gaussians (for Advanced Robotics)
+id: gloji6fmto57dy56ftiavu2
+title: 'Probability Review, Bayes Filters and Gaussians (for Advanced Robotics)'
 desc: ''
-updated: 1666087387962
+updated: 1667574541198
 created: 1665912195953
 ---
 
@@ -12,7 +12,7 @@ Source:
 - Course given by Pieter Abbeel
 ---
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-01.png)
+![](/assets/images/P1K.Lecture11.Slide-01.png)
 
 - LQR
 - Shorcutting
@@ -21,47 +21,47 @@ Source:
 
 ## Why Probability in Robotics ?
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-02.png)
+![](/assets/images/P1K.Lecture11.Slide-02.png)
 
 - Can take actions/decisions to search for more sensory information in order to improve state estimation.
 
 ## Example 1: Helicopter
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-03.png)
+![](/assets/images/P1K.Lecture11.Slide-03.png)
 
 - magnometer gives an idea of orientation 
 - We don't have a direct knowledge of the state of the heli but can inderectly know its state through thoses instruments
 
 ## Example 2: Mobile robot
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-04.png)
+![](/assets/images/P1K.Lecture11.Slide-04.png)
 
 - Carefull with laser and reflecting surfaces as it renders the measures unusable
 
 # Probability Review
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-05.png)
+![](/assets/images/P1K.Lecture11.Slide-05.png)
 
 ## Probabilty Axioms
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-06.png)
-![](/assets/images/Projet.Kalman.Lecture11.Slide-07.png)
-![](/assets/images/Projet.Kalman.Lecture11.Slide-08.png)
+![](/assets/images/P1K.Lecture11.Slide-06.png)
+![](/assets/images/P1K.Lecture11.Slide-07.png)
+![](/assets/images/P1K.Lecture11.Slide-08.png)
 
 ## Discrete Random Variables
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-09.png)
+![](/assets/images/P1K.Lecture11.Slide-09.png)
 
 ## Continuous Random Variables
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-10.png)
+![](/assets/images/P1K.Lecture11.Slide-10.png)
 
 - Continuum => Integration
 - In continuous proba space, we can't say that a probability takes an exact value but we should say that it lies in an interval
 
 ## Joint and Conditional Probability
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-11.png)
+![](/assets/images/P1K.Lecture11.Slide-11.png)
 
 - Very important in robotics because we will always compare the state of the robot with the measurements taken
     - We indeed try to use the measurement to tell smth about the state
@@ -82,13 +82,13 @@ $$
 
 ## Law of Total Probability, Marginals
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-12.png)
-<!--![](/assets/images/Projet.Kalman.Lecture11.BB-01.png)-->
+![](/assets/images/P1K.Lecture11.Slide-12.png)
+<!--![](/assets/images/P1K.Lecture11.BB-01.png)-->
 
 ## Bayes' Rule
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-13.png)
-![](/assets/images/Projet.Kalman.Lecture11.BB-02.png)
+![](/assets/images/P1K.Lecture11.Slide-13.png)
+![](/assets/images/P1K.Lecture11.BB-02.png)
 
 - If there is a state, it will cause distribution of a reading
 - Therefore the conditional $P(y|x)$ reflect causal effect and $P(x)$ represent the state deduced from previous estimates
@@ -96,44 +96,44 @@ $$
 
 ## Normalisation
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-14.png)
+![](/assets/images/P1K.Lecture11.Slide-14.png)
 
 ## Conditionning
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-15.png)
-![](/assets/images/Projet.Kalman.Lecture11.Slide-16.png)
-<!--![](/assets/images/Projet.Kalman.Lecture11.BB-03.png)
-![](/assets/images/Projet.Kalman.Lecture11.BB-04.png)-->
+![](/assets/images/P1K.Lecture11.Slide-15.png)
+![](/assets/images/P1K.Lecture11.Slide-16.png)
+<!--![](/assets/images/P1K.Lecture11.BB-03.png)
+![](/assets/images/P1K.Lecture11.BB-04.png)-->
 
 
 ## Conditional Independance
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-17.png)
-![](/assets/images/Projet.Kalman.Lecture11.BB-05.png)
+![](/assets/images/P1K.Lecture11.Slide-17.png)
+![](/assets/images/P1K.Lecture11.BB-05.png)
 <!--
-![](/assets/images/Projet.Kalman.Lecture11.BB-06.png)-->
+![](/assets/images/P1K.Lecture11.BB-06.png)-->
 
 ## Example of State Estimation
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-18.png)
+![](/assets/images/P1K.Lecture11.Slide-18.png)
 
 ## Casual vs Diagnostic Reasoning
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-19.png)
+![](/assets/images/P1K.Lecture11.Slide-19.png)
 
 ## Door Example (one measurement)
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-20.png)
+![](/assets/images/P1K.Lecture11.Slide-20.png)
 
 > Does it mean that the sensor measuring $z$ can detect the door is open at 67% chance ??? (if so the conditional probability would return the precision of the instrument ???)
 
 ## Combining Evidence
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-21.png)
+![](/assets/images/P1K.Lecture11.Slide-21.png)
 
 ## Recursive Bayesian Updating 
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-22.png)
+![](/assets/images/P1K.Lecture11.Slide-22.png)
 
 **Posterior Distribution**
 $$
@@ -142,110 +142,110 @@ $$
 
 ## Door Example (second measurement)
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-23.png)
+![](/assets/images/P1K.Lecture11.Slide-23.png)
 
 ## A Typical Pitfall
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-24.png)
+![](/assets/images/P1K.Lecture11.Slide-24.png)
 
 **BE CAREFUL ! Are the reading truly independent ? $\implies$ OVERCONFIDENCE**
 
 # Bayes' Filters
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-25.png)
+![](/assets/images/P1K.Lecture11.Slide-25.png)
 
 ## Actions
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-26.png)
+![](/assets/images/P1K.Lecture11.Slide-26.png)
 
 ## Typical Actions 
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-27.png)
+![](/assets/images/P1K.Lecture11.Slide-27.png)
 
 Actions increase uncertainty because they usually introduce new uncertainties.
 
 ## Modeling Acitons
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-28.png)
+![](/assets/images/P1K.Lecture11.Slide-28.png)
 
 ## Example: Closing the door
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-29.png)
+![](/assets/images/P1K.Lecture11.Slide-29.png)
 
 ## State Transitions
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-30.png)
+![](/assets/images/P1K.Lecture11.Slide-30.png)
 
 ## Integrating Outcome of Actions
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-31.png)
+![](/assets/images/P1K.Lecture11.Slide-31.png)
 
 ## Example: The Resulting Belief
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-32.png)
+![](/assets/images/P1K.Lecture11.Slide-32.png)
 
 ## Measurements
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-33.png)
+![](/assets/images/P1K.Lecture11.Slide-33.png)
 
 ## Bayes Fitlers: Framework
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-34.png)
+![](/assets/images/P1K.Lecture11.Slide-34.png)
 
 ## Markov Assumption
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-35.png)
+![](/assets/images/P1K.Lecture11.Slide-35.png)
 
 ## Bayes Filters Development
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-36.png)
+![](/assets/images/P1K.Lecture11.Slide-36.png)
 
 ## Bayes Filters Algorithm
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-37.png)
+![](/assets/images/P1K.Lecture11.Slide-37.png)
 
 ## Summary
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-38.png)
+![](/assets/images/P1K.Lecture11.Slide-38.png)
 
 ## Example: Robot Localization
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-39.png)
+![](/assets/images/P1K.Lecture11.Slide-39.png)
 
 # Gaussians
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-40.png)
+![](/assets/images/P1K.Lecture11.Slide-40.png)
 
 ## Outline
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-41.png)
+![](/assets/images/P1K.Lecture11.Slide-41.png)
 
 ## Univariate Gaussian
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-42.png)
+![](/assets/images/P1K.Lecture11.Slide-42.png)
 
 ## Properties of Gaussians
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-43.png)
+![](/assets/images/P1K.Lecture11.Slide-43.png)
 
 ## Central Limit Theorem
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-44.png)
+![](/assets/images/P1K.Lecture11.Slide-44.png)
 
 ## Multivariate Gaussians
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-45.png)
+![](/assets/images/P1K.Lecture11.Slide-45.png)
 
 > **"Symmetric Matrices are just a rotation away from being Diagonal Matrices"**
 
 ### Multivariate Gaussians Expectation
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-46.png)
+![](/assets/images/P1K.Lecture11.Slide-46.png)
 
 ### Multivariate Gaussians Examples
 
-![](/assets/images/Projet.Kalman.Lecture11.Slide-47.png)
-![](/assets/images/Projet.Kalman.Lecture11.Slide-48.png)
-![](/assets/images/Projet.Kalman.Lecture11.Slide-49.png)
-![](/assets/images/Projet.Kalman.Lecture11.Slide-50.png)
-![](/assets/images/Projet.Kalman.Lecture11.Slide-51.png)
+![](/assets/images/P1K.Lecture11.Slide-47.png)
+![](/assets/images/P1K.Lecture11.Slide-48.png)
+![](/assets/images/P1K.Lecture11.Slide-49.png)
+![](/assets/images/P1K.Lecture11.Slide-50.png)
+![](/assets/images/P1K.Lecture11.Slide-51.png)
