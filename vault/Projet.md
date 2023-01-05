@@ -1,11 +1,15 @@
 ---
-id: nlx0gy6bhqyjfi7s3w73huq
+id: g54kxj2u0t1wl4x6uo6vgbt
 title: Projet
 desc: ''
-updated: 1665483718507
+updated: 1672938931394
 created: 1665403102621
 nav_exclude_children: true
 ---
+
+- [[Projet.P1K]]
+- [[Projet.PSH]]
+
 
 # Projet 1: Bloc 1 -> Bloc 2
 
@@ -41,8 +45,8 @@ nav_exclude_children: true
 ## À Faire
 
 1. Etudier les videos
-    - [Lecture 11 Probability Review, Bayes Filters, Gaussians -- CS287-FA19 Advanced Robotics](https://www.youtube.com/watch?v=xamzdNUN1o0)
-    - [Lecture 12 Kalman Filters -- CS287-FA19 Advanced Robotics at UC Berkeley](https://www.youtube.com/watch?v=eCjffhEeQyw)
+    - [[Lecture 11 Probability Review, Bayes Filters, Gaussians -- CS287-FA19 Advanced Robotics|Projet.P1K.VideoLecture11]]
+    - [[Lecture 12 Kalman Filters -- CS287-FA19 Advanced Robotics at UC Berkeley|Projet.P1K.VideoLecture12]]
     - [Lecture 14 Particle Filters -- CS287-FA19 Advanced Robotics at UC Berkeley](https://www.youtube.com/watch?v=8k--yWn8_ds&list=PLwRJQ4m4UJjNBPJdt8WamRAt4XKc639wF&index=15)
     - Preparation pour les videos: revoir la partie II de [RMN.SLAM.CM.Poly.20220923.pdf](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/RMN.SLAM.CM.Poly.20220923.pdf)
 2. Deadline 10/21
@@ -65,9 +69,9 @@ nav_exclude_children: true
         - et garder le nuages de particule credible
 
 
-# Projet 2 - Autom
+# Projet 2 - Systèmes Hybirdes
 
-- Commande de système hybirde (commutation entre dynamique et statique)
+- cf [[Projet.PSH.Presentation]]
 
 # Projet 3 - Mapping ?
 
