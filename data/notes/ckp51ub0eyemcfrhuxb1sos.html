@@ -1,0 +1,106 @@
+<h1 id="kalman-filters-for-advanced-robotics">Kalman Filters (for Advanced Robotics)<a aria-hidden="true" class="anchor-heading icon-link" href="#kalman-filters-for-advanced-robotics"></a></h1>
+<p>Source:</p>
+<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=eCjffhEeQyw">Lecture 12 Kalman Filters -- CS287-FA19 Advanced Robotics at UC Berkeley</a></li>
+<li>Slide: <a href="https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters.pdf">CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters.pdf</a></li>
+<li>Course given by Ignasi CLAVERA</li>
+</ul>
+<hr>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-01.png"></p>
+<!--
+# Outline
+
+![](/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-02.png)
+-->
+<h1 id="gaussians">Gaussians<a aria-hidden="true" class="anchor-heading icon-link" href="#gaussians"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-03.png"></p>
+<h2 id="mutlivariate-gaussians">Mutlivariate Gaussians<a aria-hidden="true" class="anchor-heading icon-link" href="#mutlivariate-gaussians"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-04.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-05.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-06.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-07.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-08.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-09.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-10.png"></p>
+<h2 id="partitioned-multivariate-gaussian">Partitioned Multivariate Gaussian<a aria-hidden="true" class="anchor-heading icon-link" href="#partitioned-multivariate-gaussian"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-11.png"></p>
+<h3 id="dual-representation">Dual Representation<a aria-hidden="true" class="anchor-heading icon-link" href="#dual-representation"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-12.png"></p>
+<h2 id="marginalization">Marginalization<a aria-hidden="true" class="anchor-heading icon-link" href="#marginalization"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-13.png"></p>
+<h2 id="recap">Recap<a aria-hidden="true" class="anchor-heading icon-link" href="#recap"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-14.png"></p>
+<h3 id="self-quiz">Self-quiz<a aria-hidden="true" class="anchor-heading icon-link" href="#self-quiz"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-15.png"></p>
+<h3 id="conditioning">Conditioning<a aria-hidden="true" class="anchor-heading icon-link" href="#conditioning"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-17.png"></p>
+<h1 id="kalman-filtering">Kalman Filtering<a aria-hidden="true" class="anchor-heading icon-link" href="#kalman-filtering"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-18.png"></p>
+<h2 id="presentation">Presentation<a aria-hidden="true" class="anchor-heading icon-link" href="#presentation"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-19.png"></p>
+<h2 id="time-update">Time Update<a aria-hidden="true" class="anchor-heading icon-link" href="#time-update"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-20.png"></p>
+<h3 id="joint-distribution">Joint Distribution<a aria-hidden="true" class="anchor-heading icon-link" href="#joint-distribution"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-21.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-22.png"></p>
+<h3 id="recap-1">Recap<a aria-hidden="true" class="anchor-heading icon-link" href="#recap-1"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-23.png"></p>
+<h2 id="generality">Generality<a aria-hidden="true" class="anchor-heading icon-link" href="#generality"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-24.png"></p>
+<h2 id="observation-update">Observation Update<a aria-hidden="true" class="anchor-heading icon-link" href="#observation-update"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-25.png"></p>
+<h2 id="complete-kalman-filtering-algorithm">Complete Kalman Filtering Algorithm<a aria-hidden="true" class="anchor-heading icon-link" href="#complete-kalman-filtering-algorithm"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-26.png"></p>
+<h2 id="summary">Summary<a aria-hidden="true" class="anchor-heading icon-link" href="#summary"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-27.png"></p>
+<h1 id="extend-kalman-filter-ekf">Extend Kalman Filter (EKF)<a aria-hidden="true" class="anchor-heading icon-link" href="#extend-kalman-filter-ekf"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-28.png"></p>
+<h2 id="nonlinear-dynamical-systems">Nonlinear Dynamical Systems<a aria-hidden="true" class="anchor-heading icon-link" href="#nonlinear-dynamical-systems"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-29.png"></p>
+<h2 id="linearity-assumption-revisited">Linearity Assumption Revisited<a aria-hidden="true" class="anchor-heading icon-link" href="#linearity-assumption-revisited"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-30.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-31.png"></p>
+<h2 id="non-linear-function">Non-Linear Function<a aria-hidden="true" class="anchor-heading icon-link" href="#non-linear-function"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-32.png"></p>
+<h2 id="ekf-linearization">EKF Linearization<a aria-hidden="true" class="anchor-heading icon-link" href="#ekf-linearization"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-33.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-34.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-35.png"></p>
+<h3 id="first-order-taylor-series-expansion">First Order Taylor Series Expansion<a aria-hidden="true" class="anchor-heading icon-link" href="#first-order-taylor-series-expansion"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-36.png"></p>
+<h2 id="ekf-algorithm">EKF Algorithm<a aria-hidden="true" class="anchor-heading icon-link" href="#ekf-algorithm"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-37.png"></p>
+<h2 id="summary-1">Summary<a aria-hidden="true" class="anchor-heading icon-link" href="#summary-1"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-38.png"></p>
+<h1 id="unscented-kalman-filter-ukf">Unscented Kalman Filter (UKF)<a aria-hidden="true" class="anchor-heading icon-link" href="#unscented-kalman-filter-ukf"></a></h1>
+<blockquote>
+<p><strong>Also called "<em>signma-point filter</em>"</strong></p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-39.png"></p>
+<h2 id="linearization-via-unscented-transform">Linearization via Unscented Transform<a aria-hidden="true" class="anchor-heading icon-link" href="#linearization-via-unscented-transform"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-40.png"></p>
+<h2 id="ukf-sigma-point-estimate">UKF Sigma-Point Estimate<a aria-hidden="true" class="anchor-heading icon-link" href="#ukf-sigma-point-estimate"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-41.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-42.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-43.png"></p>
+<h2 id="intuition">Intuition<a aria-hidden="true" class="anchor-heading icon-link" href="#intuition"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-44.png"></p>
+<h2 id="original-unscented-transform">Original Unscented Transform<a aria-hidden="true" class="anchor-heading icon-link" href="#original-unscented-transform"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-45.png"></p>
+<h2 id="ukf-algorithm">UKF Algorithm<a aria-hidden="true" class="anchor-heading icon-link" href="#ukf-algorithm"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-46.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-47.png"></p>
+<h2 id="summary-2">Summary<a aria-hidden="true" class="anchor-heading icon-link" href="#summary-2"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-48.png"></p>
+<h1 id="forthcoming">Forthcoming<a aria-hidden="true" class="anchor-heading icon-link" href="#forthcoming"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-49.png"></p>
+<h2 id="things-to-be-aware-of">Things to be aware of<a aria-hidden="true" class="anchor-heading icon-link" href="#things-to-be-aware-of"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-50.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-51.png"></p>
+<h2 id="kalman-filter-property">Kalman Filter Property<a aria-hidden="true" class="anchor-heading icon-link" href="#kalman-filter-property"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/CS287FA19-AdvancedRobotics.Lecture12-KalmanFilters-52.png"></p>
+<hr>
+<strong>Backlinks</strong>
+<ul>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/g54kxj2u0t1wl4x6uo6vgbt">Projet</a></li>
+</ul>

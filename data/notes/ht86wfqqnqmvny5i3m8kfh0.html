@@ -1,0 +1,250 @@
+<h1 id="partie-1">Partie 1<a aria-hidden="true" class="anchor-heading icon-link" href="#partie-1"></a></h1>
+<blockquote>
+<p><strong>Avertissement:</strong>
+Cette page peut contenir des fautes ! Envoyez-moi un message sur <a href="https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org"><code>#UT3-AURO-M2-2223-Request:matrix.org</code></a> si vous en trouvez, merci.</p>
+</blockquote>
+<blockquote>
+<p>Cours donné par G. Saurel et H. Demmou</p>
+</blockquote>
+<p>Support de cours:</p>
+<ul>
+<li><a href="https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/B2.SATR.CM.Partie1.Slide2020.pdf">B2.SATR.CM.Partie1.Slide2020.pdf</a></li>
+<li><a href="https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/B2.SATR.CM.Partie1.Slide2021.pdf">B2.SATR.CM.Partie1.Slide2021.pdf</a></li>
+</ul>
+<hr>
+<blockquote>
+<p>Notes du 2022/11/16 - Start</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-01.png"></p>
+<h1 id="premiere-partie">Premiere Partie<a aria-hidden="true" class="anchor-heading icon-link" href="#premiere-partie"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-02.png"></p>
+<h2 id="i-1-définition-et-caractéristiques-des-str">I-1. Définition et Caractéristiques des STR<a aria-hidden="true" class="anchor-heading icon-link" href="#i-1-définition-et-caractéristiques-des-str"></a></h2>
+<h3 id="définitions">Définitions<a aria-hidden="true" class="anchor-heading icon-link" href="#définitions"></a></h3>
+<blockquote>
+<p>Keywords: Embedded System, Real-Time System, Safety Critical System, Reactive System</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-03.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-04.png"></p>
+<p>Drone ou robot en général sont de types Safety Critical System</p>
+<h3 id="quel-choix-">Quel choix ?<a aria-hidden="true" class="anchor-heading icon-link" href="#quel-choix-"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-05.png"></p>
+<h3 id="caractéristiques">Caractéristiques<a aria-hidden="true" class="anchor-heading icon-link" href="#caractéristiques"></a></h3>
+<blockquote>
+<p>Keywords: Contraintes Temporelles, Temps Logique, Temps Physique</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-06.png"></p>
+<ul>
+<li>HTR:
+<ul>
+<li>Horloge plus précise et non variable (donc indépendante de la fréquence du CPU qui elle est variable)</li>
+<li>ne retourne pas une heure mais ne fait que donner des tics à interval régulier</li>
+</ul>
+</li>
+<li>syst. asynchrone: capacité d'attendre un evenement tout en agissant sur n'importe quel temps indépendamment des tics d'horloge</li>
+</ul>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-07.png"></p>
+<h3 id="types-soft-vs-hard-real-time">Types (Soft vs Hard Real Time)<a aria-hidden="true" class="anchor-heading icon-link" href="#types-soft-vs-hard-real-time"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-08.png"></p>
+<h3 id="systèmes-multitâches">Systèmes Multitâches<a aria-hidden="true" class="anchor-heading icon-link" href="#systèmes-multitâches"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-09.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-10.png"></p>
+<h3 id="exemple-véhicule-automobile">Exemple: Véhicule Automobile<a aria-hidden="true" class="anchor-heading icon-link" href="#exemple-véhicule-automobile"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-11.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-12.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-13.png"></p>
+<p>À l'époque, CAN (controller Area Network) était reservé pour les modules critiques et VAN (Vehicule Area Network) pour les autres modules [de nos jours tous est sur CAN]</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-14.png"></p>
+<h3 id="mise-en-oeuvre">Mise en Oeuvre<a aria-hidden="true" class="anchor-heading icon-link" href="#mise-en-oeuvre"></a></h3>
+<blockquote>
+<p>hors programme ici</p>
+</blockquote>
+<h4 id="synchrone">Synchrone<a aria-hidden="true" class="anchor-heading icon-link" href="#synchrone"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-15.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-16.png"></p>
+<h4 id="asynchrone">Asynchrone<a aria-hidden="true" class="anchor-heading icon-link" href="#asynchrone"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-17.png"></p>
+<h2 id="i-2-rtos-systèmes-dexploitation-temps-réel">I-2. RTOS Systèmes d'Exploitation Temps Réel<a aria-hidden="true" class="anchor-heading icon-link" href="#i-2-rtos-systèmes-dexploitation-temps-réel"></a></h2>
+<h3 id="fonctions-principales">Fonctions Principales<a aria-hidden="true" class="anchor-heading icon-link" href="#fonctions-principales"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-18.png"></p>
+<h3 id="exemple-dos">Exemple d'OS<a aria-hidden="true" class="anchor-heading icon-link" href="#exemple-dos"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-19.png"></p>
+<h3 id="définitions-1">Définitions<a aria-hidden="true" class="anchor-heading icon-link" href="#définitions-1"></a></h3>
+<blockquote>
+<p>Keywords: OS, exécutif et noyau temps réel</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-20.png"></p>
+<h3 id="illustrations">Illustrations<a aria-hidden="true" class="anchor-heading icon-link" href="#illustrations"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-21.png"></p>
+<blockquote>
+<p>Notes du 2022/11/16 - End</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Notes du 2022/11/22 - Start</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-22.png"></p>
+<h3 id="calculateur-pour-la-commande">Calculateur pour la commande<a aria-hidden="true" class="anchor-heading icon-link" href="#calculateur-pour-la-commande"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-23.png"></p>
+<h3 id="noyau-temps-réel">Noyau Temps Réel<a aria-hidden="true" class="anchor-heading icon-link" href="#noyau-temps-réel"></a></h3>
+<blockquote>
+<p>Keywords: Interface ; Ordonnanceur ; Dispatcher (Lanceur) ; Gestionnaire Objet/Interruptions </p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-24.png"></p>
+<p>Attention que les taches ne sont pas conscientes si d'autres taches accedent à des ressources communes ce qui peut amener à des problématiques de gestion de zone critique pour des ressources partagées.</p>
+<h3 id="objets-dun-noyau">Objets d'un noyau<a aria-hidden="true" class="anchor-heading icon-link" href="#objets-dun-noyau"></a></h3>
+<blockquote>
+<p>Keywords: Tâches ; Messages ; Pipes ; Sémaphores</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-25.png"></p>
+<h3 id="etats-dune-tâche">Etats d'une tâche<a aria-hidden="true" class="anchor-heading icon-link" href="#etats-dune-tâche"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-26.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-27.png"></p>
+<ul>
+<li>préempte connu dans le jargon des développeurs</li>
+</ul>
+<h3 id="commutation-de-contexte">Commutation de contexte<a aria-hidden="true" class="anchor-heading icon-link" href="#commutation-de-contexte"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-28.png"></p>
+<p>Attention en Temps Réel ce n'est pas toujours intéressant de chercher à optimiser un programme et ainsi perdre la connaissance sur la durée d'exécution d'un processus (car l'optimisation rend incertain cette durée). En effet, le temps gagné ne pourra peut etre meme pas être profiter par l'ordannceur car l'ordonnancement des tâches ne permet pas toujours d'être flexible.</p>
+<h3 id="critères-de-performances">Critères de performances<a aria-hidden="true" class="anchor-heading icon-link" href="#critères-de-performances"></a></h3>
+<blockquote>
+<p>Keywords: latence ; occurence ; scrutation</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-29.png"></p>
+<p>Souvent les contraintes liée à la gestion des protocoles rend inutile l'utilisation du procole Ethernet. Du coup, d'autre protocol réseau ont été conçu pour garantir le temps réel.</p>
+<h3 id="délai-de-latence">Délai de latence<a aria-hidden="true" class="anchor-heading icon-link" href="#délai-de-latence"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-30.png"></p>
+<h3 id="les-interruptions">Les interruptions<a aria-hidden="true" class="anchor-heading icon-link" href="#les-interruptions"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-31.png"></p>
+<h2 id="i-3-les-ordonnancements">I-3. Les ordonnancements<a aria-hidden="true" class="anchor-heading icon-link" href="#i-3-les-ordonnancements"></a></h2>
+<blockquote>
+<p>Keywords: <a href="https://fr.wikipedia.org/wiki/Gigue_(informatique)">gigue (fr) / jitter (en)</a> ; ordonnançabilité ; hors/en ligne ; Préemptif ; Statique ; Dynamique</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-32.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-33.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-34.png"></p>
+<h2 id="i-4-ordannacement-de-tâches-avec-partage-de-ressources">I-4. Ordannacement de tâches avec partage de ressources<a aria-hidden="true" class="anchor-heading icon-link" href="#i-4-ordannacement-de-tâches-avec-partage-de-ressources"></a></h2>
+<h3 id="i-4a-inversion-de-priorité">I-4.a) Inversion de priorité<a aria-hidden="true" class="anchor-heading icon-link" href="#i-4a-inversion-de-priorité"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-35.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-36.png"></p>
+<h4 id="exemple">Exemple<a aria-hidden="true" class="anchor-heading icon-link" href="#exemple"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-37.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-38.png"></p>
+<h3 id="i-4b-algorithms">I-4.b) Algorithms<a aria-hidden="true" class="anchor-heading icon-link" href="#i-4b-algorithms"></a></h3>
+<h4 id="heritage-de-priorité">Heritage de priorité<a aria-hidden="true" class="anchor-heading icon-link" href="#heritage-de-priorité"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-39.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-40.png"></p>
+<p>Attention ceci n'est pas une solution miracle car l'implémentation d'une telle méthode nécessite la mémorisation des dépendances entre tâches ainsi que la modification de priorité à la volée ce qui prend du temps.</p>
+<h4 id="priority-ceiling-protocol-pcp">Priority Ceiling Protocol (PCP)<a aria-hidden="true" class="anchor-heading icon-link" href="#priority-ceiling-protocol-pcp"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-41.png"></p>
+<blockquote>
+<p>Attention Erreur sur T1 où <del>R1</del> --> R2
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-42.png"></p>
+</blockquote>
+<h4 id="imeediate-priority-ceiling-protocol-ipcp">Imeediate Priority Ceiling Protocol (IPCP)<a aria-hidden="true" class="anchor-heading icon-link" href="#imeediate-priority-ceiling-protocol-ipcp"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-43.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-44.png"></p>
+<h2 id="i-5-ordonnancement-temps-réel">I-5. Ordonnancement Temps Réel<a aria-hidden="true" class="anchor-heading icon-link" href="#i-5-ordonnancement-temps-réel"></a></h2>
+<h4 id="caractéristiques-temporelles-dune-tâche">Caractéristiques temporelles d'une tâche<a aria-hidden="true" class="anchor-heading icon-link" href="#caractéristiques-temporelles-dune-tâche"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-45.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-46.png"></p>
+<h4 id="configuration-de-tâches">Configuration de tâches<a aria-hidden="true" class="anchor-heading icon-link" href="#configuration-de-tâches"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-47.png"></p>
+<h4 id="tâches-non-périodiques">Tâches Non Périodiques<a aria-hidden="true" class="anchor-heading icon-link" href="#tâches-non-périodiques"></a></h4>
+<blockquote>
+<p>Keywords: sporadique ; apériodique </p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-48.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-49.png"></p>
+<blockquote>
+<p>Notes du 2022/11/22 - End</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Notes du 2022/11/23 - Start</p>
+</blockquote>
+<h4 id="qlqs-algorithms-classiques">Qlqs algorithms classiques<a aria-hidden="true" class="anchor-heading icon-link" href="#qlqs-algorithms-classiques"></a></h4>
+<blockquote>
+<p>Keywords: Firs In First Out (FIFO) ; Shortest Job First (SJF)</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-50.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-51.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-52.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.BB20221123-01.png"></p>
+<h3 id="i-5a-rate-monotonic-algorithm-rma">I-5.a) Rate Monotonic Algorithm (RMA)<a aria-hidden="true" class="anchor-heading icon-link" href="#i-5a-rate-monotonic-algorithm-rma"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-53.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-54.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-55.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-56.png"></p>
+<h3 id="i-5b-inverse-deadline-or-deadline-monotonic-dm">I-5.b) Inverse Deadline or Deadline Monotonic (DM)<a aria-hidden="true" class="anchor-heading icon-link" href="#i-5b-inverse-deadline-or-deadline-monotonic-dm"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-57.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-58.png"></p>
+<h3 id="i-5c-earliest-deadline-first-edf">I-5.c) Earliest Deadline First (EDF)<a aria-hidden="true" class="anchor-heading icon-link" href="#i-5c-earliest-deadline-first-edf"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-59.png"></p>
+<h2 id="i-6-worst-case-response-time-wcrt">I-6. Worst Case Response Time (WCRT)<a aria-hidden="true" class="anchor-heading icon-link" href="#i-6-worst-case-response-time-wcrt"></a></h2>
+<h3 id="tâche-à-priorité-fixe-et-indépendantes">Tâche à priorité fixe et indépendantes<a aria-hidden="true" class="anchor-heading icon-link" href="#tâche-à-priorité-fixe-et-indépendantes"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-60.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-61.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.BB20221123-02.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.BB20221123-03.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.BB20221123-04.png"></p>
+<h3 id="tâche-avec-partage-de-ressources">Tâche avec partage de ressources<a aria-hidden="true" class="anchor-heading icon-link" href="#tâche-avec-partage-de-ressources"></a></h3>
+<h4 id="durée-de-blocage">Durée de blocage<a aria-hidden="true" class="anchor-heading icon-link" href="#durée-de-blocage"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-62.png"></p>
+<h4 id="usage">Usage<a aria-hidden="true" class="anchor-heading icon-link" href="#usage"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-63.png"></p>
+<h4 id="exemple-1">Exemple<a aria-hidden="true" class="anchor-heading icon-link" href="#exemple-1"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-64.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-65.png"></p>
+<h3 id="exercices-dordonnancements">Exercices d'ordonnancements<a aria-hidden="true" class="anchor-heading icon-link" href="#exercices-dordonnancements"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-66.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-67.png"></p>
+<h2 id="i-7-worst-case-execution-time-wcet">I-7. Worst Case Execution Time (WCET)<a aria-hidden="true" class="anchor-heading icon-link" href="#i-7-worst-case-execution-time-wcet"></a></h2>
+<h3 id="forumula">Forumula<a aria-hidden="true" class="anchor-heading icon-link" href="#forumula"></a></h3>
+<blockquote>
+<p>error --> recheck formula
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-68.png"></p>
+</blockquote>
+<h3 id="illustration">Illustration<a aria-hidden="true" class="anchor-heading icon-link" href="#illustration"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-69.png"></p>
+<h3 id="méthodologie">Méthodologie<a aria-hidden="true" class="anchor-heading icon-link" href="#méthodologie"></a></h3>
+<blockquote>
+<p>Keywords: combinaison des entrées ; marge de sécurité</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-70.png"></p>
+<p>En aviation, on parle du critère <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6</mn><mtext>  </mtext><mi>σ</mi></mrow><annotation encoding="application/x-tex">6\;\sigma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">6</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span></span></span></span></span>.</p>
+<h3 id="problème">Problème<a aria-hidden="true" class="anchor-heading icon-link" href="#problème"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-71.png"></p>
+<h3 id="méthodes-danalyse-statique">Méthodes d'analyse statique<a aria-hidden="true" class="anchor-heading icon-link" href="#méthodes-danalyse-statique"></a></h3>
+<h4 id="méthode-à-base-de-flot">Méthode à base de flot<a aria-hidden="true" class="anchor-heading icon-link" href="#méthode-à-base-de-flot"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-72.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-73.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-74.png"></p>
+<h4 id="influences-du-matériel">Influences du matériel<a aria-hidden="true" class="anchor-heading icon-link" href="#influences-du-matériel"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-75.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-76.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-77.png"></p>
+<p>Faire attention que cette méthode hiérarchique présente une faiblaisse où il est possible de récupérer des mot de passe en claire en envoyant une bonne attaque sur le système (ce qui fut le cas il y a 2, 3 ans)</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-78.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-79.png"></p>
+<h4 id="méthode-à-base-darbres">Méthode à base d'arbres<a aria-hidden="true" class="anchor-heading icon-link" href="#méthode-à-base-darbres"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-80.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-81.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-82.png"></p>
+<h4 id="méthode-à-base-de-chemins">Méthode à base de chemins<a aria-hidden="true" class="anchor-heading icon-link" href="#méthode-à-base-de-chemins"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-83.png"></p>
+<h4 id="implicit-path-enumeration-technique-ipet">Implicit Path Enumeration Technique (IPET)<a aria-hidden="true" class="anchor-heading icon-link" href="#implicit-path-enumeration-technique-ipet"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-84.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-85.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-86.png"></p>
+<h3 id="exercices-dordonnancements-1">Exercices d'ordonnancements<a aria-hidden="true" class="anchor-heading icon-link" href="#exercices-dordonnancements-1"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-87.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.CM.Partie1.Slide2021-88.png"></p>
+<blockquote>
+<p>Notes du 2022/11/23 - End</p>
+</blockquote>
+<hr>
+<hr>
+<strong>Backlinks</strong>
+<ul>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/zlr2s0g64dtr3njuzx1iylh">SATR - Systèmes et Architectures Temps Réels</a></li>
+</ul>

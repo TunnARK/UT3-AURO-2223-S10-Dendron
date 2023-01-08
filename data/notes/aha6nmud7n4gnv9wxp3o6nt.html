@@ -1,0 +1,121 @@
+<h1 id="robot-humanoïde">Robot Humanoïde<a aria-hidden="true" class="anchor-heading icon-link" href="#robot-humanoïde"></a></h1>
+<blockquote>
+<p>Notes du 2022/09/19 - Start</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Humanoide-01.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Humanoide-02.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Humanoide-03.png"></p>
+<h2 id="problématique">Problématique<a aria-hidden="true" class="anchor-heading icon-link" href="#problématique"></a></h2>
+<ul>
+<li>Beaucoup de degré liberté => bcp de calcul pour générer un mouvement</li>
+</ul>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Humanoide-04.png"></p>
+<h3 id="problématique-de-la-marche">Problématique de la marche<a aria-hidden="true" class="anchor-heading icon-link" href="#problématique-de-la-marche"></a></h3>
+<ul>
+<li>perception impact le type de marche adapté au terrain</li>
+</ul>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Humanoide-05.png"></p>
+<h3 id=""><a aria-hidden="true" class="anchor-heading icon-link" href="#"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Humanoide-06.png"></p>
+<h3 id="configuration-robot">Configuration Robot<a aria-hidden="true" class="anchor-heading icon-link" href="#configuration-robot"></a></h3>
+<ul>
+<li>N+6 parametres pour la configuration du robot</li>
+<li>sous-actionnment des ensembles du corps</li>
+</ul>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Humanoide-07.png"></p>
+<h3 id="modélisation">Modélisation<a aria-hidden="true" class="anchor-heading icon-link" href="#modélisation"></a></h3>
+<blockquote>
+<p>Optimisation non lineaire car les calculs du MGI sont numeriques et non pas algebraique</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Humanoide-08.png"></p>
+<h3 id="notion-de-contact">Notion de contact<a aria-hidden="true" class="anchor-heading icon-link" href="#notion-de-contact"></a></h3>
+<blockquote>
+<p>Cone de friction = angle limite que la force peut avoir sans creer un glissement</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Humanoide-09.png"></p>
+<h3 id="equations-de-la-dynamique">Equations de la dynamique<a aria-hidden="true" class="anchor-heading icon-link" href="#equations-de-la-dynamique"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Humanoide-10.png"></p>
+<blockquote>
+<p>On prefere ecrie l'equation en separant celles liés aux actionneurs des 6 parametres bonus</p>
+</blockquote>
+<h2 id="controle-de-la-locomotion">Controle de la locomotion<a aria-hidden="true" class="anchor-heading icon-link" href="#controle-de-la-locomotion"></a></h2>
+<blockquote>
+<p>Whole-Body -> on arrive en labo a du 60Hz et bientot a du 100Hz mais tres recent</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Humanoide-11.png"></p>
+<h3 id="approche-zmp-kajita">Approche ZMP (Kajita)<a aria-hidden="true" class="anchor-heading icon-link" href="#approche-zmp-kajita"></a></h3>
+<blockquote>
+<p>ZMP = Zero Moment Point</p>
+</blockquote>
+<blockquote>
+<p>CdP = Centre de Pression</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Humanoide-12.png"></p>
+<h4 id="zmp--polygone-de-sustenttion">ZMP &#x26; Polygone de sustenttion<a aria-hidden="true" class="anchor-heading icon-link" href="#zmp--polygone-de-sustenttion"></a></h4>
+<blockquote>
+<p>ZMP = Composantes horizentales du moment de reaction du sol (couples en <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span></span> et <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span></span>) sont nulles</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Humanoide-13.png"></p>
+<h4 id="equations-de-la-dynamique-1">Equations de la dynamique<a aria-hidden="true" class="anchor-heading icon-link" href="#equations-de-la-dynamique-1"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Humanoide-14.png"></p>
+<h4 id="modèle-pendule-inversé">Modèle pendule inversé<a aria-hidden="true" class="anchor-heading icon-link" href="#modèle-pendule-inversé"></a></h4>
+<blockquote>
+<p>Plus simple de placer l'origine du repere de reference sur la jambe posée au sol car il s'agit du seul point qui reste immobile durant le déplacement (il suffit de mettre à jour la position de l'origine à chaque changement de pieds)</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Humanoide-15.png"></p>
+<h4 id="generation-de-marche-basee-sur-zmp">Generation de marche basee sur ZMP<a aria-hidden="true" class="anchor-heading icon-link" href="#generation-de-marche-basee-sur-zmp"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Humanoide-16.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Humanoide-17.png"></p>
+<h4 id="conclusion-zmp">Conclusion ZMP<a aria-hidden="true" class="anchor-heading icon-link" href="#conclusion-zmp"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Humanoide-18.png"></p>
+<blockquote>
+<p>Commandes en position sont en train de devenir des commandes en couples (plus adapté aux situations complexes)</p>
+</blockquote>
+<h2 id="plannificaiton-de-trajectoire">Plannificaiton de trajectoire<a aria-hidden="true" class="anchor-heading icon-link" href="#plannificaiton-de-trajectoire"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Humanoide-19.png"></p>
+<h3 id="boite-englobante">Boite englobante<a aria-hidden="true" class="anchor-heading icon-link" href="#boite-englobante"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Humanoide-20.png"></p>
+<h3 id="approche-itérative">Approche itérative<a aria-hidden="true" class="anchor-heading icon-link" href="#approche-itérative"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Humanoide-21.png"></p>
+<h3 id="approche-footstep-planning">Approche Footstep Planning<a aria-hidden="true" class="anchor-heading icon-link" href="#approche-footstep-planning"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Humanoide-22.png"></p>
+<h4 id="2d-path-planning-avec-humanoïde">2D Path Planning avec humanoïde<a aria-hidden="true" class="anchor-heading icon-link" href="#2d-path-planning-avec-humanoïde"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Humanoide-23.png"></p>
+<h4 id="footstep-planning">Footstep Planning<a aria-hidden="true" class="anchor-heading icon-link" href="#footstep-planning"></a></h4>
+<blockquote>
+<p>Difficulté: trouver le bon nombre de fils et la bonne heuristique</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Humanoide-24.png"></p>
+<h4 id="métrique-algo-ara">Métrique: Algo ARA<a aria-hidden="true" class="anchor-heading icon-link" href="#métrique-algo-ara"></a></h4>
+<blockquote>
+<p>ARA = Anytime Repairing <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>A</mi><mo>∗</mo></msup></mrow><annotation encoding="application/x-tex">A^*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6887em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6887em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span></span></span></span></span></p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Humanoide-25.png"></p>
+<h3 id="rrt">RRT<a aria-hidden="true" class="anchor-heading icon-link" href="#rrt"></a></h3>
+<blockquote>
+<p>Configuration libre de collission ET en plus stable</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Humanoide-26.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Humanoide-27.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Humanoide-28.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Humanoide-29.png"></p>
+<blockquote>
+<p>RRT très couteux en calcul donc nécessite du pré-calcul</p>
+</blockquote>
+<h4 id="rrt-sous-contraintes">RRT sous contraintes<a aria-hidden="true" class="anchor-heading icon-link" href="#rrt-sous-contraintes"></a></h4>
+<blockquote>
+<p>Encore pas résolut -> bcp de thèse encore à faire</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Humanoide-30.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Humanoide-31.png"></p>
+<h3 id="conclusion">Conclusion<a aria-hidden="true" class="anchor-heading icon-link" href="#conclusion"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Humanoide-32.png"></p>
+<blockquote>
+<p>Notes du 2022/09/19 - End</p>
+</blockquote>
+<hr>
+<hr>
+<strong>Backlinks</strong>
+<ul>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/jlzfz6le5m018ggh4k7ydz8">RMN - Robotique Mobile &#x26; Navigation</a></li>
+</ul>

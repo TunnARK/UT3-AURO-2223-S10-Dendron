@@ -1,0 +1,255 @@
+<h1 id="conception-orientée-objet-101">Conception Orientée Objet, 101<a aria-hidden="true" class="anchor-heading icon-link" href="#conception-orientée-objet-101"></a></h1>
+<p><strong>Source:</strong> <a href="https://gitlab.laas.fr/gsaurel/talks">GitLab Repo 'Talks'</a></p>
+<hr>
+<!--
+id: gzwe38pthzigt8bfmhe7e8q
+title: 'Conception Orientée Objet, 101'
+desc: ''
+updated: 1664628177972
+created: 1664628177972
+subtitle: Université Toulouse Paul Sabatier - KEAR9RA1
+theme: laas
+date: '2022-08-31T00:00:00.000Z'
+author: Guilhem Saurel
+mainfont: Source Serif 4
+monofont: Source Code Pro
+-->
+<h2 id="this-presentation">This presentation<a aria-hidden="true" class="anchor-heading icon-link" href="#this-presentation"></a></h2>
+<h3 id="available-at">Available at<a aria-hidden="true" class="anchor-heading icon-link" href="#available-at"></a></h3>
+<p>\centering</p>
+<p><a href="https://homepages.laas.fr/gsaurel/talks/conception-orientee-objet-101.pdf"><code>https://homepages.laas.fr/gsaurel/talks/ conception-orientee-objet-101.pdf</code></a></p>
+<h3 id="under-license">Under License<a aria-hidden="true" class="anchor-heading icon-link" href="#under-license"></a></h3>
+<p>\centering</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/media/cc.png" alt="CC" style="">
+<img src="/UT3-AURO-2223-S10-Dendron/media/by.png" alt="BY" style="">
+<img src="/UT3-AURO-2223-S10-Dendron/media/sa.png" alt="SA" style=""></p>
+<p><a href="https://creativecommons.org/licenses/by-sa/4.0/">https://creativecommons.org/licenses/by-sa/4.0/</a></p>
+<h2 id="this-presentation-continued">This presentation (continued)<a aria-hidden="true" class="anchor-heading icon-link" href="#this-presentation-continued"></a></h2>
+<h3 id="source">Source<a aria-hidden="true" class="anchor-heading icon-link" href="#source"></a></h3>
+<p>\centering</p>
+<p><a href="https://gitlab.laas.fr/gsaurel/talks/-/blob/main/conception-orientee-objet-101.md"><code>https://gitlab.laas.fr/gsaurel/talks : conception-orientee-objet-101.md</code></a></p>
+<h3 id="discussions">Discussions<a aria-hidden="true" class="anchor-heading icon-link" href="#discussions"></a></h3>
+<p>\centering</p>
+<p>\url{<a href="https://matrix.to/%5C#/%5C#conception-orientee-objet:laas.fr%7D">https://matrix.to/\#/\#conception-orientee-objet:laas.fr}</a></p>
+<h1 id="hello-world">Hello world<a aria-hidden="true" class="anchor-heading icon-link" href="#hello-world"></a></h1>
+<h2 id="hello-world-c">Hello world: C++<a aria-hidden="true" class="anchor-heading icon-link" href="#hello-world-c"></a></h2>
+<pre class="language-cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&#x3C;iostream></span></span>
+<span class="token keyword">auto</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token keyword">int</span> <span class="token punctuation">{</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&#x3C;&#x3C;</span> <span class="token string">"hello\n"</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>. . .</p>
+<pre><code>╰─>$ g++ hello.cpp &#x26;&#x26; ./a.out
+hello
+</code></pre>
+<h2 id="hello-world-python">Hello world: Python<a aria-hidden="true" class="anchor-heading icon-link" href="#hello-world-python"></a></h2>
+<pre class="language-python"><code class="language-python"><span class="token comment">#!/usr/bin/env python</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span>
+</code></pre>
+<p>. . .</p>
+<pre><code>╰─>$ chmod +x hello.py &#x26;&#x26; ./hello.py
+hello
+</code></pre>
+<h2 id="data-types">Data types<a aria-hidden="true" class="anchor-heading icon-link" href="#data-types"></a></h2>
+<h3 id="c">C++<a aria-hidden="true" class="anchor-heading icon-link" href="#c"></a></h3>
+<pre class="language-cpp"><code class="language-cpp"><span class="token keyword">auto</span> ga<span class="token punctuation">{</span><span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">;</span>                  <span class="token comment">// int</span>
+<span class="token keyword">auto</span> bu<span class="token punctuation">{</span><span class="token number">3.14</span><span class="token punctuation">}</span><span class="token punctuation">;</span>               <span class="token comment">// double</span>
+<span class="token keyword">const</span> <span class="token keyword">auto</span> <span class="token operator">*</span><span class="token keyword">const</span> zo<span class="token punctuation">{</span><span class="token string">"tau"</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">// const char *const</span>
+std<span class="token double-colon punctuation">::</span>string meu<span class="token punctuation">{</span><span class="token string">"pi"</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>. . .</p>
+<h3 id="python">Python<a aria-hidden="true" class="anchor-heading icon-link" href="#python"></a></h3>
+<pre class="language-python"><code class="language-python">ga<span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">3</span>
+bu<span class="token punctuation">:</span> <span class="token builtin">float</span> <span class="token operator">=</span> <span class="token number">3.14</span>
+zo<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> <span class="token string">"pi"</span>
+</code></pre>
+<h1 id="control-flow">Control flow<a aria-hidden="true" class="anchor-heading icon-link" href="#control-flow"></a></h1>
+<h2 id="functions">Functions<a aria-hidden="true" class="anchor-heading icon-link" href="#functions"></a></h2>
+<h3 id="c-1">C++<a aria-hidden="true" class="anchor-heading icon-link" href="#c-1"></a></h3>
+<pre class="language-cpp"><code class="language-cpp"><span class="token keyword">auto</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">int</span> first<span class="token punctuation">,</span> <span class="token keyword">int</span> second<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token keyword">int</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> first <span class="token operator">+</span> second<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>. . .</p>
+<h3 id="python-1">Python<a aria-hidden="true" class="anchor-heading icon-link" href="#python-1"></a></h3>
+<pre class="language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">add</span><span class="token punctuation">(</span>first<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">,</span> second<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> first <span class="token operator">+</span> second
+</code></pre>
+<h2 id="conditions-c">Conditions: C++<a aria-hidden="true" class="anchor-heading icon-link" href="#conditions-c"></a></h2>
+<pre class="language-cpp"><code class="language-cpp"><span class="token keyword">if</span> <span class="token punctuation">(</span>temperature <span class="token operator">></span> <span class="token number">26</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&#x3C;&#x3C;</span> <span class="token string">"Too hot\n"</span><span class="token punctuation">;</span>
+  <span class="token function">turn_cooler_on</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>temperature <span class="token operator">&#x3C;</span> <span class="token number">16</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&#x3C;&#x3C;</span> <span class="token string">"Too cold\n"</span><span class="token punctuation">;</span>
+  <span class="token function">turn_heater_on</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&#x3C;&#x3C;</span> <span class="token string">"Lucky people !\n"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="conditions-python">Conditions: Python<a aria-hidden="true" class="anchor-heading icon-link" href="#conditions-python"></a></h2>
+<pre class="language-python"><code class="language-python"><span class="token keyword">if</span> temperature <span class="token operator">></span> <span class="token number">26</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Too hot"</span><span class="token punctuation">)</span>
+    turn_cooler_on<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">elif</span> temperature <span class="token operator">&#x3C;</span> <span class="token number">16</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Too cold"</span><span class="token punctuation">)</span>
+    turn_heater_on<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Lucky people !"</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="loops-while">Loops: while<a aria-hidden="true" class="anchor-heading icon-link" href="#loops-while"></a></h2>
+<h3 id="c-2">C++<a aria-hidden="true" class="anchor-heading icon-link" href="#c-2"></a></h3>
+<pre class="language-cpp"><code class="language-cpp"><span class="token keyword">auto</span> user_input<span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span>user_input <span class="token operator">!=</span> <span class="token number">42</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&#x3C;&#x3C;</span> <span class="token string">"guess: "</span><span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cin <span class="token operator">>></span> user_input<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>. . .</p>
+<h3 id="python-2">Python<a aria-hidden="true" class="anchor-heading icon-link" href="#python-2"></a></h3>
+<pre class="language-python"><code class="language-python">user_input<span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">while</span> user_input <span class="token operator">!=</span> <span class="token number">42</span><span class="token punctuation">:</span>
+    user_input <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"guess: "</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>. . .</p>
+<h3 id="walrus">Walrus<a aria-hidden="true" class="anchor-heading icon-link" href="#walrus"></a></h3>
+<pre class="language-python"><code class="language-python"><span class="token keyword">while</span> <span class="token punctuation">(</span>user_input <span class="token operator">:=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"guess: "</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">42</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"it's not"</span><span class="token punctuation">,</span> user_input<span class="token punctuation">)</span>
+</code></pre>
+<h2 id="loops-break---c">Loops: break - C++<a aria-hidden="true" class="anchor-heading icon-link" href="#loops-break---c"></a></h2>
+<pre class="language-cpp"><code class="language-cpp"><span class="token keyword">auto</span> user_input<span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&#x3C;&#x3C;</span> <span class="token string">"guess: "</span><span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cin <span class="token operator">>></span> user_input<span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>user_input <span class="token operator">==</span> <span class="token number">42</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&#x3C;&#x3C;</span> <span class="token string">"Yes !"</span> <span class="token operator">&#x3C;&#x3C;</span> <span class="token string">"\n"</span><span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&#x3C;&#x3C;</span> <span class="token string">"I's not "</span> <span class="token operator">&#x3C;&#x3C;</span> user_input <span class="token operator">&#x3C;&#x3C;</span> <span class="token string">"\n"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="loops-break---python">Loops: break - Python<a aria-hidden="true" class="anchor-heading icon-link" href="#loops-break---python"></a></h2>
+<pre class="language-python"><code class="language-python">user_input<span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    user_input <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"guess: "</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> user_input <span class="token operator">==</span> <span class="token number">42</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Yes !"</span><span class="token punctuation">)</span>
+        <span class="token keyword">break</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"It's not"</span><span class="token punctuation">,</span> user_input<span class="token punctuation">)</span>
+</code></pre>
+<h2 id="loops-for--break---c">Loops: for / break - C++<a aria-hidden="true" class="anchor-heading icon-link" href="#loops-for--break---c"></a></h2>
+<pre class="language-cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&#x3C;cstdlib></span></span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> i<span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span> i <span class="token operator">&#x3C;</span> <span class="token number">10000</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&#x3C;&#x3C;</span> <span class="token string">"iteration "</span> <span class="token operator">&#x3C;&#x3C;</span> i <span class="token operator">&#x3C;&#x3C;</span> <span class="token string">"\n"</span><span class="token punctuation">;</span>
+  <span class="token keyword">auto</span> rand <span class="token operator">=</span> <span class="token generic-function"><span class="token function">static_cast</span><span class="token generic class-name"><span class="token operator">&#x3C;</span><span class="token keyword">double</span><span class="token operator">></span></span></span><span class="token punctuation">(</span>std<span class="token double-colon punctuation">::</span><span class="token function">rand</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>rand <span class="token operator">/</span> RAND_MAX <span class="token operator">></span> <span class="token number">0.95</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="loops-for--break---python">Loops: for / break - Python<a aria-hidden="true" class="anchor-heading icon-link" href="#loops-for--break---python"></a></h2>
+<pre class="language-python"><code class="language-python"><span class="token keyword">from</span> random <span class="token keyword">import</span> random
+
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10000</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"iteration"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> random<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0.95</span><span class="token punctuation">:</span>
+        <span class="token keyword">break</span>
+</code></pre>
+<h2 id="loops-continue">Loops: continue<a aria-hidden="true" class="anchor-heading icon-link" href="#loops-continue"></a></h2>
+<h3 id="c-3">C++<a aria-hidden="true" class="anchor-heading icon-link" href="#c-3"></a></h3>
+<pre class="language-cpp"><code class="language-cpp"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> i<span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span> i <span class="token operator">&#x3C;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">continue</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&#x3C;&#x3C;</span> <span class="token string">"iteration "</span> <span class="token operator">&#x3C;&#x3C;</span> i <span class="token operator">&#x3C;&#x3C;</span> <span class="token string">"\n"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>. . .</p>
+<h3 id="python-3">Python<a aria-hidden="true" class="anchor-heading icon-link" href="#python-3"></a></h3>
+<pre class="language-python"><code class="language-python"><span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> i <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">continue</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"iteration"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span>
+</code></pre>
+<h2 id="loops-containers">Loops: containers<a aria-hidden="true" class="anchor-heading icon-link" href="#loops-containers"></a></h2>
+<h3 id="c-4">C++<a aria-hidden="true" class="anchor-heading icon-link" href="#c-4"></a></h3>
+<pre class="language-cpp"><code class="language-cpp"><span class="token keyword">using</span> Colors <span class="token operator">=</span> std<span class="token double-colon punctuation">::</span>vector<span class="token operator">&#x3C;</span>std<span class="token double-colon punctuation">::</span>string<span class="token operator">></span><span class="token punctuation">;</span>
+Colors colors<span class="token punctuation">{</span><span class="token string">"orange"</span><span class="token punctuation">,</span> <span class="token string">"blue"</span><span class="token punctuation">,</span> <span class="token string">"pink"</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">auto</span> <span class="token operator">&#x26;</span>color<span class="token operator">:</span> colors<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&#x3C;&#x3C;</span> color <span class="token operator">&#x3C;&#x3C;</span> <span class="token string">"\n"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>. . .</p>
+<h3 id="python-4">Python<a aria-hidden="true" class="anchor-heading icon-link" href="#python-4"></a></h3>
+<pre class="language-python"><code class="language-python">colors <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"orange"</span><span class="token punctuation">,</span> <span class="token string">"blue"</span><span class="token punctuation">,</span> <span class="token string">"pink"</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> color <span class="token keyword">in</span> colors<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>color<span class="token punctuation">)</span>
+</code></pre>
+<h1 id="objects">Objects<a aria-hidden="true" class="anchor-heading icon-link" href="#objects"></a></h1>
+<h2 id="c-5">C++<a aria-hidden="true" class="anchor-heading icon-link" href="#c-5"></a></h2>
+<pre class="language-cpp"><code class="language-cpp">
+<span class="token keyword">class</span> <span class="token class-name">Robot</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token keyword">auto</span> <span class="token function">work</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> battery <span class="token operator">-=</span> <span class="token number">5</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+  <span class="token keyword">auto</span> <span class="token function">get_battery</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token operator">-></span> <span class="token keyword">int</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> battery<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+<span class="token keyword">protected</span><span class="token operator">:</span>
+  <span class="token keyword">int</span> battery<span class="token punctuation">{</span><span class="token number">100</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">auto</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token keyword">int</span> <span class="token punctuation">{</span>
+  <span class="token keyword">auto</span> robot <span class="token operator">=</span> Robot<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&#x3C;&#x3C;</span> robot<span class="token punctuation">.</span><span class="token function">get_battery</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&#x3C;&#x3C;</span> <span class="token string">"% remaining\n"</span><span class="token punctuation">;</span>
+  robot<span class="token punctuation">.</span><span class="token function">work</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&#x3C;&#x3C;</span> robot<span class="token punctuation">.</span><span class="token function">get_battery</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&#x3C;&#x3C;</span> <span class="token string">"% remaining\n"</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="python-5">Python<a aria-hidden="true" class="anchor-heading icon-link" href="#python-5"></a></h2>
+<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Robot</span><span class="token punctuation">:</span>
+    battery <span class="token operator">=</span> <span class="token number">100</span>
+
+    <span class="token keyword">def</span> <span class="token function">work</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>battery <span class="token operator">-=</span> <span class="token number">5</span>
+
+    <span class="token keyword">def</span> <span class="token function">get_battery</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>battery
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    robot <span class="token operator">=</span> Robot<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>robot<span class="token punctuation">.</span>get_battery<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"% remaining"</span><span class="token punctuation">)</span>
+    robot<span class="token punctuation">.</span>work<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>robot<span class="token punctuation">.</span>get_battery<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"% remaining"</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="inheritance-c">Inheritance: C++<a aria-hidden="true" class="anchor-heading icon-link" href="#inheritance-c"></a></h2>
+<pre class="language-cpp"><code class="language-cpp">
+<span class="token keyword">class</span> <span class="token class-name">LeggedRobot</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">Robot</span></span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token keyword">auto</span> <span class="token function">walk</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> battery <span class="token operator">-=</span> <span class="token number">10</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">auto</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token keyword">int</span> <span class="token punctuation">{</span>
+  <span class="token keyword">auto</span> robot <span class="token operator">=</span> LeggedRobot<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&#x3C;&#x3C;</span> robot<span class="token punctuation">.</span><span class="token function">get_battery</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&#x3C;&#x3C;</span> <span class="token string">"% remaining\n"</span><span class="token punctuation">;</span>
+  robot<span class="token punctuation">.</span><span class="token function">work</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  robot<span class="token punctuation">.</span><span class="token function">walk</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&#x3C;&#x3C;</span> robot<span class="token punctuation">.</span><span class="token function">get_battery</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&#x3C;&#x3C;</span> <span class="token string">"% remaining\n"</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="python-6">Python<a aria-hidden="true" class="anchor-heading icon-link" href="#python-6"></a></h2>
+<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">LeggedRobot</span><span class="token punctuation">(</span>Robot<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">walk</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>battery <span class="token operator">-=</span> <span class="token number">10</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    robot <span class="token operator">=</span> LeggedRobot<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>robot<span class="token punctuation">.</span>get_battery<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"% remaining"</span><span class="token punctuation">)</span>
+    robot<span class="token punctuation">.</span>work<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    robot<span class="token punctuation">.</span>walk<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>robot<span class="token punctuation">.</span>get_battery<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"% remaining"</span><span class="token punctuation">)</span>
+</code></pre>

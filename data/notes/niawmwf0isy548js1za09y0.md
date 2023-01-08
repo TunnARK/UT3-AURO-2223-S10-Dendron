@@ -1,0 +1,777 @@
+
+> **Avertissement:**
+Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-2223-Request:matrix.org`](https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org) si vous en trouvez, merci.
+
+> Cours donné par [C. Briand](briand@laas.fr)
+
+---
+
+> Notes du 2022/11/08 - Start
+
+
+
+# Presentation
+
+![](/assets/images/B2.OPLNE.CM.Slide-001.png)
+
+# Introduction
+
+## Recherche Opérationnelle (RO)
+
+![](/assets/images/B2.OPLNE.CM.Slide-002.png)
+
+## Optmisation Combinatoire (OC)
+
+![](/assets/images/B2.OPLNE.CM.Slide-003.png)
+
+> La notion de nombre fini d'étapes est très importantes !
+
+## Graphes et Optimisation Combinatoire
+
+![](/assets/images/B2.OPLNE.CM.Slide-004.png)
+
+Graphes sont utiles pour représenter des modèles combinatoires.
+
+Problèmes typiques:
+- Problème du voyageur de commerce ou les [Seven Bridges of Königsberg](https://en.wikipedia.org/wiki/Seven_Bridges_of_K%C3%B6nigsberg)
+- Séquençage d'ADN
+    - on lie ensemble les fragments qui présentent une incompatibalité
+    - ceci afin de dissocier les fragments fiables (sous-ensemble de noeuds non reliés entre eux-mêmes) des fragments instables (liées à trop de noeuds)
+
+## Illustration de l'explosion combinatoire
+
+![](/assets/images/B2.OPLNE.CM.Slide-005.png)
+
+## Exemple PL et OC
+
+![](/assets/images/B2.OPLNE.CM.Slide-006.png)
+
+- variables de décisions: $x_1$ et $x_2$
+- fonction objectif: $11x_1+7x_2$
+- inégalités expriment une contrainte de ressources limitées
+
+## Notions de complexité des algorithms
+
+![](/assets/images/B2.OPLNE.CM.Slide-007.png)
+![](/assets/images/B2.OPLNE.CM.Slide-008.png)
+![](/assets/images/B2.OPLNE.CM.Slide-009.png)
+
+# Objectifs du cours
+
+![](/assets/images/B2.OPLNE.CM.Slide-010.png)
+
+# I- Notions de Graphes
+
+## I-1) Définitions
+
+![](/assets/images/B2.OPLNE.CM.Slide-011.png)
+
+### Concepts de base
+
+> Keywords:
+- Sommets
+- Arcs
+- extrémité initiale/finale
+- successeurs/prédécesseurs
+- Densité
+- Graphe valué (ou pondéré)
+
+![](/assets/images/B2.OPLNE.CM.Slide-012.png)
+![](/assets/images/B2.OPLNE.CM.Slide-013.png)
+
+### Définitions générales
+
+> Keywords:
+- Sommets adjacents
+- Arêtes adjacentes 
+- Arcs divergents/convergents
+- Degré et demi-degré
+
+![](/assets/images/B2.OPLNE.CM.Slide-014.png)
+
+## I-2) Connexité dans les graphes
+
+![](/assets/images/B2.OPLNE.CM.Slide-015.png)
+
+### Chaîne et Cycle / Chemin et circuit
+
+> Keywords:
+- Chaînes vs Chemin
+- Cycle vs Circuit
+- Isthme
+
+![](/assets/images/B2.OPLNE.CM.Slide-016.png)
+
+### Connexité
+
+> Keywords:
+- Connexité
+- Point d'articulation
+- Isthme
+
+![](/assets/images/B2.OPLNE.CM.Slide-017.png)
+
+Exemple: 
+
+![](/assets/images/B2.OPLNE.CM.BB20221108-01.png)
+
+### Forte Connexité
+
+![](/assets/images/B2.OPLNE.CM.Slide-018.png)
+
+Exemple:
+
+![](/assets/images/B2.OPLNE.CM.BB20221108-02.png)
+![](/assets/images/B2.OPLNE.CM.BB20221108-03.png)
+
+# II- Parcours de graphes et problème de chemin
+
+## II-1) Parcours de graphes
+
+![](/assets/images/B2.OPLNE.CM.Slide-019.png)
+
+### Parcours
+
+> Keywords:
+- État (white/grey/black) d'un sommet
+- Parcours eulérien
+- Parcours hamiltonien
+
+![](/assets/images/B2.OPLNE.CM.Slide-020.png)
+
+Attention:
+- le problème du marchand de commerce est un problème de type **hamiltonien**
+- alors que le problème de sept ponts de Königsberg lui est un problème du type **eulérien**
+
+### Algorithme d'un Parcours en Largeur
+
+> Keywords:
+- BFS: Breadth First Search
+
+![](/assets/images/B2.OPLNE.CM.Slide-021.png)
+
+Remarque:
+Pour coder l'$\infty$ en C par exemple on peut utiliser la constante `maxint`
+
+![](/assets/images/B2.OPLNE.CM.BB20221108-04.png)
+
+Exemple:
+![](/assets/images/B2.OPLNE.CM.BB20221108-05.png)
+![](/assets/images/B2.OPLNE.CM.BB20221108-06.png)
+![](/assets/images/B2.OPLNE.CM.BB20221108-07.png)
+![](/assets/images/B2.OPLNE.CM.BB20221108-08.png)
+![](/assets/images/B2.OPLNE.CM.BB20221108-09.png)
+![](/assets/images/B2.OPLNE.CM.BB20221108-10.png)
+
+### Algorithme d'un Parcours en Longue
+
+> Keywords:
+- DFS: Depth First Search
+
+![](/assets/images/B2.OPLNE.CM.Slide-022.png)
+
+Attention:
+- Un DFS n'est pas l'application d'un BFS sur chaque noeud
+- En BFS $d$ indique la distance mais en DFS $d$ représente l'**instant de découverte**
+
+Exemple:
+![](/assets/images/B2.OPLNE.CM.BB20221108-11.png)
+![](/assets/images/B2.OPLNE.CM.BB20221108-12.png)
+![](/assets/images/B2.OPLNE.CM.BB20221108-13.png)
+![](/assets/images/B2.OPLNE.CM.BB20221108-14.png)
+![](/assets/images/B2.OPLNE.CM.BB20221108-15.png)
+![](/assets/images/B2.OPLNE.CM.BB20221108-16.png)
+![](/assets/images/B2.OPLNE.CM.BB20221108-17.png)
+![](/assets/images/B2.OPLNE.CM.BB20221108-17.png)
+![](/assets/images/B2.OPLNE.CM.BB20221108-18.png)
+![](/assets/images/B2.OPLNE.CM.BB20221108-19.png)
+![](/assets/images/B2.OPLNE.CM.BB20221108-20.png)
+![](/assets/images/B2.OPLNE.CM.BB20221108-21.png)
+![](/assets/images/B2.OPLNE.CM.BB20221108-22.png)
+![](/assets/images/B2.OPLNE.CM.BB20221108-23.png)
+
+
+
+> Notes du 2022/11/08 - End
+
+---
+
+> Notes du 2022/11/16 - Start - cf. Notes GEA !
+
+
+
+
+## II-2) Applications du parcours de graphe
+
+![](/assets/images/B2.OPLNE.CM.Slide-023.png)
+
+### Connexité
+
+![](/assets/images/B2.OPLNE.CM.Slide-024.png)
+
+### Forte Connexité
+
+![](/assets/images/B2.OPLNE.CM.Slide-025.png)
+
+### Tri topologique
+
+![](/assets/images/B2.OPLNE.CM.Slide-026.png)
+
+## II-3) Plus courts Chemin
+
+![](/assets/images/B2.OPLNE.CM.Slide-027.png)
+
+### Généralités
+
+![](/assets/images/B2.OPLNE.CM.Slide-028.png)
+
+### Formalisation du problème
+
+![](/assets/images/B2.OPLNE.CM.Slide-029.png)
+
+### Algorithme de Dijkastra
+
+![](/assets/images/B2.OPLNE.CM.Slide-030.png)
+![](/assets/images/B2.OPLNE.CM.Slide-031.png)
+
+### Algorithme de Bellman
+
+#### Cas général
+
+![](/assets/images/B2.OPLNE.CM.Slide-032.png)
+![](/assets/images/B2.OPLNE.CM.Slide-033.png)
+
+#### Cas des graphes sans circuits
+
+![](/assets/images/B2.OPLNE.CM.Slide-034.png)
+
+### Algorithme de Floyd-Warshall
+
+![](/assets/images/B2.OPLNE.CM.Slide-035.png)
+
+# III-  Chemins et Arbres
+
+## III-1) Existence de chemin
+
+![](/assets/images/B2.OPLNE.CM.Slide-036.png)
+
+### Chemin simple
+
+![](/assets/images/B2.OPLNE.CM.Slide-037.png)
+
+### Chemin eulériens
+
+![](/assets/images/B2.OPLNE.CM.Slide-038.png)
+![](/assets/images/B2.OPLNE.CM.Slide-039.png)
+![](/assets/images/B2.OPLNE.CM.Slide-040.png)
+
+## III-2) Arbres
+
+![](/assets/images/B2.OPLNE.CM.Slide-041.png)
+
+
+
+
+
+
+> Notes du 2022/11/16 - End
+
+---
+
+> Notes du 2022/11/18 - Start
+
+
+
+
+
+### Arbre Couvrant de coût minimal
+
+#### Principe
+
+![](/assets/images/B2.OPLNE.CM.Slide-042.png)
+
+Un arbre doit etre connexe et n'avoir que $N-1$ arretes.
+
+Le cocycle c'est l'ensemble des arretes qui s'ils sont rajoutés on aura une composante connexe.
+
+![](/assets/images/B2.OPLNE.CM.BB20221118-01.png)
+![](/assets/images/B2.OPLNE.CM.BB20221118-02.png)
+![](/assets/images/B2.OPLNE.CM.BB20221118-03.png)
+![](/assets/images/B2.OPLNE.CM.BB20221118-04.png)
+![](/assets/images/B2.OPLNE.CM.BB20221118-05.png)
+
+
+L'idée est de supprimer/rajouter des arretes d'un arbre pour les remplacer par des arretes de $U_{\bar S}$ qui possède un poids plus optimale. 
+
+#### Algorithme de Kruskal
+
+![](/assets/images/B2.OPLNE.CM.Slide-043.png)
+
+Problème principale de cette algorithm c'est qu'il faut trier les arêtes !
+
+#### Exemple
+
+![](/assets/images/B2.OPLNE.CM.BB20221118-06.png)
+![](/assets/images/B2.OPLNE.CM.BB20221118-07.png)
+
+Mais comment on identifie si l'on crée un cycle ?
+
+Pour cela on va indicé chaque sommet à la composante connexe ajoutée lors de l'itération.
+
+![](/assets/images/B2.OPLNE.CM.BB20221118-08.png)
+![](/assets/images/B2.OPLNE.CM.BB20221118-09.png)
+
+#### Algorithme de Prim
+
+![](/assets/images/B2.OPLNE.CM.Slide-044.png)
+
+#### Exemple
+
+![](/assets/images/B2.OPLNE.CM.BB20221118-10.png)
+![](/assets/images/B2.OPLNE.CM.BB20221118-11.png)
+
+# IV- Problèmes de flots
+
+## IV-1) Généralités
+
+![](/assets/images/B2.OPLNE.CM.Slide-045.png)
+
+### Définitions
+
+> Keywords: Flot saturé
+
+![](/assets/images/B2.OPLNE.CM.Slide-046.png)
+![](/assets/images/B2.OPLNE.CM.BB20221118-12.png)
+![](/assets/images/B2.OPLNE.CM.Slide-047.png)
+![](/assets/images/B2.OPLNE.CM.BB20221118-13.png)
+![](/assets/images/B2.OPLNE.CM.BB20221118-14.png)
+
+## IV-2) Algorithme de Ford et de Fulkerson
+
+![](/assets/images/B2.OPLNE.CM.Slide-048.png)
+
+### Coupe min / Flot max
+
+![](/assets/images/B2.OPLNE.CM.Slide-049.png)
+
+### Chaîne améliorante
+
+> Keywords: Graphe d'écart (ou résiduel)
+
+![](/assets/images/B2.OPLNE.CM.Slide-050.png)
+![](/assets/images/B2.OPLNE.CM.BB20221118-15.png)
+![](/assets/images/B2.OPLNE.CM.BB20221118-16.png)
+![](/assets/images/B2.OPLNE.CM.BB20221118-17.png)
+![](/assets/images/B2.OPLNE.CM.BB20221118-18.png)
+![](/assets/images/B2.OPLNE.CM.BB20221118-19.png)
+![](/assets/images/B2.OPLNE.CM.BB20221118-20.png)
+![](/assets/images/B2.OPLNE.CM.BB20221118-21.png)
+
+### Alogrithme
+
+![](/assets/images/B2.OPLNE.CM.Slide-051.png)
+
+
+
+
+> Notes du 2022/11/18 - End
+
+--
+
+> Notes du 2022/11/21 - Start
+
+
+
+
+# V- Programmation Linéaire (PL)
+
+## V-1) Introduction
+
+![](/assets/images/B2.OPLNE.CM.Slide-052.png)
+
+### Définition
+
+> Keywords: Programme Linéaire
+
+![](/assets/images/B2.OPLNE.CM.Slide-053.png)
+
+### Hypothèses
+
+![](/assets/images/B2.OPLNE.CM.Slide-054.png)
+
+- pas de divisions
+- pas de nombres non rationnels
+- pas de produit de variable (il faut garder des fonctions linéaires)
+
+### Forme canonique et standard
+
+![](/assets/images/B2.OPLNE.CM.Slide-055.png)
+
+Pour passer à la forme std, on rajoute une variable de décision à chaque contrainte pour indiquer combien il manque à l'inégalité pour atteindre l'égalité.
+
+![](/assets/images/B2.OPLNE.CM.Slide-056.png)
+
+### Terminologie
+
+![](/assets/images/B2.OPLNE.CM.Slide-057.png)
+
+## V-2) Connextions entre approches géométriques et algébriques
+
+![](/assets/images/B2.OPLNE.CM.Slide-058.png)
+
+### Représentation dans le plan
+
+![](/assets/images/B2.OPLNE.CM.Slide-059.png)
+
+$c$ est au final le coeficient directeur du plan hyperbolique et ce coeficient oriente la priorité des variables de décision:
+- Si le plan est vertical (dans le cas 2D) on prioritise $x_1$ par rapport à $x_2$ ; et
+- Inversement si le plan est horizental.
+
+### Premières connextions
+
+![](/assets/images/B2.OPLNE.CM.Slide-060.png)
+
+### Algèbre
+
+#### Solution d'un système d'équations
+
+![](/assets/images/B2.OPLNE.CM.Slide-061.png)
+
+- $P$ partitionnement $\rightarrow$ |
+- $x_N$ varibles hors bases
+- $x_B$ variables de bases
+
+#### Base et Solution de base
+
+![](/assets/images/B2.OPLNE.CM.Slide-062.png)
+
+- $x_D$ variables de décision
+- $x_E$ variables d'écart (permettant de passer d'une forme canonique à une forme standard)
+
+### Géométrie
+
+#### Point Extreme
+
+![](/assets/images/B2.OPLNE.CM.Slide-063.png)
+
+### Connexions
+
+![](/assets/images/B2.OPLNE.CM.Slide-064.png)
+
+### Dégénérescence
+
+![](/assets/images/B2.OPLNE.CM.Slide-065.png)
+
+## V-3) Principe de l'algo du simplexe
+
+![](/assets/images/B2.OPLNE.CM.Slide-066.png)
+
+### Idée de base
+
+> Keywords: voisine
+
+![](/assets/images/B2.OPLNE.CM.Slide-067.png)
+
+### Exemple: Utilisation du dictionnaire
+
+#### Formulation
+
+![](/assets/images/B2.OPLNE.CM.Slide-068.png)
+
+![](/assets/images/B2.OPLNE.CM.BB20221121-01.png)
+![](/assets/images/B2.OPLNE.CM.BB20221121-02.png)
+![](/assets/images/B2.OPLNE.CM.BB20221121-03.png)
+![](/assets/images/B2.OPLNE.CM.BB20221121-04.png)
+![](/assets/images/B2.OPLNE.CM.BB20221121-05.png)
+
+Il vient que la solution optimale est $x=(3,0,7,0)$ car $z$ est tangent au point extremum et ne peut plus être augmenté (les coef sont tous négatifs)
+
+
+
+
+> Notes du 2022/11/21 - End
+
+---
+
+> Notes du 2022/11/25 - Start
+
+
+
+
+### Tableau du simplexe
+
+> Keywords: matrice augmentée ; tableau admissible
+
+![](/assets/images/B2.OPLNE.CM.Slide-069.png)
+
+- Méthode efficace à la main même si pas très optimale en terme de temps d'execution.
+
+#### Base quelconque
+
+![](/assets/images/B2.OPLNE.CM.Slide-070.png)
+
+#### Le pivotage
+
+> Keywords: bases voisines ; colonne/ligne du pivot 
+
+![](/assets/images/B2.OPLNE.CM.Slide-071.png)
+
+#### Signatures
+
+> Keywords: coûts réduits ; tableau non-borné
+
+![](/assets/images/B2.OPLNE.CM.Slide-072.png)
+
+#### Algorithm (Phase 2)
+
+> Keywords: Tableau courant ; conflit ; règle de Brand
+
+![](/assets/images/B2.OPLNE.CM.Slide-073.png)
+
+##### Exemple 1
+
+![](/assets/images/B2.OPLNE.CM.Slide-074.png)
+![](/assets/images/B2.OPLNE.CM.Slide-075.png)
+![](/assets/images/B2.OPLNE.CM.Slide-076.png)
+![](/assets/images/B2.OPLNE.CM.Slide-077.png)
+
+##### Exemple 2 (règle de Bland)
+
+![](/assets/images/B2.OPLNE.CM.Slide-078.png)
+![](/assets/images/B2.OPLNE.CM.Slide-079.png)
+![](/assets/images/B2.OPLNE.CM.Slide-080.png)
+![](/assets/images/B2.OPLNE.CM.Slide-081.png)
+
+## V-4) Choix d'une base initiale admissible
+
+### Phase 1 du simplexe
+
+> Keywords: tableau initiale admissible
+
+![](/assets/images/B2.OPLNE.CM.Slide-082.png)
+
+#### Pourquoi une phase 1 ?
+
+![](/assets/images/B2.OPLNE.CM.Slide-083.png)
+
+#### Principes
+
+> Keywords: variable auxilliaire ; problème auxiliaire P2
+
+![](/assets/images/B2.OPLNE.CM.Slide-084.png)
+
+#### Propriétés
+
+> Keywords: base admissible ; variable d'écart ; solution admissible
+
+![](/assets/images/B2.OPLNE.CM.Slide-085.png)
+
+### Algorithme du simplexe à deux phases
+
+![](/assets/images/B2.OPLNE.CM.Slide-086.png)
+
+En terme d'optimalité, l'algorithm du simplexe est d'ordre exponentielle (dans le pire des cas) mais il n'y a pas mieux en moyenne pour le moment.
+
+Un algo concurrant serait l'algo ellipsoide qui est d'ordre polynomiale dans le pire des cas mais en moyenne est moins efficace
+
+### Exemple
+
+![](/assets/images/B2.OPLNE.CM.Slide-087.png)
+
+![](/assets/images/B2.OPLNE.CM.BB20221125-01.png)
+![](/assets/images/B2.OPLNE.CM.BB20221125-02.png)
+![](/assets/images/B2.OPLNE.CM.BB20221125-03.png)
+![](/assets/images/B2.OPLNE.CM.BB20221125-04.png)
+
+La phase 1 est terminée. On peut alors appliquer la phase 2 en faisant rentrer $x_3$ en base et sortir $x_5$.
+
+# VI- PL en Nombre Entiers (PLNE)
+
+## VI-1) Introduction
+
+![](/assets/images/B2.OPLNE.CM.Slide-088.png)
+
+### Définitions
+
+> Keywords: programme en nombres entiers ; programme binaire ; programme mixte
+
+![](/assets/images/B2.OPLNE.CM.Slide-089.png)
+
+### Intérêts et inconvénients de la PLNE
+
+> Keywords: langage de modélisation ; solveur: Cplex/Gurobi/SCIP
+
+![](/assets/images/B2.OPLNE.CM.Slide-090.png)
+
+### Relaxation linéaire
+
+> Keywords: contrainte d'intégrité ; borne inférieure/supérieure du critère
+
+![](/assets/images/B2.OPLNE.CM.Slide-091.png)
+
+### Difficulté de la PLNE
+
+> Keywords: arrondir
+
+![](/assets/images/B2.OPLNE.CM.Slide-092.png)
+
+### Illustration 1
+
+![](/assets/images/B2.OPLNE.CM.Slide-093.png)
+![](/assets/images/B2.OPLNE.CM.Slide-094.png)
+
+### Illustration 2
+
+Exemple du problème de sac à dos
+
+![](/assets/images/B2.OPLNE.CM.Slide-095.png)
+![](/assets/images/B2.OPLNE.CM.Slide-096.png)
+![](/assets/images/B2.OPLNE.CM.Slide-097.png)
+![](/assets/images/B2.OPLNE.CM.Slide-098.png)
+![](/assets/images/B2.OPLNE.CM.Slide-099.png)
+
+
+
+
+
+> Notes du 2022/11/25 - End
+
+---
+
+> Notes du 2022/12/05 - Start
+
+
+
+
+
+### Méthode de résolution des PLNE
+
+![](/assets/images/B2.OPLNE.CM.Slide-100.png)
+
+## VI-2) Cas des PLNE équivalents  à leur PL relaxé
+
+![](/assets/images/B2.OPLNE.CM.Slide-101.png)
+
+### Le théorème des valeurs entières
+
+![](/assets/images/B2.OPLNE.CM.Slide-102.png)
+
+### Matrice totalement unimodulaire
+
+> Keywords: Hellet et Tomkins
+
+![](/assets/images/B2.OPLNE.CM.Slide-103.png)
+
+### Problèmes de réseaux
+
+> Keywords: matrice d'incidence sommets-arcs
+
+![](/assets/images/B2.OPLNE.CM.Slide-104.png)
+
+### Exemple calcul du flot maximum
+
+> Keywords: matrice de contraintes
+
+![](/assets/images/B2.OPLNE.CM.Slide-105.png)
+![](/assets/images/B2.OPLNE.CM.BB20221205-01.png)
+
+## VI-3) Méthode arbore
+
+![](/assets/images/B2.OPLNE.CM.Slide-106.png)
+
+### Branch & Bound
+
+#### Branch
+
+![](/assets/images/B2.OPLNE.CM.Slide-107.png)
+
+#### Remarques
+
+![](/assets/images/B2.OPLNE.CM.Slide-108.png)
+
+#### Bound
+
+> Keywords: relaxation linéaire
+
+![](/assets/images/B2.OPLNE.CM.Slide-109.png)
+
+### Principes de séparation
+
+> Typique dans un sujet d'examen
+
+![](/assets/images/B2.OPLNE.CM.Slide-110.png)
+
+### Exemple
+
+![](/assets/images/B2.OPLNE.CM.Slide-111.png)
+![](/assets/images/B2.OPLNE.CM.Slide-112.png)
+![](/assets/images/B2.OPLNE.CM.Slide-113.png)
+![](/assets/images/B2.OPLNE.CM.Slide-114.png)
+![](/assets/images/B2.OPLNE.CM.Slide-115.png)
+![](/assets/images/B2.OPLNE.CM.Slide-116.png)
+
+## VI-4) Modélisation
+
+![](/assets/images/B2.OPLNE.CM.Slide-117.png)
+
+### PL-01
+
+> Keywords: k parmi n, implication, contraintes logiques, problèmes d'investissement
+
+![](/assets/images/B2.OPLNE.CM.Slide-118.png)
+
+### Coûts fixes
+
+![](/assets/images/B2.OPLNE.CM.Slide-119.png)
+
+- B est une constante (elle représente ici le plafond imposé par le budget dans le cas où on investiserait que sur $x_1$)
+
+### Disjonction
+
+![](/assets/images/B2.OPLNE.CM.Slide-120.png)
+
+### Implication
+
+> Keywords: Table de Karnaugh
+
+![](/assets/images/B2.OPLNE.CM.Slide-121.png)
+![](/assets/images/B2.OPLNE.CM.BB20221205-02.png)
+![](/assets/images/B2.OPLNE.CM.BB20221205-03.png)
+
+### k parmi n
+
+![](/assets/images/B2.OPLNE.CM.BB20221205-04.png)
+
+### Domaines non-convexes
+
+> Keywords: domaine réalisable
+
+![](/assets/images/B2.OPLNE.CM.Slide-122.png)
+![](/assets/images/B2.OPLNE.CM.BB20221205-05.png)
+
+### Objectif
+
+> Keywords: fonctions affines par morceaux , coût d'expansion
+
+![](/assets/images/B2.OPLNE.CM.Slide-123.png)
+![](/assets/images/B2.OPLNE.CM.BB20221205-06.png)
+![](/assets/images/B2.OPLNE.CM.BB20221205-07.png)
+
+### Produit de variables
+
+![](/assets/images/B2.OPLNE.CM.Slide-124.png)
+![](/assets/images/B2.OPLNE.CM.BB20221205-08.png)
+![](/assets/images/B2.OPLNE.CM.BB20221205-09.png)
+
+
+
+
+> Notes du 2022/12/05 - End
+
+---
+
+<!--
+
+
+
+

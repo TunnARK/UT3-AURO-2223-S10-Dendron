@@ -1,0 +1,327 @@
+<h1 id="préparation-des-tps">Préparation des TPs<a aria-hidden="true" class="anchor-heading icon-link" href="#préparation-des-tps"></a></h1>
+<h1 id="creation-du-repo">Creation du Repo<a aria-hidden="true" class="anchor-heading icon-link" href="#creation-du-repo"></a></h1>
+<ul>
+<li>on utilise le template pour creer un repo <code>formes</code>
+<ul>
+<li>lien vers le repo <a href="https://github.com/nim65s/formes.git">formes</a></li>
+</ul>
+</li>
+<li><code>git clone https://github.com/nim65s/formes.git</code></li>
+</ul>
+<h2 id="objectifs">Objectifs<a aria-hidden="true" class="anchor-heading icon-link" href="#objectifs"></a></h2>
+<ul>
+<li>Découvrir Python</li>
+<li>Utiliser bcp les classes et les hierarchies (meme si ce n'est pas necessaire pour faire du python mais ici cest pour faire une pierre deux coups)</li>
+</ul>
+<h2 id="class-formes">Class Formes<a aria-hidden="true" class="anchor-heading icon-link" href="#class-formes"></a></h2>
+<h3 id="etape-1">Etape 1<a aria-hidden="true" class="anchor-heading icon-link" href="#etape-1"></a></h3>
+<p>formes.py:</p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Forme</span><span class="token punctuation">:</span>
+    color<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> <span class="token string">"black"</span> <span class="token comment"># un premier attribut</span>
+</code></pre>
+<ul>
+<li>lancer <code>iphython</code></li>
+<li><code>from formes import Forme</code>
+<ul>
+<li>on import la class</li>
+</ul>
+</li>
+<li><code>f = Forme()</code>
+<ul>
+<li>on cree un objet f</li>
+</ul>
+</li>
+<li><code>f.color</code> retourne alors <code>black</code></li>
+</ul>
+<h3 id="etape-2">Etape 2<a aria-hidden="true" class="anchor-heading icon-link" href="#etape-2"></a></h3>
+<p>formes.py:</p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Forme</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""Classe de base pour les autres formes"""</span>
+
+    color<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> <span class="token string">"black"</span> <span class="token comment"># un premier attribut</span>
+
+    <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">str</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f"forme indefinie de couleur </span><span class="token interpolation"><span class="token punctuation">{</span>self<span class="token punctuation">.</span>color<span class="token punctuation">}</span></span><span class="token string">"</span></span> <span class="token comment">#f coller a " va remplacer {..} par la valeur de f</span>
+
+</code></pre>
+<ul>
+<li></li>
+</ul>
+<ul>
+<li>Depuis python 3.6 on utilise la syntax <code>f"... {..}"</code>, il existe deux autres façon</li>
+</ul>
+<h3 id="etape-3">Etape 3<a aria-hidden="true" class="anchor-heading icon-link" href="#etape-3"></a></h3>
+<p>Installer balck en copiant le fichier `.pre-commit-config</p>
+<h3 id="etape-4">Etape 4<a aria-hidden="true" class="anchor-heading icon-link" href="#etape-4"></a></h3>
+<p>Automatiser la compilation</p>
+<p>formes.py:</p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Forme</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""Classe de base pour les autres formes
+    
+    >>> f = Forme()
+    >>> print(f)
+    forme indefinie de couleur bleue    
+    """</span>
+
+
+    color<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> <span class="token string">"black"</span> <span class="token comment"># un premier attribut</span>
+
+    <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">str</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f"forme indefinie de couleur </span><span class="token interpolation"><span class="token punctuation">{</span>self<span class="token punctuation">.</span>color<span class="token punctuation">}</span></span><span class="token string">"</span></span> <span class="token comment">#f coller a " va remplacer {..} par la valeur de f</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span>
+
+</code></pre>
+<ul>
+<li>faire des commit a chaque fois</li>
+</ul>
+<h3 id="etape-5">Etape 5<a aria-hidden="true" class="anchor-heading icon-link" href="#etape-5"></a></h3>
+<p>formes.py:</p>
+<pre class="language-python"><code class="language-python"><span class="token comment">#!/usr/bin/env</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Forme</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""Classe de base pour les autres formes
+    
+    >>> f = Forme()
+    >>> print(f)
+    forme indefinie de couleur bleue    
+    """</span>
+
+
+    color<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> <span class="token string">"black"</span> <span class="token comment"># un premier attribut</span>
+
+    <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">str</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f"forme indefinie de couleur </span><span class="token interpolation"><span class="token punctuation">{</span>self<span class="token punctuation">.</span>color<span class="token punctuation">}</span></span><span class="token string">"</span></span> <span class="token comment">#f coller a " va remplacer {..} par la valeur de f</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Rond</span><span class="token punctuation">(</span>Forme<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    a<span class="token punctuation">:</span> <span class="token builtin">float</span>    <span class="token comment">#attribut</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> a<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># constructeur</span>
+        self<span class="token punctuation">.</span>a <span class="token operator">=</span> a
+
+    <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">str</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f"rond de rayon </span><span class="token interpolation"><span class="token punctuation">{</span>self<span class="token punctuation">.</span>a<span class="token punctuation">}</span></span><span class="token string"> de couleur </span><span class="token interpolation"><span class="token punctuation">{</span>self<span class="token punctuation">.</span>color<span class="token punctuation">}</span></span><span class="token string">"</span></span>
+
+<span class="token keyword">class</span> <span class="token class-name">Quadrilatere</span><span class="token punctuation">(</span>Forme<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    a<span class="token punctuation">:</span> <span class="token builtin">float</span>    <span class="token comment">#attribut</span>
+    b<span class="token punctuation">:</span> <span class="token builtin">float</span>    <span class="token comment">#attribut</span>
+    c<span class="token punctuation">:</span> <span class="token builtin">float</span>    <span class="token comment">#attribut</span>
+    d<span class="token punctuation">:</span> <span class="token builtin">float</span>    <span class="token comment">#attribut</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> a<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># constructeur</span>
+        self<span class="token punctuation">.</span>a <span class="token operator">=</span> a
+        self<span class="token punctuation">.</span>b <span class="token operator">=</span> b
+        self<span class="token punctuation">.</span>c <span class="token operator">=</span> c
+        self<span class="token punctuation">.</span>d <span class="token operator">=</span> d
+
+    <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">str</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># methode dunder representant une classe</span>
+        <span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f"quadrilat </span><span class="token interpolation"><span class="token punctuation">{</span>self<span class="token punctuation">.</span>a<span class="token punctuation">}</span></span><span class="token string"> de couleur </span><span class="token interpolation"><span class="token punctuation">{</span>self<span class="token punctuation">.</span>color<span class="token punctuation">}</span></span><span class="token string">"</span></span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    f <span class="token operator">=</span> Forme<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span>
+    r <span class="token operator">=</span> Rond<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span>
+    q <span class="token operator">=</span> Quadrilatere<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token punctuation">)</span>
+
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</code></pre>
+<ul>
+<li>methode init c'est pour le constructeur</li>
+<li>methode str pour gerer les char</li>
+</ul>
+<h3 id="etape-6">Etape 6<a aria-hidden="true" class="anchor-heading icon-link" href="#etape-6"></a></h3>
+<p>Ajouter deux rond</p>
+<p>formes.py:</p>
+<pre class="language-python"><code class="language-python"><span class="token comment">#!/usr/bin/env</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Forme</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""Classe de base pour les autres formes
+    
+    >>> f = Forme()
+    >>> print(f)
+    forme indefinie de couleur bleue    
+    """</span>
+
+
+    color<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> <span class="token string">"black"</span> <span class="token comment"># un premier attribut</span>
+
+    <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">str</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f"forme indefinie de couleur </span><span class="token interpolation"><span class="token punctuation">{</span>self<span class="token punctuation">.</span>color<span class="token punctuation">}</span></span><span class="token string">"</span></span> <span class="token comment">#f coller a " va remplacer {..} par la valeur de f</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Rond</span><span class="token punctuation">(</span>Forme<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    a<span class="token punctuation">:</span> <span class="token builtin">float</span>    <span class="token comment">#attribut</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> a<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># constructeur</span>
+        self<span class="token punctuation">.</span>a <span class="token operator">=</span> a
+
+    <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">str</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f"rond de rayon </span><span class="token interpolation"><span class="token punctuation">{</span>self<span class="token punctuation">.</span>a<span class="token punctuation">}</span></span><span class="token string"> de couleur </span><span class="token interpolation"><span class="token punctuation">{</span>self<span class="token punctuation">.</span>color<span class="token punctuation">}</span></span><span class="token string">"</span></span>
+
+    <span class="token keyword">def</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Quadrilatere</span><span class="token punctuation">(</span>Forme<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    a<span class="token punctuation">:</span> <span class="token builtin">float</span>    <span class="token comment">#attribut</span>
+    b<span class="token punctuation">:</span> <span class="token builtin">float</span>    <span class="token comment">#attribut</span>
+    c<span class="token punctuation">:</span> <span class="token builtin">float</span>    <span class="token comment">#attribut</span>
+    d<span class="token punctuation">:</span> <span class="token builtin">float</span>    <span class="token comment">#attribut</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> a<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># constructeur</span>
+        self<span class="token punctuation">.</span>a <span class="token operator">=</span> a
+        self<span class="token punctuation">.</span>b <span class="token operator">=</span> b
+        self<span class="token punctuation">.</span>c <span class="token operator">=</span> c
+        self<span class="token punctuation">.</span>d <span class="token operator">=</span> d
+
+    <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">str</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># methode dunder representant une classe</span>
+        <span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f"quadrilat </span><span class="token interpolation"><span class="token punctuation">{</span>self<span class="token punctuation">.</span>a<span class="token punctuation">}</span></span><span class="token string"> de couleur </span><span class="token interpolation"><span class="token punctuation">{</span>self<span class="token punctuation">.</span>color<span class="token punctuation">}</span></span><span class="token string">"</span></span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    f <span class="token operator">=</span> Forme<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span>
+    r <span class="token operator">=</span> Rond<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span>
+    q <span class="token operator">=</span> Quadrilatere<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token punctuation">)</span>
+
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</code></pre>
+<h3 id="etape-7">Etape 7<a aria-hidden="true" class="anchor-heading icon-link" href="#etape-7"></a></h3>
+<p>Comment reconnaitre une forme de quad</p>
+<p>formes.py:</p>
+<pre class="language-python"><code class="language-python"><span class="token comment">#!/usr/bin/env</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Forme</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""Classe de base pour les autres formes
+    
+    >>> f = Forme()
+    >>> print(f)
+    forme indefinie de couleur bleue    
+    """</span>
+
+
+    color<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> <span class="token string">"black"</span> <span class="token comment"># un premier attribut</span>
+
+    <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">str</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f"forme indefinie de couleur </span><span class="token interpolation"><span class="token punctuation">{</span>self<span class="token punctuation">.</span>color<span class="token punctuation">}</span></span><span class="token string">"</span></span> <span class="token comment">#f coller a " va remplacer {..} par la valeur de f</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Rond</span><span class="token punctuation">(</span>Forme<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    a<span class="token punctuation">:</span> <span class="token builtin">float</span>    <span class="token comment">#attribut</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> a<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># constructeur</span>
+        self<span class="token punctuation">.</span>a <span class="token operator">=</span> a
+
+    <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">str</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f"rond de rayon </span><span class="token interpolation"><span class="token punctuation">{</span>self<span class="token punctuation">.</span>a<span class="token punctuation">}</span></span><span class="token string"> de couleur </span><span class="token interpolation"><span class="token punctuation">{</span>self<span class="token punctuation">.</span>color<span class="token punctuation">}</span></span><span class="token string">"</span></span>
+
+    <span class="token keyword">def</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Quadrilatere</span><span class="token punctuation">(</span>Forme<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    a<span class="token punctuation">:</span> <span class="token builtin">float</span>    <span class="token comment">#attribut</span>
+    b<span class="token punctuation">:</span> <span class="token builtin">float</span>    <span class="token comment">#attribut</span>
+    c<span class="token punctuation">:</span> <span class="token builtin">float</span>    <span class="token comment">#attribut</span>
+    d<span class="token punctuation">:</span> <span class="token builtin">float</span>    <span class="token comment">#attribut</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> a<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># constructeur</span>
+        self<span class="token punctuation">.</span>a <span class="token operator">=</span> a
+        self<span class="token punctuation">.</span>b <span class="token operator">=</span> b
+        self<span class="token punctuation">.</span>c <span class="token operator">=</span> c
+        self<span class="token punctuation">.</span>d <span class="token operator">=</span> d
+
+    <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">str</span><span class="token punctuation">)</span><span class="token punctuation">:</span> 
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+    <span class="token keyword">def</span> <span class="token function">specialite</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>a <span class="token operator">==</span> slef<span class="token punctuation">.</span>b <span class="token operator">==</span> self<span class="token punctuation">.</span>c <span class="token operator">==</span> self<span class="token punctuation">.</span>d
+            <span class="token keyword">return</span> <span class="token string">"square"</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>a <span class="token operator">==</span> slef<span class="token punctuation">.</span>c <span class="token keyword">and</span> self<span class="token punctuation">.</span>b <span class="token operator">==</span> self<span class="token punctuation">.</span>b
+            <span class="token keyword">return</span> <span class="token string">"rectangle"</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    f <span class="token operator">=</span> Forme<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span>
+    r <span class="token operator">=</span> Rond<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span>
+    q <span class="token operator">=</span> Quadrilatere<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token punctuation">)</span>
+
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</code></pre>
+<h3 id="etape-8">Etape 8<a aria-hidden="true" class="anchor-heading icon-link" href="#etape-8"></a></h3>
+<p>Comment reconnaitre des formes</p>
+<p>formes.py:</p>
+<pre class="language-python"><code class="language-python"><span class="token comment">#!/usr/bin/env</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Forme</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""Classe de base pour les autres formes
+    
+    >>> f = Forme()
+    >>> print(f)
+    forme indefinie de couleur bleue    
+    """</span>
+
+
+    color<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> <span class="token string">"black"</span> <span class="token comment"># un premier attribut</span>
+
+    <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">str</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f"forme indefinie de couleur </span><span class="token interpolation"><span class="token punctuation">{</span>self<span class="token punctuation">.</span>color<span class="token punctuation">}</span></span><span class="token string">"</span></span> <span class="token comment">#f coller a " va remplacer {..} par la valeur de f</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Rond</span><span class="token punctuation">(</span>Forme<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    a<span class="token punctuation">:</span> <span class="token builtin">float</span>    <span class="token comment">#attribut</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> a<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># constructeur</span>
+        self<span class="token punctuation">.</span>a <span class="token operator">=</span> a
+
+    <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">str</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f"rond de rayon </span><span class="token interpolation"><span class="token punctuation">{</span>self<span class="token punctuation">.</span>a<span class="token punctuation">}</span></span><span class="token string"> de couleur </span><span class="token interpolation"><span class="token punctuation">{</span>self<span class="token punctuation">.</span>color<span class="token punctuation">}</span></span><span class="token string">"</span></span>
+
+    <span class="token keyword">def</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Quadrilatere</span><span class="token punctuation">(</span>Forme<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    a<span class="token punctuation">:</span> <span class="token builtin">float</span>    <span class="token comment">#attribut</span>
+    b<span class="token punctuation">:</span> <span class="token builtin">float</span>    <span class="token comment">#attribut</span>
+    c<span class="token punctuation">:</span> <span class="token builtin">float</span>    <span class="token comment">#attribut</span>
+    d<span class="token punctuation">:</span> <span class="token builtin">float</span>    <span class="token comment">#attribut</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> a<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># constructeur</span>
+        self<span class="token punctuation">.</span>a <span class="token operator">=</span> a
+        self<span class="token punctuation">.</span>b <span class="token operator">=</span> b
+        self<span class="token punctuation">.</span>c <span class="token operator">=</span> c
+        self<span class="token punctuation">.</span>d <span class="token operator">=</span> d
+
+    <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">str</span><span class="token punctuation">)</span><span class="token punctuation">:</span> 
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+    <span class="token keyword">def</span> <span class="token function">specialite</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>a <span class="token operator">==</span> slef<span class="token punctuation">.</span>b <span class="token operator">==</span> self<span class="token punctuation">.</span>c <span class="token operator">==</span> self<span class="token punctuation">.</span>d
+            <span class="token keyword">return</span> <span class="token string">"square"</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>a <span class="token operator">==</span> slef<span class="token punctuation">.</span>c <span class="token keyword">and</span> self<span class="token punctuation">.</span>b <span class="token operator">==</span> self<span class="token punctuation">.</span>b
+            <span class="token keyword">return</span> <span class="token string">"rectangle"</span>
+    
+<span class="token keyword">def</span> <span class="token function">show</span><span class="token punctuation">(</span><span class="token operator">*</span>dimensions<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span> 
+    <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>dimensions<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    f <span class="token operator">=</span> Forme<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span>
+    r <span class="token operator">=</span> Rond<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span>
+    q <span class="token operator">=</span> Quadrilatere<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token punctuation">)</span>
+
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</code></pre>
+<ul>
+<li>
+<p>En python, les arguments sont:</p>
+<ul>
+<li>soit positionnel (pour les valeurs) syntaxé avec <code>*</code> (convention: appelé <code>*args</code>)</li>
+<li>soit nommees (pour les noms) syntaxé avec <code>**</code> (convention: appelé <code>**kwargs</code>)</li>
+</ul>
+</li>
+<li>
+<p>methode <code>super().__init__(**kwargs)</code> va importer le init de la classe mère et</p>
+</li>
+</ul>
+<hr>
+<strong>Backlinks</strong>
+<ul>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/tpyb41n9fi7ze4cw7z2cuxo">COOSATR - Conception Orientee Objet</a></li>
+</ul>

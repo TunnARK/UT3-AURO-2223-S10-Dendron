@@ -1,0 +1,28 @@
+
+> Il n'y a pas de type pointeurs sur ROS??? !
+
+---
+
+
+# Message
+
+1. `roscd beginner_tutorials`
+2. `mkdir msg`
+3. `echo "int64 num" > msg/Num.msg`
+...
+
+# Script
+
+## listener.py
+
+> anonym pour assurer que 2 nodes n'est pas le meme nom
+
+1. Lancer `roscore` (en ayant verifier `env | grep ROS`)
+2. Ouvrir un nouveau terminal et lancer 
+    - `rosrun begin_tutorials talker.py`
+    - `rosrun begin_tutorials listener.py`
+3
+
+
+gris pas de donner
+noir obstacle

@@ -1,0 +1,107 @@
+<h1 id="gitforges">GitForges<a aria-hidden="true" class="anchor-heading icon-link" href="#gitforges"></a></h1>
+<blockquote>
+<p><strong>Avertissement:</strong>
+Cette page peut contenir des fautes ! Envoyez-moi un message sur <a href="https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org"><code>#UT3-AURO-M2-2223-Request:matrix.org</code></a> si vous en trouvez, merci.</p>
+</blockquote>
+<blockquote>
+<p>Cours donné par G. Saurel</p>
+</blockquote>
+<p>Support de cours:</p>
+<ul>
+<li><a href="https://homepages.laas.fr/gsaurel/talks/git-forges.pdf">git-forges.pdf</a></li>
+<li>...</li>
+</ul>
+<hr>
+<blockquote>
+<p>Notes du 2022/09/14 - Start</p>
+</blockquote>
+<h1 id="git-forges">Git Forges<a aria-hidden="true" class="anchor-heading icon-link" href="#git-forges"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideGitForges-01.png"></p>
+<h2 id="this-presentation">This presentation<a aria-hidden="true" class="anchor-heading icon-link" href="#this-presentation"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideGitForges-02.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideGitForges-03.png"></p>
+<h2 id="outline">Outline<a aria-hidden="true" class="anchor-heading icon-link" href="#outline"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideGitForges-04.png"></p>
+<h2 id="introduction">Introduction<a aria-hidden="true" class="anchor-heading icon-link" href="#introduction"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideGitForges-05.png"></p>
+<h3 id="what-are-software-forges">What are software forges<a aria-hidden="true" class="anchor-heading icon-link" href="#what-are-software-forges"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideGitForges-06.png"></p>
+<h3 id="hiearchy">Hiearchy<a aria-hidden="true" class="anchor-heading icon-link" href="#hiearchy"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideGitForges-07.png"></p>
+<h3 id="issues">Issues<a aria-hidden="true" class="anchor-heading icon-link" href="#issues"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideGitForges-08.png"></p>
+<h2 id="branches">Branches<a aria-hidden="true" class="anchor-heading icon-link" href="#branches"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideGitForges-09.png"></p>
+<h3 id="goal">Goal<a aria-hidden="true" class="anchor-heading icon-link" href="#goal"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideGitForges-10.png"></p>
+<p><a href="https://nvie.com/posts/a%E2%80%91successful%E2%80%91git%E2%80%91branching%E2%80%91model/">nvie</a> un utilisateur a proposé d'utiliser les branches d'une certaine façon pour traiter les issues </p>
+<h3 id="usual-branches">Usual branches<a aria-hidden="true" class="anchor-heading icon-link" href="#usual-branches"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideGitForges-11.png"></p>
+<p><code>issue/5</code> dossier pour fixer issue 5 (idéalement le dernier commit devienne le fix)</p>
+<p>après il n'y a pas de convention imposer/dominante sur comment gerer les branches pour traiter les issues</p>
+<h2 id="forks">Forks<a aria-hidden="true" class="anchor-heading icon-link" href="#forks"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideGitForges-12.png"></p>
+<h3 id="2-types-of-fork">2 types of fork<a aria-hidden="true" class="anchor-heading icon-link" href="#2-types-of-fork"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideGitForges-13.png"></p>
+<p>Histoire de Scission:</p>
+<ul>
+<li>SUN company super open soure createur MySQL, openoffice, langage java</li>
+<li>autre companie oracle plus orientee business profit </li>
+<li>puis google a atteint une certaine taille</li>
+<li>le langage java etait en partie libre donc google avait surrement utilise des parties de code non libre</li>
+<li>du coup oracle veut acheter le langage java pour mettre en justice google</li>
+<li>mais sun n'a pas voulu vendre le code</li>
+<li>du coup oracle a racheté la compagnie sun en entière</li>
+<li>du coup openoffice et mysql n'etait plus du tout utilisé et maintenu</li>
+<li>donc les fondateurs de SUN ont crée une fork pour reprendre le projet</li>
+</ul>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideGitForges-14.png"></p>
+<h3 id="work-locally-with-multiple-forks">Work locally with multiple forks<a aria-hidden="true" class="anchor-heading icon-link" href="#work-locally-with-multiple-forks"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideGitForges-15.png"></p>
+<h3 id="ssh-shortcut">SSH shortcut<a aria-hidden="true" class="anchor-heading icon-link" href="#ssh-shortcut"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideGitForges-16.png"></p>
+<pre><code># ~/.ssh/config
+Host gl
+    HostName gitlab.laas.fr
+    User git
+</code></pre>
+<h2 id="requests">Requests<a aria-hidden="true" class="anchor-heading icon-link" href="#requests"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideGitForges-17.png"></p>
+<h3 id="gitlab">Gitlab<a aria-hidden="true" class="anchor-heading icon-link" href="#gitlab"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideGitForges-18.png"></p>
+<h3 id="gitlab-from-command-line">Gitlab from command line<a aria-hidden="true" class="anchor-heading icon-link" href="#gitlab-from-command-line"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideGitForges-19.png"></p>
+<h3 id="github">Github<a aria-hidden="true" class="anchor-heading icon-link" href="#github"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideGitForges-20.png"></p>
+<h3 id="github-from-command-line">Github from command line<a aria-hidden="true" class="anchor-heading icon-link" href="#github-from-command-line"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideGitForges-21.png"></p>
+<h2 id="ci">CI<a aria-hidden="true" class="anchor-heading icon-link" href="#ci"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideGitForges-22.png"></p>
+<h3 id="gitlab-1">Gitlab<a aria-hidden="true" class="anchor-heading icon-link" href="#gitlab-1"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideGitForges-23.png"></p>
+<h3 id="gitlab-shortcut">Gitlab shortcut<a aria-hidden="true" class="anchor-heading icon-link" href="#gitlab-shortcut"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideGitForges-24.png"></p>
+<h3 id="github-1">Github<a aria-hidden="true" class="anchor-heading icon-link" href="#github-1"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideGitForges-25.png"></p>
+<h2 id="workflows">Workflows<a aria-hidden="true" class="anchor-heading icon-link" href="#workflows"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideGitForges-26.png"></p>
+<h3 id="example">Example<a aria-hidden="true" class="anchor-heading icon-link" href="#example"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideGitForges-27.png"></p>
+<h2 id="end-notes">End notes<a aria-hidden="true" class="anchor-heading icon-link" href="#end-notes"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideGitForges-28.png"></p>
+<h2 id="references">References<a aria-hidden="true" class="anchor-heading icon-link" href="#references"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideGitForges-29.png"></p>
+<p><a href="https://learngitbranching.js.org/">https://learngitbranching.js.org/</a>
+<a href="https://nvie.com/posts/a%E2%80%91successful%E2%80%91git%E2%80%91branching%E2%80%91model/">https://nvie.com/posts/a‑successful‑git‑branching‑model/</a>
+<a href="https://docs.github.com/en/get%E2%80%91started/quickstart/github%E2%80%91flow">https://docs.github.com/en/get‑started/quickstart/github‑flow</a></p>
+<h2 id="questions">Questions<a aria-hidden="true" class="anchor-heading icon-link" href="#questions"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideGitForges-30.png"></p>
+<blockquote>
+<p>Notes du 2022/09/14 - End</p>
+</blockquote>
+<hr>
+<hr>
+<strong>Backlinks</strong>
+<ul>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/tpyb41n9fi7ze4cw7z2cuxo">COOSATR - Conception Orientee Objet</a></li>
+</ul>

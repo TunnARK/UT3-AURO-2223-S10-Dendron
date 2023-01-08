@@ -1,0 +1,186 @@
+<h1 id="git-forges">Git Forges<a aria-hidden="true" class="anchor-heading icon-link" href="#git-forges"></a></h1>
+<p><strong>Source:</strong> <a href="https://gitlab.laas.fr/gsaurel/talks">GitLab Repo 'Talks'</a></p>
+<hr>
+<!--
+title: "Git: Forges"
+subtitle: Issues, Branches, Forks, Requests, CI, and Workflows
+theme: laas
+author: Guilhem Saurel
+date: 25/01/2022
+mainfont: Source Serif 4
+monofont: Source Code Pro
+...
+-->
+<h2 id="this-presentation">This presentation<a aria-hidden="true" class="anchor-heading icon-link" href="#this-presentation"></a></h2>
+<h3 id="available-at">Available at<a aria-hidden="true" class="anchor-heading icon-link" href="#available-at"></a></h3>
+<p>\centering</p>
+<p><a href="https://homepages.laas.fr/gsaurel/talks/git-forges.pdf"><code>https://homepages.laas.fr/gsaurel/talks/ git-forges.pdf</code></a></p>
+<h3 id="under-license">Under License<a aria-hidden="true" class="anchor-heading icon-link" href="#under-license"></a></h3>
+<p>\centering</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/media/cc.png" alt="CC" style="">
+<img src="/UT3-AURO-2223-S10-Dendron/media/by.png" alt="BY" style="">
+<img src="/UT3-AURO-2223-S10-Dendron/media/sa.png" alt="SA" style=""></p>
+<p><a href="https://creativecommons.org/licenses/by-sa/4.0/">https://creativecommons.org/licenses/by-sa/4.0/</a></p>
+<h2 id="this-presentation-continued">This presentation (continued)<a aria-hidden="true" class="anchor-heading icon-link" href="#this-presentation-continued"></a></h2>
+<h3 id="source">Source<a aria-hidden="true" class="anchor-heading icon-link" href="#source"></a></h3>
+<p>\centering</p>
+<p><a href="https://gitlab.laas.fr/gsaurel/talks/-/blob/main/git-forges.md"><code>https://gitlab.laas.fr/gsaurel/talks : git-forges.md</code></a></p>
+<h3 id="discussions">Discussions<a aria-hidden="true" class="anchor-heading icon-link" href="#discussions"></a></h3>
+<p>\centering</p>
+<!-- \href doesn't like #, so let's directly use \url -->
+<p>\url{<a href="https://im.laas.fr/%5C#/room/%5C#git-forges:laas.fr%7D">https://im.laas.fr/\#/room/\#git-forges:laas.fr}</a></p>
+<h2 id="outline">Outline<a aria-hidden="true" class="anchor-heading icon-link" href="#outline"></a></h2>
+<p>\tableofcontents</p>
+<h1 id="introduction">Introduction<a aria-hidden="true" class="anchor-heading icon-link" href="#introduction"></a></h1>
+<h2 id="what-are-software-forges">What are software forges<a aria-hidden="true" class="anchor-heading icon-link" href="#what-are-software-forges"></a></h2>
+<ul>
+<li>Software management
+<ul>
+<li>git repository (web, HTTPS, SSH)</li>
+<li>authorizations</li>
+<li>issue tracker</li>
+</ul>
+</li>
+</ul>
+<h2 id="hirarchy">Hirarchy<a aria-hidden="true" class="anchor-heading icon-link" href="#hirarchy"></a></h2>
+<ol>
+<li>domain</li>
+<li>username <em>OR</em> group (organization)</li>
+<li>project</li>
+</ol>
+<ul>
+<li><code>https:// gitlab.laas.fr / gsaurel / talks</code></li>
+<li><code>https:// github.com / gepetto / example-adder</code></li>
+</ul>
+<h2 id="issues">Issues<a aria-hidden="true" class="anchor-heading icon-link" href="#issues"></a></h2>
+<ul>
+<li>bug fix / feature request</li>
+<li>Github / Gitlab: <code>#4</code></li>
+<li>referencable from git:
+<ul>
+<li><code>git commit -m "add test for user input, ref #4"</code></li>
+<li><code>git commit -m "sanitize user input, fix #4"</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="branches">Branches<a aria-hidden="true" class="anchor-heading icon-link" href="#branches"></a></h1>
+<h2 id="goal">Goal<a aria-hidden="true" class="anchor-heading icon-link" href="#goal"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/media/nvie.png" alt="nvie"></p>
+<h2 id="usual-branches">Usual branches<a aria-hidden="true" class="anchor-heading icon-link" href="#usual-branches"></a></h2>
+<ul>
+<li>default: <code>master</code> or <code>main</code></li>
+<li><code>devel</code>, <code>stable</code></li>
+<li><code>issue/5</code></li>
+<li><code>topic/something</code></li>
+</ul>
+<h1 id="forks">Forks<a aria-hidden="true" class="anchor-heading icon-link" href="#forks"></a></h1>
+<h2 id="2-types-of-fork">2 types of fork<a aria-hidden="true" class="anchor-heading icon-link" href="#2-types-of-fork"></a></h2>
+<ul>
+<li>scission (software development)
+<ul>
+<li>document motivations</li>
+<li>rename</li>
+<li>change logo / website etc.</li>
+<li>ensure compatibility</li>
+</ul>
+</li>
+<li>collaboration (git forges)
+<ul>
+<li>try to keep synchronized</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-types-of-fork-1">2 types of fork<a aria-hidden="true" class="anchor-heading icon-link" href="#2-types-of-fork-1"></a></h2>
+<ul>
+<li>scission (software development)
+<ul>
+<li>document motivations</li>
+<li>rename</li>
+<li>change logo / website etc.</li>
+<li>ensure compatibility</li>
+</ul>
+</li>
+<li><strong>collaboration (git forges)</strong>
+<ul>
+<li>try to keep synchronized</li>
+</ul>
+</li>
+</ul>
+<h2 id="work-locally-with-multiple-forks">Work locally with multiple forks<a aria-hidden="true" class="anchor-heading icon-link" href="#work-locally-with-multiple-forks"></a></h2>
+<pre><code>git clone --recursive \
+        git@gitlab.laas.fr:gsaurel/example-adder.git
+cd example-adder
+git remote add gepetto \
+        git@gitlab.laas.fr:gepetto/example-adder.git
+</code></pre>
+<p>. . .</p>
+<pre><code>git pull gepetto master
+git push origin master
+</code></pre>
+<h2 id="ssh-shortcut">SSH shortcut<a aria-hidden="true" class="anchor-heading icon-link" href="#ssh-shortcut"></a></h2>
+<pre class="language-ini"><code class="language-ini"><span class="token comment"># ~/.ssh/config</span>
+Host gl
+    HostName gitlab.laas.fr
+    User git
+</code></pre>
+<pre><code>git clone --recursive gl:gsaurel/example-adder
+</code></pre>
+<h1 id="requests">Requests<a aria-hidden="true" class="anchor-heading icon-link" href="#requests"></a></h1>
+<h2 id="gitlab">Gitlab<a aria-hidden="true" class="anchor-heading icon-link" href="#gitlab"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/media/mr.png" alt="Merge Request"></p>
+<h2 id="gitlab-from-command-line">Gitlab from command line<a aria-hidden="true" class="anchor-heading icon-link" href="#gitlab-from-command-line"></a></h2>
+<pre><code>git push -o merge_request.create \
+         -o merge_request.target=devel \
+         origin topic/something
+</code></pre>
+<h2 id="github">Github<a aria-hidden="true" class="anchor-heading icon-link" href="#github"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/media/pr.png" alt="Pull Request"></p>
+<h2 id="github-from-command-line">Github from command line<a aria-hidden="true" class="anchor-heading icon-link" href="#github-from-command-line"></a></h2>
+<p>Required: <a href="https://cli.github.com/">https://cli.github.com/</a></p>
+<pre><code>gh pr create
+</code></pre>
+<h1 id="ci">CI<a aria-hidden="true" class="anchor-heading icon-link" href="#ci"></a></h1>
+<h2 id="gitlab-1">Gitlab<a aria-hidden="true" class="anchor-heading icon-link" href="#gitlab-1"></a></h2>
+<pre class="language-yml"><code class="language-yml"><span class="token comment"># .gitlab-ci.yml</span>
+<span class="token key atrule">image</span><span class="token punctuation">:</span> gitlab.laas.fr<span class="token punctuation">:</span>4567/gsaurel/talks
+
+<span class="token key atrule">build</span><span class="token punctuation">:</span>
+  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> make
+
+<span class="token key atrule">test</span><span class="token punctuation">:</span>
+  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> make test
+</code></pre>
+<h2 id="gitlab-shortcut">Gitlab shortcut<a aria-hidden="true" class="anchor-heading icon-link" href="#gitlab-shortcut"></a></h2>
+<pre><code>git config --global alias.mwps "push \
+        -o merge_request.create \
+        -o merge_request.target=devel \
+        -o merge_request.merge_when_pipeline_succeeds \
+        -o merge_request.remove_source_branch"
+</code></pre>
+<pre><code>git mwps origin topic/something
+</code></pre>
+<h2 id="github-1">Github<a aria-hidden="true" class="anchor-heading icon-link" href="#github-1"></a></h2>
+<pre class="language-yml"><code class="language-yml"><span class="token comment"># .github/workflows/build.yml</span>
+<span class="token key atrule">name</span><span class="token punctuation">:</span> Build
+<span class="token key atrule">on</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>push<span class="token punctuation">,</span>pull_request<span class="token punctuation">]</span>
+
+<span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+  <span class="token key atrule">build</span><span class="token punctuation">:</span>
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> Transpile markdown sources into PDF
+    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> nim65s/talks
+    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v2
+      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> make
+</code></pre>
+<h1 id="workflows">Workflows<a aria-hidden="true" class="anchor-heading icon-link" href="#workflows"></a></h1>
+<h2 id="example">Example<a aria-hidden="true" class="anchor-heading icon-link" href="#example"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/media/nvie.png" alt="nvie"></p>
+<h1 id="end-notes">End notes<a aria-hidden="true" class="anchor-heading icon-link" href="#end-notes"></a></h1>
+<h2 id="references">References<a aria-hidden="true" class="anchor-heading icon-link" href="#references"></a></h2>
+<p><a href="https://learngitbranching.js.org/">https://learngitbranching.js.org/</a>
+<a href="https://nvie.com/posts/a-successful-git-branching-model/">https://nvie.com/posts/a-successful-git-branching-model/</a>
+<a href="https://docs.github.com/en/get-started/quickstart/github-flow">https://docs.github.com/en/get-started/quickstart/github-flow</a></p>
+<h2 id="questions-">Questions ?<a aria-hidden="true" class="anchor-heading icon-link" href="#questions-"></a></h2>
+<p>Thanks for your time :)</p>

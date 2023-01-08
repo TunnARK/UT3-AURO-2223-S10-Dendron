@@ -1,0 +1,54 @@
+
+> **Avertissement:**
+Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-2223-Request:matrix.org`](https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org) si vous en trouvez, merci.
+
+> Cours donné par M. Thaix
+
+Support de cours :
+
+- [lien vers le sujet ?](...)
+- [OE.NotesGEA.CM.20220919.pdf](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/OE.NotesGEA.CM.20220919.pdf)
+
+---
+
+## Question 2: Ellispe & Rectangle
+
+OE.TD.ExoExam.2021Q2-Question
+
+![](/assets/images/OE.TD.ExoExam.2021Q2-Ellipse.png)
+
+Trouver le rectangle de surface maximale inscrit dans l'ellipse $\frac{\;x^2\;}{a^2} + \frac{\;y^2\;}{b^2} = 1$
+
+1. Traduire la fonction à minimiser/maximiser
+
+2. Ecrire le lagrangien
+
+3. Trouver $x^*$ et $y^*$ (les racines du gradient de L)
+
+4. Trouver $\lambda^*$
+
+5. Conclure
+
+![](/assets/images/OE.TD.ExoExam.2021Q2-Ans.png)
+
+## Question 3: Optimum de f sur $\R^{2}$
+
+OE.TD.ExoExam.2021Q3-Question
+
+### a) Methode de Newton sur $x_0 = (1\;\;1)^t$ et sur $x_0 = (2\;\;-3)^t$
+
+1. Ecrire la recurrence
+
+2. Calculer la recurence au point initial
+
+3. Conclure
+
+![](/assets/images/OE.TD.ExoExam.2021Q3-Ansa.png)
+
+### b) Caractériser les points critiques
+
+OE.TD.ExoExam.2021Q3-Ansb
+
+### c) Modélisation sous forme quadratique
+
+Oui la methode des gradiens conjugués s'appliquent justement aux fonctions quadratiques

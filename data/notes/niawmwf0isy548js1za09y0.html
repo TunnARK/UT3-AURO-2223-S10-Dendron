@@ -1,0 +1,560 @@
+<h1 id="cm">CM<a aria-hidden="true" class="anchor-heading icon-link" href="#cm"></a></h1>
+<blockquote>
+<p><strong>Avertissement:</strong>
+Cette page peut contenir des fautes ! Envoyez-moi un message sur <a href="https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org"><code>#UT3-AURO-M2-2223-Request:matrix.org</code></a> si vous en trouvez, merci.</p>
+</blockquote>
+<blockquote>
+<p>Cours donné par <a href="/UT3-AURO-2223-S10-Dendron/briand@laas.fr">C. Briand</a></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Notes du 2022/11/08 - Start</p>
+</blockquote>
+<h1 id="presentation">Presentation<a aria-hidden="true" class="anchor-heading icon-link" href="#presentation"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-001.png"></p>
+<h1 id="introduction">Introduction<a aria-hidden="true" class="anchor-heading icon-link" href="#introduction"></a></h1>
+<h2 id="recherche-opérationnelle-ro">Recherche Opérationnelle (RO)<a aria-hidden="true" class="anchor-heading icon-link" href="#recherche-opérationnelle-ro"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-002.png"></p>
+<h2 id="optmisation-combinatoire-oc">Optmisation Combinatoire (OC)<a aria-hidden="true" class="anchor-heading icon-link" href="#optmisation-combinatoire-oc"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-003.png"></p>
+<blockquote>
+<p>La notion de nombre fini d'étapes est très importantes !</p>
+</blockquote>
+<h2 id="graphes-et-optimisation-combinatoire">Graphes et Optimisation Combinatoire<a aria-hidden="true" class="anchor-heading icon-link" href="#graphes-et-optimisation-combinatoire"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-004.png"></p>
+<p>Graphes sont utiles pour représenter des modèles combinatoires.</p>
+<p>Problèmes typiques:</p>
+<ul>
+<li>Problème du voyageur de commerce ou les <a href="https://en.wikipedia.org/wiki/Seven_Bridges_of_K%C3%B6nigsberg">Seven Bridges of Königsberg</a></li>
+<li>Séquençage d'ADN
+<ul>
+<li>on lie ensemble les fragments qui présentent une incompatibalité</li>
+<li>ceci afin de dissocier les fragments fiables (sous-ensemble de noeuds non reliés entre eux-mêmes) des fragments instables (liées à trop de noeuds)</li>
+</ul>
+</li>
+</ul>
+<h2 id="illustration-de-lexplosion-combinatoire">Illustration de l'explosion combinatoire<a aria-hidden="true" class="anchor-heading icon-link" href="#illustration-de-lexplosion-combinatoire"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-005.png"></p>
+<h2 id="exemple-pl-et-oc">Exemple PL et OC<a aria-hidden="true" class="anchor-heading icon-link" href="#exemple-pl-et-oc"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-006.png"></p>
+<ul>
+<li>variables de décisions: <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">x_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> et <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">x_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></li>
+<li>fonction objectif: <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>11</mn><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><mn>7</mn><msub><mi>x</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">11x_1+7x_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7944em;vertical-align:-0.15em;"></span><span class="mord">11</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7944em;vertical-align:-0.15em;"></span><span class="mord">7</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></li>
+<li>inégalités expriment une contrainte de ressources limitées</li>
+</ul>
+<h2 id="notions-de-complexité-des-algorithms">Notions de complexité des algorithms<a aria-hidden="true" class="anchor-heading icon-link" href="#notions-de-complexité-des-algorithms"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-007.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-008.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-009.png"></p>
+<h1 id="objectifs-du-cours">Objectifs du cours<a aria-hidden="true" class="anchor-heading icon-link" href="#objectifs-du-cours"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-010.png"></p>
+<h1 id="i--notions-de-graphes">I- Notions de Graphes<a aria-hidden="true" class="anchor-heading icon-link" href="#i--notions-de-graphes"></a></h1>
+<h2 id="i-1-définitions">I-1) Définitions<a aria-hidden="true" class="anchor-heading icon-link" href="#i-1-définitions"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-011.png"></p>
+<h3 id="concepts-de-base">Concepts de base<a aria-hidden="true" class="anchor-heading icon-link" href="#concepts-de-base"></a></h3>
+<blockquote>
+<p>Keywords:</p>
+<ul>
+<li>Sommets</li>
+<li>Arcs</li>
+<li>extrémité initiale/finale</li>
+<li>successeurs/prédécesseurs</li>
+<li>Densité</li>
+<li>Graphe valué (ou pondéré)</li>
+</ul>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-012.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-013.png"></p>
+<h3 id="définitions-générales">Définitions générales<a aria-hidden="true" class="anchor-heading icon-link" href="#définitions-générales"></a></h3>
+<blockquote>
+<p>Keywords:</p>
+<ul>
+<li>Sommets adjacents</li>
+<li>Arêtes adjacentes </li>
+<li>Arcs divergents/convergents</li>
+<li>Degré et demi-degré</li>
+</ul>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-014.png"></p>
+<h2 id="i-2-connexité-dans-les-graphes">I-2) Connexité dans les graphes<a aria-hidden="true" class="anchor-heading icon-link" href="#i-2-connexité-dans-les-graphes"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-015.png"></p>
+<h3 id="chaîne-et-cycle--chemin-et-circuit">Chaîne et Cycle / Chemin et circuit<a aria-hidden="true" class="anchor-heading icon-link" href="#chaîne-et-cycle--chemin-et-circuit"></a></h3>
+<blockquote>
+<p>Keywords:</p>
+<ul>
+<li>Chaînes vs Chemin</li>
+<li>Cycle vs Circuit</li>
+<li>Isthme</li>
+</ul>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-016.png"></p>
+<h3 id="connexité">Connexité<a aria-hidden="true" class="anchor-heading icon-link" href="#connexité"></a></h3>
+<blockquote>
+<p>Keywords:</p>
+<ul>
+<li>Connexité</li>
+<li>Point d'articulation</li>
+<li>Isthme</li>
+</ul>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-017.png"></p>
+<p>Exemple: </p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221108-01.png"></p>
+<h3 id="forte-connexité">Forte Connexité<a aria-hidden="true" class="anchor-heading icon-link" href="#forte-connexité"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-018.png"></p>
+<p>Exemple:</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221108-02.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221108-03.png"></p>
+<h1 id="ii--parcours-de-graphes-et-problème-de-chemin">II- Parcours de graphes et problème de chemin<a aria-hidden="true" class="anchor-heading icon-link" href="#ii--parcours-de-graphes-et-problème-de-chemin"></a></h1>
+<h2 id="ii-1-parcours-de-graphes">II-1) Parcours de graphes<a aria-hidden="true" class="anchor-heading icon-link" href="#ii-1-parcours-de-graphes"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-019.png"></p>
+<h3 id="parcours">Parcours<a aria-hidden="true" class="anchor-heading icon-link" href="#parcours"></a></h3>
+<blockquote>
+<p>Keywords:</p>
+<ul>
+<li>État (white/grey/black) d'un sommet</li>
+<li>Parcours eulérien</li>
+<li>Parcours hamiltonien</li>
+</ul>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-020.png"></p>
+<p>Attention:</p>
+<ul>
+<li>le problème du marchand de commerce est un problème de type <strong>hamiltonien</strong></li>
+<li>alors que le problème de sept ponts de Königsberg lui est un problème du type <strong>eulérien</strong></li>
+</ul>
+<h3 id="algorithme-dun-parcours-en-largeur">Algorithme d'un Parcours en Largeur<a aria-hidden="true" class="anchor-heading icon-link" href="#algorithme-dun-parcours-en-largeur"></a></h3>
+<blockquote>
+<p>Keywords:</p>
+<ul>
+<li>BFS: Breadth First Search</li>
+</ul>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-021.png"></p>
+<p>Remarque:
+Pour coder l'<span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\infty</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">∞</span></span></span></span></span> en C par exemple on peut utiliser la constante <code>maxint</code></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221108-04.png"></p>
+<p>Exemple:
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221108-05.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221108-06.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221108-07.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221108-08.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221108-09.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221108-10.png"></p>
+<h3 id="algorithme-dun-parcours-en-longue">Algorithme d'un Parcours en Longue<a aria-hidden="true" class="anchor-heading icon-link" href="#algorithme-dun-parcours-en-longue"></a></h3>
+<blockquote>
+<p>Keywords:</p>
+<ul>
+<li>DFS: Depth First Search</li>
+</ul>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-022.png"></p>
+<p>Attention:</p>
+<ul>
+<li>Un DFS n'est pas l'application d'un BFS sur chaque noeud</li>
+<li>En BFS <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span></span> indique la distance mais en DFS <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span></span> représente l'<strong>instant de découverte</strong></li>
+</ul>
+<p>Exemple:
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221108-11.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221108-12.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221108-13.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221108-14.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221108-15.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221108-16.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221108-17.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221108-17.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221108-18.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221108-19.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221108-20.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221108-21.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221108-22.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221108-23.png"></p>
+<blockquote>
+<p>Notes du 2022/11/08 - End</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Notes du 2022/11/16 - Start - cf. Notes GEA !</p>
+</blockquote>
+<h2 id="ii-2-applications-du-parcours-de-graphe">II-2) Applications du parcours de graphe<a aria-hidden="true" class="anchor-heading icon-link" href="#ii-2-applications-du-parcours-de-graphe"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-023.png"></p>
+<h3 id="connexité-1">Connexité<a aria-hidden="true" class="anchor-heading icon-link" href="#connexité-1"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-024.png"></p>
+<h3 id="forte-connexité-1">Forte Connexité<a aria-hidden="true" class="anchor-heading icon-link" href="#forte-connexité-1"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-025.png"></p>
+<h3 id="tri-topologique">Tri topologique<a aria-hidden="true" class="anchor-heading icon-link" href="#tri-topologique"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-026.png"></p>
+<h2 id="ii-3-plus-courts-chemin">II-3) Plus courts Chemin<a aria-hidden="true" class="anchor-heading icon-link" href="#ii-3-plus-courts-chemin"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-027.png"></p>
+<h3 id="généralités">Généralités<a aria-hidden="true" class="anchor-heading icon-link" href="#généralités"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-028.png"></p>
+<h3 id="formalisation-du-problème">Formalisation du problème<a aria-hidden="true" class="anchor-heading icon-link" href="#formalisation-du-problème"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-029.png"></p>
+<h3 id="algorithme-de-dijkastra">Algorithme de Dijkastra<a aria-hidden="true" class="anchor-heading icon-link" href="#algorithme-de-dijkastra"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-030.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-031.png"></p>
+<h3 id="algorithme-de-bellman">Algorithme de Bellman<a aria-hidden="true" class="anchor-heading icon-link" href="#algorithme-de-bellman"></a></h3>
+<h4 id="cas-général">Cas général<a aria-hidden="true" class="anchor-heading icon-link" href="#cas-général"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-032.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-033.png"></p>
+<h4 id="cas-des-graphes-sans-circuits">Cas des graphes sans circuits<a aria-hidden="true" class="anchor-heading icon-link" href="#cas-des-graphes-sans-circuits"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-034.png"></p>
+<h3 id="algorithme-de-floyd-warshall">Algorithme de Floyd-Warshall<a aria-hidden="true" class="anchor-heading icon-link" href="#algorithme-de-floyd-warshall"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-035.png"></p>
+<h1 id="iii---chemins-et-arbres">III-  Chemins et Arbres<a aria-hidden="true" class="anchor-heading icon-link" href="#iii---chemins-et-arbres"></a></h1>
+<h2 id="iii-1-existence-de-chemin">III-1) Existence de chemin<a aria-hidden="true" class="anchor-heading icon-link" href="#iii-1-existence-de-chemin"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-036.png"></p>
+<h3 id="chemin-simple">Chemin simple<a aria-hidden="true" class="anchor-heading icon-link" href="#chemin-simple"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-037.png"></p>
+<h3 id="chemin-eulériens">Chemin eulériens<a aria-hidden="true" class="anchor-heading icon-link" href="#chemin-eulériens"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-038.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-039.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-040.png"></p>
+<h2 id="iii-2-arbres">III-2) Arbres<a aria-hidden="true" class="anchor-heading icon-link" href="#iii-2-arbres"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-041.png"></p>
+<blockquote>
+<p>Notes du 2022/11/16 - End</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Notes du 2022/11/18 - Start</p>
+</blockquote>
+<h3 id="arbre-couvrant-de-coût-minimal">Arbre Couvrant de coût minimal<a aria-hidden="true" class="anchor-heading icon-link" href="#arbre-couvrant-de-coût-minimal"></a></h3>
+<h4 id="principe">Principe<a aria-hidden="true" class="anchor-heading icon-link" href="#principe"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-042.png"></p>
+<p>Un arbre doit etre connexe et n'avoir que <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">N-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span> arretes.</p>
+<p>Le cocycle c'est l'ensemble des arretes qui s'ils sont rajoutés on aura une composante connexe.</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221118-01.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221118-02.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221118-03.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221118-04.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221118-05.png"></p>
+<p>L'idée est de supprimer/rajouter des arretes d'un arbre pour les remplacer par des arretes de <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mover accent="true"><mi>S</mi><mo>ˉ</mo></mover></msub></mrow><annotation encoding="application/x-tex">U_{\bar S}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9126em;vertical-align:-0.2293em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.4707em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord accent mtight"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8201em;"><span style="top:-2.7em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord mathnormal mtight" style="margin-right:0.05764em;">S</span></span><span style="top:-2.9523em;"><span class="pstrut" style="height:2.7em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord mtight">ˉ</span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2293em;"><span></span></span></span></span></span></span></span></span></span></span> qui possède un poids plus optimale. </p>
+<h4 id="algorithme-de-kruskal">Algorithme de Kruskal<a aria-hidden="true" class="anchor-heading icon-link" href="#algorithme-de-kruskal"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-043.png"></p>
+<p>Problème principale de cette algorithm c'est qu'il faut trier les arêtes !</p>
+<h4 id="exemple">Exemple<a aria-hidden="true" class="anchor-heading icon-link" href="#exemple"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221118-06.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221118-07.png"></p>
+<p>Mais comment on identifie si l'on crée un cycle ?</p>
+<p>Pour cela on va indicé chaque sommet à la composante connexe ajoutée lors de l'itération.</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221118-08.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221118-09.png"></p>
+<h4 id="algorithme-de-prim">Algorithme de Prim<a aria-hidden="true" class="anchor-heading icon-link" href="#algorithme-de-prim"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-044.png"></p>
+<h4 id="exemple-1">Exemple<a aria-hidden="true" class="anchor-heading icon-link" href="#exemple-1"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221118-10.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221118-11.png"></p>
+<h1 id="iv--problèmes-de-flots">IV- Problèmes de flots<a aria-hidden="true" class="anchor-heading icon-link" href="#iv--problèmes-de-flots"></a></h1>
+<h2 id="iv-1-généralités">IV-1) Généralités<a aria-hidden="true" class="anchor-heading icon-link" href="#iv-1-généralités"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-045.png"></p>
+<h3 id="définitions">Définitions<a aria-hidden="true" class="anchor-heading icon-link" href="#définitions"></a></h3>
+<blockquote>
+<p>Keywords: Flot saturé</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-046.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221118-12.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-047.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221118-13.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221118-14.png"></p>
+<h2 id="iv-2-algorithme-de-ford-et-de-fulkerson">IV-2) Algorithme de Ford et de Fulkerson<a aria-hidden="true" class="anchor-heading icon-link" href="#iv-2-algorithme-de-ford-et-de-fulkerson"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-048.png"></p>
+<h3 id="coupe-min--flot-max">Coupe min / Flot max<a aria-hidden="true" class="anchor-heading icon-link" href="#coupe-min--flot-max"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-049.png"></p>
+<h3 id="chaîne-améliorante">Chaîne améliorante<a aria-hidden="true" class="anchor-heading icon-link" href="#chaîne-améliorante"></a></h3>
+<blockquote>
+<p>Keywords: Graphe d'écart (ou résiduel)</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-050.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221118-15.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221118-16.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221118-17.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221118-18.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221118-19.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221118-20.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221118-21.png"></p>
+<h3 id="alogrithme">Alogrithme<a aria-hidden="true" class="anchor-heading icon-link" href="#alogrithme"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-051.png"></p>
+<blockquote>
+<p>Notes du 2022/11/18 - End</p>
+</blockquote>
+<p>--</p>
+<blockquote>
+<p>Notes du 2022/11/21 - Start</p>
+</blockquote>
+<h1 id="v--programmation-linéaire-pl">V- Programmation Linéaire (PL)<a aria-hidden="true" class="anchor-heading icon-link" href="#v--programmation-linéaire-pl"></a></h1>
+<h2 id="v-1-introduction">V-1) Introduction<a aria-hidden="true" class="anchor-heading icon-link" href="#v-1-introduction"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-052.png"></p>
+<h3 id="définition">Définition<a aria-hidden="true" class="anchor-heading icon-link" href="#définition"></a></h3>
+<blockquote>
+<p>Keywords: Programme Linéaire</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-053.png"></p>
+<h3 id="hypothèses">Hypothèses<a aria-hidden="true" class="anchor-heading icon-link" href="#hypothèses"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-054.png"></p>
+<ul>
+<li>pas de divisions</li>
+<li>pas de nombres non rationnels</li>
+<li>pas de produit de variable (il faut garder des fonctions linéaires)</li>
+</ul>
+<h3 id="forme-canonique-et-standard">Forme canonique et standard<a aria-hidden="true" class="anchor-heading icon-link" href="#forme-canonique-et-standard"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-055.png"></p>
+<p>Pour passer à la forme std, on rajoute une variable de décision à chaque contrainte pour indiquer combien il manque à l'inégalité pour atteindre l'égalité.</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-056.png"></p>
+<h3 id="terminologie">Terminologie<a aria-hidden="true" class="anchor-heading icon-link" href="#terminologie"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-057.png"></p>
+<h2 id="v-2-connextions-entre-approches-géométriques-et-algébriques">V-2) Connextions entre approches géométriques et algébriques<a aria-hidden="true" class="anchor-heading icon-link" href="#v-2-connextions-entre-approches-géométriques-et-algébriques"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-058.png"></p>
+<h3 id="représentation-dans-le-plan">Représentation dans le plan<a aria-hidden="true" class="anchor-heading icon-link" href="#représentation-dans-le-plan"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-059.png"></p>
+<p><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span></span> est au final le coeficient directeur du plan hyperbolique et ce coeficient oriente la priorité des variables de décision:</p>
+<ul>
+<li>Si le plan est vertical (dans le cas 2D) on prioritise <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">x_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> par rapport à <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">x_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> ; et</li>
+<li>Inversement si le plan est horizental.</li>
+</ul>
+<h3 id="premières-connextions">Premières connextions<a aria-hidden="true" class="anchor-heading icon-link" href="#premières-connextions"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-060.png"></p>
+<h3 id="algèbre">Algèbre<a aria-hidden="true" class="anchor-heading icon-link" href="#algèbre"></a></h3>
+<h4 id="solution-dun-système-déquations">Solution d'un système d'équations<a aria-hidden="true" class="anchor-heading icon-link" href="#solution-dun-système-déquations"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-061.png"></p>
+<ul>
+<li><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span></span> partitionnement <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span></span> |</li>
+<li><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>N</mi></msub></mrow><annotation encoding="application/x-tex">x_N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> varibles hors bases</li>
+<li><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">x_B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> variables de bases</li>
+</ul>
+<h4 id="base-et-solution-de-base">Base et Solution de base<a aria-hidden="true" class="anchor-heading icon-link" href="#base-et-solution-de-base"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-062.png"></p>
+<ul>
+<li><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>D</mi></msub></mrow><annotation encoding="application/x-tex">x_D</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> variables de décision</li>
+<li><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>E</mi></msub></mrow><annotation encoding="application/x-tex">x_E</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em;">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> variables d'écart (permettant de passer d'une forme canonique à une forme standard)</li>
+</ul>
+<h3 id="géométrie">Géométrie<a aria-hidden="true" class="anchor-heading icon-link" href="#géométrie"></a></h3>
+<h4 id="point-extreme">Point Extreme<a aria-hidden="true" class="anchor-heading icon-link" href="#point-extreme"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-063.png"></p>
+<h3 id="connexions">Connexions<a aria-hidden="true" class="anchor-heading icon-link" href="#connexions"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-064.png"></p>
+<h3 id="dégénérescence">Dégénérescence<a aria-hidden="true" class="anchor-heading icon-link" href="#dégénérescence"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-065.png"></p>
+<h2 id="v-3-principe-de-lalgo-du-simplexe">V-3) Principe de l'algo du simplexe<a aria-hidden="true" class="anchor-heading icon-link" href="#v-3-principe-de-lalgo-du-simplexe"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-066.png"></p>
+<h3 id="idée-de-base">Idée de base<a aria-hidden="true" class="anchor-heading icon-link" href="#idée-de-base"></a></h3>
+<blockquote>
+<p>Keywords: voisine</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-067.png"></p>
+<h3 id="exemple-utilisation-du-dictionnaire">Exemple: Utilisation du dictionnaire<a aria-hidden="true" class="anchor-heading icon-link" href="#exemple-utilisation-du-dictionnaire"></a></h3>
+<h4 id="formulation">Formulation<a aria-hidden="true" class="anchor-heading icon-link" href="#formulation"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-068.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221121-01.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221121-02.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221121-03.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221121-04.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221121-05.png"></p>
+<p>Il vient que la solution optimale est <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mo stretchy="false">(</mo><mn>3</mn><mo separator="true">,</mo><mn>0</mn><mo separator="true">,</mo><mn>7</mn><mo separator="true">,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x=(3,0,7,0)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">3</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">7</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0</span><span class="mclose">)</span></span></span></span></span> car <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi></mrow><annotation encoding="application/x-tex">z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span></span></span></span></span> est tangent au point extremum et ne peut plus être augmenté (les coef sont tous négatifs)</p>
+<blockquote>
+<p>Notes du 2022/11/21 - End</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Notes du 2022/11/25 - Start</p>
+</blockquote>
+<h3 id="tableau-du-simplexe">Tableau du simplexe<a aria-hidden="true" class="anchor-heading icon-link" href="#tableau-du-simplexe"></a></h3>
+<blockquote>
+<p>Keywords: matrice augmentée ; tableau admissible</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-069.png"></p>
+<ul>
+<li>Méthode efficace à la main même si pas très optimale en terme de temps d'execution.</li>
+</ul>
+<h4 id="base-quelconque">Base quelconque<a aria-hidden="true" class="anchor-heading icon-link" href="#base-quelconque"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-070.png"></p>
+<h4 id="le-pivotage">Le pivotage<a aria-hidden="true" class="anchor-heading icon-link" href="#le-pivotage"></a></h4>
+<blockquote>
+<p>Keywords: bases voisines ; colonne/ligne du pivot </p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-071.png"></p>
+<h4 id="signatures">Signatures<a aria-hidden="true" class="anchor-heading icon-link" href="#signatures"></a></h4>
+<blockquote>
+<p>Keywords: coûts réduits ; tableau non-borné</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-072.png"></p>
+<h4 id="algorithm-phase-2">Algorithm (Phase 2)<a aria-hidden="true" class="anchor-heading icon-link" href="#algorithm-phase-2"></a></h4>
+<blockquote>
+<p>Keywords: Tableau courant ; conflit ; règle de Brand</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-073.png"></p>
+<h5 id="exemple-1-1">Exemple 1<a aria-hidden="true" class="anchor-heading icon-link" href="#exemple-1-1"></a></h5>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-074.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-075.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-076.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-077.png"></p>
+<h5 id="exemple-2-règle-de-bland">Exemple 2 (règle de Bland)<a aria-hidden="true" class="anchor-heading icon-link" href="#exemple-2-règle-de-bland"></a></h5>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-078.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-079.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-080.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-081.png"></p>
+<h2 id="v-4-choix-dune-base-initiale-admissible">V-4) Choix d'une base initiale admissible<a aria-hidden="true" class="anchor-heading icon-link" href="#v-4-choix-dune-base-initiale-admissible"></a></h2>
+<h3 id="phase-1-du-simplexe">Phase 1 du simplexe<a aria-hidden="true" class="anchor-heading icon-link" href="#phase-1-du-simplexe"></a></h3>
+<blockquote>
+<p>Keywords: tableau initiale admissible</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-082.png"></p>
+<h4 id="pourquoi-une-phase-1-">Pourquoi une phase 1 ?<a aria-hidden="true" class="anchor-heading icon-link" href="#pourquoi-une-phase-1-"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-083.png"></p>
+<h4 id="principes">Principes<a aria-hidden="true" class="anchor-heading icon-link" href="#principes"></a></h4>
+<blockquote>
+<p>Keywords: variable auxilliaire ; problème auxiliaire P2</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-084.png"></p>
+<h4 id="propriétés">Propriétés<a aria-hidden="true" class="anchor-heading icon-link" href="#propriétés"></a></h4>
+<blockquote>
+<p>Keywords: base admissible ; variable d'écart ; solution admissible</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-085.png"></p>
+<h3 id="algorithme-du-simplexe-à-deux-phases">Algorithme du simplexe à deux phases<a aria-hidden="true" class="anchor-heading icon-link" href="#algorithme-du-simplexe-à-deux-phases"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-086.png"></p>
+<p>En terme d'optimalité, l'algorithm du simplexe est d'ordre exponentielle (dans le pire des cas) mais il n'y a pas mieux en moyenne pour le moment.</p>
+<p>Un algo concurrant serait l'algo ellipsoide qui est d'ordre polynomiale dans le pire des cas mais en moyenne est moins efficace</p>
+<h3 id="exemple-2">Exemple<a aria-hidden="true" class="anchor-heading icon-link" href="#exemple-2"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-087.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221125-01.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221125-02.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221125-03.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221125-04.png"></p>
+<p>La phase 1 est terminée. On peut alors appliquer la phase 2 en faisant rentrer <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">x_3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> en base et sortir <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>5</mn></msub></mrow><annotation encoding="application/x-tex">x_5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span>.</p>
+<h1 id="vi--pl-en-nombre-entiers-plne">VI- PL en Nombre Entiers (PLNE)<a aria-hidden="true" class="anchor-heading icon-link" href="#vi--pl-en-nombre-entiers-plne"></a></h1>
+<h2 id="vi-1-introduction">VI-1) Introduction<a aria-hidden="true" class="anchor-heading icon-link" href="#vi-1-introduction"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-088.png"></p>
+<h3 id="définitions-1">Définitions<a aria-hidden="true" class="anchor-heading icon-link" href="#définitions-1"></a></h3>
+<blockquote>
+<p>Keywords: programme en nombres entiers ; programme binaire ; programme mixte</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-089.png"></p>
+<h3 id="intérêts-et-inconvénients-de-la-plne">Intérêts et inconvénients de la PLNE<a aria-hidden="true" class="anchor-heading icon-link" href="#intérêts-et-inconvénients-de-la-plne"></a></h3>
+<blockquote>
+<p>Keywords: langage de modélisation ; solveur: Cplex/Gurobi/SCIP</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-090.png"></p>
+<h3 id="relaxation-linéaire">Relaxation linéaire<a aria-hidden="true" class="anchor-heading icon-link" href="#relaxation-linéaire"></a></h3>
+<blockquote>
+<p>Keywords: contrainte d'intégrité ; borne inférieure/supérieure du critère</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-091.png"></p>
+<h3 id="difficulté-de-la-plne">Difficulté de la PLNE<a aria-hidden="true" class="anchor-heading icon-link" href="#difficulté-de-la-plne"></a></h3>
+<blockquote>
+<p>Keywords: arrondir</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-092.png"></p>
+<h3 id="illustration-1">Illustration 1<a aria-hidden="true" class="anchor-heading icon-link" href="#illustration-1"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-093.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-094.png"></p>
+<h3 id="illustration-2">Illustration 2<a aria-hidden="true" class="anchor-heading icon-link" href="#illustration-2"></a></h3>
+<p>Exemple du problème de sac à dos</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-095.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-096.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-097.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-098.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-099.png"></p>
+<blockquote>
+<p>Notes du 2022/11/25 - End</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Notes du 2022/12/05 - Start</p>
+</blockquote>
+<h3 id="méthode-de-résolution-des-plne">Méthode de résolution des PLNE<a aria-hidden="true" class="anchor-heading icon-link" href="#méthode-de-résolution-des-plne"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-100.png"></p>
+<h2 id="vi-2-cas-des-plne-équivalents--à-leur-pl-relaxé">VI-2) Cas des PLNE équivalents  à leur PL relaxé<a aria-hidden="true" class="anchor-heading icon-link" href="#vi-2-cas-des-plne-équivalents--à-leur-pl-relaxé"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-101.png"></p>
+<h3 id="le-théorème-des-valeurs-entières">Le théorème des valeurs entières<a aria-hidden="true" class="anchor-heading icon-link" href="#le-théorème-des-valeurs-entières"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-102.png"></p>
+<h3 id="matrice-totalement-unimodulaire">Matrice totalement unimodulaire<a aria-hidden="true" class="anchor-heading icon-link" href="#matrice-totalement-unimodulaire"></a></h3>
+<blockquote>
+<p>Keywords: Hellet et Tomkins</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-103.png"></p>
+<h3 id="problèmes-de-réseaux">Problèmes de réseaux<a aria-hidden="true" class="anchor-heading icon-link" href="#problèmes-de-réseaux"></a></h3>
+<blockquote>
+<p>Keywords: matrice d'incidence sommets-arcs</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-104.png"></p>
+<h3 id="exemple-calcul-du-flot-maximum">Exemple calcul du flot maximum<a aria-hidden="true" class="anchor-heading icon-link" href="#exemple-calcul-du-flot-maximum"></a></h3>
+<blockquote>
+<p>Keywords: matrice de contraintes</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-105.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221205-01.png"></p>
+<h2 id="vi-3-méthode-arbore">VI-3) Méthode arbore<a aria-hidden="true" class="anchor-heading icon-link" href="#vi-3-méthode-arbore"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-106.png"></p>
+<h3 id="branch--bound">Branch &#x26; Bound<a aria-hidden="true" class="anchor-heading icon-link" href="#branch--bound"></a></h3>
+<h4 id="branch">Branch<a aria-hidden="true" class="anchor-heading icon-link" href="#branch"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-107.png"></p>
+<h4 id="remarques">Remarques<a aria-hidden="true" class="anchor-heading icon-link" href="#remarques"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-108.png"></p>
+<h4 id="bound">Bound<a aria-hidden="true" class="anchor-heading icon-link" href="#bound"></a></h4>
+<blockquote>
+<p>Keywords: relaxation linéaire</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-109.png"></p>
+<h3 id="principes-de-séparation">Principes de séparation<a aria-hidden="true" class="anchor-heading icon-link" href="#principes-de-séparation"></a></h3>
+<blockquote>
+<p>Typique dans un sujet d'examen</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-110.png"></p>
+<h3 id="exemple-3">Exemple<a aria-hidden="true" class="anchor-heading icon-link" href="#exemple-3"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-111.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-112.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-113.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-114.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-115.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-116.png"></p>
+<h2 id="vi-4-modélisation">VI-4) Modélisation<a aria-hidden="true" class="anchor-heading icon-link" href="#vi-4-modélisation"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-117.png"></p>
+<h3 id="pl-01">PL-01<a aria-hidden="true" class="anchor-heading icon-link" href="#pl-01"></a></h3>
+<blockquote>
+<p>Keywords: k parmi n, implication, contraintes logiques, problèmes d'investissement</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-118.png"></p>
+<h3 id="coûts-fixes">Coûts fixes<a aria-hidden="true" class="anchor-heading icon-link" href="#coûts-fixes"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-119.png"></p>
+<ul>
+<li>B est une constante (elle représente ici le plafond imposé par le budget dans le cas où on investiserait que sur <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">x_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span>)</li>
+</ul>
+<h3 id="disjonction">Disjonction<a aria-hidden="true" class="anchor-heading icon-link" href="#disjonction"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-120.png"></p>
+<h3 id="implication">Implication<a aria-hidden="true" class="anchor-heading icon-link" href="#implication"></a></h3>
+<blockquote>
+<p>Keywords: Table de Karnaugh</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-121.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221205-02.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221205-03.png"></p>
+<h3 id="k-parmi-n">k parmi n<a aria-hidden="true" class="anchor-heading icon-link" href="#k-parmi-n"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221205-04.png"></p>
+<h3 id="domaines-non-convexes">Domaines non-convexes<a aria-hidden="true" class="anchor-heading icon-link" href="#domaines-non-convexes"></a></h3>
+<blockquote>
+<p>Keywords: domaine réalisable</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-122.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221205-05.png"></p>
+<h3 id="objectif">Objectif<a aria-hidden="true" class="anchor-heading icon-link" href="#objectif"></a></h3>
+<blockquote>
+<p>Keywords: fonctions affines par morceaux , coût d'expansion</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-123.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221205-06.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221205-07.png"></p>
+<h3 id="produit-de-variables">Produit de variables<a aria-hidden="true" class="anchor-heading icon-link" href="#produit-de-variables"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.Slide-124.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221205-08.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.OPLNE.CM.BB20221205-09.png"></p>
+<blockquote>
+<p>Notes du 2022/12/05 - End</p>
+</blockquote>
+<hr>
+
+<hr>
+<strong>Backlinks</strong>
+<ul>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/iabo1ojjyit69368mncuo34">OPLNE - Optimisation Programmation Linéaire en Nombres Entiers</a></li>
+</ul>

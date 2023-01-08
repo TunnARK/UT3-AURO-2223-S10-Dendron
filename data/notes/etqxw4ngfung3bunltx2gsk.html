@@ -1,0 +1,121 @@
+<h1 id="introduction-to-modern-cmake">Introduction to Modern CMake<a aria-hidden="true" class="anchor-heading icon-link" href="#introduction-to-modern-cmake"></a></h1>
+<p><strong>Source:</strong> <a href="https://gitlab.laas.fr/gsaurel/talks">GitLab Repo 'Talks'</a></p>
+<hr>
+<!--
+id: trraffztts6499imvn5e1q0
+title: Introduction to Modern CMake
+desc: ''
+updated: 1664628178080
+created: 1664628178080
+subtitle: C++ dependency tutorial
+theme: laas
+author: Guilhem Saurel
+mainfont: Source Serif 4
+monofont: Source Code Pro
+-->
+<h2 id="this-presentation">This presentation<a aria-hidden="true" class="anchor-heading icon-link" href="#this-presentation"></a></h2>
+<h3 id="available-at">Available at<a aria-hidden="true" class="anchor-heading icon-link" href="#available-at"></a></h3>
+<p>\centering</p>
+<p><a href="https://homepages.laas.fr/gsaurel/talks/modern-cmake.pdf"><code>https://homepages.laas.fr/gsaurel/talks/ modern-cmake.pdf</code></a></p>
+<h3 id="under-license">Under License<a aria-hidden="true" class="anchor-heading icon-link" href="#under-license"></a></h3>
+<p>\centering</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/media/cc.png" alt="CC" style="">
+<img src="/UT3-AURO-2223-S10-Dendron/media/by.png" alt="BY" style="">
+<img src="/UT3-AURO-2223-S10-Dendron/media/sa.png" alt="SA" style=""></p>
+<p><a href="https://creativecommons.org/licenses/by-sa/4.0/">https://creativecommons.org/licenses/by-sa/4.0/</a></p>
+<h2 id="this-presentation-continued">This presentation (continued)<a aria-hidden="true" class="anchor-heading icon-link" href="#this-presentation-continued"></a></h2>
+<h3 id="source">Source<a aria-hidden="true" class="anchor-heading icon-link" href="#source"></a></h3>
+<p>\centering</p>
+<p><a href="https://gitlab.laas.fr/gsaurel/talks/-/blob/main/modern-cmake.md"><code>https://gitlab.laas.fr/gsaurel/talks : modern-cmake.md</code></a></p>
+<h3 id="discussions">Discussions<a aria-hidden="true" class="anchor-heading icon-link" href="#discussions"></a></h3>
+<p>\centering</p>
+<p>\url{<a href="https://im.laas.fr/%5C#/room/%5C#modern-cmake:laas.fr%7D">https://im.laas.fr/\#/room/\#modern-cmake:laas.fr}</a></p>
+<h2 id="c-workflow">C++ Workflow<a aria-hidden="true" class="anchor-heading icon-link" href="#c-workflow"></a></h2>
+<h3 id="configure">Configure<a aria-hidden="true" class="anchor-heading icon-link" href="#configure"></a></h3>
+<ul>
+<li>Find the dependencies you need</li>
+<li>Declare the options you want</li>
+</ul>
+<p>. . .</p>
+<h3 id="compile">Compile<a aria-hidden="true" class="anchor-heading icon-link" href="#compile"></a></h3>
+<ul>
+<li>Generate the right arguments for your compiler</li>
+<li>Run it</li>
+</ul>
+<p>. . .</p>
+<h3 id="run">Run<a aria-hidden="true" class="anchor-heading icon-link" href="#run"></a></h3>
+<ul>
+<li>Start your executable with its associated <code>*.so</code></li>
+</ul>
+<h2 id="example">Example<a aria-hidden="true" class="anchor-heading icon-link" href="#example"></a></h2>
+<ul>
+<li>You develop a library called "my-lib"</li>
+<li>It needs a dependency from someone else called "a-dep"</li>
+</ul>
+<p>. . .</p>
+<pre><code>└── $A_DEP_INSTALL_PREFIX
+    ├── include
+    │   └── a-dep
+    │       └── fwd.hpp
+    └── lib
+        └── liba-dep.so
+</code></pre>
+<h2 id="legacy-cmake">Legacy CMake<a aria-hidden="true" class="anchor-heading icon-link" href="#legacy-cmake"></a></h2>
+<h3 id="finda-depcmake"><code>FindA-dep.cmake</code><a aria-hidden="true" class="anchor-heading icon-link" href="#finda-depcmake"></a></h3>
+<pre class="language-cmake"><code class="language-cmake"><span class="token keyword">find_path</span><span class="token punctuation">(</span>a_dep_INCLUDE_DIRS NAMES a-dep/fwd.hpp<span class="token punctuation">)</span>
+<span class="token keyword">find_library</span><span class="token punctuation">(</span>a_dep_LIBRARIES NAMES liba-dep.so<span class="token punctuation">)</span>
+</code></pre>
+<p>. . .</p>
+<h3 id="cmakeliststxt"><code>CMakeLists.txt</code><a aria-hidden="true" class="anchor-heading icon-link" href="#cmakeliststxt"></a></h3>
+<pre class="language-cmake"><code class="language-cmake"><span class="token keyword">find_package</span><span class="token punctuation">(</span>a-dep REQUIRED<span class="token punctuation">)</span>
+<span class="token keyword">include_directories</span><span class="token punctuation">(</span><span class="token punctuation">${</span>a_dep_INCLUDE_DIRS<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">link_libraries</span><span class="token punctuation">(</span><span class="token punctuation">${</span>a_dep_LIBRARIES<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">add_library</span><span class="token punctuation">(</span>my-prog main.cpp include/my-proj/fwd.hpp<span class="token punctuation">)</span>
+</code></pre>
+<h2 id="modern-cmake">Modern CMake<a aria-hidden="true" class="anchor-heading icon-link" href="#modern-cmake"></a></h2>
+<h3 id="cmakeliststxt-1"><code>CMakeLists.txt</code><a aria-hidden="true" class="anchor-heading icon-link" href="#cmakeliststxt-1"></a></h3>
+<pre class="language-cmake"><code class="language-cmake"><span class="token keyword">find_package</span><span class="token punctuation">(</span>a-dep REQUIRED<span class="token punctuation">)</span>
+<span class="token keyword">add_library</span><span class="token punctuation">(</span>my-lib main.cpp include/my-prog/fwd.hpp<span class="token punctuation">)</span>
+<span class="token keyword">target_link_libraries</span><span class="token punctuation">(</span>my-prog <span class="token namespace">PUBLIC</span> a-<span class="token inserted class-name">dep::a</span>-dep<span class="token punctuation">)</span>
+</code></pre>
+<h3 id="a-dep-configcmake"><code>a-dep-config.cmake</code><a aria-hidden="true" class="anchor-heading icon-link" href="#a-dep-configcmake"></a></h3>
+<pre class="language-cmake"><code class="language-cmake"><span class="token keyword">add_library</span><span class="token punctuation">(</span>a-<span class="token inserted class-name">dep::a</span>-dep <span class="token namespace">SHARED</span> <span class="token property">IMPORTED</span><span class="token punctuation">)</span>
+<span class="token keyword">set_target_properties</span><span class="token punctuation">(</span>a-<span class="token inserted class-name">dep::a</span>-dep <span class="token namespace">PROPERTIES</span>
+  <span class="token property">LINK_LIBRARIES</span> <span class="token string">"liba-dep.so"</span>
+  <span class="token property">INCLUDE_DIRECTORIES</span> <span class="token string">"<span class="token interpolation"><span class="token punctuation">${</span><span class="token variable">_IMPORTED_PREFIX</span><span class="token punctuation">}</span></span>/include"</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="advantages">Advantages<a aria-hidden="true" class="anchor-heading icon-link" href="#advantages"></a></h2>
+<ol>
+<li><code>a-dep</code> can change whatever it needs</li>
+</ol>
+<p>. . .</p>
+<ol start="2">
+<li>No more naming issues like</li>
+</ol>
+<pre class="language-cmake"><code class="language-cmake"><span class="token keyword">set</span><span class="token punctuation">(</span>A_DEP_INCLUDE_DIRS <span class="token punctuation">${</span>a_dep_INCLUDE_DIRS<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">set</span><span class="token punctuation">(</span>A_DEP_INCLUDE_DIR <span class="token punctuation">${</span>a_dep_INCLUDE_DIRS<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">set</span><span class="token punctuation">(</span>a_dep_INCLUDE_DIR <span class="token punctuation">${</span>a_dep_INCLUDE_DIRS<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<p>. . .</p>
+<ol start="3">
+<li>Relocatable packages</li>
+</ol>
+<h2 id="relocation">Relocation<a aria-hidden="true" class="anchor-heading icon-link" href="#relocation"></a></h2>
+<h3 id="my-lib-configcmake-from-legacy-a-dep"><code>my-lib-config.cmake</code> from legacy a-dep<a aria-hidden="true" class="anchor-heading icon-link" href="#my-lib-configcmake-from-legacy-a-dep"></a></h3>
+<pre class="language-cmake"><code class="language-cmake"><span class="token keyword">add_library</span><span class="token punctuation">(</span>my-<span class="token inserted class-name">lib::my</span>-lib <span class="token namespace">SHARED</span> <span class="token property">IMPORTED</span><span class="token punctuation">)</span>
+<span class="token keyword">set_target_properties</span><span class="token punctuation">(</span>my-<span class="token inserted class-name">lib::my</span>-lib <span class="token namespace">PROPERTIES</span>
+  <span class="token property">LINK_LIBRARIES</span> <span class="token string">"libmy-lib.so;/usr/lib/liba-dep.so"</span>
+  <span class="token property">INCLUDE_DIRECTORIES</span>
+  <span class="token string">"<span class="token interpolation"><span class="token punctuation">${</span><span class="token variable">_IMPORTED_PREFIX</span><span class="token punctuation">}</span></span>/include;/usr/include"</span><span class="token punctuation">)</span>
+</code></pre>
+<p>. . .</p>
+<h3 id="my-lib-configcmake-from-modern-a-dep"><code>my-lib-config.cmake</code> from modern a-dep<a aria-hidden="true" class="anchor-heading icon-link" href="#my-lib-configcmake-from-modern-a-dep"></a></h3>
+<pre class="language-cmake"><code class="language-cmake"><span class="token function">find_dependency</span><span class="token punctuation">(</span>a-dep REQUIRED<span class="token punctuation">)</span>
+<span class="token keyword">add_library</span><span class="token punctuation">(</span>my-<span class="token inserted class-name">lib::my</span>-lib <span class="token namespace">SHARED</span> <span class="token property">IMPORTED</span><span class="token punctuation">)</span>
+<span class="token keyword">set_target_properties</span><span class="token punctuation">(</span>my-<span class="token inserted class-name">lib::my</span>-lib <span class="token namespace">PROPERTIES</span>
+  LINK_DEPENDENT_LIBRARIES <span class="token string">"a-dep::a-dep"</span>
+  <span class="token property">LINK_LIBRARIES</span> <span class="token string">"libmy-lib.so"</span>
+  <span class="token property">INCLUDE_DIRECTORIES</span> <span class="token string">"<span class="token interpolation"><span class="token punctuation">${</span><span class="token variable">_IMPORTED_PREFIX</span><span class="token punctuation">}</span></span>/include"</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="thats-all-folks-">That's all folks !<a aria-hidden="true" class="anchor-heading icon-link" href="#thats-all-folks-"></a></h2>
+<p>Thanks for your time :)</p>

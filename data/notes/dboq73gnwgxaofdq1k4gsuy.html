@@ -1,0 +1,29 @@
+<h1 id="tp1---étalonnage">TP1 - Étalonnage<a aria-hidden="true" class="anchor-heading icon-link" href="#tp1---étalonnage"></a></h1>
+<h1 id="1---mise-en-place-de-lenvironnement">1 - Mise en place de l'environnement<a aria-hidden="true" class="anchor-heading icon-link" href="#1---mise-en-place-de-lenvironnement"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.TP1.Sujet.Part1.png"></p>
+<h1 id="2---vision-monoculaire">2 - Vision Monoculaire<a aria-hidden="true" class="anchor-heading icon-link" href="#2---vision-monoculaire"></a></h1>
+<h2 id="2-1-calibration">2-1. Calibration<a aria-hidden="true" class="anchor-heading icon-link" href="#2-1-calibration"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.TP1.Sujet.Part2.Q1.png"></p>
+<p>La mire est composée d'une grille de taille 4x11 contenant des cercles noirs sur un fond blanc.</p>
+<p>Cette mire est asymmétrique ce qui apporte l'advantage d'éviter l'indétermination liée à une rotation de 180 degrés.</p>
+<p>Il nous faut donc implémenter la fonction <code>findCirclesGrid</code>:</p>
+<ol>
+<li>Dans <code>Calibration.py</code>, utiliser la <a href="https://docs.opencv.org/3.4/">docs d'opencv</a> pour implémenter les fonctions prédéfinies comme <code>findCirclesGrid</code></li>
+<li>Dans <code>MonoMain.py</code>, instancier un objet de la class <code>MonoCalibration</code> en utilisant le constructeur</li>
+<li>Dans <code>MonoMain.py</code>, lancer la fonction <code>acquire</code></li>
+<li>Prélever plusieurs perceptives de la mire en appuyant sur <code>espace</code></li>
+</ol>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.TP1.Sujet.Part2.Q2.png"></p>
+<p>La variable <code>objectPoints</code> correspond à la position réelle/monde des cercles en <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo separator="true">,</mo><mi>z</mi></mrow><annotation encoding="application/x-tex">x,y,z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span></span></span></span></span> tandis que la variable <code>imgPoints</code> elle correspond aux coordonnées des cercles dans le plan image en <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo separator="true">,</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">u,v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span></span>.</p>
+<ol>
+<li>Dans <code>Calibrate.py</code>, utiliser la <a href="https://docs.opencv.org/3.4/">doc d'opencv</a> pour implémenter les fonctions prédéfinies <code>cv.calibrateCameraExtended</code></li>
+<li>Dans <code>MonoMain.py</code>, lancer la fonction <code>calibrate</code></li>
+</ol>
+<blockquote>
+<p>Attention: attribut sans <code>self.</code></p>
+</blockquote>
+<hr>
+<strong>Backlinks</strong>
+<ul>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/6lbbamloic83l9fqsm52deo">P3D - Perception 3D</a></li>
+</ul>

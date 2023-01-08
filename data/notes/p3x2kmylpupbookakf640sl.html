@@ -1,0 +1,194 @@
+<h1 id="mouvement">Mouvement<a aria-hidden="true" class="anchor-heading icon-link" href="#mouvement"></a></h1>
+<blockquote>
+<p>Notes du 2022/09/16 - Start</p>
+</blockquote>
+<h2 id="definition">Definition<a aria-hidden="true" class="anchor-heading icon-link" href="#definition"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-01.png"></p>
+<blockquote>
+<p>Pb non traité ici le dilem de bouger pour percevoir ou faire bouger l'objet pour le percevoir</p>
+</blockquote>
+<h2 id="problématique">Problématique<a aria-hidden="true" class="anchor-heading icon-link" href="#problématique"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-02.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-03.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-04.png"></p>
+<blockquote>
+<p>Couvrir un terrain est un probleme 'resolu' de nos jours</p>
+</blockquote>
+<h2 id="plannification">Plannification<a aria-hidden="true" class="anchor-heading icon-link" href="#plannification"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-05.png"></p>
+<blockquote>
+<p>Traduit le probleme sous forme geometrique</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-06.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-07.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-08.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-09.png"></p>
+<h2 id="modélisation">Modélisation<a aria-hidden="true" class="anchor-heading icon-link" href="#modélisation"></a></h2>
+<h3 id="carte-métrique">Carte Métrique<a aria-hidden="true" class="anchor-heading icon-link" href="#carte-métrique"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-10.png"></p>
+<blockquote>
+<p>Carte Métrique est une représentation des obstacles tres utile pour la plannification mais difficile à construire</p>
+</blockquote>
+<h3 id="carte-damers">Carte d'amers<a aria-hidden="true" class="anchor-heading icon-link" href="#carte-damers"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-11.png"></p>
+<blockquote>
+<p>Tres facile pour se localiser mais plannification difficile car informations eparses</p>
+</blockquote>
+<h3 id="carte-grille-doccupation">Carte grille d'occupation<a aria-hidden="true" class="anchor-heading icon-link" href="#carte-grille-doccupation"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-12.png"></p>
+<h3 id="carte-délévation-mnt">Carte d'élévation MNT<a aria-hidden="true" class="anchor-heading icon-link" href="#carte-délévation-mnt"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-13.png"></p>
+<blockquote>
+<p>Tres utile pour les terrains accidentés</p>
+</blockquote>
+<blockquote>
+<p>Probleme de passage à l'echelle (plus la surface est grande plus il y aura de points pour une meme resolution)</p>
+</blockquote>
+<h3 id="carte-topologique">Carte Topologique<a aria-hidden="true" class="anchor-heading icon-link" href="#carte-topologique"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-14.png"></p>
+<blockquote>
+<p>Creer des graphes topologiques pour trouver un chemin</p>
+</blockquote>
+<blockquote>
+<p>Pb: ne resoud pas le probleme de plannification</p>
+</blockquote>
+<h3 id="conclusion-sur-les-cartes">Conclusion sur les cartes<a aria-hidden="true" class="anchor-heading icon-link" href="#conclusion-sur-les-cartes"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-15.png"></p>
+<blockquote>
+<p>Attention lors de la correspondance entre carte (chaque carte peut avoir ses erreurs respectives)</p>
+</blockquote>
+<h2 id="espace-de-configuration">Espace de configuration<a aria-hidden="true" class="anchor-heading icon-link" href="#espace-de-configuration"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-16.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-17.png"></p>
+<blockquote>
+<p>Au lieu de faire bouger un objet 3D dans un espace 3D, on va faire bouger un point dans un espace 3D</p>
+</blockquote>
+<p>La difficulté viendra lorsqu'on se deplace proche d'un obstacle (comme un poto) il faudra garder en tete que notre point represente un objet volumineux</p>
+<p>Pour eviter cela on calculer la transformée de l'obstacle pour le faire apparaitre dans l'espace de configuration</p>
+<h3 id="de-lespace-de-travail-vers-lespace-de-configuration">De l'espace de travail vers l'espace de configuration<a aria-hidden="true" class="anchor-heading icon-link" href="#de-lespace-de-travail-vers-lespace-de-configuration"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-18.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-19.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-20.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-21.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-22.png"></p>
+<h3 id="exemple">Exemple<a aria-hidden="true" class="anchor-heading icon-link" href="#exemple"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-23.png"></p>
+<h3 id="différents-sous-espaces-de-ec">Différents sous-espaces de EC<a aria-hidden="true" class="anchor-heading icon-link" href="#différents-sous-espaces-de-ec"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-24.png"></p>
+<h4 id="ec-de-dim-3">EC de dim 3<a aria-hidden="true" class="anchor-heading icon-link" href="#ec-de-dim-3"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-25.png"></p>
+<blockquote>
+<p>La complexite de plannification explose en passant d'un espace 2D à 3D</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-26.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-27.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-28.png"></p>
+<blockquote>
+<p>La plannification va se traduire sur la surface du TOR</p>
+</blockquote>
+<h3 id="existence-dun-chemin-solution">Existence d'un chemin solution<a aria-hidden="true" class="anchor-heading icon-link" href="#existence-dun-chemin-solution"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-29.png"></p>
+<blockquote>
+<p>La métrique qu'on va utiliser dans l'espace de travail devra être bien choisie pour garantir que les algos converge de facon optimale lors de la resolution dans l'espace de configuration</p>
+</blockquote>
+<blockquote>
+<p>FREE-FLYER = un robot sans contrainte cinématique</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-30.png"></p>
+<h2 id="plannification-déterministe">Plannification déterministe<a aria-hidden="true" class="anchor-heading icon-link" href="#plannification-déterministe"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-31.png"></p>
+<blockquote>
+<p>Attention ces méthodes sont obselètes de nos jours</p>
+</blockquote>
+<h3 id="roadmap">Roadmap<a aria-hidden="true" class="anchor-heading icon-link" href="#roadmap"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-32.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-33.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-34.png"></p>
+<h3 id="diag-de-voronoï">Diag de Voronoï<a aria-hidden="true" class="anchor-heading icon-link" href="#diag-de-voronoï"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-35.png"></p>
+<h2 id="décomposition-polygonale-exacte">Décomposition polygonale exacte<a aria-hidden="true" class="anchor-heading icon-link" href="#décomposition-polygonale-exacte"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-36.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-37.png"></p>
+<h2 id="décomposition-approchée">Décomposition approchée<a aria-hidden="true" class="anchor-heading icon-link" href="#décomposition-approchée"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-38.png"></p>
+<blockquote>
+<p>Advantage ceci nous donne aussi une notion de marge de manoeuvre car on sait que dans une cellule vide on peut faire des erreurs de commande de tant</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-39.png"></p>
+<blockquote>
+<p>Methode superbe mais complexité exponentielle</p>
+</blockquote>
+<p>Utile pour la vehicule autonome mais pas pour la robotique humanoide</p>
+<h2 id="champs-de-potentiel">Champs de potentiel<a aria-hidden="true" class="anchor-heading icon-link" href="#champs-de-potentiel"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-40.png"></p>
+<blockquote>
+<p>Le potentiel repulsifs et attractif peuvent se compenser et donc immobiliser le robot sans atteindre son but</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.BB20220916-01.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-41.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-42.png"></p>
+<p>Les mathématiciens ont essayé de trouver des fonctions de potentiel qui possèdent un minimaux global en continu mais comme ils n'ont pas reussi ils sont restés sur le cas discret.</p>
+<h2 id="plannification-pour-des-robots-non-holonomes">Plannification pour des robots non-holonomes<a aria-hidden="true" class="anchor-heading icon-link" href="#plannification-pour-des-robots-non-holonomes"></a></h2>
+<blockquote>
+<p>CNH = Contrainte Non Holonome</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-43.png"></p>
+<h3 id="small-time-controllable-stc">Small Time Controllable STC<a aria-hidden="true" class="anchor-heading icon-link" href="#small-time-controllable-stc"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-44.png"></p>
+<blockquote>
+<p>N.B.:
+D'après Jean Michel Coron, la notion de Small Time Controllable se définit ainsi en autonomatique
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/SmallTimeControllable.png"></p>
+</blockquote>
+<h3 id="existence-dun-chemin-pour-robot-nh-stc">Existence d'un chemin pour robot NH-STC<a aria-hidden="true" class="anchor-heading icon-link" href="#existence-dun-chemin-pour-robot-nh-stc"></a></h3>
+<h4 id="approche-sur-chemin-holonome">Approche sur chemin holonome<a aria-hidden="true" class="anchor-heading icon-link" href="#approche-sur-chemin-holonome"></a></h4>
+<blockquote>
+<p>On calcul un chemin holonome puis on l'apprixme en chemin non holonome qui respecte la contrainte non holonome</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-45.png"></p>
+<blockquote>
+<p>Si la méthode de calcul de la trajectoire dans ECL est complète alors la méthode de calcul de la trajectoire pour le robot NH est complète</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-46.png"></p>
+<blockquote>
+<p>La trajectoire noire n'est pas le chemin réalisé par le robot mais la preuve qu'un chemin existe. La trajectoire rouge est la trajectoire du robot car elle respecte la contrainte non holonome</p>
+</blockquote>
+<blockquote>
+<p>Il a été montré qu'il n'existe que 48 types de courbes de <em>Reeds &#x26; Cheeps</em> (RS)</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-47.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-48.png"></p>
+<blockquote>
+<p>Si marche arriere non autorisée il existe d'autres types courbes dubins</p>
+</blockquote>
+<p>TODO</p>
+<blockquote>
+<p>Premier algo de plannification resolu dans les annees 90 (il ne reste plus qu'à trouver les bons capteurs)</p>
+</blockquote>
+<h4 id="approche-par-grille-discrète">Approche par grille discrète<a aria-hidden="true" class="anchor-heading icon-link" href="#approche-par-grille-discrète"></a></h4>
+<blockquote>
+<p>Utile pour les robots qui sont limitées physiquement dans leurs mouvements (e.g. le robot CNES ne possède que 9 commandes avant et 9 commandes arrières)</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-49.png"></p>
+<blockquote>
+<p>Attention avec l'heuristique : celle-ci dépend de la métrique choisie</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-50.png"></p>
+<h2 id="méthodes-probabilistes">Méthodes Probabilistes<a aria-hidden="true" class="anchor-heading icon-link" href="#méthodes-probabilistes"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-51.png"></p>
+<h5 id="exercice">Exercice<a aria-hidden="true" class="anchor-heading icon-link" href="#exercice"></a></h5>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.Mouvement-52.png"></p>
+<blockquote>
+<p>Ces méthodes sont tres utilisés en bioinformatique pour par exemple determiner des classes de configuration spatiale pour extraire ou faire evoluer des molécules d'ADN/atomes dans un environnment biologique. Ceci pour restreindre les nombres de test lors de la conception d'un prototype de medicament.</p>
+</blockquote>
+<blockquote>
+<p>Notes du 20220916 - End</p>
+</blockquote>
+<hr>
+<p><a href="/UT3-AURO-2223-S10-Dendron/notes/nvbxxup72acgz9cod6kpe33">Next Page</a></p>
+<hr>
+<hr>
+<strong>Backlinks</strong>
+<ul>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/jlzfz6le5m018ggh4k7ydz8">RMN - Robotique Mobile &#x26; Navigation</a></li>
+</ul>

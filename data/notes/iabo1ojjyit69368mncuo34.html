@@ -1,0 +1,61 @@
+<h1 id="oplne---optimisation-programmation-linéaire-en-nombres-entiers">OPLNE - Optimisation Programmation Linéaire en Nombres Entiers<a aria-hidden="true" class="anchor-heading icon-link" href="#oplne---optimisation-programmation-linéaire-en-nombres-entiers"></a></h1>
+<blockquote>
+<p><strong>Avertissement:</strong>
+Cette page peut contenir des fautes ! Envoyez-moi un message sur <a href="https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org"><code>#UT3-AURO-M2-2223-Request:matrix.org</code></a> si vous en trouvez, merci.</p>
+</blockquote>
+<blockquote>
+<p>Cours donné par <a href="/UT3-AURO-2223-S10-Dendron/briand@laas.fr">C. Briand</a></p>
+</blockquote>
+<hr>
+<h1 id="à-retenir">À Retenir<a aria-hidden="true" class="anchor-heading icon-link" href="#à-retenir"></a></h1>
+<h2 id="densité-dun-graphe">Densité d'un Graphe<a aria-hidden="true" class="anchor-heading icon-link" href="#densité-dun-graphe"></a></h2>
+<p>Soit <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span></span> est le nombre d'arcs et <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span></span> le nombre de noeuds,</p>
+<ul>
+<li>DensitéGraphe Orienté: <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="1em"></mspace><mstyle displaystyle="true" scriptlevel="0"><mfrac><mi>M</mi><mrow><mtext>  </mtext><msup><mi>N</mi><mn>2</mn></msup><mtext>  </mtext></mrow></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\quad\dfrac{M}{\;N^2\;}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.0463em;vertical-align:-0.686em;"></span><span class="mspace" style="margin-right:1em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span> </li>
+<li>Graphe Non-Orienté: <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="1em"></mspace><mstyle displaystyle="true" scriptlevel="0"><mfrac><mi>M</mi><mrow><mtext>  </mtext><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mtext>  </mtext><mi>N</mi><mtext> </mtext><mo stretchy="false">(</mo><mi>N</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mtext>  </mtext></mrow><mn>2</mn></mfrac></mstyle></mrow></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\quad\dfrac{M}{\;\dfrac{\;N\,(N-1)\;}{2}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:3.3633em;vertical-align:-2.003em;"></span><span class="mspace" style="margin-right:1em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.11em;"><span class="pstrut" style="height:3.427em;"></span><span class="mord"><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-3.657em;"><span class="pstrut" style="height:3.427em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-4.104em;"><span class="pstrut" style="height:3.427em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.003em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></li>
+</ul>
+<h1 id="cours-magistraux">Cours Magistraux<a aria-hidden="true" class="anchor-heading icon-link" href="#cours-magistraux"></a></h1>
+<ul>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/niawmwf0isy548js1za09y0">Notes de Cours</a></li>
+</ul>
+<!--
+# Travaux Dirigés
+
+- [[...|...]]
+-->
+<h1 id="travaux-pratiques">Travaux Pratiques<a aria-hidden="true" class="anchor-heading icon-link" href="#travaux-pratiques"></a></h1>
+<ul>
+<li><a title="Private" href="https://wiki.dendron.so/notes/hfyvYGJZQiUwQaaxQO27q.html" target="_blank" class="private">B2.OPLNE.TP1 (Private)</a></li>
+</ul>
+<h1 id="support-de-cours">Support de Cours<a aria-hidden="true" class="anchor-heading icon-link" href="#support-de-cours"></a></h1>
+<h2 id="fichiers-moodles">Fichiers Moodles<a aria-hidden="true" class="anchor-heading icon-link" href="#fichiers-moodles"></a></h2>
+<h3 id="cm">CM<a aria-hidden="true" class="anchor-heading icon-link" href="#cm"></a></h3>
+<ul>
+<li><a href="https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/filetitle">filetitle</a></li>
+</ul>
+<h3 id="td">TD<a aria-hidden="true" class="anchor-heading icon-link" href="#td"></a></h3>
+<ul>
+<li><a href="https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/filetitle">filetitle</a></li>
+</ul>
+<h3 id="tp">TP<a aria-hidden="true" class="anchor-heading icon-link" href="#tp"></a></h3>
+<ul>
+<li><a href="https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/filetitle">filetitle</a></li>
+</ul>
+<h2 id="scans">Scans<a aria-hidden="true" class="anchor-heading icon-link" href="#scans"></a></h2>
+<h3 id="blackbard">Blackbard<a aria-hidden="true" class="anchor-heading icon-link" href="#blackbard"></a></h3>
+<ul>
+<li><a href="https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/filetitle">filetitle</a></li>
+</ul>
+<h3 id="gea">GEA<a aria-hidden="true" class="anchor-heading icon-link" href="#gea"></a></h3>
+<ul>
+<li><a href="https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/filetitle">filetitle</a></li>
+</ul>
+<h3 id="rka">RKA<a aria-hidden="true" class="anchor-heading icon-link" href="#rka"></a></h3>
+<ul>
+<li><a href="https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/filetitle">filetitle</a></li>
+</ul>
+<hr>
+<strong>Children</strong>
+<ol>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/niawmwf0isy548js1za09y0">CM</a></li>
+</ol>

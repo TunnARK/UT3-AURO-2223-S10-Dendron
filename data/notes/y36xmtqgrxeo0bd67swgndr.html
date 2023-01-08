@@ -1,0 +1,223 @@
+<h1 id="code-management">Code Management<a aria-hidden="true" class="anchor-heading icon-link" href="#code-management"></a></h1>
+<blockquote>
+<p><strong>Avertissement:</strong>
+Cette page peut contenir des fautes ! Envoyez-moi un message sur <a href="https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org"><code>#UT3-AURO-M2-2223-Request:matrix.org</code></a> si vous en trouvez, merci.</p>
+</blockquote>
+<blockquote>
+<p>Cours donné par G. Saurel</p>
+</blockquote>
+<p>Support de cours :</p>
+<ul>
+<li><a href="https://homepages.laas.fr/matthieu/talks/git.pdf">Lien vers les slides</a></li>
+</ul>
+<p>Lien utile :</p>
+<ul>
+<li><a href="https://learngitbranching.js.org/">Bac à Sable pour apprendre Git</a></li>
+</ul>
+<hr>
+<blockquote>
+<p>Notes du 2022/09/08 - Start</p>
+</blockquote>
+<h1 id="code-management-1">Code Management<a aria-hidden="true" class="anchor-heading icon-link" href="#code-management-1"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-01.png"></p>
+<blockquote>
+<p>git a été developpe pour le noyau linux</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-02.png"></p>
+<h2 id="agenda">Agenda<a aria-hidden="true" class="anchor-heading icon-link" href="#agenda"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-03.png"></p>
+<h2 id="introduction">Introduction<a aria-hidden="true" class="anchor-heading icon-link" href="#introduction"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-04.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-05.png"></p>
+<h3 id="version-control-concepts">Version Control Concepts<a aria-hidden="true" class="anchor-heading icon-link" href="#version-control-concepts"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-06.png"></p>
+<ul>
+<li>un commit = un freeze de l'état d'un dossier
+<ul>
+<li>prend la version parent</li>
+<li>regarde ce qui est nouveau</li>
+<li>en fait un hash</li>
+<li>lors de la creation avec <code>git init</code> on cree un revision parente ici A puis chaque commit donne l'etat B puis C</li>
+</ul>
+</li>
+</ul>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-07.png"></p>
+<ul>
+<li>possibilité de revenir sur un parent et faire une nouvelle branche</li>
+<li>historiquement la branche principale en Forge était appelé <code>master</code> puis elle a été corrigé à <code>main</code></li>
+<li>dans projet on essais d'éviter de créer trop de branches</li>
+</ul>
+<h3 id="handling-branches">Handling branches<a aria-hidden="true" class="anchor-heading icon-link" href="#handling-branches"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-08.png"></p>
+<h3 id="working-in-teams">Working in teams<a aria-hidden="true" class="anchor-heading icon-link" href="#working-in-teams"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-09.png"></p>
+<h3 id="centralized-model">Centralized model<a aria-hidden="true" class="anchor-heading icon-link" href="#centralized-model"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-10.png"></p>
+<h3 id="distributed-model">Distributed model<a aria-hidden="true" class="anchor-heading icon-link" href="#distributed-model"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-11.png"></p>
+<ul>
+<li>Advantage plus besoin d'etre directement connecter au serveur (donc transfert de fichier plus rapide)</li>
+</ul>
+<h2 id="git-concepts">Git Concepts<a aria-hidden="true" class="anchor-heading icon-link" href="#git-concepts"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-12.png"></p>
+<p><strong>Def:</strong> Repository / diff or patch / commit (verb and noun) / branch / tag </p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-13.png"></p>
+<ul>
+<li>tag reste à jamais sur un commit alors que la branch change à chaque commit
+<ul>
+<li>interface tig
+<ul>
+<li><code>[]</code> branches du pc local (en bold pour la branch current)</li>
+<li><code>{}</code> branches sur le serveur</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Def:</strong> Working Tree / Index / Blob</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-14.png"></p>
+<h3 id="git-interfaces">Git Interfaces<a aria-hidden="true" class="anchor-heading icon-link" href="#git-interfaces"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-15.png"></p>
+<p>Autre interface: <code>git gui</code></p>
+<h3 id="git-forges">Git Forges<a aria-hidden="true" class="anchor-heading icon-link" href="#git-forges"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-16.png"></p>
+<h3 id="initial-setup">Initial Setup<a aria-hidden="true" class="anchor-heading icon-link" href="#initial-setup"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-17.png"></p>
+<ul>
+<li><code>--global</code> configuration appliquée sur le pc</li>
+<li>set favorite editor: <code>git config --global --add core.editor emacs -nw</code></li>
+<li>configuration stockée dans <code>~/.gitconfig</code></li>
+</ul>
+<h2 id="individual-developper">Individual Developper<a aria-hidden="true" class="anchor-heading icon-link" href="#individual-developper"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-18.png"></p>
+<h3 id="creating-repository">Creating repository<a aria-hidden="true" class="anchor-heading icon-link" href="#creating-repository"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-19.png"></p>
+<h3 id="adding-files">Adding files<a aria-hidden="true" class="anchor-heading icon-link" href="#adding-files"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-20.png"></p>
+<h3 id="querying-status">Querying Status<a aria-hidden="true" class="anchor-heading icon-link" href="#querying-status"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-21.png"></p>
+<blockquote>
+<p>Pour montrer le status du dossier</p>
+</blockquote>
+<h3 id="committing-changes">Committing changes<a aria-hidden="true" class="anchor-heading icon-link" href="#committing-changes"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-22.png"></p>
+<ul>
+<li><code>git commit -a</code> réalise un <code>add</code> et puis <code>commit</code> en une seule ligne</li>
+<li><code>-m</code> pour attacher un message au commit</li>
+</ul>
+<h3 id="git-index">Git Index<a aria-hidden="true" class="anchor-heading icon-link" href="#git-index"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-23.png"></p>
+<h3 id="commits">Commits<a aria-hidden="true" class="anchor-heading icon-link" href="#commits"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-24.png"></p>
+<ul>
+<li>digital signature
+<ul>
+<li>permet de comparer un clone en l'identifier avec une cle</li>
+</ul>
+</li>
+</ul>
+<h3 id="interactive-add">Interactive add<a aria-hidden="true" class="anchor-heading icon-link" href="#interactive-add"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-25.png"></p>
+<ul>
+<li><code>-i</code> permet de visualiser quels fichiers selectionner pour le commit</li>
+</ul>
+<h3 id="looking-back">Looking Back<a aria-hidden="true" class="anchor-heading icon-link" href="#looking-back"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-26.png"></p>
+<ul>
+<li><code>index 6bd8f3c..c0ee9ab 100644</code> indique qu'on compare commit 6bd8f3c avec c0ee9ab et donne l'attribut de c0ee9ab avec 100644 pour indiquer si les permissions sont read/write/exe</li>
+</ul>
+<h3 id="examining-changes">Examining Changes<a aria-hidden="true" class="anchor-heading icon-link" href="#examining-changes"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-27.png"></p>
+<h3 id="marking-a-version">Marking a version<a aria-hidden="true" class="anchor-heading icon-link" href="#marking-a-version"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-28.png"></p>
+<h3 id="fixing-mistakes">Fixing mistakes<a aria-hidden="true" class="anchor-heading icon-link" href="#fixing-mistakes"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-29.png"></p>
+<h2 id="using-branches">Using Branches<a aria-hidden="true" class="anchor-heading icon-link" href="#using-branches"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-30.png"></p>
+<h3 id="branches">Branches<a aria-hidden="true" class="anchor-heading icon-link" href="#branches"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-31.png"></p>
+<h3 id="switching-branches">Switching branches<a aria-hidden="true" class="anchor-heading icon-link" href="#switching-branches"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-32.png"></p>
+<h3 id="listing-available-branches">Listing available branches<a aria-hidden="true" class="anchor-heading icon-link" href="#listing-available-branches"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-33.png"></p>
+<h3 id="merging-changes-from-another-branche">Merging changes from another branche<a aria-hidden="true" class="anchor-heading icon-link" href="#merging-changes-from-another-branche"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-34.png"></p>
+<ul>
+<li>fast forward vs normal merge</li>
+<li>software meld montre bien le principe des "3 way merge"</li>
+</ul>
+<h3 id="handling-conflicts">Handling conflicts<a aria-hidden="true" class="anchor-heading icon-link" href="#handling-conflicts"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-35.png"></p>
+<h3 id="tools-to-help-with-merge">Tools to help with merge<a aria-hidden="true" class="anchor-heading icon-link" href="#tools-to-help-with-merge"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-36.png"></p>
+<h3 id="picking-individual-changes">Picking individual changes<a aria-hidden="true" class="anchor-heading icon-link" href="#picking-individual-changes"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-37.png"></p>
+<ul>
+<li>cherry-pick</li>
+</ul>
+<h3 id="replaying-changes-from-a-branch">Replaying changes from a branch<a aria-hidden="true" class="anchor-heading icon-link" href="#replaying-changes-from-a-branch"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-38.png"></p>
+<h3 id="rebase">Rebase<a aria-hidden="true" class="anchor-heading icon-link" href="#rebase"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-39.png"></p>
+<h3 id="interactive-rebase">Interactive Rebase<a aria-hidden="true" class="anchor-heading icon-link" href="#interactive-rebase"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-40.png"></p>
+<blockquote>
+<p>DON'T USE after pushing ! Why ?</p>
+</blockquote>
+<h2 id="working-together">Working together<a aria-hidden="true" class="anchor-heading icon-link" href="#working-together"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-41.png"></p>
+<h3 id="copying-a-repository">Copying a repository<a aria-hidden="true" class="anchor-heading icon-link" href="#copying-a-repository"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-42.png"></p>
+<ul>
+<li>le protocol GIT n'existe plus car n'est pas sécurisé</li>
+</ul>
+<h3 id="remote-repository">Remote repository<a aria-hidden="true" class="anchor-heading icon-link" href="#remote-repository"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-43.png"></p>
+<blockquote>
+<p>La remote s'appelle par défaut <code>origin</code></p>
+</blockquote>
+<h3 id="updating-from-a-repository">Updating from a repository<a aria-hidden="true" class="anchor-heading icon-link" href="#updating-from-a-repository"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-44.png"></p>
+<h3 id="remote-branches">Remote branches<a aria-hidden="true" class="anchor-heading icon-link" href="#remote-branches"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-45.png"></p>
+<p><code>git branch -r</code>: va lister toutes les branche</p>
+<blockquote>
+<p>Notes du 2022/09/08 - End</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Notes du 2022/09/14 - Start</p>
+</blockquote>
+<h3 id="using-rebase-with-remote-branches">Using rebase with remote branches<a aria-hidden="true" class="anchor-heading icon-link" href="#using-rebase-with-remote-branches"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-46.png"></p>
+<p><code>git pull --rebase</code> </p>
+<ul>
+<li>fait un <code>git fetch</code> comme le pull</li>
+<li>puis un <code>git rebase</code> au lieu du <code>merge</code> que pull fait par défaut</li>
+</ul>
+<h3 id="sending-changes-to-a-repository">Sending changes to a repository<a aria-hidden="true" class="anchor-heading icon-link" href="#sending-changes-to-a-repository"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-47.png"></p>
+<h3 id="managing-remote-repositories">Managing remote repositories<a aria-hidden="true" class="anchor-heading icon-link" href="#managing-remote-repositories"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-48.png"></p>
+<h2 id="other-goodies">Other goodies<a aria-hidden="true" class="anchor-heading icon-link" href="#other-goodies"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-49.png"></p>
+<h3 id="identifying-authors">Identifying authors<a aria-hidden="true" class="anchor-heading icon-link" href="#identifying-authors"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-50.png"></p>
+<h3 id="making-a-relase-with-git">Making a relase with git<a aria-hidden="true" class="anchor-heading icon-link" href="#making-a-relase-with-git"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-51.png"></p>
+<h3 id="submodules">Submodules<a aria-hidden="true" class="anchor-heading icon-link" href="#submodules"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-52.png"></p>
+<p><code>git clone --recursive</code> pour cloner aussi les submodules s'il y en a</p>
+<h2 id="appendix">Appendix<a aria-hidden="true" class="anchor-heading icon-link" href="#appendix"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-53.png"></p>
+<h3 id="git-for-cts-user">Git for CTS User<a aria-hidden="true" class="anchor-heading icon-link" href="#git-for-cts-user"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCodeMgmt-54.png"></p>
+<blockquote>
+<p>Notes du 2022/09/14 - End</p>
+</blockquote>
+<hr>
+<hr>
+<strong>Backlinks</strong>
+<ul>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/tpyb41n9fi7ze4cw7z2cuxo">COOSATR - Conception Orientee Objet</a></li>
+</ul>

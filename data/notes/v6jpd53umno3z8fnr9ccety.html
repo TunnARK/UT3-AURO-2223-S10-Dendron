@@ -1,0 +1,44 @@
+<h1 id="ros---tp1">ROS - TP1<a aria-hidden="true" class="anchor-heading icon-link" href="#ros---tp1"></a></h1>
+<hr>
+<p>...</p>
+<p>Creation d'un packet</p>
+<p><code>~/tl_catkin_ws/src$ catkin_create_pkg beginner_tutorials rospy roscpp std_msgs</code></p>
+<p>Verification</p>
+<p><code>~/tl_catkin_ws/src/beginner_tutorials$ cat package.xml</code></p>
+<p>Compilation</p>
+<p><code>catkin_make</code>
+puis
+<code>catkin_make install</code></p>
+<blockquote>
+<p>Exécuter make dans le root !</p>
+</blockquote>
+<p>roscore</p>
+<blockquote>
+<p>avant de lancer <code>roscore</code> verifier qu'on est bien en local et non sur le robot avec <code>env | grep ROS</code></p>
+</blockquote>
+<p>rosrun</p>
+<p><code>rosrun turtlesim turtlesim node</code></p>
+<blockquote>
+<p>relance un noeud avec meme noeud => ferme l'ancien ouvre un nouveau</p>
+</blockquote>
+<p><code>rosrun turtlesim turtlesim_node __name:=my_turtle</code></p>
+<p>teleoperer</p>
+<ul>
+<li>creer un noeud
+<code>rosrun turtlesim turtlesim_node</code></li>
+<li>lancer un topic pour commander la turtle avec le clavier
+<code>rosrun turtlesim turtle_teleop_key</code></li>
+<li>si on cree un nouveau noeud il suivera exactement la meme commande que la premiere turtle car les deux noeuds ecoutent le meme topic</li>
+</ul>
+<p>node graph</p>
+<p><code>rosrun rqt_graph rqt_graph</code>
+pour verifier comment les noeuds sont connectés</p>
+<p><code>rosrun rqt_plot rqt_plot</code></p>
+<pre class="language-xml"><code class="language-xml">...
+</code></pre>
+<p>type pour le type d'executable</p>
+<hr>
+<strong>Backlinks</strong>
+<ul>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/jlzfz6le5m018ggh4k7ydz8">RMN - Robotique Mobile &#x26; Navigation</a></li>
+</ul>
