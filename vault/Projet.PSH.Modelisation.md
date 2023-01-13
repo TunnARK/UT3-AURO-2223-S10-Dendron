@@ -2,7 +2,7 @@
 id: 5luve6pwb9nnko5oy12y0li
 title: Modelisation
 desc: ''
-updated: 1673118278558
+updated: 1673516188856
 created: 1672992109548
 ---
 
@@ -15,7 +15,7 @@ Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-
 
 > Notes du 2023/01/06 - Start
 
-![](/assets/images/PSH.Slide2-01.png)
+![](/assets/images/PSH.Slide2.Modelisation-01.png)
 
 > Syst. Hyb. au sens de Teel (mathematicien qui définit les syst. hyb.)
 
@@ -25,11 +25,11 @@ Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-
 
 # Sommaire
 
-![](/assets/images/PSH.Slide2-02.png)
+![](/assets/images/PSH.Slide2.Modelisation-02.png)
 
 # 1) Balle rebondissante
 
-![](/assets/images/PSH.Slide2-03.png)
+![](/assets/images/PSH.Slide2.Modelisation-03.png)
 
 Notation: 
 - espace de flot pour décrire la dynamique continu
@@ -37,7 +37,7 @@ Notation:
 
 # 2) Observateur
 
-![](/assets/images/PSH.Slide2-04.png)
+![](/assets/images/PSH.Slide2.Modelisation-04.png)
 
 $y(t) = y(t_k)$ indique que la mesure n'arrive pas continuement mais à des instants cadensés ou non (les mesures sont spontanées) sous l'hypothèse que des mesures sont bien captés
 
@@ -57,7 +57,7 @@ On peut alors crée un syst. hyb. avec une bulle contenant le simulateur (l'obs 
 
 # 3) Thermostat
 
-![](/assets/images/PSH.Slide2-05.png)
+![](/assets/images/PSH.Slide2.Modelisation-05.png)
 
 2 garde 1 etat continu 1 etat discret
 
@@ -69,7 +69,7 @@ ce syst est hyb car le changement de mode dépend d'un etat continu
 
 c'est une hystéresis où il y a un moment nominal et des moments de changement donc le choix des CI devra respecter le domaine de définition de $x$ (sinon il y a ou bien un changement directe au depart ou un blocage du syst au quel cas la modelisation n'est pas la bonne)
 
-![](/assets/images/PSH.Slide2-06.png)
+![](/assets/images/PSH.Slide2.Modelisation-06.png)
 
 $f$ et $\phi$ sont des fonctions multivaluées
 
@@ -79,35 +79,35 @@ Pour le bac d'eau "tout ou rien" on aura un zenon et pour le faire disparaitre o
 
 Au final si un zenon est voulu on perd l'interet d'une modelisation hyb car les flots ne présente plus d'interets vu que la dynamique est dictée par la variable de changement
 
-![](/assets/images/PSH.Slide2-07.png)
+![](/assets/images/PSH.Slide2.Modelisation-07.png)
 
 # 4) Réservoir avec délais
 
 On pourrait modéliser ce procédé avec du temps invariant ou avec des automates temporisés (mais les deux options sont très difficiles).
 
-![](/assets/images/PSH.Slide2-08.png)
+![](/assets/images/PSH.Slide2.Modelisation-08.png)
 
 Dans Q1, le bac se vide s'il descend en dessous de 1 on réinitialise le timer à zero et dans Q2 on commence à compter. Si on atteint $\tau \geq 0.5$ alors on passe à Q3 pour ré-initialise le timer et on commence a remplir. Lorsque le niveau arrive à 2 on passe à Q4 qui correspond a continuer de remplir mais en commencant le count down.
 
 On peut imaginer que l'intéret du timer virtuelle (d'où pourquoi on peut si facilement ré-initialiser les CI de $\tau$ sans soucis) est de modéliser par exemple la dynamique de la pompe (qui nécessite du temps pour atteindre son régime permanant)
 
-![](/assets/images/PSH.Slide2-09.png)
+![](/assets/images/PSH.Slide2.Modelisation-09.png)
 
 # 5) Machine avec réparation
 
-![](/assets/images/PSH.Slide2-10.png)
-![](/assets/images/PSH.Slide2-11.png)
+![](/assets/images/PSH.Slide2.Modelisation-10.png)
+![](/assets/images/PSH.Slide2.Modelisation-11.png)
 
 Ici il y a une grande modification : l'invariant dans Q2 ainsi que l'apparition d'évènement exogène $\alpha$, $\beta$ et $\gamma$
 
-![](/assets/images/PSH.Slide2-12.png)
-![](/assets/images/PSH.Slide2-13.png)
+![](/assets/images/PSH.Slide2.Modelisation-12.png)
+![](/assets/images/PSH.Slide2.Modelisation-13.png)
 
 # 6) Modélisation formelle
 
 ## SED
 
-![](/assets/images/PSH.Slide2-14.png)
+![](/assets/images/PSH.Slide2.Modelisation-14.png)
 
 $X$ à temps continu
 $f$ pour l'evolution du flot
@@ -116,7 +116,7 @@ $Inv$ continu ou discret
 
 ## STC
 
-![](/assets/images/PSH.Slide2-15.png)
+![](/assets/images/PSH.Slide2.Modelisation-15.png)
 
 $F$ et $G$ sont des fonctions mutlivaluées
 
@@ -138,15 +138,15 @@ Ces différences s'expliquent par la divergence des objectifs respectif en SED e
 
 Ici la STC va prouver la stabilité d'un ensemble plustôt que d'un point d'équilibre.
 
-![](/assets/images/PSH.Slide2-16.png)
+![](/assets/images/PSH.Slide2.Modelisation-16.png)
 
 ## Exercices
 
-![](/assets/images/PSH.Slide2-17.png)
+![](/assets/images/PSH.Slide2.Modelisation-17.png)
 
 # 7) Simulation
 
-![](/assets/images/PSH.Slide2-18.png)
+![](/assets/images/PSH.Slide2.Modelisation-18.png)
 
 zero crossing detection
 - pour le franchissement d'une guarde
@@ -154,7 +154,7 @@ zero crossing detection
 
 # 8) A retenir
 
-![](/assets/images/PSH.Slide2-19.png)
+![](/assets/images/PSH.Slide2.Modelisation-19.png)
 
 
 

@@ -2,9 +2,10 @@
 id: wdg7ze3g69ljyz23kg87zgz
 title: Présentation des Systèmes Hybrides
 desc: ''
-updated: 1672992452792
+updated: 1673523880749
 created: 1672938744670
 ---
+
 > **Avertissement:**
 Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-2223-Request:matrix.org`](https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org) si vous en trouvez, merci.
 
@@ -16,17 +17,17 @@ Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-
 
 
 
-![](assets/images/PSH.Slide1-01.png)
+![](assets/images/PSH.Slide1.Presentation-01.png)
 
 # Sommaire
 
-![](assets/images/PSH.Slide1-02.png)
+![](assets/images/PSH.Slide1.Presentation-02.png)
 
 # 1) Introduction
 
 ## Objectifs
 
-![](assets/images/PSH.Slide1-03.png)
+![](assets/images/PSH.Slide1.Presentation-03.png)
 
 Système Hybride = Systeme mélangeant du formalisme STC et SED
 
@@ -34,14 +35,14 @@ Probleme de theories et de simulations.
 
 ## Modalités
 
-![](assets/images/PSH.Slide1-04.png)
+![](assets/images/PSH.Slide1.Presentation-04.png)
 
 
 # 2) Modélisation STC
 
 ## Modélisation formelle
 
-![](assets/images/PSH.Slide1-05.png)
+![](assets/images/PSH.Slide1.Presentation-05.png)
 
 STC = Systeme Temps Continu
 
@@ -52,21 +53,21 @@ equation de sortie
 
 ## Hypothèses en TC
 
-![](assets/images/PSH.Slide1-06.png)
-![](assets/images/PSH.Slide1-07.png)
+![](assets/images/PSH.Slide1.Presentation-06.png)
+![](assets/images/PSH.Slide1.Presentation-07.png)
 
 # 3) Modélisation de SED
 
 ## Caractéristiques des SED
 
-![](assets/images/PSH.Slide1-08.png)
+![](assets/images/PSH.Slide1.Presentation-08.png)
 
 SED = Syst. Evenement Discret
 
 
 ## Concept d'évènement
 
-![](assets/images/PSH.Slide1-09.png)
+![](assets/images/PSH.Slide1.Presentation-09.png)
 
 attention evenement est tj instantanee
 exogene = exterieur
@@ -75,17 +76,15 @@ endogene = interieur
 obsvble = mesurable
 nonobsvble = blackpox carte dont on connait le fonctionne mais ne mesure pas
 
-??? que ce passe-t-il lorsqu'on ne connait pas le fonctionnement ?
-
 ## Exemple syst. discret
 
 ### Entrepôt
 
-![](assets/images/PSH.Slide1-10.png)
+![](assets/images/PSH.Slide1.Presentation-10.png)
 
 ### Réservoir d'eau
 
-![](assets/images/PSH.Slide1-11.png)
+![](assets/images/PSH.Slide1.Presentation-11.png)
 
 
 Problematique du choix du niveau d'abstraction
@@ -93,24 +92,22 @@ Problematique du choix du niveau d'abstraction
 Maquette Bac Eaux tres dynamique mais peut aussi etre represente par un modele discret avec le bon niveau d'absatraction
 Capteur binaire donc $2^4$ etats
 
-une panne non observable mais si il y a un capteur pour declencher une alarme des qu'il y a une panne est-ce du coup obsvble ???
-
-**Mealy** tout est evenement (tout sur les transitions) front montant sans ! front descendant avec !
+**Mealy** tout est evenement (tout sur les transitions) front montant sans !!! front descendant avec !!!
 Moore sorties sont des niveaux (donc ne se trouve pas sur les transitions) [similaire au reseau de petri]
 
 si plusieurs valeurs possible alors on cree plusieurs etat discret pour faire l'abstraction de la dynamique
 
 ### Exemple syst discretisable: Air Conditionné
 
-![](assets/images/PSH.Slide1-12.png)
+![](assets/images/PSH.Slide1.Presentation-12.png)
 
 ## Modélisation formelle d'un SED
 
-![](assets/images/PSH.Slide1-13.png)
+![](assets/images/PSH.Slide1.Presentation-13.png)
 
 ## Modélisation par abstraction
 
-![](assets/images/PSH.Slide1-14.png)
+![](assets/images/PSH.Slide1.Presentation-14.png)
 
 # 4) Exemples
 
@@ -118,11 +115,11 @@ si plusieurs valeurs possible alors on cree plusieurs etat discret pour faire l'
 
 ### Trains
 
-![](assets/images/PSH.Slide1-15.png)
+![](assets/images/PSH.Slide1.Presentation-15.png)
 
 ### Bras manipulateur
 
-![](assets/images/PSH.Slide1-16.png)
+![](assets/images/PSH.Slide1.Presentation-16.png)
 
 ## Automatique
 
@@ -130,7 +127,7 @@ si plusieurs valeurs possible alors on cree plusieurs etat discret pour faire l'
 
 #### Principe fondamental
 
-![](assets/images/PSH.Slide1-17.png)
+![](assets/images/PSH.Slide1.Presentation-17.png)
 
 En lair mode 1
 
@@ -155,17 +152,17 @@ $$
 
 #### Modélisation des modes
 
-![](assets/images/PSH.Slide1-18.png)
-![](assets/images/PSH.Slide1-19.png)
+![](assets/images/PSH.Slide1.Presentation-18.png)
+![](assets/images/PSH.Slide1.Presentation-19.png)
 
 En lair
 $$
-\mathcal{C} = {z\in\mathbb{R}^2|z_1>0 or (z_1 = 0 and z_2>0)}
+\mathcal{C} = \{z\in\mathbb{R}^2 \;|\; z_1>0 \;\text{or}\; (z_1 = 0 \;\text{and}\; z_2>0)\}
 $$
 
 Au sol
 $$
-\mathcal{D} = {z\in\mathbb{R}^2|z_1 = 0 and z_2\leq0}
+\mathcal{D} = \{z\in\mathbb{R}^2|z_1 = 0 \;\text{and}\; z_2\leq0\}
 $$
 
 Phenomene de ré-initialisation
@@ -185,15 +182,15 @@ mais vu que le mode sol est instantanee on peut le voir comme une action d'ou le
 
 ### Les lucioles
 
-![](assets/images/PSH.Slide1-20.png)
-![](assets/images/PSH.Slide1-21.png)
+![](assets/images/PSH.Slide1.Presentation-20.png)
+![](assets/images/PSH.Slide1.Presentation-21.png)
 
 meme si un flash est un evenement ici on realise un modele globale qui lui considere l'horloge = 1 comme evenement (alors que localement la luciole considere le flash comme evenement)
 
 ![](assets/images/PSH.BB20230105-2.png)
 ![](assets/images/PSH.BB20230105-3.png)
 ![](assets/images/PSH.BB20230105-4.png)
-![](assets/images/PSH.Slide1-22.png)
+![](assets/images/PSH.Slide1.Presentation-22.png)
 
 si les lucioles se fatigue a chaque flash il faut adapter le modele
 
@@ -205,7 +202,7 @@ cette derniere modelisation apporte l'advantage de garder trace de l'evolution d
 
 ### Le bloqueur d'ordre zéro
 
-![](assets/images/PSH.Slide1-23.png)
+![](assets/images/PSH.Slide1.Presentation-23.png)
 
 Pour l'automatique discrete, le bloqueur d'ordre zero fonctionne sur la theorie des SED
 
@@ -221,11 +218,11 @@ Ici ce modele est a temps continu du coup on s'affranchit l'approximation causer
 
 > termes à retenir
 
-![](assets/images/PSH.Slide1-24.png)
+![](assets/images/PSH.Slide1.Presentation-24.png)
 
 # 6) Bibliographie
 
-![](assets/images/PSH.Slide1-25.png)
+![](assets/images/PSH.Slide1.Presentation-25.png)
 
 
 

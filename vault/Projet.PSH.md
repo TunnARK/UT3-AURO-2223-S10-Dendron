@@ -2,7 +2,7 @@
 id: 78jz34sn4cc8vqpsn87h7lp
 title: Projet Systèmes Hybrides
 desc: ''
-updated: 1672992109749
+updated: 1673515698137
 created: 1672905859927
 ---
 
@@ -15,8 +15,10 @@ Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-
 
 # Cours
 
-[[Présentation des Systèmes Hybrides|Projet.PSH.Presentation]]
-[[Modélisation des Systèmes Hybrides|Projet.PSH.Modelisation]]
+- [[Présentation des Systèmes Hybrides|Projet.PSH.Presentation]]
+- [[Modélisation des Systèmes Hybrides|Projet.PSH.Modelisation]]
+- [[Trajectoires des Systèmes Hybrides|Projet.PSH.Trajectoires]]
+- [[Proprietes des Systèmes Hybrides|Projet.PSH.Proprietes]]
 
 # Bibliographie
 
