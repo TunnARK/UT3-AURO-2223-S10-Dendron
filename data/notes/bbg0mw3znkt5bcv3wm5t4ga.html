@@ -1,0 +1,66 @@
+<h1 id="slam">SLAM<a aria-hidden="true" class="anchor-heading icon-link" href="#slam"></a></h1>
+<h1 id="ressources">Ressources<a aria-hidden="true" class="anchor-heading icon-link" href="#ressources"></a></h1>
+<ul>
+<li><a href="https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/P1K.SLAM.Sujet.Highlighted.pdf">P1K.SLAM.Sujet.Highlighted.pdf</a></li>
+<li><a href="https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/"></a></li>
+</ul>
+<h1 id="presentation-du-sujet">Presentation du sujet<a aria-hidden="true" class="anchor-heading icon-link" href="#presentation-du-sujet"></a></h1>
+<h2 id="scratch-notes-du-20221031">Scratch Notes du 2022/10/31<a aria-hidden="true" class="anchor-heading icon-link" href="#scratch-notes-du-20221031"></a></h2>
+<p>robot non holonome</p>
+<p>plustot que faire un vecteur qui connait deja tous les amers</p>
+<p>on suppose que le nb damer n'est pas connu davance</p>
+<p>juste assurer qu'il voit 3 premiers </p>
+<p>au fur et a mesure que le robot il va decouvrir ou non de nouveau amers donc il devra augmenter le vecteur detat</p>
+<p>probabilistic robotics thrun burgard fox</p>
+<h2 id="objectifs">Objectifs<a aria-hidden="true" class="anchor-heading icon-link" href="#objectifs"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.SLAM.SujetObjectifs.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.SLAM.SujetProblemDef.png"></p>
+<h2 id="rappels">Rappels<a aria-hidden="true" class="anchor-heading icon-link" href="#rappels"></a></h2>
+<h3 id="variables">Variables<a aria-hidden="true" class="anchor-heading icon-link" href="#variables"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.SLAM.SujetRappelVariables.png"></p>
+<h3 id="models">Models<a aria-hidden="true" class="anchor-heading icon-link" href="#models"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.SLAM.SujetRappelModels.png"></p>
+<h3 id="posterior-marginal">Posterior Marginal<a aria-hidden="true" class="anchor-heading icon-link" href="#posterior-marginal"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.SLAM.SujetRappelPostMargin.png"></p>
+<h3 id="outline">Outline<a aria-hidden="true" class="anchor-heading icon-link" href="#outline"></a></h3>
+<h4 id="statecontrol-inputmeasurement-output-variables">State/Control Input/Measurement Output Variables<a aria-hidden="true" class="anchor-heading icon-link" href="#statecontrol-inputmeasurement-output-variables"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.SLAM.SujetRappelStateVars.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.SLAM.SujetRappelStateVars2.png"></p>
+<h4 id="prior-dynamics">Prior Dynamics<a aria-hidden="true" class="anchor-heading icon-link" href="#prior-dynamics"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.SLAM.SujetRappelPriorDynamics.png"></p>
+<h4 id="observation-models">Observation Models<a aria-hidden="true" class="anchor-heading icon-link" href="#observation-models"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.SLAM.SujetRappelObsModels.png"></p>
+<h4 id="slam-initialization">SLAM Initialization<a aria-hidden="true" class="anchor-heading icon-link" href="#slam-initialization"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.SLAM.SujetRappelInitialization.png"></p>
+<h4 id="slam-time-update">SLAM Time Update<a aria-hidden="true" class="anchor-heading icon-link" href="#slam-time-update"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.SLAM.SujetRappelTimeUpdate.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.SLAM.SujetRappelTimeUpdate2.png"></p>
+<h4 id="slam-measurement-update">SLAM Measurement Update<a aria-hidden="true" class="anchor-heading icon-link" href="#slam-measurement-update"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.SLAM.SujetRappelMeasUpdate.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.SLAM.SujetRappelMeasUpdate2.png"></p>
+<h4 id="data-association-handling">Data Association Handling<a aria-hidden="true" class="anchor-heading icon-link" href="#data-association-handling"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.SLAM.SujetRappelDataAssociation.png"></p>
+<h1 id="feuille-de-route">Feuille de Route<a aria-hidden="true" class="anchor-heading icon-link" href="#feuille-de-route"></a></h1>
+<ol>
+<li>Description du scénario (pose d’hypothèses, nombre d’instants …)</li>
+<li>Trouver le modèle du robot (non holonome)</li>
+<li>Modélisation de l’environnement (la map)</li>
+<li>Définition des vecteurs : d’état, de mesure, la commande.</li>
+<li>Association de données (telle mesure pour telle amer)</li>
+<li>Construction d’un modèle des dépendances pour une boucle de
+fonctionnement du robot.</li>
+<li>Modélisation des évolutions des éléments du modèle de Kalman étendu
+(les jacobiennes, les vecteurs, les matrices de covariances, les autres
+éléments qui interviennent durant le processus du SLAM)</li>
+<li>Elaboration de l’algorithme EKF-SLAM</li>
+<li>Programmation et simulation (si possible le robot en déplacement pour
+effectuer une boucle complète en passant entre les amers et tout).</li>
+<li>Résultats et discussion (lissage, filtrage, estimation, ……)</li>
+<li>Rédaction d’un Jupyter Notebook-Matlab (pour plus d’infos :
+<a href="https://am111.readthedocs.io/en/latest/jmatlab_install.html">https://am111.readthedocs.io/en/latest/jmatlab_install.html</a> )</li>
+</ol>
+<hr>
+<strong>Backlinks</strong>
+<ul>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/unhhyfcpm3mlaf2n2hauesq">Kalman</a></li>
+</ul>

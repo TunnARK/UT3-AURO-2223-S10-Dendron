@@ -1,0 +1,76 @@
+
+> **Avertissement:**
+Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-2223-Request:matrix.org`](https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org) si vous en trouvez, merci.
+
+> Cours donné par [P. Muller](philippe.muller@irit.fr)
+
+---
+
+> Notes RKA du 2023/01/23 - Start
+
+
+
+
+# Exercice 1: Fonction logistique-sigmoide
+
+![](/assets/images/B3.AA.TD1.Sujet-Ex01.png)
+
+![](/assets/images/B3.AA.TD1.BB20230123-01.png)
+![](/assets/images/B3.AA.TD1.BB20230123-02.png)
+![](/assets/images/B3.AA.TD1.BB20230123-03.png)
+
+Graphe de calcul pour $y = f(x,a) = \dfrac{1}{\; (1+e^{-ax}) \;}$
+    
+Méthode pour faire le graphe de calcul:
+- Décomposer les opérations de telle sorte que chaque composante/noeux soit une opération ayant dérivée simple
+- Privilégier le mode "reverse"
+
+Remarque:
+- La fonction $y$ est symmétrique p.r.à $x$ et $a$ c'est pourquoi il n'est pas nécessaire de refaire les calcus pour la dérivée en $a$
+- L'intérêt du "reverse" c'est qu'il simplifie les calculs
+    - l'algo possède des outils matriciels pour calculer la dérivée de la fonction d'activation pour calculer la dérivée
+
+# Exercice 2: Perceptron Multicouche pour la régression
+
+![](/assets/images/B3.AA.TD1.Sujet-Ex02.png)
+![](/assets/images/B3.AA.TD1.Sujet-Ex02-02.png)
+![](/assets/images/B3.AA.TD1.Sujet-Ex02-03.png)
+
+Lexique:
+- $a_i$: variable de pré-activation
+- $h_i$: variable de sortie des neuronnes
+- $b_i$: variable du biais
+- $\sigma(x) = \dfrac{1}{\; 1+e^{-x} \;}\;$ : fonction sigmoïde 
+
+![](/assets/images/B3.AA.TD1.BB20230123-04.png)
+![](/assets/images/B3.AA.TD1.BB20230123-05.png)
+
+Ici on peut faire le graphe de calcul pour remonter (sinon on peut retrouver par exemple $w_{1A}$ en regardant les équations).
+
+Mais ATTENTION ici les calculs prennent encore en compte les valeurs non corrigés par le gradient du loss.
+ 
+![](/assets/images/B3.AA.TD1.BB20230123-06.png)
+![](/assets/images/B3.AA.TD1.BB20230123-07.png)
+
+En général (et pour un réseaux connecté) la dérivée se calcule ainsi:
+$$
+\partial w_j = \delta \cdot w_{j+1} \cdot \text{activation}' \cdot \text{entrée neuronne courant}'
+$$
+
+En faisant cela passe de l'erreur précédente (i.e. $0.3$) à une erreur de $0.1$.
+
+Remarques sur le taux d'apprentissage:
+- $\alpha$ augmente la norme du gradient donc le gradient donne la direction et $\alpha$ la vitesse de convergence
+- ainsi on va vouloir que $\alpha$ soit grand à l'initialisation (si cette initialisation est éloignée de l'objectif) pour ensuite le rendre évolutif 
+
+![](/assets/images/B3.AA.TD1.BB20230123-08.png)
+
+# Exercice 3: Mise en oeuvre d'une chaîne de classification
+
+![](/assets/images/B3.AA.TD1.Sujet-Ex03.png)
+
+
+
+> Notes RKA du 2023/01/23 - End
+
+---

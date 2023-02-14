@@ -1,0 +1,65 @@
+
+> **Avertissement:**
+Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-2223-Request:matrix.org`](https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org) si vous en trouvez, merci.
+
+> Cours donné par P. Danès
+
+---
+
+
+
+<!-- # À Retenir
+
+- ... -->
+
+# Cours Magistraux
+
+- [[B3.RP.CM.FiltreParticulaire]]
+- [[...|...]]
+
+
+<!-- # Travaux Dirigés
+
+- [[...|...]] -->
+
+<!-- # Travaux Pratiques
+
+- [[...|...]] -->
+
+# Support de Cours
+
+<!-- ## Fichiers Moodles
+
+### CM
+
+- [filetitle](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/filetitle)
+
+
+### TD
+
+- [filetitle](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/filetitle)
+
+
+### TP
+
+- [filetitle](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/filetitle) -->
+
+
+## Scans
+
+### Blackbard
+
+- [B3.RP.CM.BB20230117.pdf](https://github.com/TunnARK/UT3-AURO-2223-S10-Dendron/blob/main/vault/assets/B3.RP.CM.BB20230117.pdf)
+- [B3.RP.CM.BB20230118.pdf](https://github.com/TunnARK/UT3-AURO-2223-S10-Dendron/blob/main/vault/assets/B3.RP.CM.BB20230118.pdf)
+
+### GEA
+
+- [B3.RP.CM.NotesGEA.20230117.pdf](https://github.com/TunnARK/UT3-AURO-2223-S10-Dendron/blob/main/vault/assets/B3.RP.CM.NotesGEA.20230117.pdf)
+- [B3.RP.CM.NotesGEA.20230118.pdf](https://github.com/TunnARK/UT3-AURO-2223-S10-Dendron/blob/main/vault/assets/B3.RP.CM.NotesGEA.20230118.pdf)
+
+
+<!-- ### RKA
+
+- [filetitle](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/filetitle) -->
+
+

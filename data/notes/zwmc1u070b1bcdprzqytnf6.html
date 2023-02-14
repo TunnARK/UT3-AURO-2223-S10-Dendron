@@ -1,0 +1,701 @@
+<h1 id="cm">CM<a aria-hidden="true" class="anchor-heading icon-link" href="#cm"></a></h1>
+<ul>
+<li><a href="https://moodle.univ-tlse3.fr/course/view.php?id=9035">lien moodle</a></li>
+</ul>
+<p><a href="/UT3-AURO-2223-S10-Dendron/mailto:lerasle@laas.fr">lerasle@laas.fr</a></p>
+<hr>
+<blockquote>
+<p>Notes du 2022/09/12 - Start</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Poly-01.png"></p>
+<h1 id="introduction">Introduction<a aria-hidden="true" class="anchor-heading icon-link" href="#introduction"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Poly-02.png"></p>
+<ul>
+<li>pb de l'imagerie => distance ne sont pas conservé lors d'un changement de perspective</li>
+<li>de plus en plus de capteurs 3D</li>
+<li>capteur passif = n'emet pas de lumière pour percevoir / ne fait que les recevoir</li>
+<li>RGBD = couleur + depth
+<ul>
+<li>capture une image ou un flut RGB en couleur + une image de profondeur</li>
+<li>s'appuit sur les apparances mais aussi sur des informations geométriques </li>
+</ul>
+</li>
+</ul>
+<h1 id="acquisition-3d">Acquisition 3D<a aria-hidden="true" class="anchor-heading icon-link" href="#acquisition-3d"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Poly-03.png"></p>
+<h2 id="optique-dune-caméra">Optique d'une caméra<a aria-hidden="true" class="anchor-heading icon-link" href="#optique-dune-caméra"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Poly-04.png"></p>
+<p>Choix de caméra selon la problématique:</p>
+<ul>
+<li>il faut choisir une optique adaptée</li>
+<li>mais aussi le capteur qui correspond</li>
+</ul>
+<p>Un pixel correspond à la disposition spatiale de la scène
+Du coup plus on a besoin d'echantillon de la scene pour avoir des data precises plus il nous faudra de 'pixel'</p>
+<p>Le capteur recoit des photos et les traduit en signal digital</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Poly-05.png"></p>
+<ul>
+<li>AO point de la scene</li>
+<li>FO foyer objet</li>
+<li>centre optique = intersection entre axe optique et plan lentille ?
+<ul>
+<li>quand on change la mise au point on deplace le plan des lentilles sur l'axe optique</li>
+</ul>
+</li>
+<li>axe optique (horizental)</li>
+<li>plan capteur</li>
+<li>p1 tirage optique (de l'epoque des camera avec accordeon car il tirer l'optique)</li>
+<li>p0 distance entre scene et optique</li>
+<li>F1 distance focal => modifie l'angle de champ
+<ul>
+<li>focal petit => grand champ</li>
+<li>focal optimale pour ne pas perdre en precision et ne pas traiter des pixels inutiles</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>grandissement transversal</p>
+</blockquote>
+<blockquote>
+<p>Relation de conjugaison</p>
+</blockquote>
+<p>Pour objet loin p_0 -> infinie => f_1 = p_1 donc joue sur la mise en point du plan image</p>
+<p>En 3D on assume souvent l'approximation que f_1 = q_1</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Poly-06.png"></p>
+<p>...</p>
+<blockquote>
+<p>Notes du 2022/09/12 - End</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Notes du 2022/09/14 - Start</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.SchemaResume.png"></p>
+<ul>
+<li><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="script">R</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">\mathcal{R}_m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathcal">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> référentiel de l'objet de référence (objet que l'on étudie)</li>
+<li>on passe au paramètre extrinsèque: 3 ; angle d'euler <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mi>x</mi></msub><mtext>  </mtext><msub><mi>β</mi><mi>y</mi></msub><mtext>  </mtext><msub><mi>γ</mi><mi>z</mi></msub></mrow><annotation encoding="application/x-tex">\alpha_x \; \beta_y \; \gamma_z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9805em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0528em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05556em;">γ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0556em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.04398em;">z</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></li>
+<li><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="script">R</mi><mi>C</mi></msub></mrow><annotation encoding="application/x-tex">\mathcal{R}_C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathcal">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> repere camera</li>
+<li><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">u_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> et <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">v_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> sont presque le milieu de la photo</li>
+<li><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mi>u</mi></msub></mrow><annotation encoding="application/x-tex">\alpha_u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">u</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> et <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mi>v</mi></msub></mrow><annotation encoding="application/x-tex">\alpha_v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> sont souvent egaux car les pixels sont souvent carree
+<ul>
+<li><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mi>u</mi></msub><mo>=</mo><mi>k</mi><mi>u</mi><mi>f</mi></mrow><annotation encoding="application/x-tex">\alpha_u = ku f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">u</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span></span></li>
+<li><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mi>v</mi></msub><mo>=</mo><mi>k</mi><mi>v</mi><mi>f</mi></mrow><annotation encoding="application/x-tex">\alpha_v = kv f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span></span></li>
+</ul>
+</li>
+<li>attention au signe va deprendre du repere camera</li>
+</ul>
+<blockquote>
+<p>Signe <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mi>u</mi></msub></mrow><annotation encoding="application/x-tex">\alpha_u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">u</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> et <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mi>v</mi></msub></mrow><annotation encoding="application/x-tex">\alpha_v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> important de le comprendre pour le TP d'etallonnage de camera</p>
+</blockquote>
+<blockquote>
+<p>Un francais qui a sorti le concept d'imagerie 3D</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Poly-12.png"></p>
+<h3 id="distortion-optique">Distortion Optique<a aria-hidden="true" class="anchor-heading icon-link" href="#distortion-optique"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Poly-13.png"></p>
+<blockquote>
+<p>Toute image possede une distortion (surtout au bord)</p>
+</blockquote>
+<p>En traitement image on n'est pas problematise par ce phenomene mais en traitement spatiale on a de suite un probleme (mais bcp de logiciel arrive a regle ce probleme)</p>
+<ul>
+<li>focal = distance du centre de l'objet p.r.à <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="script">R</mi><mi>C</mi></msub></mrow><annotation encoding="application/x-tex">\mathcal{R}_C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathcal">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></li>
+<li>plus la focal est petit plus il y a de distortion</li>
+<li>image exemple de continental</li>
+<li>les corrections de distortion ne sont jamais parfaite</li>
+</ul>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Distortion.png"></p>
+<ul>
+<li>terme radial <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Δ</mi><mi>u</mi></msub><mi>r</mi></mrow><annotation encoding="application/x-tex">\Delta_ur</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord">Δ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">u</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span></span> et <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Δ</mi><mi>v</mi></msub><mi>r</mi></mrow><annotation encoding="application/x-tex">\Delta_vr</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord">Δ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span></span></li>
+<li>terme tangentiel <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Δ</mi><mi>u</mi></msub><mi>t</mi></mrow><annotation encoding="application/x-tex">\Delta_ut</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord">Δ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">u</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">t</span></span></span></span></span> et <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Δ</mi><mi>v</mi></msub><mi>t</mi></mrow><annotation encoding="application/x-tex">\Delta_vt</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord">Δ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">t</span></span></span></span></span></li>
+<li>simplification: on assume que la distortion tangentiel est negligeable p.r.à la distortion radial </li>
+</ul>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.RadialTangentiel.png"></p>
+<ul>
+<li>
+<p>différent type de modele</p>
+<ul>
+<li>radial ordre 1 et tangentiel ordre 0 -> r1t0 : k1 (k2=k3=p1=p2=0)</li>
+<li>r3t0 : k1 k2 k3</li>
+<li>r3t0 : k1 k2 k3 p1 p2</li>
+</ul>
+</li>
+<li>
+<p>de maniere empirique :</p>
+<ul>
+<li>f>7mm => r1t0</li>
+<li>f&#x3C;7mm => r3t0 ou r3t2</li>
+<li>il sera important de choisir le modele qui correpond à notre situation en expliquant le choix fait</li>
+</ul>
+</li>
+</ul>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.DistortionEqModele.png"></p>
+<p>Comment corriger une distortion ?</p>
+<p>Idée:</p>
+<ol>
+<li>de limage final prendre un pixel en (u,v) </li>
+<li>calculer (u_d,v_d)
+<ul>
+<li>Sauf qu'on va tomber sur des nombres non entier</li>
+</ul>
+</li>
+<li>considerer les pixel voisins</li>
+<li>faire une ponderation de ce voisinage (interpolation biliniaire)</li>
+<li>creer un pixel dans l'image final selon cette ponderation</li>
+</ol>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Poly-14.png"></p>
+<blockquote>
+<p>Attention: <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mtext>  </mtext><mi>n</mi><mtext>  </mtext></mrow></mfrac><mo>∑</mo><mo stretchy="false">(</mo><msub><mi>u</mi><mi>i</mi></msub><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">C(X) = \frac{1}{\;n\;} \sum (u_i ...</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mspace mtight" style="margin-right:0.3253em;"></span><span class="mord mathnormal mtight">n</span><span class="mspace mtight" style="margin-right:0.3253em;"></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">...</span></span></span></span></span></p>
+</blockquote>
+<ul>
+<li>objet etalon (ou mir)
+<ul>
+<li>planche cadrier</li>
+<li>openCV utilise un damier</li>
+</ul>
+</li>
+<li>on va faire plusieurs mesures
+<ul>
+<li>extrinsèque vont changer (normal)</li>
+</ul>
+</li>
+<li>N.B.: le choix du ref de l'etatlon n'impacte que les param extrinsèque</li>
+</ul>
+<p>exemple:</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.ChangementBase.png"></p>
+<ul>
+<li>
+<p>on prend un point etalon Pm</p>
+</li>
+<li>
+<p>on obtient le point camera Pc</p>
+</li>
+<li>
+<p>on cherche à avoir un changement de base qui nous amene de Pm à Pc en pasant par limage 3D produit (on doit tomber le meme pixel)</p>
+</li>
+<li>
+<p>sauf qu'on aura tj une erreur du coup on va minimiser ce delta</p>
+</li>
+<li>
+<p>N.B.: si l'etalon n'est pas parfaitement de niveau il faudra utilise une precision subpixel (optimisation non lineaire) pour chercher une croix dans une sous zone mise à jour à chaque iteration selon leloignement p.r.à un point ref</p>
+</li>
+</ul>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.TableCorrective.png"></p>
+<p>Apparrements 2D/3D</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Apparrement2D3D.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Apparrement2D3DEq.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Poly-15.png"></p>
+<h3 id="mise-en-oeuvre">Mise en oeuvre<a aria-hidden="true" class="anchor-heading icon-link" href="#mise-en-oeuvre"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Poly-16.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Stereo.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.StereoEqDroite.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.StereoEqRotation.png"></p>
+<h3 id="stereo-passive">Stereo Passive<a aria-hidden="true" class="anchor-heading icon-link" href="#stereo-passive"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Poly-17.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.StereoPassive.png"></p>
+<p>QUESTION: si point 3D est tres lointin alors sur les plans stereo il sera tres proche => disparité</p>
+<blockquote>
+<p>Notes du 2022/09/14 - End</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Notes du 2022/09/16 - Start</p>
+</blockquote>
+<p>B1.P3D.CM.BB20220916-01</p>
+<ul>
+<li>
+<p>champ commun = intersection des champs respectifs des cameras</p>
+<blockquote>
+<p>Attention </p>
+</blockquote>
+</li>
+<li>
+<p>stereo == camera proche</p>
+</li>
+<li>
+<p>vision binoculaire == camera eloigne</p>
+</li>
+<li>
+<p>vergence = angle des axes optique</p>
+</li>
+<li>
+<p>profondeur de vision = region net</p>
+</li>
+<li>
+<p>phenoneme d'olcutation = trou d'ombre dans le champ commun</p>
+</li>
+<li>
+<p>une fois les deux images réalisées on va <strong>appareiller</strong> les pixels communs (mais comment savoir qu'un pixel est commun ?!)</p>
+</li>
+<li>
+<p><strong>la notion de camera synchrone:</strong></p>
+<ul>
+<li>Stereo peut aussi se faire avec une seule qui prend un premier champ puis se deplace pour prendre un deuxieme champ => les prises de champs sont asynchrone</li>
+<li>pour toute prise d'evenement dynamique (e.g. du mouvement relatif) il nous faut un certain niveau de synchronisation </li>
+<li>plus le mouvement relatif est rapide moins de retard il faut entre les deux prises de vues</li>
+</ul>
+</li>
+</ul>
+<h4 id="principe">Principe<a aria-hidden="true" class="anchor-heading icon-link" href="#principe"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Poly-18.png"></p>
+<ul>
+<li>denses ou eparse
+<ul>
+<li>quantité d'information collecté</li>
+<li>depend de l'application</li>
+<li>souvent du dense (prentendant qui a plus peut faire plus)</li>
+<li>reconstruction dense => apparaiment dense (du coup peu optimal)</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>CNES pro mondiaux de la stereo</p>
+</blockquote>
+<ul>
+<li>apparemment peut se faire sur des regions ou des formes (segments, points) mais ici on va rester sur les pixels
+<ul>
+<li>par exemple apparemment de segment est tres util pour des environnment "humains" car les formes sont tres geometriques</li>
+<li>stereo segment = app. eparse de segment image</li>
+<li>stereo correlation = app. dense de pixel</li>
+</ul>
+</li>
+</ul>
+<h4 id="appariemment-block-matching">Appariemment (Block Matching???)<a aria-hidden="true" class="anchor-heading icon-link" href="#appariemment-block-matching"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Poly-19.png"></p>
+<ul>
+<li>on suppose que l'effet perspective est faible car les cameras sont proches</li>
+<li>SSD = Sum Square Difference (square pour eviter d'avoir des cas n'annulation +1-1=0)</li>
+<li>cette app. ne marche pas sur des textures uniformes (murs de meme couleur, quadrillage, ...)</li>
+<li>la zone de recherche depend de la profondeur/distance de l'objet
+<ul>
+<li>plus l'objet est proche plus la zone de recherche sera décalée de la zone initiale</li>
+<li>la connaissance de cette profondeur/distance est faite empiriquement (souvent on prend la zone la plus pessimiste)</li>
+</ul>
+</li>
+<li>CC Cross Correlation
+<ul>
+<li>produit scalarie utilisé pour trouver le pixel commun</li>
+</ul>
+</li>
+<li><strong>Zero Normalized Cross Correlation</strong>
+<ul>
+<li>I et I' sont la moyenne des niveaux dans la fenetre</li>
+<li>ecart type pour ???</li>
+<li>on soustrait l'offset entre les deux images</li>
+<li>on normalise car cela nous permet de plus facilement maitriser le seuil de validation (score de validation par exemple 0.6 en exterieur)</li>
+</ul>
+</li>
+<li>l'app. impose un temps de calcul tres grand</li>
+</ul>
+<h4 id="contrainte-épipolaire">Contrainte épipolaire<a aria-hidden="true" class="anchor-heading icon-link" href="#contrainte-épipolaire"></a></h4>
+<p>B1.P3D.CM.Epipolaire</p>
+<p>La droite épipolaire est une droite image qui inclut tous les pixels candidats <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mn>2</mn></msub><mo>∈</mo><msub><mi>I</mi><mi>D</mi></msub></mrow><annotation encoding="application/x-tex">p_2\in I_D</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> du pixel <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mn>1</mn></msub><mo>∈</mo><msub><mi>I</mi><mi>G</mi></msub></mrow><annotation encoding="application/x-tex">p_1\in I_G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">G</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<p>Or si cette droite epipolaire balaye une ligne du tableau de pixel (au lieu d'une diagonal) on a gagné car ce sera tres facile de parcourrir le tableau de pixel</p>
+<p>Pour avoir un tel contexte il faut que les cameras soient <strong>coplanaire</strong></p>
+<p>De plus, on a meme pas besoin de balayé toute la ligne du tableau car quand le point est loin alors le pixel se trouve au meme endroit sur l'image de droite et donc selon à quelle distance on anticipe que l'objet est on va plus ou moins balayer un sous ensemble de cette ligne (c'est ce qu'on appele la disparité des pixels)</p>
+<p>Cette disparité se calcule ainsi :<span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><msub><mi>v</mi><mn>1</mn></msub><mo>−</mo><msub><mi>v</mi><mn>2</mn></msub><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">|v_1-v_2|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">∣</span></span></span></span></span></p>
+<p>B1.P3D.CM.Disparite</p>
+<p>Pour obtenir une configuration coplanaire (avec ou sans vergence), on peut :</p>
+<ul>
+<li>utiliser un logiciel virtuel pour realiser des rotations de l'image et avec un algo arriver vers une conf. coplanaire</li>
+<li>au CNES ils utilisent une methode mechanique pour trouver la conf afin d'eviter les temps de calculs</li>
+</ul>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Poly-20.png"></p>
+<h4 id="exemple">Exemple<a aria-hidden="true" class="anchor-heading icon-link" href="#exemple"></a></h4>
+<ul>
+<li>chaise avec courbe en haut a droite </li>
+<li>ocultation avec courbe en bas a gauche</li>
+<li>goudron avec courbe en bas a droite</li>
+<li>mur blanc avec courbe milieu</li>
+</ul>
+<blockquote>
+<p>si vous avez une reconstruction eparse jamais vous faites ???</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Poly-21.png"></p>
+<h4 id="reconstruction">Reconstruction<a aria-hidden="true" class="anchor-heading icon-link" href="#reconstruction"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Poly-22.png"></p>
+<p>B1.P3D.CM.ReconstructionEq01</p>
+<p>B1.P3D.CM.ReconstructionEq02</p>
+<h4 id="recapitulatif">Recapitulatif<a aria-hidden="true" class="anchor-heading icon-link" href="#recapitulatif"></a></h4>
+<ol>
+<li>
+<p>Reduction</p>
+<ul>
+<li>On change la resolution (par exemple prendre qu'un pixel sur deux) consequence on reduit la resolution 3D</li>
+</ul>
+</li>
+<li>
+<p>Filtre</p>
+</li>
+<li>
+<p>Rectification+Correction Distortion</p>
+</li>
+<li>
+<p>Calcul des variances</p>
+</li>
+<li>
+<p>Calcul des scores de correlation</p>
+</li>
+<li>
+<p>Estimation des disparités</p>
+</li>
+<li>
+<p>Blob Filter</p>
+<p>Pour les valeurs homogenes on a de grand risque d'erreur d'app. (c'est cela que l'on filtre)</p>
+</li>
+<li>
+<p>Reconstruction 3D</p>
+</li>
+</ol>
+<p>Limitations fortes = temps de calcul et textures non adaptés => peut amener à avoir des trous dans notre reconstruction 3D</p>
+<h4 id="video-laas-2001-cartography">Video LAAS 2001 Cartography<a aria-hidden="true" class="anchor-heading icon-link" href="#video-laas-2001-cartography"></a></h4>
+<p>Comment savoir si une surface est navigable ?</p>
+<ol>
+<li>Prendre 3 points</li>
+<li>Faire le product vectoriel de ces points</li>
+<li>Deduire la normal de la surfuce entre ces 3 points</li>
+<li>Exclure les normal qui presente un angle trop fort entre la normal la vertical de notre repere de reference</li>
+</ol>
+<p>Pour franchir un obstacle on va deduire des ces normals le plan d'élévation des obstacles</p>
+<h4 id="video-dirigeable-karma-slam">Video Dirigeable Karma-Slam<a aria-hidden="true" class="anchor-heading icon-link" href="#video-dirigeable-karma-slam"></a></h4>
+<blockquote>
+<p>Modélisation incrémentable = prendre pls perceptions d'une reconstruction 3D pour avoir un modele de l'envirronement qui soit perceptible sur 360 deg</p>
+</blockquote>
+<h4 id="resoudre-le-probleme-de-texture-repetee">Resoudre le probleme de texture repetee<a aria-hidden="true" class="anchor-heading icon-link" href="#resoudre-le-probleme-de-texture-repetee"></a></h4>
+<p>Idée: Ajouter un eclairage qui va projeter un motif sur l'objet pour</p>
+<p>Kinex => un des premier a avoir rajouté au stereo un projecteur</p>
+<p>capteur a lumiere structuré = une camera et un projecteur</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Poly-23.png"></p>
+<h4 id="airbag">Airbag<a aria-hidden="true" class="anchor-heading icon-link" href="#airbag"></a></h4>
+<p>pour s'affranchir de perturbations de lumières extérieures ils ont travailler sur du proche infrarouge</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Poly-24.png"></p>
+<h4 id="exercice">Exercice<a aria-hidden="true" class="anchor-heading icon-link" href="#exercice"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Poly-25.png"></p>
+<ul>
+<li>config. de rectification ???</li>
+</ul>
+<ol>
+<li>
+<p>Lister les advantages/desadvantages de cette focale </p>
+<p>Focal petite = grand champ mais distortion</p>
+</li>
+<li>
+<p>Calculer le champ de vue vertical</p>
+<ul>
+<li><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow></msub></mrow><annotation encoding="application/x-tex">L_{min}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">min</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> distance aveugle</li>
+<li><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mi>v</mi></mrow><annotation encoding="application/x-tex">\theta v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span></span> demi-angle de champ </li>
+</ul>
+<p>B1.P3D.CM.ExVoitQ2-01
+B1.P3D.CM.ExVoitQ2-02</p>
+</li>
+<li>
+<p>Montrer <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mi>v</mi><mo>=</mo><mn>105</mn></mrow><annotation encoding="application/x-tex">\alpha v = 105</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">αv</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">105</span></span></span></span></span> et en déduire la disparité à la distance min de perception puis celle à 3m et enfin à 5m</p>
+<p>B1.P3D.CM.ExVoitQ2-01
+B1.P3D.CM.ExVoitQ2-02
+B1.P3D.CM.ExVoitQ2-03
+B1.P3D.CM.ExVoitQ2-04</p>
+</li>
+<li>
+<p>Conclure sur l'utilisation
+Créer une image de référence d'un sol plat pour le soustraire à l'acquisition réalisé sur le moment ce qui va alors faire resortir les delta entre vue reelle et vue de reference qui correspondent aux obstacles present sur le sol</p>
+</li>
+</ol>
+<h3 id="stereo-active">Stereo Active<a aria-hidden="true" class="anchor-heading icon-link" href="#stereo-active"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Poly-27.png"></p>
+<ul>
+<li>RADAR
+<ul>
+<li>economique</li>
+</ul>
+</li>
+<li>ultrasond
+<ul>
+<li>delta entre emission et reception</li>
+<li>seulement precis sur courte distance</li>
+</ul>
+</li>
+<li>lumiere structuree
+<ul>
+<li>profilometrie</li>
+<li>RGB-D Red Green Blue and Depth (i.e. kinex) => geometrie de la salle (avec aussi l'apparence)</li>
+<li>advantage p.r.à la stereo pour les surfaces repetitive et uniformes</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Notes du 2022/09/16 - End</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Notes du 2022/09/20 - Start</p>
+</blockquote>
+<h4 id="télémètre-laser">Télémètre Laser<a aria-hidden="true" class="anchor-heading icon-link" href="#télémètre-laser"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Poly-28.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Poly-29.png">
+B1.P3D.CM.ReflexionSpeculaire</p>
+<ul>
+<li>Selon l'angle choisit pour la déflexion on peut louper des pieds de table à chaque pas angulaire</li>
+</ul>
+<h4 id="lumière-structurée">Lumière structurée<a aria-hidden="true" class="anchor-heading icon-link" href="#lumière-structurée"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Poly-30.png"></p>
+<ul>
+<li>En stereo les calculs d'apparai. necessite bcp de puissance alors qu'en structurée on ne qu'un apparai. de pixel à faisceau</li>
+<li>De plus on peut aussi projeter des couleurs et ainsi simplifier l'apparai.</li>
+<li>Rayure Noir Blanc = projection temporelle pour image statique</li>
+<li>Nape de couleur = projection statique color-coded pour image dynamique</li>
+</ul>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Poly-31.png"></p>
+<ul>
+<li>Modèle Sténopé</li>
+</ul>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Poly-32.png"></p>
+<ul>
+<li>La lumière structurée est utilisé pour trouver l'équation du plan et non pas pour reconstruire l'image car la camera seule peut reconstruire la scène connaissant l'equation du plan</li>
+</ul>
+<h5 id="codage-binaire">Codage Binaire<a aria-hidden="true" class="anchor-heading icon-link" href="#codage-binaire"></a></h5>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Poly-33.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Poly-34.png"></p>
+<ul>
+<li>image virtuelle = construction de l'image mais projeté sur un plan focal</li>
+</ul>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Poly-35.png"></p>
+<p>Video debracage 3D resolut seulement récemment</p>
+<blockquote>
+<p>Notes du 2022/09/20 - End</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Notes du 2022/11/07 - Start</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Poly-36.png"> <!--ADDNOTES--></p>
+<h1 id="modelisation-3d">Modelisation 3D<a aria-hidden="true" class="anchor-heading icon-link" href="#modelisation-3d"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2-37.png"></p>
+<blockquote>
+<p>TP sur etanlonnage puis modelisation puis localisation</p>
+</blockquote>
+<h3 id="algorithme-générique">Algorithme générique<a aria-hidden="true" class="anchor-heading icon-link" href="#algorithme-générique"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2-38.png"> <!--ADDNOTES--></p>
+<ul>
+<li>
+<p>ré-échantillonage systématique : rendre le modele compact pour gagner en espace memoire en retirant <strong>aléatoirement</strong> des points du modèle</p>
+</li>
+<li>
+<p>ré-échantillonage sélectif : rendre le modele compact pour gagner en espace memoire en retirant <strong>selon un critère voulus</strong> des points du modèle (par exemple retirer des points coplanaires ou des points sur les zones les plus denses)</p>
+</li>
+<li>
+<p>formes libres = scènes naturelles</p>
+</li>
+<li>
+<p>formes structurées = scènes geométriques</p>
+</li>
+</ul>
+<h3 id="icp">ICP<a aria-hidden="true" class="anchor-heading icon-link" href="#icp"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2-39.png"> <!--ADDNOTES--></p>
+<ul>
+<li>notion de complétude similaire mais différente de la fermeture de boucle en SLAM</li>
+<li>On part de deux perceptions d'un meme objet sur deux points de vues différents</li>
+<li>On peut estimer la matrice de passage de <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">R_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> à <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">R_{t+1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8917em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span></span></span></span></span> (notammant avec des senseurs cinétiques sur la caméra)</li>
+<li>Avec cette matrice de passage estimée on peut faire un premier appariment des points les plus proches entre les perceptions on en déduit alors une nouvelle matrice de passage</li>
+<li>Avec cette nouvelle matrice de passage on refait l'appariment des perceptions et on réitère</li>
+</ul>
+<p>Une façon d'estimer la matrice de passage sans informations supplémentaires (très imprécis par contre)</p>
+<ul>
+<li>estimer la matrice de translation -> prendre les centres de gravité des nuages de ponts pour en calculer les</li>
+<li>estimer la matrice de rotation -> matrice de covariance avec ses vecteurs propres </li>
+</ul>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2-40.png"> <!--ADDNOTES--></p>
+<h2 id="modélisation">Modélisation<a aria-hidden="true" class="anchor-heading icon-link" href="#modélisation"></a></h2>
+<h3 id="formes-libres">Formes Libres<a aria-hidden="true" class="anchor-heading icon-link" href="#formes-libres"></a></h3>
+<h4 id="mnt">MNT<a aria-hidden="true" class="anchor-heading icon-link" href="#mnt"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2-41.png"> <!--ADDNOTES--></p>
+<blockquote>
+<p>MNT : Modèle Numérique de Terrain aussi appelé <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2.5</mn><mi>D</mi></mrow><annotation encoding="application/x-tex">2.5D</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">2.5</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span></span></p>
+</blockquote>
+<h4 id="voxels--octrees">Voxels &#x26; Octrees<a aria-hidden="true" class="anchor-heading icon-link" href="#voxels--octrees"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2-42.png"> <!--ADDNOTES--></p>
+<ul>
+<li>
+<p>Voxel est l'equivalent 3D du pixel en 2D</p>
+</li>
+<li>
+<p>Octree est l'equivalent 3D du quadtree en 2D</p>
+</li>
+<li>
+<p>Exemple algo tabletop</p>
+</li>
+</ul>
+<blockquote>
+<p>Notes du 2022/11/07 - End</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Notes du 2022/11/09 - Start</p>
+</blockquote>
+<h3 id="formes-structurées">Formes Structurées<a aria-hidden="true" class="anchor-heading icon-link" href="#formes-structurées"></a></h3>
+<h4 id="modèles-mathématiques">Modèles mathématiques<a aria-hidden="true" class="anchor-heading icon-link" href="#modèles-mathématiques"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2-Annotated-43.png"> <!--ADDNOTES--></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2-43-BB1.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2-43-BB2.png"></p>
+<h3 id="primitives-géométriques">Primitives Géométriques<a aria-hidden="true" class="anchor-heading icon-link" href="#primitives-géométriques"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2-Annotated-43.png"> <!--ADDNOTES--></p>
+<blockquote>
+<p>Keywords:</p>
+<ul>
+<li>Superquadriques</li>
+<li>CSG: Constructive Solid Geometry</li>
+</ul>
+</blockquote>
+<p>Rem:</p>
+<ul>
+<li>Pour modeliser un objet en mouvement alors que le capteur bouge lui-meme alors on fait une bird view pour avoir un referentiel supose fixe (aussi dit ego-centré)</li>
+</ul>
+<h1 id="segmentation-3d">Segmentation 3D<a aria-hidden="true" class="anchor-heading icon-link" href="#segmentation-3d"></a></h1>
+<h2 id="ransac">RANSAC<a aria-hidden="true" class="anchor-heading icon-link" href="#ransac"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2-45.png"> <!--ADDNOTES-->
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2-Annotated-45.png"> <!--ADDNOTES--></p>
+<blockquote>
+<p>Keywords</p>
+<ul>
+<li>RANSAC: Random Sample Consensus</li>
+</ul>
+</blockquote>
+<p>Un capteur 3D peut ou bien retourner une image de profondeur ou un nuage de point</p>
+<ul>
+<li>Exemple de la segmentation d'une poubelle sera plus facile avec une image de profondeur car l'image possede une information de distance p.r.au capteur qui permet de tres facilement dissocier le fond de l'objet en qestion</li>
+</ul>
+<p>RANSAC:</p>
+<ul>
+<li>si trop de points faux (point bleu du schema en haut a gauche du slide) alors la methode des moindres carrees ne marchera pas</li>
+<li>autre mehode prendre seulement deux points aléatoirement pour calculer une equation de droite afin de regarder la distance relative de tous les autres point p.r.à cette equation de droite pour dissocier les outliers des vrais points</li>
+</ul>
+<h2 id="attribut-normalecourbure">Attribut Normale/Courbure<a aria-hidden="true" class="anchor-heading icon-link" href="#attribut-normalecourbure"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2-46.png"> <!--ADDNOTES-->
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2-Annotated-46.png"> <!--ADDNOTES--></p>
+<p>Pour segmenter le cantour on utilise le chaînage :</p>
+<ul>
+<li>on prend la perpendiculaire de la normale jusqu'à tomber sur un point voisin pour verifier que la normale</li>
+</ul>
+<h2 id="attribut-courbure">Attribut Courbure<a aria-hidden="true" class="anchor-heading icon-link" href="#attribut-courbure"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2-Annotated-47.png"> <!--ADDNOTES--></p>
+<h2 id="page-48">Page 48<a aria-hidden="true" class="anchor-heading icon-link" href="#page-48"></a></h2>
+<blockquote>
+<p>Hors programme</p>
+</blockquote>
+<!--![](/assets/images/B1.P3D.CM.PolyV2-Annotated-48.png) ADDNOTES-->
+<h1 id="localisation-et-reconnaissance-3d">Localisation et Reconnaissance 3D<a aria-hidden="true" class="anchor-heading icon-link" href="#localisation-et-reconnaissance-3d"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2-50.png"></p>
+<h2 id="but">But<a aria-hidden="true" class="anchor-heading icon-link" href="#but"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2-Annotated-51.png"> <!--ADDNOTES--></p>
+<p>Le nombre d'appariement minimum est de 3 points ! Methode de résolution analytique ???</p>
+<p>Exemple du slide illustre la méthode stenopé avec modèle de projection</p>
+<p>??? Cercle sur plan d'interpretation mais ellipse sur mur inclinée</p>
+<p>Tz&#x3C;0 translation sur le plan optique</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2-Annotated-52.png"> <!--ADDNOTES--></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2-Annotated-53.png"> <!--ADDNOTES--></p>
+<p><a href="https://www.diota.com/">Diota Company</a></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2-Annotated-54.png"> <!--ADDNOTES--></p>
+<blockquote>
+<p>Notes du 2022/11/09 - Start</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Notes du 2022/11/10 - End</p>
+</blockquote>
+<p>P_i point de l'objet dans le repère modèle puisqu'on y applique</p>
+<h4 id="precision-vs-nb-camera">Precision vs nb camera<a aria-hidden="true" class="anchor-heading icon-link" href="#precision-vs-nb-camera"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2-Annotated-55.png"> <!--ADDNOTES--></p>
+<p>On va utiliser une camera observation pour s'assurer que le Tz de la cam 1 a bien été estimé</p>
+<h4 id=""><a aria-hidden="true" class="anchor-heading icon-link" href="#"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2-Annotated-55.png"> <!--ADDNOTES--></p>
+<h4 id="-1"><a aria-hidden="true" class="anchor-heading icon-link" href="#-1"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2-Annotated-56.png"> <!--ADDNOTES--></p>
+<h3 id="capture-optique-de-mouvement-humain">Capture optique de mouvement humain<a aria-hidden="true" class="anchor-heading icon-link" href="#capture-optique-de-mouvement-humain"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2-Annotated-57.png"> <!--ADDNOTES--></p>
+<p>Pastille utilisé au LAAS pour donner la "vérité terrain"</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.Poly20221101-58.png"> <!--ADDNOTES--></p>
+<p>Fusion Haut Niveau : </p>
+<ul>
+<li>Kalman
+Fusion Bas Niveau : </li>
+<li>Capteur</li>
+<li>1 seule localisation !</li>
+</ul>
+<p>F_j est sensé être 0 mais comme a des erreurs ont va pouvoir faire du filtrage de F_j</p>
+<p>Q3 on prend deux droites intersecte sur le point pour min les plans des droites et ainsi min l'intersection ellememe</p>
+<p>on peut faire de la loc en utilisant de l'etallonage avec des param intreseque fixée</p>
+<p>Airbus detection position du visage</p>
+<p>pour faire de la realite augmente pour le pilote d'un avion</p>
+<p>camera RGB avec nuage de points sensoreil et visuelle</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.BB20221110-03.png"></p>
+<p>ICP avec loc initiale en utilisant des points clés</p>
+<p>Nuage sensoriele et nuage modele</p>
+<ol>
+<li>dans les deux nuages on extrait un pt cle </li>
+<li>Calcule les signatures (on associe un descripteur a chaque point clé)</li>
+<li>App. entre key point modele et ceux du sensoriel</li>
+<li>Localisation 3D -> <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">X_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></li>
+<li>ICP pour raffiner la loc</li>
+</ol>
+<p>sur la video d'airbus on initialise avec les etapes 1 à 3</p>
+<h1 id="reconnaissance-3d3d">Reconnaissance 3D/3D<a aria-hidden="true" class="anchor-heading icon-link" href="#reconnaissance-3d3d"></a></h1>
+<h2 id="but-1">But<a aria-hidden="true" class="anchor-heading icon-link" href="#but-1"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2A-63.png"></p>
+<p>Problematique d'app.</p>
+<p>Analogie avec les points d'interets en 2D</p>
+<ul>
+<li>extraire des key points </li>
+<li>calculer une signature (descritpeur)</li>
+<li>associer au modele</li>
+</ul>
+<h2 id="iss">ISS<a aria-hidden="true" class="anchor-heading icon-link" href="#iss"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2A-63.png"></p>
+<h2 id="shot">SHOT<a aria-hidden="true" class="anchor-heading icon-link" href="#shot"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2A-65.png"></p>
+<p>une fois les deux vecteurs de 352 composantes obtenus ont va faire la norme L1 pour comparer composante par composante pour connaitre les points app. (on peut aussi prendre la norme L2 mais c'est moins interesse parce que si on a une erreur alors elle aura un impacte trop grand a cause du carre) On prefere la cosine distance avec le produit scalaire.</p>
+<h2 id="appariements">Appariements<a aria-hidden="true" class="anchor-heading icon-link" href="#appariements"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2A-67.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2A-68.png"></p>
+<blockquote>
+<p>hors porgrame</p>
+</blockquote>
+<h2 id="exemple-dévracage">Exemple: Dévracage<a aria-hidden="true" class="anchor-heading icon-link" href="#exemple-dévracage"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2A-69.png"></p>
+<p>cf <strong>template matching</strong> du <a href="/UT3-AURO-2223-S10-Dendron/notes/42i6iagpks2mz00aw7q97lh">Chap 4 - Vision Industrielle</a></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2A-70.png"></p>
+<p>Anecdote du manitou avec systeme de perception pour anticiper les colisions ce qui implique les problematique d'ou placer les capteurs et comment gerer la volumetrie de l'engin quand celui possede des configurations multiples qui changent sa volumetrie</p>
+<h1 id="reconnaissance-2d3d">Reconnaissance 2D/3D<a aria-hidden="true" class="anchor-heading icon-link" href="#reconnaissance-2d3d"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2A-71.png"></p>
+<p>projection du modele avec l'hypothese  app prim 3d <strong>projeté</strong> avec image prise en 2d</p>
+<p>tracking: dans un flux video on prend la premiere image comme condition initiale puis on considere l'image en t+1 (où le delta t est sensé etre suffisamment petit) ceci permet de faire un app. et le delta lie au mouvement est compensé par un recalage (souvent en utilisant un filtre de kalman pour faire la prediction du mouvement)</p>
+<h1 id="réf">Réf.<a aria-hidden="true" class="anchor-heading icon-link" href="#réf"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2A-72.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2A-73.png"></p>
+<h1 id="4--apllications-et-exemples">4- Apllications et Exemples<a aria-hidden="true" class="anchor-heading icon-link" href="#4--apllications-et-exemples"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2A-74.png"></p>
+<h2 id="calibration-brasoeil">Calibration "bras/oeil"<a aria-hidden="true" class="anchor-heading icon-link" href="#calibration-brasoeil"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2A-75.png"></p>
+<h2 id="etallonage-et-manipulation-look--move">Etallonage et Manipulation (look &#x26; move)<a aria-hidden="true" class="anchor-heading icon-link" href="#etallonage-et-manipulation-look--move"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2A-76.png"></p>
+<h2 id="reconnaissance-et-manipulation-asservissemnt-en-positionnement-3d">Reconnaissance et Manipulation (Asservissemnt en positionnement 3D)<a aria-hidden="true" class="anchor-heading icon-link" href="#reconnaissance-et-manipulation-asservissemnt-en-positionnement-3d"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2A-77.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2A-78.png"></p>
+<h2 id="-2">..<a aria-hidden="true" class="anchor-heading icon-link" href="#-2"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2A-78.png"></p>
+<h2 id="algorithme-tabletop">Algorithme TableTop<a aria-hidden="true" class="anchor-heading icon-link" href="#algorithme-tabletop"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2A-80.png"></p>
+<p>RANSAC pour trouver le plan de la table afin de supprimer tous les points du nuage lié au plan (car on veut que les nuages liés aux objets) il ne reste plus qu'à faire du clustering sur le reste des points pour finir avec l'ICPs</p>
+<h2 id="localisation-mono">Localisation Mono<a aria-hidden="true" class="anchor-heading icon-link" href="#localisation-mono"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2A-80.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2A-81.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2A-82.png"></p>
+<p>probleme de t-1 -> t c'est qu'il faut une initialisation au départ pour commencer l'iteration suivante:</p>
+<ul>
+<li>l'image 2D à t est app. avec une image virtuel à t-1</li>
+<li>une fois l'app. et la localisation en utilise l'image </li>
+</ul>
+<h2 id="vision-3d-vs-plannification-de-trajectoire">Vision 3D vs Plannification de trajectoire<a aria-hidden="true" class="anchor-heading icon-link" href="#vision-3d-vs-plannification-de-trajectoire"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B1.P3D.CM.PolyV2A-83.png"></p>
+<hr>
+<strong>Backlinks</strong>
+<ul>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/6lbbamloic83l9fqsm52deo">P3D - Perception 3D</a></li>
+</ul>

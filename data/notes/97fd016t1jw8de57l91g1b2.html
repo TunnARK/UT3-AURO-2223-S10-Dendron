@@ -1,0 +1,160 @@
+<h1 id="chap-6---introduction-ros">Chap 6 - Introduction ROS<a aria-hidden="true" class="anchor-heading icon-link" href="#chap-6---introduction-ros"></a></h1>
+<blockquote>
+<p><strong>Avertissement:</strong>
+Cette page peut contenir des fautes ! Envoyez-moi un message sur <a href="https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org"><code>#UT3-AURO-M2-2223-Request:matrix.org</code></a> si vous en trouvez, merci.</p>
+</blockquote>
+<blockquote>
+<p>Cours donné par <a href="/UT3-AURO-2223-S10-Dendron/tlasguigne@laas.fr">T. Lasguigne</a></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Notes du 2022/09/29 - Start</p>
+</blockquote>
+<blockquote>
+<p>ROS 1 n'est pas du tout temps réel du coup ROS 2 essaie d'ajouter cette feature</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-01.png"></p>
+<h1 id="table-des-matières">Table des matières<a aria-hidden="true" class="anchor-heading icon-link" href="#table-des-matières"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-02.png"></p>
+<h1 id="exemple">Exemple<a aria-hidden="true" class="anchor-heading icon-link" href="#exemple"></a></h1>
+<h2 id="asservissement-visuel">Asservissement Visuel<a aria-hidden="true" class="anchor-heading icon-link" href="#asservissement-visuel"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-03.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-04.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-05.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-06.png"></p>
+<h1 id="panorama">Panorama<a aria-hidden="true" class="anchor-heading icon-link" href="#panorama"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-07.png"></p>
+<h2 id="motivations">Motivations<a aria-hidden="true" class="anchor-heading icon-link" href="#motivations"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-08.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-09.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-10.png"></p>
+<p>OpenCV = traitement image </p>
+<p>PCL = traitement de nuages de point</p>
+<p>certains robots ont plusieurs PC (un pour chaque tache)</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-11.png"></p>
+<h3 id="plomberie">Plomberie<a aria-hidden="true" class="anchor-heading icon-link" href="#plomberie"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-12.png"></p>
+<h3 id="outils">Outils<a aria-hidden="true" class="anchor-heading icon-link" href="#outils"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-13.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-14.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-15.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-16.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-17.png"></p>
+<h3 id="ecosystème">Ecosystème<a aria-hidden="true" class="anchor-heading icon-link" href="#ecosystème"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-18.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-19.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-20.png"></p>
+<h3 id="history">History<a aria-hidden="true" class="anchor-heading icon-link" href="#history"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-21.png"></p>
+<h3 id="releases">Releases<a aria-hidden="true" class="anchor-heading icon-link" href="#releases"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-22.png"></p>
+<!--
+![](/assets/images/RMN.CM.ROS-Intro-23.png)
+![](/assets/images/RMN.CM.ROS-Intro-24.png)
+![](/assets/images/RMN.CM.ROS-Intro-25.png)
+![](/assets/images/RMN.CM.ROS-Intro-26.png)
+-->
+<h3 id="installation">Installation<a aria-hidden="true" class="anchor-heading icon-link" href="#installation"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-27.png"></p>
+<h3 id="configuration">Configuration<a aria-hidden="true" class="anchor-heading icon-link" href="#configuration"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-28.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-29.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-30.png"></p>
+<h3 id="ros-filesystem">ROS Filesystem<a aria-hidden="true" class="anchor-heading icon-link" href="#ros-filesystem"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-31.png"></p>
+<h3 id="creation-dun-paquet-ros">Creation d'un paquet ROS<a aria-hidden="true" class="anchor-heading icon-link" href="#creation-dun-paquet-ros"></a></h3>
+<h4 id="définition">Définition<a aria-hidden="true" class="anchor-heading icon-link" href="#définition"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-32.png"></p>
+<blockquote>
+<p>ATTENTION: un packet = un repertoire</p>
+</blockquote>
+<h4 id="outils-1">Outils<a aria-hidden="true" class="anchor-heading icon-link" href="#outils-1"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-33.png"></p>
+<h1 id="organisation-des-programmes-sous-ros">Organisation des programmes sous ROS<a aria-hidden="true" class="anchor-heading icon-link" href="#organisation-des-programmes-sous-ros"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-34.png"></p>
+<h2 id="paquets">Paquets<a aria-hidden="true" class="anchor-heading icon-link" href="#paquets"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-35.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-36.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-37.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-38.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-39.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-40.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-41.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-42.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-43.png"></p>
+<h2 id="compilation">Compilation<a aria-hidden="true" class="anchor-heading icon-link" href="#compilation"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-44.png"></p>
+<h2 id="graphe-dapplication">Graphe d'application<a aria-hidden="true" class="anchor-heading icon-link" href="#graphe-dapplication"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-45.png"></p>
+<blockquote>
+<p>Messages est typé pas le topics</p>
+</blockquote>
+<h3 id="node">Node<a aria-hidden="true" class="anchor-heading icon-link" href="#node"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-46.png"></p>
+<blockquote>
+<p>Service = faire des requetes directes sans passer par un topics (une requete implique une reponse)</p>
+</blockquote>
+<h1 id="communications-ros">Communications ROS<a aria-hidden="true" class="anchor-heading icon-link" href="#communications-ros"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-47.png"></p>
+<h2 id="name-services">Name Services<a aria-hidden="true" class="anchor-heading icon-link" href="#name-services"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-48.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-49.png"></p>
+<h2 id="rosrun">rosrun<a aria-hidden="true" class="anchor-heading icon-link" href="#rosrun"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-50.png"></p>
+<h2 id="topics">Topics<a aria-hidden="true" class="anchor-heading icon-link" href="#topics"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-51.png"></p>
+<h2 id="rostopic">rostopic<a aria-hidden="true" class="anchor-heading icon-link" href="#rostopic"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-52.png"></p>
+<pre><code>rostopic bw # display bandwith used by topic
+rostopic echo # print messages to screen
+rostopic hz # display publishing rate of topic
+rostopic list # print information about active topics
+rostopic pub # publish data to topic
+rostopic type # print topic type
+</code></pre>
+<h2 id="rqt_console">rqt_console<a aria-hidden="true" class="anchor-heading icon-link" href="#rqt_console"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-53.png"></p>
+<h2 id="roslaunch">roslaunch<a aria-hidden="true" class="anchor-heading icon-link" href="#roslaunch"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-54.png"></p>
+<h2 id="rosbag">rosbag<a aria-hidden="true" class="anchor-heading icon-link" href="#rosbag"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-55.png"></p>
+<p><code>rosbag record -a</code> on sauvergarde tous</p>
+<p><code>-O subset</code> pour donner un prefixe au nom de fichier type <code>2022-09-29_11-42-50.bag</code></p>
+<p>Pour lire un <code>.bag</code> : <code>rosbag play</code></p>
+<h2 id="rosservice">rosservice<a aria-hidden="true" class="anchor-heading icon-link" href="#rosservice"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-56.png"></p>
+<pre><code>rosservice args # print service arguments
+rosservice call # call the service with the provided args
+rosservice find # find services by service type
+rosservice info # print information about service
+rosservice list # list of services
+</code></pre>
+<p>Quand on fait un <code>call</code> penser à utiliser la touche <code>TAB</code> pour précompléter le message et n'avoir qu'à changer les valeurs</p>
+<h2 id="rosparam">rosparam<a aria-hidden="true" class="anchor-heading icon-link" href="#rosparam"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-57.png"></p>
+<pre><code>rosparam set # set parameter
+rosparam get # get parameter
+rosparam load # load parameters from file
+rosparam dump # dump parameters to file
+rosparam delete # delete parameter
+rosparam list # list parameter names
+</code></pre>
+<p>YAML utilisé pour les paramètres</p>
+<h1 id="programmer-avec-ros">Programmer avec ROS<a aria-hidden="true" class="anchor-heading icon-link" href="#programmer-avec-ros"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-58.png"></p>
+<h2 id="tutorials">Tutorials<a aria-hidden="true" class="anchor-heading icon-link" href="#tutorials"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-59.png"></p>
+<h1 id="ros-control">ROS Control<a aria-hidden="true" class="anchor-heading icon-link" href="#ros-control"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-60.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-61.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-62.png"></p>
+<h2 id="schema-interaction">Schema interaction<a aria-hidden="true" class="anchor-heading icon-link" href="#schema-interaction"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-63.png"></p>
+<h2 id="exemple-1">Exemple<a aria-hidden="true" class="anchor-heading icon-link" href="#exemple-1"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-64.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.ROS-Intro-65.png"></p>
+<hr>
+<strong>Backlinks</strong>
+<ul>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/jlzfz6le5m018ggh4k7ydz8">RMN - Robotique Mobile &#x26; Navigation</a></li>
+</ul>

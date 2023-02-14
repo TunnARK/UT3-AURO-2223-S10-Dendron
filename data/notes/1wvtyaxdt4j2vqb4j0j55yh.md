@@ -1,0 +1,150 @@
+
+> **Avertissement:**
+Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-2223-Request:matrix.org`](https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org) si vous en trouvez, merci.
+
+> Cours donné par C. Eqouy  
+
+Support de cours :
+- [B1.VIRCRV.TP2.Sujet.pdf](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/B1.VIRCRV.TP2.Sujet.pdf)
+
+---
+
+
+Ouverture = Erosion + Dilatation
+
+Fermeture = Dilatation + Erosion
+
+# Exercice 2 - Contrôle de conformité sur grille
+
+![](/assets/images/B1.VIRCRV.TP2.Ex-02.png)
+
+## 2.1) Vignettage
+
+Confusion entre la grille et le fond dû aux problemes de luminosité du coup on fait une **fermeture** pour supprimer totalement la grille et ainsi récuperer le fond.
+
+On a appliqué une fermeture ainsi :
+1. Traitement>Image>Morphologie>Ouverture/Fermeture>Close
+2. Prendre $ImageRef$ puis choisir un carré comme **structuring element** avec une taille de 70
+
+Une fois le fond isolé on peut faire une soustraction $Fond-ImageRef$ pour obtenir une image de la grille avec un fond uniforme.
+
+Pour faire la soustraction :
+1. Traitement>Image>Arithmétique>Substract
+2. Input1 = $Fond$ et Input2 = $ImageRef$
+
+Maintenant on va pouvoir appliquer une segmentation pour extraire la grille (mettre tous le fond à 0 et ne garder que la grille en la mettant à 1).
+
+Pour faire la segmentation :
+1. Traitement>Semgmentation>Treshold
+2. Choisir le seuil qui affiche toute la grille (ici on avait 13->57)
+3. On a obtenu des pixels en bordure d'image à enlever
+4. Pour enlever ces pixels de trop on a fait
+    Traitement>Image>Morphologie>Géodésie>BorderKill
+
+Il peut être plus advantageux d'inverser l'image pour mettre le fond à 1 et la grille à 0 pour ce faire :
+1. Traitement>Image>Logique>Not
+
+## 2.2) Labélisation
+
+1. Ouvrir l'outils de labélisation :
+    "extraction d'objets" sur la barre d'outils de gauche
+2. Laisser "automatique" et appuyer sur suivant
+3. Choisir "seuillage" et vérifier que les seuils sont de 1 à 1
+4. Appuyer sur suivant puis appliquer le modifications
+
+On obtient dans la gallerie d'"ObjectSet" un labelisation possèdant en propriété 206 objets que l'on peut afficher sur l'$ImageRef$ en sélectionnant "Afficher/Masquer">Bitmap.
+
+## 2.3) Filtrage
+
+1. Traitement>ObjectSet>Filtrage
+2. Choisir un critère de filtrage (élongation ou périmètre)
+3. Donner un range ne contenant pas les caractéristiques nominales 
+    - pour l'élongation mettre min à 0 et max en à 0.75 -> le nominal étant autour de 0.8
+    - pour le périmètre mettre min à 125 et max à 500 ou plus (le nominal étant plus petit que 125)
+4. Vérifier les propriétés de l'objectset (il doit contenir que la zone défectueuse)
+
+## 2.4) Approche à privilégier ?
+
+La méthode de filtrage est plus intéressante car elle permet de n'isoler que l'objet défectueux tout en facilitant son automatisation via l'usage du tableau de caractéristiques.
+
+# Exercice 1 - Contrôle de conformité sur circuit imprimé
+
+![](/assets/images/B1.VIRCRV.TP2.Ex-01.png)
+
+## 1.1) Augmenter la dynamique
+
+1. Traitement>Image>Arithméique>LinearScale
+2. Ajuster l'output range pour couvrir tous le spectre $[0;255]$
+
+## 1.2) Détection des défauts
+
+1. Appliquer des segmentations sur la conforme et la défectueuse 
+    Traitement>Semgmentation>Treshold
+2. Faire une soustraction $conforme-defect$ cela donne les parties manquantes de la piece defectueuse
+3. Possiblement appliquer une ouverture/fermeture pour améliore l'image obtenue en 2
+
+## 1.3) Identification des défauts
+
+1. Appliquer la labelisation et l'afficher sur l'image défectueuse pour faire apparaitre les pieces manquantes
+2. Filtrer pour ne garder que le segment (en utilisant le citere de compacité par exemple)
+
+## 1.4) Ségmenter les lignes de soudure
+
+...
+
+# Exercice 4 - Analyse de microstructure
+
+![](/assets/images/B1.VIRCRV.TP2.Ex-04.png)
+
+## 4.1) Identification avec histogramme de niveaux de gris
+
+### Histogramme
+
+1. Clic droit sur l'image puis Histogramme
+2. ou Traitement>Image>Mesures>Histogramme
+
+![](/assets/images/B1.VIRCRV.TP2.Ex-04.Im-01.png)
+
+L'Histogramme montre trois pics à :
+- autour de $254$ correspondant à la matrice en blanc
+- entre $[70;185]$ correspondant à la couche superficielle en gris
+- autour de $0$ correspondant à la couche discontinue en noir
+
+
+### Segmentation
+
+1. Traitement>Images>Segmentation>Treshold
+2. Choisir le seuil qui affiche juste la couche grise (ici on a pris 70->185)
+3. On a obtenu des contours de la couche discontinue à enlever
+    1. Traitement>Image>Morphologie>Ouverture/Fermeture>Close avec Disque et size à 5
+        pour enlever les trous ; puis
+    2. Traitement>Image>Morphologie>Ouverture/Fermeture>Open avec Disque et size à 5
+        pour remplir les trous de la couche grise
+
+### Epaisseur
+
+1. Traitement>Images>Morphologie>Squelette>ThinSkeleton
+    pour extraire la structure de la couche grise
+2. Choisir Structure Type 1 avec 4 connexité
+
+
+
+
+<!--
+# Exercice 3 - Comptage de Tuyaux
+
+![](/assets/images/B1.VIRCRV.TP2.Ex-03.png)
+
+# Exercice 5 - Contrôle conformité circuit imprimé (sans apprentissage)
+
+![](/assets/images/B1.VIRCRV.TP2.Ex-05.png)
+
+# Exercice 6 - Analyse Endommagement
+
+![](/assets/images/B1.VIRCRV.TP2.Ex-06.png)
+
+# Exercice 7 - Détection d'objets mobiles
+
+![](/assets/images/B1.VIRCRV.TP2.Ex-07.png)
+
+-->

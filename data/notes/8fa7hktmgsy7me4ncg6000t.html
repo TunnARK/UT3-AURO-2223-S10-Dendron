@@ -1,0 +1,79 @@
+<h1 id="td1---mrpdrpordonnancement">TD1 - MRP/DRP/Ordonnancement<a aria-hidden="true" class="anchor-heading icon-link" href="#td1---mrpdrpordonnancement"></a></h1>
+<blockquote>
+<p><strong>Avertissement:</strong>
+Cette page peut contenir des fautes ! Envoyez-moi un message sur <a href="https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org"><code>#UT3-AURO-M2-2223-Request:matrix.org</code></a> si vous en trouvez, merci.</p>
+</blockquote>
+<blockquote>
+<p>Cours donné par C. Briand</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Notes RKA du 2023/01/19 - Start</p>
+</blockquote>
+<h1 id="exercice-1---mrp">Exercice 1 - MRP<a aria-hidden="true" class="anchor-heading icon-link" href="#exercice-1---mrp"></a></h1>
+<h2 id="tableau">Tableau<a aria-hidden="true" class="anchor-heading icon-link" href="#tableau"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AOH.GPL.TD1.Sujet-Ex01-01.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AOH.GPL.TD1.BB20230119-01.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AOH.GPL.TD1.BB20230119-02.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AOH.GPL.TD1.BB20230119-03.png"></p>
+<h2 id="méthode-de-wagner-whitin">Méthode de Wagner Whitin<a aria-hidden="true" class="anchor-heading icon-link" href="#méthode-de-wagner-whitin"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AOH.GPL.TD1.Sujet-Ex01-02.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AOH.GPL.TD1.BB20230119-04.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AOH.GPL.TD1.BB20230119-05.png"></p>
+<h3 id="méthode-de-bellman">Méthode de Bellman<a aria-hidden="true" class="anchor-heading icon-link" href="#méthode-de-bellman"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AOH.GPL.TD1.BB20230119-06.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AOH.GPL.TD1.BB20230119-07.png"></p>
+<h2 id="politique-de-fabrication">Politique de fabrication<a aria-hidden="true" class="anchor-heading icon-link" href="#politique-de-fabrication"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AOH.GPL.TD1.Sujet-Ex01-03.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AOH.GPL.TD1.BB20230119-08.png"></p>
+<h1 id="exercice-2---drp">Exercice 2 - DRP<a aria-hidden="true" class="anchor-heading icon-link" href="#exercice-2---drp"></a></h1>
+<blockquote>
+<p>Attention le délai de fabrication est de deux périodes
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AOH.GPL.TD1.Sujet-Ex02-04.png"></p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AOH.GPL.TD1.BB20230119-09.png"></p>
+<blockquote>
+<p>Utiliser ce <a href="https://github.com/TunnARK/UT3-AURO-2223-S10-Dendron/blob/main/vault/assets/B3.AOH.GPL.TD1.DRP_vierge.xlsx">fichier excel</a></p>
+</blockquote>
+<h2 id="2-a-tableau-mrp">2-a) Tableau MRP<a aria-hidden="true" class="anchor-heading icon-link" href="#2-a-tableau-mrp"></a></h2>
+<p>Dans le fichier excel,</p>
+<ol>
+<li>Remplir la formule du besoin net en C11 (pour toute la ligne 11)</li>
+<li>Remplir la formule du stock en C10</li>
+<li>Une fois ces lignes remplit, on obtient l'évolution des stocks sans intervention</li>
+<li>Remplir C13 par D12 (pour toute la ligne)</li>
+<li>Jouer avec la ligne 12 pour trouver les bonnes livraisons:
+<ul>
+<li>Pour cela on prend le plus petit multiple du lot min (ici 20)supérieur au nombre dans le besoin net de la période suivante </li>
+<li>si le besoin est de 15 on garde un lot min de 20</li>
+<li>si le besoin est de 25 on prend un lot de 40</li>
+</ul>
+</li>
+<li>Répéter ces étapes pour les autres centres de distribuiton</li>
+</ol>
+<h2 id="2-b-gestion-de-la-flotte-de-véhicule">2-b) Gestion de la flotte de véhicule<a aria-hidden="true" class="anchor-heading icon-link" href="#2-b-gestion-de-la-flotte-de-véhicule"></a></h2>
+<p>Le nombre de véhicule en ligne 30 du fichier excel est déjà paramétré. Ce nombre est ici limité à 7 ce qui est aussi déjà implémenté en mettant en rouge tout nombre supérieur à 7.</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AOH.GPL.TD1.BB20230119-10.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AOH.GPL.TD1.BB20230119-11.png"></p>
+<p>Dans le fichier excel,</p>
+<ol>
+<li>Choisir un centre de distribution où l'on va livrer plustot</li>
+<li>Manuellement implémenter l'ajout de lot min dans la ligne de livraison pour la période concernée</li>
+</ol>
+<h2 id="2-c-besoin-brut-en-pf1">2-c) Besoin brut en PF1<a aria-hidden="true" class="anchor-heading icon-link" href="#2-c-besoin-brut-en-pf1"></a></h2>
+<p>Dans le fichier excel,</p>
+<ol>
+<li>Remplir le tableau violet</li>
+<li>Ligne 33 se calcule par la somme des commandes sur les trois distri</li>
+<li>B34 vaut 200 comme indiqué dans l'énoncé</li>
+<li>Appliquer les étapes pour le MRP comme vue précédemment</li>
+</ol>
+<blockquote>
+<p>Notes RKA du 2023/01/19 - End</p>
+</blockquote>
+<hr>
+<hr>
+<strong>Backlinks</strong>
+<ul>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/hckd6hnhgfjjgk5tt10dewe">AOH - Aspect Organisation et Humains</a></li>
+</ul>

@@ -1,0 +1,618 @@
+<h1 id="tp1---rtosesp-idf">TP1 - RTOS/ESP-IDF<a aria-hidden="true" class="anchor-heading icon-link" href="#tp1---rtosesp-idf"></a></h1>
+<p>More information on the github repo: <a href="https://github.com/TunnARK/UT3-AURO-2223-S10-Coding/tree/master/SATR-TP1-ESPBank">SATR-TP1-ESPBank</a></p>
+<h1 id="préparation-du-tp">Préparation du TP<a aria-hidden="true" class="anchor-heading icon-link" href="#préparation-du-tp"></a></h1>
+<p>Se familiariser avec :</p>
+<ul>
+<li>
+<p><a href="https://freertos.org/taskandcr.html">FreeRTOS - Tasks and Co-Routines</a></p>
+<p>  --> API Reference > Task Creation</p>
+<ul>
+<li>vsStackDepth</li>
+<li>vTaskDelay</li>
+<li>xTaskCreate</li>
+<li>vTaskSuspend</li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/espressif/esp-idf/tree/master/examples">les exemples d'esp-idf</a></p>
+</li>
+</ul>
+<h1 id="prérequisinstallations">Prérequis/Installations<a aria-hidden="true" class="anchor-heading icon-link" href="#prérequisinstallations"></a></h1>
+<p>Installer ESP-IDF et suivre le <code>Get Started</code>:</p>
+<ul>
+<li><a href="/UT3-AURO-2223-S10-Dendron/github.com/espressif/esp-idf">Repo GitHub ESP-IDF</a></li>
+<li><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/linux-macos-setup.html">Docs - Get-Started: Manual Install (linux-macos)</a></li>
+</ul>
+<blockquote>
+<p>Possibilité d'utiliser VS Code</p>
+</blockquote>
+<h1 id="slide">Slide<a aria-hidden="true" class="anchor-heading icon-link" href="#slide"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.TP1.RTOSESPIDF-01.png"></p>
+<h2 id="this-presentation">This Presentation<a aria-hidden="true" class="anchor-heading icon-link" href="#this-presentation"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.TP1.RTOSESPIDF-02.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.TP1.RTOSESPIDF-03.png"></p>
+<h2 id="freertos">FreeRTOS<a aria-hidden="true" class="anchor-heading icon-link" href="#freertos"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.TP1.RTOSESPIDF-04.png"></p>
+<h2 id="esp-idf">ESP-IDF<a aria-hidden="true" class="anchor-heading icon-link" href="#esp-idf"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.TP1.RTOSESPIDF-05.png"></p>
+<h2 id="hello-world">Hello World<a aria-hidden="true" class="anchor-heading icon-link" href="#hello-world"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.TP1.RTOSESPIDF-06.png"></p>
+<h2 id="generic-gpio">Generic GPIO<a aria-hidden="true" class="anchor-heading icon-link" href="#generic-gpio"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.TP1.RTOSESPIDF-07.png"></p>
+<h2 id="bank-server">Bank: Server<a aria-hidden="true" class="anchor-heading icon-link" href="#bank-server"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.TP1.RTOSESPIDF-08.png"></p>
+<h2 id="bank-uart">Bank: UART<a aria-hidden="true" class="anchor-heading icon-link" href="#bank-uart"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.TP1.RTOSESPIDF-09.png"></p>
+<h2 id="messages">Messages<a aria-hidden="true" class="anchor-heading icon-link" href="#messages"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.TP1.RTOSESPIDF-10.png"></p>
+<h2 id="queues">Queues<a aria-hidden="true" class="anchor-heading icon-link" href="#queues"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.TP1.RTOSESPIDF-11.png"></p>
+<h2 id="tasks">Tasks<a aria-hidden="true" class="anchor-heading icon-link" href="#tasks"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.TP1.RTOSESPIDF-12.png"></p>
+<h2 id="rx-task">Rx Task<a aria-hidden="true" class="anchor-heading icon-link" href="#rx-task"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.TP1.RTOSESPIDF-13.png"></p>
+<h2 id="bank-task">Bank Task<a aria-hidden="true" class="anchor-heading icon-link" href="#bank-task"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.TP1.RTOSESPIDF-14.png"></p>
+<h2 id="tx-task">Tx Task<a aria-hidden="true" class="anchor-heading icon-link" href="#tx-task"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.TP1.RTOSESPIDF-15.png"></p>
+<h2 id="client">Client<a aria-hidden="true" class="anchor-heading icon-link" href="#client"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.TP1.RTOSESPIDF-16.png"></p>
+<h1 id="suppléments">Suppléments<a aria-hidden="true" class="anchor-heading icon-link" href="#suppléments"></a></h1>
+<h2 id="code-c">Code C<a aria-hidden="true" class="anchor-heading icon-link" href="#code-c"></a></h2>
+<blockquote>
+<p>Pour de l'embarquer le RUST est plus robuste que le C</p>
+</blockquote>
+<p><a href="http://cliffle.com/blog/not-thread-safe/#the-bank-account-example">Le code à utiliser ici :</a></p>
+<pre class="language-c++"><code class="language-c++">/*
+ * Stores information about a bank account.
+ */
+struct bank_account {
+    /* How much money is in the account. */
+    int balance; /* never use floats for managing money (too much approximation) */
+};
+
+/*
+ * Deposits 'amt' into the 'account' and returns the new balance.
+ */
+int deposit(struct bank_account *account, int amt) {
+    account->balance += amt;
+    return account->balance;
+}
+
+/*
+ * Tries to withdraw 'amt' from the account. Returns 'true' if it
+ * succeeded, 'false' if the account didn't contain enough.
+ */
+bool withdraw(struct bank_account *account, int amt) {
+    if (account->balance >= amt) {
+        account->balance -= amt;
+        return true;
+    } else {
+        return false;
+    }
+}
+</code></pre>
+<p>Remarque:</p>
+<ul>
+<li>pour connaitre l'état du compte il suffit de faire <code>deposit(0)</code> est la fct retournera ce qui reste dans le compte</li>
+</ul>
+<h2 id="python">Python<a aria-hidden="true" class="anchor-heading icon-link" href="#python"></a></h2>
+<pre class="language-python"><code class="language-Python"><span class="token keyword">def</span> <span class="token function">deposit</span><span class="token punctuation">(</span>amt <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">int</span>
+<span class="token keyword">def</span> <span class="token function">withdraw</span><span class="token punctuation">(</span>amt <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">int</span>
+</code></pre>
+<h2 id="interruptions">Interruptions<a aria-hidden="true" class="anchor-heading icon-link" href="#interruptions"></a></h2>
+<h3 id="gpio">GPIO<a aria-hidden="true" class="anchor-heading icon-link" href="#gpio"></a></h3>
+<p>Le code de gestion des interruptions<code>~/esp/generic_gpio/main/gpio_example_main.c</code></p>
+<pre class="language-c"><code class="language-C"><span class="token keyword">static</span> QueueHandle_t gpio_evt_queue <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+
+<span class="token keyword">static</span> <span class="token keyword">void</span> IRAM_ATTR <span class="token function">gpio_isr_handler</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token operator">*</span> arg<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token class-name">uint32_t</span> gpio_num <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">uint32_t</span><span class="token punctuation">)</span> arg<span class="token punctuation">;</span>
+    <span class="token function">xQueueSendFromISR</span><span class="token punctuation">(</span>gpio_evt_queue<span class="token punctuation">,</span> <span class="token operator">&#x26;</span>gpio_num<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">gpio_task_example</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token operator">*</span> arg<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token class-name">uint32_t</span> io_num<span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token punctuation">;</span><span class="token punctuation">;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">xQueueReceive</span><span class="token punctuation">(</span>gpio_evt_queue<span class="token punctuation">,</span> <span class="token operator">&#x26;</span>io_num<span class="token punctuation">,</span> portMAX_DELAY<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"GPIO[%"</span>PRIu32<span class="token string">"] intr, val: %d\n"</span><span class="token punctuation">,</span> io_num<span class="token punctuation">,</span> <span class="token function">gpio_get_level</span><span class="token punctuation">(</span>io_num<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="uart---universal-asynchronus-receivertransmitter">UART - Universal Asynchronus Receiver/Transmitter<a aria-hidden="true" class="anchor-heading icon-link" href="#uart---universal-asynchronus-receivertransmitter"></a></h2>
+<ul>
+<li><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/uart.html">lien vers la doc UART</a></li>
+<li>Un UART n'est pas un bus temps réel
+buffer entre le code et les files om gere pas ca</li>
+<li>Chaque UART a sa propre horloge (dans le cas d'un USRT (synchronus) on rajoute une clock de référence)</li>
+<li>equivalence reseau: 2eme couche du modele OSI donc similaire a une tram avec son protocle</li>
+</ul>
+<!--8 data graph-->
+<!-- ![](/assets/images/B2.SATR.TP1.RTOSESPIDF.NotesGEA-01.png) -->
+<!-- ![](/assets/images/B2.SATR.TP1.RTOSESPIDF.NotesGEA-02.png) -->
+<!-- ![](/assets/images/B2.SATR.TP1.RTOSESPIDF.NotesGEA-03.png) -->
+<p>ATTETNION: </p>
+<ul>
+<li>le pc est en 64 bit mais l'ESP32 est sur du 32 bit donc la taille d'un <code>int</code> n'est pas la meme</li>
+<li>cepedant avec un <code>int</code> en 32 bit on peut gérer jusqu'à 40 millions d'euros i.e. <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>∗</mo><mn>32</mn><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mn>100</mn><mo>=</mo><mn>42</mn><mtext>  </mtext><mi>m</mi><mi>i</mi><mi>l</mi><mi>l</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">(2*32-1)/100=42\;millions</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">32</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mord">/100</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord">42</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">mi</span><span class="mord mathnormal" style="margin-right:0.01968em;">ll</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mord mathnormal">s</span></span></span></span></span></li>
+</ul>
+<h3 id="messages-1">Messages<a aria-hidden="true" class="anchor-heading icon-link" href="#messages-1"></a></h3>
+<p>Ces messages devront prendre en compte :</p>
+<ul>
+<li>Header: [OxCA,OxFE,OxCA,OxFE]</li>
+<li>type: REQ/REP</li>
+<li>Client ID</li>
+<li>Req ID</li>
+<li>Operation</li>
+<li>Ammount (32 bit int)</li>
+</ul>
+<p>Exemple:</p>
+<ul>
+<li>1 client et 1 serveur pour le moment</li>
+<li>le client fait une requete:
+<ul>
+<li><code>M1(type=REQ, CID=1, RID=1, Amount=100, Op=1)</code></li>
+</ul>
+</li>
+<li>Il recoit alors la réponse:
+<ul>
+<li><code>M1(type=REP, CID=1, RID=1, Amount=200, Op=1)</code></li>
+</ul>
+</li>
+<li>On remarque alors qu'il peut y avoir un probleme avec ce jeu de parametres car on ne sait pas comment gérer l'absence et l'attente de réponse --> introduire du coup un param <code>time out</code> de 1 sec</li>
+<li>Autre soucis c'est la synchronisation des canaux --> ajouter un <code>HEADER</code>
+<ul>
+<li>une autre option aurait été de faire un <code>3handshake</code> (soit <code>Sync>Sync/Ack>Ack</code>)</li>
+</ul>
+</li>
+<li>Du coup on reprend l'échange précédant avec le header, on envoit dans l'ordre :
+<ol>
+<li>4 oct(s): Header</li>
+<li>1 oct(s): Type</li>
+<li>1 oct(s): Client ID (ou mieux un <strong>numéro de port</strong> ! attention ceci est valide si il n'y a pas de bus commun entre les pc)</li>
+<li>1 oct(s): Req ID 
+<ul>
+<li>ici peut etre 1 oct suffit pas mais en vrai avec 1 oct on doit avoir plus de 256 requetes non répondus en moins d'une seconde donc ça ira</li>
+</ul>
+</li>
+<li>1 oct(s): Operation</li>
+<li>4 oct(s): Amount</li>
+</ol>
+</li>
+<li>Une autre organisation plus optimale niveau mémoire et temps d'envoi/recpetion (mais cela rend la programmation plus risquée lors de la conception du coup on va plustot préférencer l'option précédente)
+<ol>
+<li>4 oct(s): Header</li>
+<li>1 oct(s): Type + Operation</li>
+<li>1 oct(s): Client ID</li>
+<li>1 oct(s): Req ID</li>
+<li>4 oct(s): Amount</li>
+</ol>
+</li>
+</ul>
+<!-- Un exemple de séquence de message : -->
+<!-- ![](/assets/images/B2.SATR.TP1.RTOSESPIDF.NotesGEA-04.png) -->
+<ul>
+<li>La configuration python avec <code>dep/withdraw/tx/rx</code> ne permettra pas d'envoyer plusieurs requetes en meme temps car les fcts <code>dep</code> et <code>with</code> appel <code>tx</code> et <code>rx</code> (si on a le temps on verra comment gerer de l'asynchrone en python)</li>
+</ul>
+<h3 id="files-dattentes">Files d'attentes<a aria-hidden="true" class="anchor-heading icon-link" href="#files-dattentes"></a></h3>
+<p>On crée un pointeur contenant toute les files d'attentes (<code>Rx</code>,<code>Tx1</code>, <code>Tx2</code>, <code>Tx3</code>, ...).</p>
+<p>Chaque files nécessite une capacité (nombre de requete qu'elle contient ici 10) et d'une taille pour chaque requete</p>
+<pre class="language-c"><code class="language-C"><span class="token comment">//create a queue to handle gpio event from isr</span>
+    gpio_evt_queue <span class="token operator">=</span> <span class="token function">xQueueCreate</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token class-name">uint32_t</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="priorités">Priorités<a aria-hidden="true" class="anchor-heading icon-link" href="#priorités"></a></h3>
+<p>Maintenant quelles priorités données aux tâches, il y a 3 philosophies :</p>
+<ul>
+<li>Back Pressure: donner la prior. à Tx pour eviter des bottle neck</li>
+<li>Conservative : donner la prior. à Rx pour ne pas perdre de donner</li>
+<li>Fairly: donner la priorité à la tache la plus solicité ici bank puisque qu'il a 3 copie de Tx/Rx qui l'appelle</li>
+</ul>
+<h2 id="test-unitaire">Test Unitaire<a aria-hidden="true" class="anchor-heading icon-link" href="#test-unitaire"></a></h2>
+<p>TDD - Test Driver Development</p>
+<h1 id="compte-rendu-de-tp-du-20221130">Compte Rendu de TP du 2022/11/30<a aria-hidden="true" class="anchor-heading icon-link" href="#compte-rendu-de-tp-du-20221130"></a></h1>
+<h2 id="hello-world-1">Hello World<a aria-hidden="true" class="anchor-heading icon-link" href="#hello-world-1"></a></h2>
+<ol>
+<li>Suivre le <a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/linux-macos-setup.html#">guide d'installation</a> jusqu'à l'étape <code>Configure Your Project</code> (etape exclue).</li>
+<li>Ignorer cette étape, mais à la place modifier le fichier <code>/workspace/esp/hello_world/sdkconfig</code> pour reconfigurer la fréquence de <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>40</mn><mi>M</mi><mi>H</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">40MHz</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">40</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.04398em;">Hz</span></span></span></span></span> à <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>26</mn><mi>M</mi><mi>H</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">26MHz</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">26</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.04398em;">Hz</span></span></span></span></span> (cf slide 6 pour plus d'info).</li>
+<li>Continuer les étapes restantes du <a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/linux-macos-setup.html#">guide d'installation</a>
+<ul>
+<li>Une fois le <code>Build Project</code> terminé, lancer le flash</li>
+<li>Si vous recevez une erreur du style "port introuvalbe", s'assurer que la session utilisateur a acces au groupe
+<ol>
+<li><code>ll \dev\ttyUSB0</code> (ou <code>ll \dev\PORT</code>) pour connaitre les droits d'accès du port</li>
+<li><code>sudo usermod -aG GROUP USERNAME</code> pour ajouter un user dans un groupe</li>
+<li><code>groups</code> ne se met pas à jour directement (visuellement) donc faire <code>newgrp GROUP</code> pour mettre à jour le groupe et relancer <code>groups</code> pour lister les utilisateurs (vérifier que l'utilisateur ajouter et bien présent).</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="generic-gpio-1">Generic GPIO<a aria-hidden="true" class="anchor-heading icon-link" href="#generic-gpio-1"></a></h2>
+<ol>
+<li>Se placer dans le workspace (ici <code>/esp/</code>) et copier-coller le dossier exemple gpio <code>cp -r $IDF_PATH/examples/peripherals/gpio/generic_gpio .</code></li>
+<li>Se placer dans <code>/workspace/generic_gpio</code> et lancer <code>idf.py set-target esp32</code></li>
+<li>Modifier le fichier <code>/workspace/generic_gpio/sdkconfig</code> pour reconfigurer la fréquence de <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>40</mn><mi>M</mi><mi>H</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">40MHz</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">40</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.04398em;">Hz</span></span></span></span></span> à <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>26</mn><mi>M</mi><mi>H</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">26MHz</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">26</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.04398em;">Hz</span></span></span></span></span> (cf slide 7 pour plus d'info).</li>
+<li>Lancer le build <code>idf.py build</code></li>
+<li>Flasher la carte <code>idf.py flash</code> (ou <code>idf.py -p PORT flash</code>)</li>
+<li>Le code est déjà en train de s'exécuter en background pour le voir lancer <code>idf.py monitor</code> (ou <code>idf.py -p PORT monitor</code>)</li>
+<li>Se familiariser avec le code de communication <code>/workspace/generic_gpio/main/</code></li>
+</ol>
+<h1 id="compte-rendu-de-tp-du-20221209">Compte Rendu de TP du 2022/12/09<a aria-hidden="true" class="anchor-heading icon-link" href="#compte-rendu-de-tp-du-20221209"></a></h1>
+<h2 id="sys-emb">Sys. Emb.<a aria-hidden="true" class="anchor-heading icon-link" href="#sys-emb"></a></h2>
+<h3 id="liens-utiles">Liens utiles<a aria-hidden="true" class="anchor-heading icon-link" href="#liens-utiles"></a></h3>
+<ul>
+<li><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/index.html#">Get Started</a></li>
+<li><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/uart.html">Docs UART</a></li>
+</ul>
+<h3 id="booting">Booting<a aria-hidden="true" class="anchor-heading icon-link" href="#booting"></a></h3>
+<ol>
+<li>Se placer dans le workspace (ici <code>/esp/</code>) et copier-coller le dossier exemple gpio
+<code>cp -r /esp/esp-idf/examples/peripherals/uart/uart_async_rxtxtasks/ .</code></li>
+<li>Se placer dans <code>/workspace/uart_async_rxtxtasks</code> et lancer <code>idf.py set-target esp32</code></li>
+<li>Modifier le fichier <code>/workspace/uart_async_rxtxtasks/sdkconfig</code> pour reconfigurer la fréquence de <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>40</mn><mi>M</mi><mi>H</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">40MHz</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">40</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.04398em;">Hz</span></span></span></span></span> à <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>26</mn><mi>M</mi><mi>H</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">26MHz</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">26</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.04398em;">Hz</span></span></span></span></span> (cf slide 7 pour plus d'info).</li>
+<li>Lancer le build <code>idf.py build</code></li>
+<li>Flasher la carte <code>idf.py flash</code> (ou <code>idf.py -p PORT flash</code>)</li>
+<li>Le code est déjà en train de s'exécuter en background pour le voir lancer <code>idf.py monitor</code> (ou <code>idf.py -p PORT monitor</code>)</li>
+</ol>
+<h3 id="configuration-des-ports">Configuration des ports<a aria-hidden="true" class="anchor-heading icon-link" href="#configuration-des-ports"></a></h3>
+<ol>
+<li>Ouvrir le fichier <code>main/uart_async_rxtxtasks_main.c</code></li>
+<li>Modifier les ports par défaut par :
+<ul>
+<li>
+<pre class="language-c"><code class="language-C">  <span class="token comment">// Dans /main/uart_async_rxtxtasks_main.c</span>
+  <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">TXD_PIN</span> <span class="token expression"><span class="token punctuation">(</span>GPIO_NUM_1<span class="token punctuation">)</span></span></span>
+  <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">RXD_PIN</span> <span class="token expression"><span class="token punctuation">(</span>GPIO_NUM_3<span class="token punctuation">)</span></span></span>
+</code></pre>
+</li>
+</ul>
+</li>
+<li>De plus, remplacer dans ce code toute apparition de <code>UART_NUM_1</code> par <code>UART_NUM_0</code></li>
+</ol>
+<h3 id="codage">Codage<a aria-hidden="true" class="anchor-heading icon-link" href="#codage"></a></h3>
+<h2 id="python-1">Python<a aria-hidden="true" class="anchor-heading icon-link" href="#python-1"></a></h2>
+<h3 id="objectif">Objectif<a aria-hidden="true" class="anchor-heading icon-link" href="#objectif"></a></h3>
+<p>Créer un code python pour instancier et visualiser les fonctionnalités du projet Bank</p>
+<pre><code>- une fonciton `Création/Suppression` de compte bancaire
+- une fonction `Deposit`
+- une fonction `Withdraw`
+</code></pre>
+<h3 id="module-recommandé">Module recommandé<a aria-hidden="true" class="anchor-heading icon-link" href="#module-recommandé"></a></h3>
+<p>Module <code>struct</code>, <code>bserial</code></p>
+<h3 id="creation-dune-interface">Creation d'une interface<a aria-hidden="true" class="anchor-heading icon-link" href="#creation-dune-interface"></a></h3>
+<p>Lien Utile: <a href="https://www.cours-gratuit.com/tutoriel-python/tutoriel-python-programmer-une-interface-graphique-avec-tkinter-partie-1#_Toc52998640">Interface Python avec Tkinter</a></p>
+<h3 id="class-client">Class Client<a aria-hidden="true" class="anchor-heading icon-link" href="#class-client"></a></h3>
+<ul>
+<li>sur python le typage est dynamic donc le type est assigné selon ce qui arrive</li>
+<li>le header n'est pas a mettre dans le struct.pack car il précéde le message</li>
+</ul>
+<h3 id="class-message">Class Message<a aria-hidden="true" class="anchor-heading icon-link" href="#class-message"></a></h3>
+<p>class message</p>
+<h1 id="testings-on-20230108">Testings on 2023/01/08<a aria-hidden="true" class="anchor-heading icon-link" href="#testings-on-20230108"></a></h1>
+<h2 id="coding-on-esp32">Coding on ESP32<a aria-hidden="true" class="anchor-heading icon-link" href="#coding-on-esp32"></a></h2>
+<h3 id="how-to-run-the-code">How to run the code<a aria-hidden="true" class="anchor-heading icon-link" href="#how-to-run-the-code"></a></h3>
+<ol>
+<li>Open New Terminal </li>
+<li>Install Environment
+<ul>
+<li><code>cd /workspace/esp-idf/</code></li>
+<li><code>./install.sh esp32</code></li>
+<li><code>. ./export.sh</code></li>
+</ul>
+</li>
+<li>Sett up UART Environment
+<ul>
+<li><code>cd /workspace/uart_async_rxtxtasks/</code></li>
+<li><code>idf.py set-target esp32</code></li>
+<li><code>idf.py build</code></li>
+<li><code>idf.py -p /dev/ttyUSB0 flash</code> (check Port ID in <code>/dev/</code> before running the command)</li>
+<li><code>idf.py -p /dev/ttyUSB0 monitor</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="results">Results<a aria-hidden="true" class="anchor-heading icon-link" href="#results"></a></h3>
+<p>Running <code>idf.py build</code> returns :</p>
+<pre class="language-shell"><code class="language-shell">Executing action: all <span class="token punctuation">(</span>aliases: build<span class="token punctuation">)</span>
+Running ninja <span class="token keyword">in</span> directory /home/tunn/esp/uart_async_rxtxtasks/build
+Executing <span class="token string">"ninja all"</span><span class="token punctuation">..</span>.
+<span class="token punctuation">[</span><span class="token number">1</span>/1<span class="token punctuation">]</span> <span class="token builtin class-name">cd</span> /home/tunn/esp/uart_async_rxtxtasks/build/bootloader/esp-idf/e<span class="token punctuation">..</span>.000 /home/tunn/esp/uart_async_rxtxtasks/build/bootloader/bootloader.binBootloader binary size 0x6720 bytes. 0x8e0 bytes <span class="token punctuation">(</span><span class="token number">8</span>%<span class="token punctuation">)</span> free.
+<span class="token punctuation">[</span><span class="token number">2</span>/7<span class="token punctuation">]</span> Building C object esp-idf/main/CMakeFiles/__idf_main.dir/uart_async_rxtxtasks_main.c.obj/home/tunn/esp/uart_async_rxtxtasks/main/uart_async_rxtxtasks_main.c: In <span class="token keyword">function</span> <span class="token string">'tx_task'</span><span class="token builtin class-name">:</span>
+/home/tunn/esp/uart_async_rxtxtasks/main/uart_async_rxtxtasks_main.c:98:19: warning: unused variable <span class="token string">'nb_transmit'</span> <span class="token punctuation">[</span>-Wunused-variable<span class="token punctuation">]</span>
+   <span class="token number">98</span> <span class="token operator">|</span>         const int <span class="token assign-left variable">nb_transmit</span><span class="token operator">=</span>uart_write_bytes<span class="token punctuation">(</span>UART_NUM_0, transmit, sizeof<span class="token punctuation">(</span>transmit<span class="token punctuation">))</span><span class="token punctuation">;</span>
+      <span class="token operator">|</span>                   ^~~~~~~~~~~
+/home/tunn/esp/uart_async_rxtxtasks/main/uart_async_rxtxtasks_main.c:93:19: warning: unused variable <span class="token string">'nb_transmitH'</span> <span class="token punctuation">[</span>-Wunused-variable<span class="token punctuation">]</span>
+   <span class="token number">93</span> <span class="token operator">|</span>         const int <span class="token assign-left variable">nb_transmitH</span><span class="token operator">=</span>uart_write_bytes<span class="token punctuation">(</span>UART_NUM_0, Header, sizeof<span class="token punctuation">(</span>Header<span class="token punctuation">))</span><span class="token punctuation">;</span>
+      <span class="token operator">|</span>                   ^~~~~~~~~~~~
+/home/tunn/esp/uart_async_rxtxtasks/main/uart_async_rxtxtasks_main.c: In <span class="token keyword">function</span> <span class="token string">'rx_task'</span><span class="token builtin class-name">:</span>
+/home/tunn/esp/uart_async_rxtxtasks/main/uart_async_rxtxtasks_main.c:143:19: warning: unused variable <span class="token string">'nb_bitM'</span> <span class="token punctuation">[</span>-Wunused-variable<span class="token punctuation">]</span>
+  <span class="token number">143</span> <span class="token operator">|</span>         const int <span class="token assign-left variable">nb_bitM</span><span class="token operator">=</span>uart_read_bytes<span class="token punctuation">(</span>UART_NUM_0, message, sizeof<span class="token punctuation">(</span>message_t<span class="token punctuation">)</span>, <span class="token number">1000</span> / portTICK_PERIOD_MS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token operator">|</span>                   ^~~~~~~
+/home/tunn/esp/uart_async_rxtxtasks/main/uart_async_rxtxtasks_main.c: In <span class="token keyword">function</span> <span class="token string">'bank_task'</span><span class="token builtin class-name">:</span>
+/home/tunn/esp/uart_async_rxtxtasks/main/uart_async_rxtxtasks_main.c:156:9: warning: unused variable <span class="token string">'balance'</span> <span class="token punctuation">[</span>-Wunused-variable<span class="token punctuation">]</span>
+  <span class="token number">156</span> <span class="token operator">|</span>     int balance<span class="token punctuation">;</span> //Solde <span class="token function">du</span> compte
+      <span class="token operator">|</span>         ^~~~~~~
+<span class="token punctuation">[</span><span class="token number">6</span>/7<span class="token punctuation">]</span> Generating binary image from built executableesptool.py v4.5.dev0
+Creating esp32 image<span class="token punctuation">..</span>.
+Merged <span class="token number">2</span> ELF sections
+Successfully created esp32 image.
+Generated /home/tunn/esp/uart_async_rxtxtasks/build/uart_async_rxtxtasks.bin
+<span class="token punctuation">[</span><span class="token number">7</span>/7<span class="token punctuation">]</span> <span class="token builtin class-name">cd</span> /home/tunn/esp/uart_async_rxtxtasks/build/esp-idf/esptool_py <span class="token operator">&#x26;</span><span class="token punctuation">..</span><span class="token punctuation">..</span>bin /home/tunn/esp/uart_async_rxtxtasks/build/uart_async_rxtxtasks.binuart_async_rxtxtasks.bin binary size 0x31b00 bytes. Smallest app partition is 0x100000 bytes. 0xce500 bytes <span class="token punctuation">(</span><span class="token number">81</span>%<span class="token punctuation">)</span> free.
+
+Project build complete. To flash, run this command:
+/home/tunn/.espressif/python_env/idf5.1_py3.10_env/bin/python <span class="token punctuation">..</span>/esp-idf/components/esptool_py/esptool/esptool.py -p <span class="token punctuation">(</span>PORT<span class="token punctuation">)</span> -b <span class="token number">460800</span> --before default_reset --after hard_reset --chip esp32  write_flash --flash_mode dio --flash_size 2MB --flash_freq 40m 0x1000 build/bootloader/bootloader.bin 0x8000 build/partition_table/partition-table.bin 0x10000 build/uart_async_rxtxtasks.bin
+or run <span class="token string">'idf.py -p (PORT) flash'</span>
+</code></pre>
+<p>Running <code>idf.py -p /dev/ttyUSB0 flash</code> returns:</p>
+<pre class="language-shell"><code class="language-shell">Executing action: flash
+Running ninja <span class="token keyword">in</span> directory /home/tunn/esp/uart_async_rxtxtasks/build
+Executing <span class="token string">"ninja flash"</span><span class="token punctuation">..</span>.
+<span class="token punctuation">[</span><span class="token number">1</span>/5<span class="token punctuation">]</span> <span class="token builtin class-name">cd</span> /home/tunn/esp/uart_async_rxtxtasks/build/esp-idf/esptool_py <span class="token operator">&#x26;&#x26;</span> /home/tunn/.espressif/python_env/idf5.1_py3.10_env/bin/python /home/tunn/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /home/tunn/esp/uart_async_rxtxtasks/build/partition_table/partition-table.bin /home/tunn/esp/uart_async_rxtxtasks/build/uart_async_rxtxtasks.bin
+uart_async_rxtxtasks.bin binary size 0x31b00 bytes. Smallest app partition is 0x100000 bytes. 0xce500 bytes <span class="token punctuation">(</span><span class="token number">81</span>%<span class="token punctuation">)</span> free.
+<span class="token punctuation">[</span><span class="token number">2</span>/5<span class="token punctuation">]</span> Performing build step <span class="token keyword">for</span> <span class="token string">'bootloader'</span>
+<span class="token punctuation">[</span><span class="token number">1</span>/1<span class="token punctuation">]</span> <span class="token builtin class-name">cd</span> /home/tunn/esp/uart_async_rxtxtasks/build/bootloader/esp-idf/esptool_py <span class="token operator">&#x26;&#x26;</span> /home/tunn/.espressif/python_env/idf5.1_py3.10_env/bin/python /home/tunn/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /home/tunn/esp/uart_async_rxtxtasks/build/bootloader/bootloader.bin
+Bootloader binary size 0x6720 bytes. 0x8e0 bytes <span class="token punctuation">(</span><span class="token number">8</span>%<span class="token punctuation">)</span> free.
+<span class="token punctuation">[</span><span class="token number">2</span>/3<span class="token punctuation">]</span> <span class="token builtin class-name">cd</span> /home/tunn/esp/esp-idf/components/esptool_py <span class="token operator">&#x26;&#x26;</span> /usr/bin/cmake -D <span class="token assign-left variable">IDF_PATH</span><span class="token operator">=</span>/home/tunn/esp/esp-idf -D <span class="token string">"SERIAL_TOOL=/home/tunn/.espressif/python_env/idf5.1_py3.10_env/bin/python;;/home/tunn/esp/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32"</span> -D <span class="token string">"SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args"</span> -D <span class="token assign-left variable">WORKING_DIRECTORY</span><span class="token operator">=</span>/home/tunn/esp/uart_async_rxtxtasks/build -P /home/tunn/esp/esp-idf/components/esptool_py/run_serial_tool.cmake
+esptool esp32 -p /dev/ttyUSB0 -b <span class="token number">460800</span> --before<span class="token operator">=</span>default_reset --after<span class="token operator">=</span>hard_reset write_flash --flash_mode dio --flash_freq 40m --flash_size 2MB 0x1000 bootloader/bootloader.bin 0x10000 uart_async_rxtxtasks.bin 0x8000 partition_table/partition-table.bin
+esptool.py v4.5.dev0
+Serial port /dev/ttyUSB0
+Connecting<span class="token punctuation">..</span><span class="token punctuation">..</span>.
+Chip is ESP32-D0WDQ6 <span class="token punctuation">(</span>revision v1.0<span class="token punctuation">)</span>
+Features: WiFi, BT, Dual Core, 240MHz, VRef calibration <span class="token keyword">in</span> efuse, Coding Scheme None
+Crystal is 26MHz
+MAC: <span class="token number">84</span>:0d:8e:07:4c:fc
+Uploading stub<span class="token punctuation">..</span>.
+Running stub<span class="token punctuation">..</span>.
+Stub running<span class="token punctuation">..</span>.
+Changing baud rate to <span class="token number">460800</span>
+Changed.
+Configuring flash size<span class="token punctuation">..</span>.
+Flash will be erased from 0x00001000 to 0x00007fff<span class="token punctuation">..</span>.
+Flash will be erased from 0x00010000 to 0x00041fff<span class="token punctuation">..</span>.
+Flash will be erased from 0x00008000 to 0x00008fff<span class="token punctuation">..</span>.
+Compressed <span class="token number">26400</span> bytes to <span class="token number">16472</span><span class="token punctuation">..</span>.
+Writing at 0x00001000<span class="token punctuation">..</span>. <span class="token punctuation">(</span><span class="token number">50</span> %<span class="token punctuation">)</span>
+Writing at 0x000076ac<span class="token punctuation">..</span>. <span class="token punctuation">(</span><span class="token number">100</span> %<span class="token punctuation">)</span>
+Wrote <span class="token number">26400</span> bytes <span class="token punctuation">(</span><span class="token number">16472</span> compressed<span class="token punctuation">)</span> at 0x00001000 <span class="token keyword">in</span> <span class="token number">0.7</span> seconds <span class="token punctuation">(</span>effective <span class="token number">288.5</span> kbit/s<span class="token punctuation">)</span><span class="token punctuation">..</span>.
+Hash of data verified.
+Compressed <span class="token number">203520</span> bytes to <span class="token number">107510</span><span class="token punctuation">..</span>.
+Writing at 0x00010000<span class="token punctuation">..</span>. <span class="token punctuation">(</span><span class="token number">14</span> %<span class="token punctuation">)</span>
+Writing at 0x0001ca42<span class="token punctuation">..</span>. <span class="token punctuation">(</span><span class="token number">28</span> %<span class="token punctuation">)</span>
+Writing at 0x0002230b<span class="token punctuation">..</span>. <span class="token punctuation">(</span><span class="token number">42</span> %<span class="token punctuation">)</span>
+Writing at 0x0002810b<span class="token punctuation">..</span>. <span class="token punctuation">(</span><span class="token number">57</span> %<span class="token punctuation">)</span>
+Writing at 0x0002e59c<span class="token punctuation">..</span>. <span class="token punctuation">(</span><span class="token number">71</span> %<span class="token punctuation">)</span>
+Writing at 0x00038b81<span class="token punctuation">..</span>. <span class="token punctuation">(</span><span class="token number">85</span> %<span class="token punctuation">)</span>
+Writing at 0x0003e481<span class="token punctuation">..</span>. <span class="token punctuation">(</span><span class="token number">100</span> %<span class="token punctuation">)</span>
+Wrote <span class="token number">203520</span> bytes <span class="token punctuation">(</span><span class="token number">107510</span> compressed<span class="token punctuation">)</span> at 0x00010000 <span class="token keyword">in</span> <span class="token number">2.6</span> seconds <span class="token punctuation">(</span>effective <span class="token number">614.6</span> kbit/s<span class="token punctuation">)</span><span class="token punctuation">..</span>.
+Hash of data verified.
+Compressed <span class="token number">3072</span> bytes to <span class="token number">103</span><span class="token punctuation">..</span>.
+Writing at 0x00008000<span class="token punctuation">..</span>. <span class="token punctuation">(</span><span class="token number">100</span> %<span class="token punctuation">)</span>
+Wrote <span class="token number">3072</span> bytes <span class="token punctuation">(</span><span class="token number">103</span> compressed<span class="token punctuation">)</span> at 0x00008000 <span class="token keyword">in</span> <span class="token number">0.1</span> seconds <span class="token punctuation">(</span>effective <span class="token number">490.8</span> kbit/s<span class="token punctuation">)</span><span class="token punctuation">..</span>.
+Hash of data verified.
+
+Leaving<span class="token punctuation">..</span>.
+Hard resetting via RTS pin<span class="token punctuation">..</span>.
+Done
+</code></pre>
+<p>Running <code>idf.py -p /dev/ttyUSB0 monitor</code> returns:</p>
+<pre class="language-shell"><code class="language-shell"><span class="token punctuation">[</span><span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+Hello world
+I <span class="token punctuation">(</span><span class="token number">46335</span><span class="token punctuation">)</span> TX_TASK: Wrote <span class="token number">13</span> bytes
+
+
+�<span class="token string">'�?Hello worldI (48335) TX_TASK: Wrote 13 bytes
+
+
+�'</span>�?Hello worldI <span class="token punctuation">(</span><span class="token number">50335</span><span class="token punctuation">)</span> TX_TASK: Wrote <span class="token number">13</span> bytes
+</code></pre>
+<h3 id="our-mainc">Our main.c<a aria-hidden="true" class="anchor-heading icon-link" href="#our-mainc"></a></h3>
+<pre class="language-c"><code class="language-c"><span class="token comment">/* UART asynchronous example, that uses separate RX and TX tasks
+
+   This example code is in the Public Domain (or CC0 licensed, at your option.)
+
+   Unless required by applicable law or agreed to in writing, this
+   software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+   CONDITIONS OF ANY KIND, either express or implied.
+*/</span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"freertos/FreeRTOS.h"</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"freertos/task.h"</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"esp_system.h"</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"esp_log.h"</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"driver/uart.h"</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"string.h"</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"driver/gpio.h"</span></span>
+
+
+<span class="token keyword">static</span> <span class="token keyword">const</span> <span class="token keyword">int</span> RX_BUF_SIZE <span class="token operator">=</span> <span class="token number">1024</span><span class="token punctuation">;</span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">TXD_PIN</span> <span class="token expression"><span class="token punctuation">(</span>GPIO_NUM_1<span class="token punctuation">)</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">RXD_PIN</span> <span class="token expression"><span class="token punctuation">(</span>GPIO_NUM_3<span class="token punctuation">)</span></span></span>
+
+<span class="token comment">//Declaration d une structure pour le message</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> 
+<span class="token punctuation">{</span>
+<span class="token class-name">uint8_t</span> Type<span class="token punctuation">;</span>
+<span class="token class-name">uint8_t</span>  Action<span class="token punctuation">;</span>
+<span class="token class-name">uint8_t</span> RequestID<span class="token punctuation">;</span>
+<span class="token class-name">uint8_t</span> PortID<span class="token punctuation">;</span>
+<span class="token class-name">uint32_t</span> Amount<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token class-name">message_t</span> <span class="token punctuation">;</span>
+
+
+<span class="token comment">//Declaration des queues</span>
+<span class="token keyword">static</span> QueueHandle_t rx_queue <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+<span class="token keyword">static</span> QueueHandle_t tx_queue <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+
+<span class="token comment">//Declaration du HEADER pour verifier le bon etat de la communication</span>
+<span class="token keyword">const</span> <span class="token class-name">uint8_t</span> HEADER<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0xCA</span><span class="token punctuation">,</span> <span class="token number">0xFE</span><span class="token punctuation">,</span> <span class="token number">0xCA</span><span class="token punctuation">,</span> <span class="token number">0xFE</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+
+
+
+<span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token class-name">uart_config_t</span> uart_config <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">.</span>baud_rate <span class="token operator">=</span> <span class="token number">115200</span><span class="token punctuation">,</span>
+        <span class="token punctuation">.</span>data_bits <span class="token operator">=</span> UART_DATA_8_BITS<span class="token punctuation">,</span>
+        <span class="token punctuation">.</span>parity <span class="token operator">=</span> UART_PARITY_DISABLE<span class="token punctuation">,</span>
+        <span class="token punctuation">.</span>stop_bits <span class="token operator">=</span> UART_STOP_BITS_1<span class="token punctuation">,</span>
+        <span class="token punctuation">.</span>flow_ctrl <span class="token operator">=</span> UART_HW_FLOWCTRL_DISABLE<span class="token punctuation">,</span>
+        <span class="token punctuation">.</span>source_clk <span class="token operator">=</span> UART_SCLK_DEFAULT<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token comment">// We won't use a buffer for sending data.</span>
+    <span class="token function">uart_driver_install</span><span class="token punctuation">(</span>UART_NUM_0<span class="token punctuation">,</span> RX_BUF_SIZE <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">uart_param_config</span><span class="token punctuation">(</span>UART_NUM_0<span class="token punctuation">,</span> <span class="token operator">&#x26;</span>uart_config<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">uart_set_pin</span><span class="token punctuation">(</span>UART_NUM_0<span class="token punctuation">,</span> TXD_PIN<span class="token punctuation">,</span> RXD_PIN<span class="token punctuation">,</span> UART_PIN_NO_CHANGE<span class="token punctuation">,</span> UART_PIN_NO_CHANGE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  
+    <span class="token comment">//Initialisation des queues</span>
+     rx_queue <span class="token operator">=</span> <span class="token function">xQueueCreate</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token class-name">uint32_t</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     tx_queue<span class="token operator">=</span><span class="token function">xQueueCreate</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token class-name">uint32_t</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+
+
+
+<span class="token keyword">int</span> <span class="token function">sendData</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> logName<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> data<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token keyword">int</span> len <span class="token operator">=</span> <span class="token function">strlen</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> <span class="token keyword">int</span> txBytes <span class="token operator">=</span> <span class="token function">uart_write_bytes</span><span class="token punctuation">(</span>UART_NUM_0<span class="token punctuation">,</span> data<span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">ESP_LOGI</span><span class="token punctuation">(</span>logName<span class="token punctuation">,</span> <span class="token string">"Wrote %d bytes\n\n"</span><span class="token punctuation">,</span> txBytes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> txBytes<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">tx_task</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>arg<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">static</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>TX_TASK_TAG <span class="token operator">=</span> <span class="token string">"TX_TASK"</span><span class="token punctuation">;</span>
+    <span class="token comment">////Allocation dynamique de la memoire pour les buffers de messages</span>
+     <span class="token class-name">uint32_t</span> <span class="token operator">*</span>transmit<span class="token operator">=</span><span class="token punctuation">(</span><span class="token class-name">uint32_t</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token class-name">message_t</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+      <span class="token class-name">uint8_t</span> <span class="token operator">*</span>Header<span class="token operator">=</span><span class="token punctuation">(</span><span class="token class-name">uint8_t</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token operator">*</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token class-name">uint8_t</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token function">esp_log_level_set</span><span class="token punctuation">(</span>TX_TASK_TAG<span class="token punctuation">,</span> ESP_LOG_INFO<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    	<span class="token comment">//Stockage du premier message sur la queue dans le buffer avant envoi</span>
+    	 <span class="token function">xQueueReceive</span><span class="token punctuation">(</span>tx_queue<span class="token punctuation">,</span>transmit<span class="token punctuation">,</span><span class="token number">1000</span> <span class="token operator">/</span> portTICK_PERIOD_MS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    	 
+    	 <span class="token comment">//Envoi du header</span>
+    	<span class="token keyword">const</span> <span class="token keyword">int</span> nb_transmitH<span class="token operator">=</span><span class="token function">uart_write_bytes</span><span class="token punctuation">(</span>UART_NUM_0<span class="token punctuation">,</span> Header<span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>Header<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    	
+    	<span class="token function">vTaskDelay</span><span class="token punctuation">(</span><span class="token number">2000</span> <span class="token operator">/</span> portTICK_PERIOD_MS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    	
+    	<span class="token comment">//Envoi du message</span>
+        <span class="token keyword">const</span> <span class="token keyword">int</span> nb_transmit<span class="token operator">=</span><span class="token function">uart_write_bytes</span><span class="token punctuation">(</span>UART_NUM_0<span class="token punctuation">,</span> transmit<span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>transmit<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">vTaskDelay</span><span class="token punctuation">(</span><span class="token number">2000</span> <span class="token operator">/</span> portTICK_PERIOD_MS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token comment">//Liberation des buffers</span>
+    <span class="token function">free</span><span class="token punctuation">(</span>transmit<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">free</span><span class="token punctuation">(</span>Header<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">rx_task</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>arg<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>	
+    <span class="token keyword">int</span> i<span class="token punctuation">;</span>
+    <span class="token keyword">static</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>RX_TASK_TAG <span class="token operator">=</span> <span class="token string">"RX_TASK"</span><span class="token punctuation">;</span>
+    <span class="token function">esp_log_level_set</span><span class="token punctuation">(</span>RX_TASK_TAG<span class="token punctuation">,</span> ESP_LOG_INFO<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//Allocation dynamique de la memoire pour les buffers de messages</span>
+    <span class="token class-name">uint8_t</span><span class="token operator">*</span> data <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">uint8_t</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token function">malloc</span><span class="token punctuation">(</span>RX_BUF_SIZE<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">uint8_t</span> <span class="token operator">*</span>R_Head<span class="token operator">=</span><span class="token punctuation">(</span><span class="token class-name">uint8_t</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token operator">*</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token class-name">uint8_t</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token class-name">uint32_t</span> <span class="token operator">*</span>message<span class="token operator">=</span><span class="token punctuation">(</span><span class="token class-name">uint32_t</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token operator">*</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token class-name">uint32_t</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> <span class="token keyword">int</span> rxBytes <span class="token operator">=</span> <span class="token function">uart_read_bytes</span><span class="token punctuation">(</span>UART_NUM_0<span class="token punctuation">,</span> data<span class="token punctuation">,</span> RX_BUF_SIZE<span class="token punctuation">,</span> <span class="token number">1000</span> <span class="token operator">/</span> portTICK_PERIOD_MS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>rxBytes <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            data<span class="token punctuation">[</span>rxBytes<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token function">ESP_LOGI</span><span class="token punctuation">(</span>RX_TASK_TAG<span class="token punctuation">,</span> <span class="token string">"Read %d bytes: '%s'\n\n"</span><span class="token punctuation">,</span> rxBytes<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">ESP_LOG_BUFFER_HEXDUMP</span><span class="token punctuation">(</span>RX_TASK_TAG<span class="token punctuation">,</span> data<span class="token punctuation">,</span> rxBytes<span class="token punctuation">,</span> ESP_LOG_INFO<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token comment">//Reception du header</span>
+        <span class="token keyword">const</span> <span class="token keyword">int</span> nb_bitH<span class="token operator">=</span><span class="token function">uart_read_bytes</span><span class="token punctuation">(</span>UART_NUM_0<span class="token punctuation">,</span> R_Head<span class="token punctuation">,</span> <span class="token number">4</span><span class="token operator">*</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token class-name">uint8_t</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1000</span> <span class="token operator">/</span> portTICK_PERIOD_MS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token keyword">if</span><span class="token punctuation">(</span>nb_bitH<span class="token operator">==</span><span class="token number">4</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+        	<span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&#x3C;</span>nb_bitH<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+        	<span class="token punctuation">{</span>        	
+        		<span class="token keyword">if</span><span class="token punctuation">(</span>R_Head<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">!=</span>HEADER<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        			<span class="token punctuation">{</span>
+        			<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Wrong Header ! Communication Failed !"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        			<span class="token keyword">break</span><span class="token punctuation">;</span>	
+        			<span class="token punctuation">}</span>
+        	        	        		
+        	<span class="token punctuation">}</span>
+        	       
+        <span class="token punctuation">}</span>
+        
+        <span class="token comment">//Reception du message et stockage dans la queue        </span>
+        <span class="token keyword">const</span> <span class="token keyword">int</span> nb_bitM<span class="token operator">=</span><span class="token function">uart_read_bytes</span><span class="token punctuation">(</span>UART_NUM_0<span class="token punctuation">,</span> message<span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token class-name">message_t</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1000</span> <span class="token operator">/</span> portTICK_PERIOD_MS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">xQueueSend</span><span class="token punctuation">(</span>rx_queue<span class="token punctuation">,</span>message<span class="token punctuation">,</span><span class="token number">1000</span> <span class="token operator">/</span> portTICK_PERIOD_MS<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+      
+    <span class="token punctuation">}</span>
+    <span class="token comment">// Liberation des buffers</span>
+    <span class="token function">free</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">free</span><span class="token punctuation">(</span>R_Head<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">free</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">bank_task</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>arg<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> balance<span class="token punctuation">;</span> <span class="token comment">//Solde du compte</span>
+    <span class="token keyword">static</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>TX_TASK_TAG <span class="token operator">=</span> <span class="token string">"TX_TASK"</span><span class="token punctuation">;</span>
+    <span class="token function">esp_log_level_set</span><span class="token punctuation">(</span>TX_TASK_TAG<span class="token punctuation">,</span> ESP_LOG_INFO<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">sendData</span><span class="token punctuation">(</span>TX_TASK_TAG<span class="token punctuation">,</span> <span class="token string">"Hello world\n\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">vTaskDelay</span><span class="token punctuation">(</span><span class="token number">2000</span> <span class="token operator">/</span> portTICK_PERIOD_MS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">void</span> <span class="token function">app_main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">xTaskCreate</span><span class="token punctuation">(</span>rx_task<span class="token punctuation">,</span> <span class="token string">"uart_rx_task"</span><span class="token punctuation">,</span> <span class="token number">1024</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> configMAX_PRIORITIES<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">xTaskCreate</span><span class="token punctuation">(</span>tx_task<span class="token punctuation">,</span> <span class="token string">"uart_tx_task"</span><span class="token punctuation">,</span> <span class="token number">1024</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> configMAX_PRIORITIES<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">xTaskCreate</span><span class="token punctuation">(</span>bank_task<span class="token punctuation">,</span> <span class="token string">"bank_task"</span><span class="token punctuation">,</span> <span class="token number">1024</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> configMAX_PRIORITIES<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre>
+<h2 id="our-python-code">Our Python Code<a aria-hidden="true" class="anchor-heading icon-link" href="#our-python-code"></a></h2>
+<pre class="language-python"><code class="language-python"><span class="token comment"># -------------------------------------------- #</span>
+<span class="token comment"># Class Client                                 #</span>
+<span class="token comment"># Tasks:                                       #</span>
+<span class="token comment"># - emit serial messages to the ESP card       #</span>
+<span class="token comment"># - receive serial messages from the ESP card  #</span>
+<span class="token comment"># -------------------------------------------- #</span>
+
+<span class="token comment"># This module encapsulates the access for the serial port.</span>
+<span class="token keyword">import</span> serial
+<span class="token comment"># This module converts between Python values and C structs</span>
+<span class="token comment"># represented as Python bytes objects.</span>
+<span class="token keyword">from</span> struct <span class="token keyword">import</span> <span class="token operator">*</span>
+
+<span class="token keyword">class</span> <span class="token class-name">client</span><span class="token punctuation">:</span>
+    <span class="token comment"># initializing values and properties of objects</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> st_type<span class="token punctuation">,</span> st_cid<span class="token punctuation">,</span> st_rid<span class="token punctuation">,</span> st_operation<span class="token punctuation">,</span> st_ammount<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>st_type <span class="token operator">=</span> st_type              <span class="token comment"># 0 or 1 w.r.t. being resp. REQUEST or RESPONSE</span>
+        self<span class="token punctuation">.</span>st_cid <span class="token operator">=</span> st_cid                <span class="token comment"># 0 .. 255 identification number for the client</span>
+        self<span class="token punctuation">.</span>st_rid <span class="token operator">=</span> st_rid                <span class="token comment"># 0 .. 255 identification number for the request</span>
+        self<span class="token punctuation">.</span>st_operation <span class="token operator">=</span> st_operation    <span class="token comment"># 0 or 1 w.r.t. being resp. withdraw or deposit</span>
+        self<span class="token punctuation">.</span>st_ammount <span class="token operator">=</span> st_ammount        <span class="token comment"># positive integer for the ammount </span>
+    
+    <span class="token comment"># method structurizing the message with struct.pack</span>
+    <span class="token keyword">def</span> <span class="token function">structurer</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">bytes</span><span class="token punctuation">:</span>
+        st <span class="token operator">=</span> struct<span class="token punctuation">.</span>pack<span class="token punctuation">(</span><span class="token string">"&#x3C;IIIQ"</span><span class="token punctuation">,</span> self<span class="token punctuation">.</span>st_type<span class="token punctuation">,</span> self<span class="token punctuation">.</span>st_cid<span class="token punctuation">,</span> self<span class="token punctuation">.</span>st_rid<span class="token punctuation">,</span> self<span class="token punctuation">.</span>st_operation<span class="token punctuation">,</span> self<span class="token punctuation">.</span>st_ammount<span class="token punctuation">)</span> 
+        <span class="token keyword">return</span> st
+    
+    <span class="token comment"># method sending a message throw the serial port</span>
+    <span class="token keyword">def</span> <span class="token function">send_message</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+        ser <span class="token operator">=</span> serial<span class="token punctuation">.</span>Serial<span class="token punctuation">(</span><span class="token string">'/dev/ttyUSB0'</span><span class="token punctuation">)</span> <span class="token comment"># open serial port</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>ser<span class="token punctuation">.</span>name<span class="token punctuation">)</span>                     <span class="token comment"># check which port was really used</span>
+        ser<span class="token punctuation">.</span>write<span class="token punctuation">(</span>self<span class="token punctuation">.</span>structurer<span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">)</span>    <span class="token comment"># write a string</span>
+        ser<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>                         <span class="token comment"># close port</span>
+</code></pre>
+<hr>
+<strong>Backlinks</strong>
+<ul>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/zlr2s0g64dtr3njuzx1iylh">SATR - Systèmes et Architectures Temps Réels</a></li>
+</ul>

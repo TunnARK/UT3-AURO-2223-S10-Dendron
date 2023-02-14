@@ -1,0 +1,46 @@
+<h1 id="rnn">RNN<a aria-hidden="true" class="anchor-heading icon-link" href="#rnn"></a></h1>
+<blockquote>
+<p><strong>Avertissement:</strong>
+Cette page peut contenir des fautes ! Envoyez-moi un message sur <a href="https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org"><code>#UT3-AURO-M2-2223-Request:matrix.org</code></a> si vous en trouvez, merci.</p>
+</blockquote>
+<blockquote>
+<p>Cours donné par P. Muller, T. Pellegrini</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Notes RKA du 2023/02/08 - Start</p>
+</blockquote>
+<h1 id="exercice-1-rnn-elman">Exercice 1: RNN "Elman"<a aria-hidden="true" class="anchor-heading icon-link" href="#exercice-1-rnn-elman"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.TD3.RNN.Sujet-Ex-01.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.TD3.RNN.BB20230208-01.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.TD3.RNN.BB20230208-02.png"></p>
+<p>Pour <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mrow><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">h_{-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9028em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathnormal">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span></span></span></span></span> il existe un argument sur PyTorch (par défaut ce sera un vecteur de zéro).  (On peut même demander d'entrainer ce vecteur.)</p>
+<p>Exemple de réseau qui nécessite tous les sorties: générer du texte.</p>
+<p>Pour générer des mots c'est plus intéressant d'utiliser cette fonction :
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.TD3.RNN.BB20230208-03.png"></p>
+<p>Exemple de réseau qui ne nécessite que la dernière sortie: detecter des sentiments à partir d'un texte, prédire le projet point sur une trajectoire, ...</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.TD3.RNN.BB20230208-04.png"></p>
+<h1 id="exercice-2-implantation-pytorch-dun-rnn-à-la-main">Exercice 2: Implantation Pytorch d'un RNN "à la main"<a aria-hidden="true" class="anchor-heading icon-link" href="#exercice-2-implantation-pytorch-dun-rnn-à-la-main"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.TD3.RNN.Sujet-Ex-02-01.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.TD3.RNN.Sujet-Ex-02-02.png"></p>
+<h2 id="question-1">Question 1:<a aria-hidden="true" class="anchor-heading icon-link" href="#question-1"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.TD3.RNN.Sujet-Ex-02-03.png"></p>
+<h2 id="question-2">Question 2:<a aria-hidden="true" class="anchor-heading icon-link" href="#question-2"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.TD3.RNN.Sujet-Ex-02-04.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.TD3.RNN.Sujet-Ex-02-05.png"></p>
+<h1 id="exercice-3-backprop-through-time-bptt">Exercice 3: Backprop Through Time (BPTT)<a aria-hidden="true" class="anchor-heading icon-link" href="#exercice-3-backprop-through-time-bptt"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.TD3.RNN.Sujet-Ex-03.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.TD3.RNN.BB20230208-05.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.TD3.RNN.BB20230208-06.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.TD3.RNN.BB20230208-07.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.TD3.RNN.BB20230208-08.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.TD3.RNN.BB20230208-09.png"></p>
+<blockquote>
+<p>Notes RKA du 2023/02/08 - End</p>
+</blockquote>
+<hr>
+<hr>
+<strong>Backlinks</strong>
+<ul>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/wyd35u3oxvhvedd1pwhct4j">AA - Apprentissage Automatique</a></li>
+</ul>

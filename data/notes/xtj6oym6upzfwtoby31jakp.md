@@ -1,0 +1,310 @@
+
+> **Avertissement:**
+Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-2223-Request:matrix.org`](https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org) si vous en trouvez, merci.
+
+> Cours donné par P. Muller, T. Pellegrini
+
+---
+
+> Notes RKA du 2023/02/06 - Start
+
+
+
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-01.png)
+
+# Introduction
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-02.png)
+
+# Motivation
+
+## Analyse de sentiments
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-03.png)
+
+## Séries temporelles
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-04.png)
+
+## Reconnaissance de la parole
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-05.png)
+
+## Traduction automatique
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-06.png)
+
+## Génération de légendes à partir d'une image
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-07.png)
+
+## Création de résumés
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-08.png)
+
+## Entrée structurée
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-09.png)
+
+## Applications à taille variable
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-10.png)
+
+# Modélisation de séquences
+
+## Problème one-to-one
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-11.png)
+
+## Problème one-to-many
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-12.png)
+
+## Problème many-to-one
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-13.png)
+
+## Problème many-to-many
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-14.png)
+![](/assets/images/B3.AA.CM.Slide3.20230206-15.png)
+
+# Réseaux de Neurones Récurrents (RNN)
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-16.png)
+
+h ???
+
+## Illustration
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-17.png)
+
+## Formules
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-18.png)
+
+## Paramètres partagés
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-19.png)
+
+# Rétropropagation à travers le temps
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-20.png)
+![](/assets/images/B3.AA.CM.Slide3.20230206-21.png)
+![](/assets/images/B3.AA.CM.Slide3.20230206-22.png)
+![](/assets/images/B3.AA.CM.Slide3.20230206-23.png)
+![](/assets/images/B3.AA.CM.Slide3.20230206-24.png)
+![](/assets/images/B3.AA.CM.Slide3.20230206-25.png)
+![](/assets/images/B3.AA.CM.Slide3.20230206-26.png)
+![](/assets/images/B3.AA.CM.Slide3.20230206-27.png)
+
+# Limites des RNN
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-28.png)
+
+# Dépendances à longue distance
+
+<!-- ![](/assets/images/B3.AA.CM.Slide3.20230206-29.png)
+![](/assets/images/B3.AA.CM.Slide3.20230206-30.png) -->
+![](/assets/images/B3.AA.CM.Slide3.20230206-31.png)
+![](/assets/images/B3.AA.CM.Slide3.20230206-32.png)
+
+## Explosion du gradient (gradient clipping)
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-33.png)
+
+## Dissipation du gradient
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-34.png)
+
+## Remarques
+
+<!-- ![](/assets/images/B3.AA.CM.Slide3.20230206-35.png) -->
+<!-- ![](/assets/images/B3.AA.CM.Slide3.20230206-36.png) -->
+
+> Keywords:
+- connections résiduelles
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-37.png)
+
+# Mémoire (cell) dans le temps
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-38.png)
+
+## Portes
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-39.png)
+
+## Long Short Term Memory Networks (LSTMs)
+
+### LSTM Classique
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-40.png)
+
+### LSTM avec 4 couches cachées
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-41.png)
+
+### LSTM Idée principale
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-42.png)
+
+### LSTM Portes
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-43.png)
+
+### Produit Hadamard
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-44.png)
+
+### Forget Gate
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-45.png)
+
+### Input Gate Layer
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-46.png)
+
+### Mise à jour de la mémoire
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-47.png)
+
+### Output Gate Layer
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-48.png)
+
+> Le LSTM a pour advantage de ne pas présenter les problèmes de dissipation du gradient.
+
+## LSTMs Bidirectionnels
+
+<!-- ![](/assets/images/B3.AA.CM.Slide3.20230206-49.png) -->
+<!-- ![](/assets/images/B3.AA.CM.Slide3.20230206-50.png) -->
+<!-- ![](/assets/images/B3.AA.CM.Slide3.20230206-51.png) -->
+<!-- ![](/assets/images/B3.AA.CM.Slide3.20230206-52.png) -->
+![](/assets/images/B3.AA.CM.Slide3.20230206-53.png)
+
+Ceci peut etre utile pour comprendre une phrase en allemand où souvent les deniers d'une phrase sont nécessaires pour comprendre le contexte de la phrase. Le bidirectionnelle pourra permettre de prendre en compte les derniers mots pour contextualiser les premiers mots.
+
+### Illustration
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-54.png)
+
+### Gate Recurrent Units (GRUs)
+
+#### Principe
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-55.png)
+
+#### Illustration
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-56.png)
+
+#### Formules
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-57.png)
+
+#### Remarques
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-58.png)
+
+# RNNs génératifs
+
+<!-- ![](/assets/images/B3.AA.CM.Slide3.20230206-59.png) -->
+![](/assets/images/B3.AA.CM.Slide3.20230206-60.png)
+
+## Illustration
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-61.png)
+
+On réintroduit en entrée les charactères prédits précédemment.
+
+## Exemple Textes Journalistiques
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-62.png)
+
+## Exemple d'utilisation
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-63.png)
+
+Pour la traduction automatique et la génération des résumés, la taille de sortie n'est pas la meme que l'entrée. Ceci se modélise par du seq2seq
+
+## Modèle Sequence to Sequence (seq2seq)
+
+> Aussi appelé:
+- n2n
+- bout en bout
+- encodeur/decodeu
+
+> cf. Réseau d'attention
+
+### Illustration
+
+> Keywords: génération de séquence
+
+<!-- ![](/assets/images/B3.AA.CM.Slide3.20230206-64.png) -->
+<!-- ![](/assets/images/B3.AA.CM.Slide3.20230206-65.png) -->
+![](/assets/images/B3.AA.CM.Slide3.20230206-66.png)
+
+Comment le réseau s'arrête de prédire ?
+
+Il faut qu'il anticipe à quel moment la séquence s'arrête. Donc il prédira aussi un caractère "stop".
+
+### Entraînement et Test
+
+> Keywords:
+- prédiction structuré
+- Negative Log Likelihood (vraisemblance)
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-67.png)
+
+### Décodage
+
+> Keywords:
+- Score optimal / problème combinatoire
+- Approche glouton (greedy search) 
+- Beam search
+- Top-K sampling
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-68.png)
+
+Le décodage va chercher la meilleur combinaison des sorties prédites (ces sorties sont des vecteurs de probabilités). Il existe plusieurs stratégies de décodage :
+- La Greedy Search va prendre le mot le plus probable localement (sans y revenir par après) comme premier mot et construire p.r.à ce mot.
+- Problème si ce premier n'est pas le bon (sans être corrigé), le reste sera mauvais
+- C'est pourquoi dans le Beam Search on va garder une liste des mots les plus possibles
+
+#### Recherche Exhaustive
+
+<!-- ![](/assets/images/B3.AA.CM.Slide3.20230206-69.png) -->
+<!-- ![](/assets/images/B3.AA.CM.Slide3.20230206-70.png) -->
+![](/assets/images/B3.AA.CM.Slide3.20230206-71.png)
+
+#### Greedy Decoding
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-72.png)
+
+#### Beam Search
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-73.png)
+![](/assets/images/B3.AA.CM.Slide3.20230206-74.png)
+
+#### Top-p Sampling
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-75.png)
+
+Tirer parmi les k etaptes les plus probables va permettre d'introduire un peu de créativité dans la génération de texte.
+
+# Quiz
+
+![](/assets/images/B3.AA.CM.Slide3.20230206-76.png)
+
+Le nettoyage d'image ne sera pas fait avec du seq2seq.
+
+Autre exmple, le Q&A avec la particularité que l'on encode la question mais on décode la réponse.
+
+
+
+
+> Notes RKA du 2023/02/06 - End
+
+---

@@ -1,0 +1,92 @@
+<h1 id="tp2">TP2<a aria-hidden="true" class="anchor-heading icon-link" href="#tp2"></a></h1>
+<hr>
+<blockquote>
+<p><strong>Avertissement:</strong>
+Cette page peut contenir des fautes ! Envoyez-moi un message sur <a href="https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org"><code>#UT3-AURO-M2-2223-Request:matrix.org</code></a> si vous en trouvez, merci.</p>
+</blockquote>
+<blockquote>
+<p>Cours donné par Olivier</p>
+</blockquote>
+<hr>
+<h1 id="comments">Comments<a aria-hidden="true" class="anchor-heading icon-link" href="#comments"></a></h1>
+<ul>
+<li>postit (topics) pour faire</li>
+<li>bus logiciel
+<ul>
+<li>entrer avec un annuaire d'objet (roscore)</li>
+<li>les nodes communiquent via cette annuaire</li>
+</ul>
+</li>
+<li>rappel ROS 1 n'est pas sécurisé</li>
+<li>toute les unités sont</li>
+</ul>
+<h1 id="command-lines">Command Lines<a aria-hidden="true" class="anchor-heading icon-link" href="#command-lines"></a></h1>
+<ol>
+<li><code>env | grep ROS</code>
+verifier le <code>_MASTER_URI</code></li>
+<li><code>roscore</code> (dans un autre terminal a ne pas fermer)</li>
+<li><code>rosrun turtlesim turtlesim_node __name:=my_turtle</code></li>
+<li><code>rosrun rqt_graph rqt_graph</code></li>
+<li><code>rosnode info /my_turtle</code></li>
+<li><code>rostopic echo /turtle1/pose</code></li>
+<li><code>rostopic pub /turtle1/cmd_vel geometry msgs/Twist "linear: x:...y:...z:... angular: x:...y:...z:..." -r 1</code>
+Makes the turtle turn in circle over the z axis with 1 rad/s with a rate of 1 Hz</li>
+<li>se connecter sur le reseau du robot <code>TIAGO_155</code> ou <code>PalRobotics</code> (mode passe admin <code>palroot</code> mode passe reseau <code>P@L-R0b0t1cs</code>)</li>
+<li><code>env | grep ROS</code></li>
+<li><code>rosnode list</code></li>
+<li><code>export ROS_MASTER_URI=http://10.68.0.1:1131</code></li>
+<li><code>env | grep ROS</code></li>
+<li><code>rostopic list | grep cmd_devel</code> chercher mobile base controller sans out</li>
+<li><code>export ROS_IP=10.68.0.131</code></li>
+</ol>
+<h1 id="workspace">Workspace<a aria-hidden="true" class="anchor-heading icon-link" href="#workspace"></a></h1>
+<ol>
+<li><code>mkdir workspaceroot</code></li>
+<li><code>cd workspaceroot</code></li>
+<li><code>mkdir src</code></li>
+<li><code>catkin_init_workspace</code></li>
+<li><code>catkin_create_pkg begin_tutorials std_msg rospy roscp</code></li>
+<li><code>cd ./begin_tutorials</code></li>
+<li><code>mkdir launch</code></li>
+<li><code>cd ./launch</code></li>
+<li><code>nano mimic.launch</code> and copy paste
+<pre class="language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>launch</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>group</span> <span class="token attr-name">ns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>turtlesim1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>node</span> <span class="token attr-name">pkg</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>turtlesim<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sim<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>turtlesim_node<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>group</span><span class="token punctuation">></span></span>
+    
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>group</span> <span class="token attr-name">ns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>turtlesim2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>node</span> <span class="token attr-name">pkg</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>turtlesim<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sim<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>turtlesim_node<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>group</span><span class="token punctuation">></span></span>
+    
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>node</span> <span class="token attr-name">pkg</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>turtlesim<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mimic<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mimic<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>remap</span> <span class="token attr-name">from</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>input<span class="token punctuation">"</span></span> <span class="token attr-name">to</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>turtlesim1/turtle1<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>remap</span> <span class="token attr-name">from</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>output<span class="token punctuation">"</span></span> <span class="token attr-name">to</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>turtlesim2/turtle1<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>node</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>launch</span><span class="token punctuation">></span></span>
+</code></pre>
+</li>
+<li><code>cd ../..</code> pour se remettre sur le root du workspace</li>
+<li><code>catkin_make</code></li>
+<li><code>source ./devel/setup.bash</code> verifier avant et apres les modifs appliquées avec <code>env | grep ROS</code></li>
+<li><code>roslaunch begin_tutorial mimic.launch</code></li>
+<li>Check graph with <code>rosrun rqt_graph rqt_graph</code> </li>
+</ol>
+<p>Si le <code>bashrc</code> est 'corrompu' appliquer la séquence suivante :</p>
+<ol>
+<li>Comment source de trop dans <code>~/.bashrc</code></li>
+<li>Se mettre sur root workspace et supprimer le build et le devel avec ``</li>
+</ol>
+<h1 id="message">Message<a aria-hidden="true" class="anchor-heading icon-link" href="#message"></a></h1>
+<ol>
+<li><code>roscd beginner_tutorials</code></li>
+<li><code>mkdir msg</code></li>
+<li><code>echo "int64 num" > msg/Num.msg</code>
+...</li>
+</ol>
+<p><a title="Private" href="https://wiki.dendron.so/notes/hfyvYGJZQiUwQaaxQO27q.html" target="_blank" class="private">Suite dans ROS TP3 (Private)</a></p>
+<hr>
+<strong>Backlinks</strong>
+<ul>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/jlzfz6le5m018ggh4k7ydz8">RMN - Robotique Mobile &#x26; Navigation</a></li>
+</ul>

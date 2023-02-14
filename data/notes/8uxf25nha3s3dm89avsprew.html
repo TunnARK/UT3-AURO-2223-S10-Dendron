@@ -1,0 +1,108 @@
+<h1 id="td1---exemple-du-bank-account">TD1 - Exemple du Bank Account<a aria-hidden="true" class="anchor-heading icon-link" href="#td1---exemple-du-bank-account"></a></h1>
+<blockquote>
+<p><strong>Avertissement:</strong>
+Cette page peut contenir des fautes ! Envoyez-moi un message sur <a href="https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org"><code>#UT3-AURO-M2-2223-Request:matrix.org</code></a> si vous en trouvez, merci.</p>
+</blockquote>
+<blockquote>
+<p>Cours donné par G. Saurel</p>
+</blockquote>
+<p>Sources :</p>
+<ul>
+<li><a href="https://godbolt.org/">GodBolt (Compiler Explorer)</a></li>
+<li><a href="https://mark.theis.site/riscv/">Mark Theis (Documentation Assembleur RISCV)</a></li>
+<li><a href="http://cliffle.com/blog/not-thread-safe/#the-bank-account-example">Cliffle's Blog (for the code example)</a></li>
+</ul>
+<hr>
+<p>Un manageur nous demande de travailler sur un nouveau software pour retirer du cash dans un bancomat (voir <a href="http://cliffle.com/blog/not-thread-safe/#the-bank-account-example">Cliffle's Blog</a> pour plus d'informations). </p>
+<h1 id="partie-1---vérification-des-conditions">Partie 1 - Vérification des conditions<a aria-hidden="true" class="anchor-heading icon-link" href="#partie-1---vérification-des-conditions"></a></h1>
+<p>Il n'a pas eu le temps de compléter le tableau suivant :</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.TD1.BB20221125-01.png"></p>
+<p>Mais il nous demande quand même de trouver en fonction de <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span></span> :</p>
+<ol>
+<li>la condition nécessaire d'ordonnançabilité ; ainsi que </li>
+<li>la condition suffisante pour RMA ; et</li>
+<li>la condition suffisante pour EDF.</li>
+</ol>
+<h2 id="condition-nécessaire">Condition Nécessaire<a aria-hidden="true" class="anchor-heading icon-link" href="#condition-nécessaire"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.TD1.BB20221125-02.png"></p>
+<p>Donc on sait que si <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>></mo><mn>44</mn></mrow><annotation encoding="application/x-tex">x>44</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">44</span></span></span></span></span> cela ne servira à rien de continuer sur ce projet car il ne sera pas temps réel.</p>
+<h2 id="condition-suffisante">Condition Suffisante<a aria-hidden="true" class="anchor-heading icon-link" href="#condition-suffisante"></a></h2>
+<h3 id="rma">RMA<a aria-hidden="true" class="anchor-heading icon-link" href="#rma"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.TD1.BB20221125-03.png"></p>
+<h3 id="edf">EDF<a aria-hidden="true" class="anchor-heading icon-link" href="#edf"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.TD1.BB20221125-04.png"></p>
+<h2 id="conclusion">Conclusion<a aria-hidden="true" class="anchor-heading icon-link" href="#conclusion"></a></h2>
+<ul>
+<li>Si <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mi>x</mi><mo>≤</mo><mn>16</mn><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\;x\leq16\;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">16</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span></span>, ce sera plus efficace de prendre l'algo EDF.</li>
+<li>Si <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mn>16</mn><mo>&#x3C;</mo><mi>x</mi><mo>≤</mo><mn>22</mn><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\;16&#x3C;x\leq22\;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6835em;vertical-align:-0.0391em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">16</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&#x3C;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">22</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span></span>, on utilisera RMA.</li>
+<li>Si <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mn>22</mn><mo>&#x3C;</mo><mi>x</mi><mo>≤</mo><mn>44</mn><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\;22&#x3C;x\leq44\;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6835em;vertical-align:-0.0391em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">22</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&#x3C;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">44</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span></span>, on ne saura pas l'efficacité a priori donc il faudra essayer.</li>
+</ul>
+<h1 id="partie-2---estimation-du-x">Partie 2 - Estimation du <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span></span><a aria-hidden="true" class="anchor-heading icon-link" href="#partie-2---estimation-du-x"></a></h1>
+<p>On reçoit plus de détails du manageur qui a écrit un code pour calculer/estimer ce <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span></span>.</p>
+<pre class="language-c++"><code class="language-c++">/*
+ * Stores information about a bank account.
+ */
+struct bank_account {
+    /* How much money is in the account. */
+    int balance; /* never use floats for managing money (too much approximation) */
+};
+
+/*
+ * Deposits 'amt' into the 'account' and returns the new balance.
+ */
+float deposit(struct bank_account *account, int amt) {
+    account->balance += amt;
+    return account->balance;
+}
+
+/*
+ * Tries to withdraw 'amt' from the account. Returns 'true' if it
+ * succeeded, 'false' if the account didn't contain enough.
+ */
+bool withdraw(struct bank_account *account, int amt) {
+    if (account->balance >= amt) {
+        account->balance -= amt;
+        return true;
+    } else {
+        return false;
+    }
+}
+
+</code></pre>
+<p>On travaille mtnt sur le <em>Compiler Explorer</em> <a href="https://godbolt.org/">GodBolt (Compiler Explorer)</a> pour continuer la programmation avec l'architecture de jeux d'instructions (<em>redus instruction set</em> = coeur de calcul) <code>RISC-V rv32gc clang 15.0.0</code>.</p>
+<blockquote>
+<p>Si besoin de voir la doc pour retrouver les acronymes des fonctions en assembleur, une option est <a href="https://mark.theis.site/riscv/">Mark Theis (Documentation Assembleur RISCV)</a></p>
+</blockquote>
+<p>On va utiliser cette explorer pour compter le nombre d'instructions et ainsi mesurer le temps d'execution.</p>
+<p>On obtient deux cas:</p>
+<ol>
+<li>
+<p>Si on suit la branche <code>withdraw>LBB1_1>LBB1_3</code>, on obtient <strong>24 instructions</strong>.</p>
+<p><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span></span> Du coup, on ne peut que tester sans RMA et sans EDF.</p>
+</li>
+<li>
+<p>Si on suit la branche <code>withdraw>LBB1_2>LBB1_3</code>, on obtient <strong>18 instructions</strong>.</p>
+<p><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span></span> Du coup, dans ce cas, on sait qu'utiliser RMA sera plus efficace.</p>
+</li>
+</ol>
+<p><strong>Remarque :</strong></p>
+<ul>
+<li>On pourrait changer de compilateur pour vérifier si on trouve un meilleur nombre d'instructions.</li>
+<li>Par exemple, <code>RISC-V rv32gc gcc 12.1.0</code> semble plus perfomant pour cette fonction.</li>
+<li>On peut aussi demander d'optimiser le code en ajoutant <code>-O0</code> ou <code>-O1</code> max <code>-O2</code>.
+<ul>
+<li>Aller plus haut en optimisation risque de rendre les calculs trop imprécis.</li>
+<li>Le cas où une optimisation rajoute un beug est plus rare.</li>
+</ul>
+</li>
+</ul>
+<h1 id="partie-3---choix-dun-rr-de-période-10">Partie 3 - Choix d'un RR de Période 10<a aria-hidden="true" class="anchor-heading icon-link" href="#partie-3---choix-dun-rr-de-période-10"></a></h1>
+<p>Le manageur a l'intuition que passer en <code>RR de période 10</code> serait une bonne idée, vérifions :</p>
+<p>Assumons qu'il y a 100 euros dans le compte et que les taches suivantes sont appelées : <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><msub><mi>T</mi><mn>1</mn></msub><mo stretchy="false">(</mo><mn>100</mn><mo stretchy="false">)</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\;T_1(100)\;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">100</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span></span> [<code>withdraw</code>], <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><msub><mi>T</mi><mn>2</mn></msub><mo stretchy="false">(</mo><mn>100</mn><mo stretchy="false">)</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\;T_2(100)\;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">100</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span></span> [<code>deposit</code>] et <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><msub><mi>T</mi><mn>3</mn></msub><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\;T_3\;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span></span> [<code>balance</code>].</p>
+<p>Nous obtenons la séquence d'éxecution de période suivante :
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.SATR.TD1.BB20221125-05.png"></p>
+<hr>
+<strong>Backlinks</strong>
+<ul>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/zlr2s0g64dtr3njuzx1iylh">SATR - Systèmes et Architectures Temps Réels</a></li>
+</ul>

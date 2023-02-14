@@ -1,0 +1,92 @@
+<h1 id="interlude-du-20221021">Interlude du 2022/10/21<a aria-hidden="true" class="anchor-heading icon-link" href="#interlude-du-20221021"></a></h1>
+<blockquote>
+<p><strong>Avertissement:</strong>
+Cette page peut contenir des fautes ! Envoyez-moi un message sur <a href="https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org"><code>#UT3-AURO-M2-2223-Request:matrix.org</code></a> si vous en trouvez, merci.</p>
+</blockquote>
+<blockquote>
+<p>Cours donné par P. Danès</p>
+</blockquote>
+<blockquote>
+<p>Voir ce que <strong>Grammien</strong> veut dire</p>
+</blockquote>
+<p><strong>Supports:</strong></p>
+<ul>
+<li><a href="https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/Projet.P1K.Interlude.BB20221021.pdf">Projet.P1K.Interlude.BB20221021.pdf</a></li>
+</ul>
+<hr>
+<h2 id="position-du-problème">Position du Problème<a aria-hidden="true" class="anchor-heading icon-link" href="#position-du-problème"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Interlude.BB20221021-01.png"></p>
+<ul>
+<li>Processus d'état caché suit une équation d'état linéaire avec matrice F et G détermiste et un bruit de dynamique</li>
+<li>Equation de mesures possède une structure similaire avec H deterministe et V le bruit dynamique</li>
+<li>On assume que les conditions initiales sont gaussiennes donc les sous element du vecteur sont aussi gaussiens 
+<ul>
+<li>on veut que le système reste gaussien au cours de la recursivité</li>
+</ul>
+</li>
+<li>X état caché et Z mesures de X manifestant son existence</li>
+<li>Pour le calcul de l'espérance, on assume que les valeurs moyennes des bruits (sinon on peut avoir des soucis d'observation)</li>
+<li>Esperance d'intercovariance
+<ul>
+<li>Attention <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">R_k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> est seulement <strong>définie positive</strong> du coup, dans certains cas, il faut faire attention à la dépendance statique lineaire entre les composant des bruits de mesure</li>
+<li>Kronecker indique que les bruits sur deux temps différents sont indépendants mutuellement</li>
+</ul>
+</li>
+</ul>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Interlude.BB20221021-02.png"></p>
+<h2 id="conclusions-importantes">Conclusions Importantes<a aria-hidden="true" class="anchor-heading icon-link" href="#conclusions-importantes"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Interlude.BB20221021-03.png"></p>
+<ul>
+<li>tout ce qui va etre construit sera gaussien</li>
+<li>loi posterieure est gaussienne 
+<ul>
+<li><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><msup><mi>k</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup></mrow><annotation encoding="application/x-tex">k=k'</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7519em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span></span> filtrage trajectoriel
+  <!--
+  - sur toutes les experiences qui caracterise mon comportement
+  -->
+</li>
+<li><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>></mo><msup><mi>k</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup></mrow><annotation encoding="application/x-tex">k>k'</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7519em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span></span> prédiction trajectoriele renforcement ???</li>
+<li><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>&#x3C;</mo><msup><mi>k</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup></mrow><annotation encoding="application/x-tex">k&#x3C;k'</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&#x3C;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7519em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span></span> lissage -> estimation</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>cov à l'infi pour un syst stable tend vers une constante fini qui ressemblance à une fonction de lyapunov</p>
+</blockquote>
+<blockquote>
+<p>Moment = ???</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Interlude.BB20221021-04.png"></p>
+<h2 id="equations-du-filtre">Equations du filtre<a aria-hidden="true" class="anchor-heading icon-link" href="#equations-du-filtre"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Interlude.BB20221021-05.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Interlude.BB20221021-06.png"></p>
+<blockquote>
+<p>Attention: faire la différence entre equations 7 et 5 peut amener à ne plus avoir une structure semi-définie positive mais seulement définie</p>
+</blockquote>
+<h2 id="problème-du-tuning">Problème du TUNING<a aria-hidden="true" class="anchor-heading icon-link" href="#problème-du-tuning"></a></h2>
+<p>On suppose avoir un modele a priori et essayer d'apprendre sur un tronçon de trajectoire donné</p>
+<blockquote>
+<p>Tester sur le <a title="Private" href="https://wiki.dendron.so/notes/hfyvYGJZQiUwQaaxQO27q.html" target="_blank" class="private">TP de la Tortue (Private)</a></p>
+</blockquote>
+<h2 id="cas-non-linéaire">Cas non linéaire<a aria-hidden="true" class="anchor-heading icon-link" href="#cas-non-linéaire"></a></h2>
+<p>Le modèle avec Q et R est approximé dans le cas non linéaire ce que peut amener un loi posterieure trop optimiste (trop ressérrée).</p>
+<h2 id="statistiques-de-erreurs">Statistiques de Erreurs<a aria-hidden="true" class="anchor-heading icon-link" href="#statistiques-de-erreurs"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Interlude.BB20221021-07.png"></p>
+<blockquote>
+<p>On pourra pas connaitre <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>k</mi></msub><mo>−</mo><msub><mover accent="true"><mi>x</mi><mo>ˆ</mo></mover><mrow><mi>k</mi><mi mathvariant="normal">∣</mi><mi>k</mi></mrow></msub></mrow><annotation encoding="application/x-tex">x_k-\^x_{k|k}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0496em;vertical-align:-0.3552em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">x</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">ˆ</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mord mtight">∣</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3552em;"><span></span></span></span></span></span></span></span></span></span></span> car <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover accent="true"><mi>x</mi><mo>ˆ</mo></mover><mrow><mi>k</mi><mi mathvariant="normal">∣</mi><mi>k</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\^x_{k|k}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0496em;vertical-align:-0.3552em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">x</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">ˆ</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mord mtight">∣</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3552em;"><span></span></span></span></span></span></span></span></span></span></span> lui est basé sur une séquence de mesure que l'on ne peut pas distingué mutuellement</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Interlude.BB20221021-08.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Interlude.BB20221021-09.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Interlude.BB20221021-10.png"></p>
+<h2 id="ellipsoides-de-lerreur">Ellipsoides de l'erreur<a aria-hidden="true" class="anchor-heading icon-link" href="#ellipsoides-de-lerreur"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Interlude.BB20221021-11.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Interlude.BB20221021-12.png"></p>
+<p>Pour connaitre l'erreur d'estimation, il faut passer par des ellipsoides où l'on choisit la probabilité d'estimation sur l'<span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span></span> et le <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span></span></p>
+<blockquote>
+<p>Ceci n'est pas comparable à un observateur où l'erreur converge sagement sur 0</p>
+</blockquote>
+<hr>
+<strong>Backlinks</strong>
+<ul>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/unhhyfcpm3mlaf2n2hauesq">Kalman</a></li>
+</ul>

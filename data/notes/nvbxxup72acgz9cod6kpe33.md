@@ -1,0 +1,183 @@
+
+> **Avertissement:**
+Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-2223-Request:matrix.org`](https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org) si vous en trouvez, merci.
+
+> Cours donné par M. Thaix
+
+Support de cours:
+- ...
+
+---
+
+> Notes du 2022/09/16 - Start
+
+![](/assets/images/RMN.CM.MethodeProba-01.png)
+
+### Motivation
+
+![](/assets/images/RMN.CM.MethodeProba-02.png)
+
+![](/assets/images/RMN.CM.MethodeProba-03.png)
+
+### Méthode
+
+![](/assets/images/RMN.CM.MethodeProba-04.png)
+
+### Idée
+
+![](/assets/images/RMN.CM.MethodeProba-05.png)
+
+### Problématique
+
+![](/assets/images/RMN.CM.MethodeProba-06.png)
+
+![](/assets/images/RMN.CM.MethodeProba-07.png)
+
+![](/assets/images/RMN.CM.MethodeProba-08.png)
+
+![](/assets/images/RMN.CM.MethodeProba-09.png)
+
+![](/assets/images/RMN.CM.MethodeProba-10.png)
+
+![](/assets/images/RMN.CM.MethodeProba-11.png)
+
+![](/assets/images/RMN.CM.MethodeProba-12.png)
+
+![](/assets/images/RMN.CM.MethodeProba-13.png)
+
+### Echantillonage
+
+![](/assets/images/RMN.CM.MethodeProba-14.png)
+
+> Dilem: avoir le moins de composantes connexes il nous faut prendre plus de points pour esperer trouver un chemin qui connecte deux composantes connexes
+
+![](/assets/images/RMN.CM.MethodeProba-15.png)
+
+![](/assets/images/RMN.CM.MethodeProba-16.png)
+
+![](/assets/images/RMN.CM.MethodeProba-17.png)
+
+
+
+
+> Notes du 2022/09/16 - End
+
+---
+
+> Notes du 2022/09/19 - Start
+
+
+
+
+### Choix des voisins
+
+> Kd-tree souvent utilisé
+
+![](/assets/images/RMN.CM.MethodeProba-18.png)
+
+### Test de collision
+
+![](/assets/images/RMN.CM.MethodeProba-19.png)
+
+#### Collision vs Distance
+
+![](/assets/images/RMN.CM.MethodeProba-20.png)
+![](/assets/images/RMN.CM.MethodeProba-21.png)
+
+#### Algorithme général
+
+![](/assets/images/RMN.CM.MethodeProba-22.png)
+
+#### Détection
+
+- [Flexible Collision Library](https://github.com/flexible-collision-library/fcl) : lib la plus utilisé
+
+> ATTENTION: Penser aussi qu'un robot humanoïde doit en plus éviter les collisions membres à membres (il doit être conscient des positions de ces membres pour ne pas les cogner)
+
+![](/assets/images/RMN.CM.MethodeProba-23.png)
+
+#### Articulated Robot
+
+![](/assets/images/RMN.CM.MethodeProba-24.png)
+
+
+### Principales approches
+
+> Attention: les algo de nos jours ne sont pas capable de faire des pré-traitements efficaces dans des environmment dynamiques (si on rajoute un objet dans la salle il faut alors relancer les pré-traitments...)
+
+![](/assets/images/RMN.CM.MethodeProba-25.png)
+
+### Test de collision sur chemin locaux L
+
+![](/assets/images/RMN.CM.MethodeProba-26.png)
+
+### PRM : Méthodes locales
+
+![](/assets/images/RMN.CM.MethodeProba-27.png)
+![](/assets/images/RMN.CM.MethodeProba-28.png)
+![](/assets/images/RMN.CM.MethodeProba-29.png)
+![](/assets/images/RMN.CM.MethodeProba-30.png)
+![](/assets/images/RMN.CM.MethodeProba-31.png)
+![](/assets/images/RMN.CM.MethodeProba-32.png)
+
+### Stratégie d'échantillonage
+
+![](/assets/images/RMN.CM.MethodeProba-33.png)
+
+#### Echantillonnage multi-étape
+
+> Echantillonnage uniforme inefficace
+
+![](/assets/images/RMN.CM.MethodeProba-34.png)
+
+#### Obstacle-sensitive sampling
+
+![](/assets/images/RMN.CM.MethodeProba-35.png)
+
+#### Dilatation de l'espace libre F
+
+![](/assets/images/RMN.CM.MethodeProba-36.png)
+
+#### Echantillonnage selon un axe médian
+
+![](/assets/images/RMN.CM.MethodeProba-37.png)
+
+#### Echantillonnage par visibilité
+
+> ATTENTION: on ne garde que les noeuds qui ne sont pas joignable à d'autres comoposantes connexes  au lieu de générer les noeuds qui peuvent se connecter sans collision. De cette facon on peut conserver moins de noeuds. Une que ces noeuds sont trouvés on peut le connecter aux autres composantes à l'aide de nouveau noeuds connecteurs.
+
+![](/assets/images/RMN.CM.MethodeProba-38.png)
+
+#### Bilan
+
+![](/assets/images/RMN.CM.MethodeProba-39.png)
+
+### PRM Visibilité
+
+![](/assets/images/RMN.CM.MethodeProba-40.png)
+![](/assets/images/RMN.CM.MethodeProba-41.png)
+![](/assets/images/RMN.CM.MethodeProba-42.png)
+
+### Diffusion
+
+![](/assets/images/RMN.CM.MethodeProba-43.png)
+
+#### Méthode RRT
+![](/assets/images/RMN.CM.MethodeProba-44.png)
+![](/assets/images/RMN.CM.MethodeProba-45.png)
+![](/assets/images/RMN.CM.MethodeProba-46.png)
+
+### Conclusion
+
+![](/assets/images/RMN.CM.MethodeProba-47.png)
+
+## Librairie: OMPL & HPP
+
+![](/assets/images/RMN.CM.MethodeProba-48.png)
+
+
+
+
+> Notes du 2022/09/19 - End
+
+---

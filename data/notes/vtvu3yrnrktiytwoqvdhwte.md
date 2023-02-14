@@ -1,0 +1,117 @@
+
+![](/assets/images/B2.CNL.TD2.Sujet-01.png)
+
+# Idée du BackStepping
+
+$$
+\begin{cases}
+\dot x_1 = f(x_1) + g(x_1)\;x_2\\
+\dot x_2 = u
+\end{cases}
+$$
+
+L'état $x_2$ agit comme une commande vis à vis $x_1$. On va donc pouvoir trouver une commande désiré $x_2$ pour ensuite en déduire $u$
+
+
+
+
+# 1- L'intégrateur BackStepping
+
+## 1-1. Un peu de théorie
+
+![](/assets/images/B2.CNL.TD2.Sujet-02.png)
+![](/assets/images/B2.CNL.TD2.Sujet-03.png)
+![](/assets/images/B2.CNL.TD2.Sujet-04.png)
+
+### Q1)
+
+Si le sys est GAS, il existe une fct de lyapunov $V(x_1)$ (d'apres le thm convasse???) tel que $\dot V(\cdot)$ est DP et radialement non bornée.
+
+De plus, $\dot V(\cdot) = \partial_{x_1} V\Big( f(x_1)+g(x_1)\phi(x_2) \Big)$ est DN
+
+### Q2)
+
+Structure en cascade :
+
+![](/assets/images/B2.CNL.TD2.BB20221117-01.png)
+
+### Q4)
+
+$$
+\begin{cases}
+\dot x_1 = f(x_1) + g(x_1)\;\phi(x_1) + g(x_1)\Big(\textcolor{red}{x_2-\phi(x_1)}\Big)\\
+\dot x_2 = u
+\end{cases}
+$$
+
+Le facteur en rouge correspond à une erreur et l'idée est donc de trouver un $u$ tel que $x_2(t)$ converge vers $\phi(x_1)$
+
+Pour cela on réalise un chgmt de variable :
+
+$$
+\begin{cases}
+z_1 = x_1\\
+z_2 = x_2 - \phi(x_1)
+\end{cases}
+\iff
+\begin{cases}
+x_1 = z_1\\
+x_2 = z_2 + \phi(z_1)
+\end{cases}
+$$
+
+or pour avoir un chgmt de variable acceptable il nous faut respecter les conditions suivantes :
+1. $\phi(0)=0$
+2. $\phi \quad C^1$
+3. $\phi$ est différentiable
+
+Si ces conditions sont vérifiées alors on peut dériver les $z$ pour etudier l'evolution de l'erreur
+
+$$
+\begin{cases}
+\dot z_1 = f(z_1) + g(z_1)\phi(x_1) + g(z_1)z_2\\
+\dot z_2 = \partial_{x_1} \phi\;\dot x_1 + u
+\end{cases}
+$$
+
+### Q5)
+
+Calcul de la commande et choix de la fct de lyapunov candidate :
+$$
+V_{totale} = V(z_1) + \frac{1}{2}\;{z_2}^2
+$$
+
+Cette fct est bien RNB et DP et sa dérivée vaut :
+$$
+\dot V_{totale} = \partial_{z_1}\Big(\; f(z_1) + g(z_1)\phi(z_1) \;\Big) + \partial_{z_1}V\Big(\; g(z_1)z_2 \;\Big) + z_2\Big(\; -\partial_{z_1}\phi \;\dot{z}_1 + u \;\Big)\\[0.2cm]
+\iff u = \partial_{z_1}\phi\;\dot z_1 -\partial_{z_1} V g(z_1) - \alpha\;z_2
+$$
+et ainsi on a :$\quad \dot V = u(z_1) - \alpha\;{z_2}^2\quad$ est DN donc $0$ est GAS !
+
+Seul problème c'est qu'on vient de relocaliser toute la problématique sur l'hypothèse H2 qui nous ait donné mais trouver le $\phi$ n'est pas du tout évident...
+
+En aviation, les structures en cascades sont très utilisé car le manche du pilote n'agit plus directement sur les ailerons mais agit comme une consigne transmise à travers une séquence d'actionneurs
+
+Autre problème: **phénomène de peeking** lorsque $z_2$ evolue trop vite  ou dans le cas où $k$ dépend du $\lambda$ dans $|x(t)|=k(\lambda)e^{-\lambda\;t}$ (ou le système va avoir un énorme dépassement en transitoire pour se stabiliser) 
+
+
+# 3- La méthode du forwarding
+
+![](/assets/images/B2.CNL.TD2.Sujet-05.png)
+![](/assets/images/B2.CNL.TD2.Sujet-06.png)
+![](/assets/images/B2.CNL.TD2.Sujet-07.png)
+
+Les petits $x$ représentent l'état du système et les grand $X$ eux sont les flots liés à un autre système d'équations différentiels comme suit :
+![](/assets/images/B2.CNL.TD2.BB20221123-01.png)
+
+Prenons par exemple, ce système :
+![](/assets/images/B2.CNL.TD2.BB20221123-02.png)
+
+Calculer une loi de commande et résoudre le système en $X$
+![](/assets/images/B2.CNL.TD2.BB20221123-03.png)
+
+On choisit la candidate en se basant sur le point de convergence de $X_2$
+![](/assets/images/B2.CNL.TD2.BB20221123-04.png)
+
+On peut alors vérifier si c'est bien une fonction de Lyapunov
+![](/assets/images/B2.CNL.TD2.BB20221123-05.png)

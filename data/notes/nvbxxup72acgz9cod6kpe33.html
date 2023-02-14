@@ -1,0 +1,128 @@
+<h1 id="methodeproba">MethodeProba<a aria-hidden="true" class="anchor-heading icon-link" href="#methodeproba"></a></h1>
+<blockquote>
+<p><strong>Avertissement:</strong>
+Cette page peut contenir des fautes ! Envoyez-moi un message sur <a href="https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org"><code>#UT3-AURO-M2-2223-Request:matrix.org</code></a> si vous en trouvez, merci.</p>
+</blockquote>
+<blockquote>
+<p>Cours donné par M. Thaix</p>
+</blockquote>
+<p>Support de cours:</p>
+<ul>
+<li>...</li>
+</ul>
+<hr>
+<blockquote>
+<p>Notes du 2022/09/16 - Start</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-01.png"></p>
+<h3 id="motivation">Motivation<a aria-hidden="true" class="anchor-heading icon-link" href="#motivation"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-02.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-03.png"></p>
+<h3 id="méthode">Méthode<a aria-hidden="true" class="anchor-heading icon-link" href="#méthode"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-04.png"></p>
+<h3 id="idée">Idée<a aria-hidden="true" class="anchor-heading icon-link" href="#idée"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-05.png"></p>
+<h3 id="problématique">Problématique<a aria-hidden="true" class="anchor-heading icon-link" href="#problématique"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-06.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-07.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-08.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-09.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-10.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-11.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-12.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-13.png"></p>
+<h3 id="echantillonage">Echantillonage<a aria-hidden="true" class="anchor-heading icon-link" href="#echantillonage"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-14.png"></p>
+<blockquote>
+<p>Dilem: avoir le moins de composantes connexes il nous faut prendre plus de points pour esperer trouver un chemin qui connecte deux composantes connexes</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-15.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-16.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-17.png"></p>
+<blockquote>
+<p>Notes du 2022/09/16 - End</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Notes du 2022/09/19 - Start</p>
+</blockquote>
+<h3 id="choix-des-voisins">Choix des voisins<a aria-hidden="true" class="anchor-heading icon-link" href="#choix-des-voisins"></a></h3>
+<blockquote>
+<p>Kd-tree souvent utilisé</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-18.png"></p>
+<h3 id="test-de-collision">Test de collision<a aria-hidden="true" class="anchor-heading icon-link" href="#test-de-collision"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-19.png"></p>
+<h4 id="collision-vs-distance">Collision vs Distance<a aria-hidden="true" class="anchor-heading icon-link" href="#collision-vs-distance"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-20.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-21.png"></p>
+<h4 id="algorithme-général">Algorithme général<a aria-hidden="true" class="anchor-heading icon-link" href="#algorithme-général"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-22.png"></p>
+<h4 id="détection">Détection<a aria-hidden="true" class="anchor-heading icon-link" href="#détection"></a></h4>
+<ul>
+<li><a href="https://github.com/flexible-collision-library/fcl">Flexible Collision Library</a> : lib la plus utilisé</li>
+</ul>
+<blockquote>
+<p>ATTENTION: Penser aussi qu'un robot humanoïde doit en plus éviter les collisions membres à membres (il doit être conscient des positions de ces membres pour ne pas les cogner)</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-23.png"></p>
+<h4 id="articulated-robot">Articulated Robot<a aria-hidden="true" class="anchor-heading icon-link" href="#articulated-robot"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-24.png"></p>
+<h3 id="principales-approches">Principales approches<a aria-hidden="true" class="anchor-heading icon-link" href="#principales-approches"></a></h3>
+<blockquote>
+<p>Attention: les algo de nos jours ne sont pas capable de faire des pré-traitements efficaces dans des environmment dynamiques (si on rajoute un objet dans la salle il faut alors relancer les pré-traitments...)</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-25.png"></p>
+<h3 id="test-de-collision-sur-chemin-locaux-l">Test de collision sur chemin locaux L<a aria-hidden="true" class="anchor-heading icon-link" href="#test-de-collision-sur-chemin-locaux-l"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-26.png"></p>
+<h3 id="prm--méthodes-locales">PRM : Méthodes locales<a aria-hidden="true" class="anchor-heading icon-link" href="#prm--méthodes-locales"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-27.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-28.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-29.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-30.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-31.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-32.png"></p>
+<h3 id="stratégie-déchantillonage">Stratégie d'échantillonage<a aria-hidden="true" class="anchor-heading icon-link" href="#stratégie-déchantillonage"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-33.png"></p>
+<h4 id="echantillonnage-multi-étape">Echantillonnage multi-étape<a aria-hidden="true" class="anchor-heading icon-link" href="#echantillonnage-multi-étape"></a></h4>
+<blockquote>
+<p>Echantillonnage uniforme inefficace</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-34.png"></p>
+<h4 id="obstacle-sensitive-sampling">Obstacle-sensitive sampling<a aria-hidden="true" class="anchor-heading icon-link" href="#obstacle-sensitive-sampling"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-35.png"></p>
+<h4 id="dilatation-de-lespace-libre-f">Dilatation de l'espace libre F<a aria-hidden="true" class="anchor-heading icon-link" href="#dilatation-de-lespace-libre-f"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-36.png"></p>
+<h4 id="echantillonnage-selon-un-axe-médian">Echantillonnage selon un axe médian<a aria-hidden="true" class="anchor-heading icon-link" href="#echantillonnage-selon-un-axe-médian"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-37.png"></p>
+<h4 id="echantillonnage-par-visibilité">Echantillonnage par visibilité<a aria-hidden="true" class="anchor-heading icon-link" href="#echantillonnage-par-visibilité"></a></h4>
+<blockquote>
+<p>ATTENTION: on ne garde que les noeuds qui ne sont pas joignable à d'autres comoposantes connexes  au lieu de générer les noeuds qui peuvent se connecter sans collision. De cette facon on peut conserver moins de noeuds. Une que ces noeuds sont trouvés on peut le connecter aux autres composantes à l'aide de nouveau noeuds connecteurs.</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-38.png"></p>
+<h4 id="bilan">Bilan<a aria-hidden="true" class="anchor-heading icon-link" href="#bilan"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-39.png"></p>
+<h3 id="prm-visibilité">PRM Visibilité<a aria-hidden="true" class="anchor-heading icon-link" href="#prm-visibilité"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-40.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-41.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-42.png"></p>
+<h3 id="diffusion">Diffusion<a aria-hidden="true" class="anchor-heading icon-link" href="#diffusion"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-43.png"></p>
+<h4 id="méthode-rrt">Méthode RRT<a aria-hidden="true" class="anchor-heading icon-link" href="#méthode-rrt"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-44.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-45.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-46.png"></p>
+<h3 id="conclusion">Conclusion<a aria-hidden="true" class="anchor-heading icon-link" href="#conclusion"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-47.png"></p>
+<h2 id="librairie-ompl--hpp">Librairie: OMPL &#x26; HPP<a aria-hidden="true" class="anchor-heading icon-link" href="#librairie-ompl--hpp"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/RMN.CM.MethodeProba-48.png"></p>
+<blockquote>
+<p>Notes du 2022/09/19 - End</p>
+</blockquote>
+<hr>
+<hr>
+<strong>Backlinks</strong>
+<ul>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/jlzfz6le5m018ggh4k7ydz8">RMN - Robotique Mobile &#x26; Navigation</a></li>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/p3x2kmylpupbookakf640sl">Mouvement</a></li>
+</ul>

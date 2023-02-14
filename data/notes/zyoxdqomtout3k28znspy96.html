@@ -1,0 +1,117 @@
+<h1 id="trajectoires">Trajectoires<a aria-hidden="true" class="anchor-heading icon-link" href="#trajectoires"></a></h1>
+<blockquote>
+<p><strong>Avertissement:</strong>
+Cette page peut contenir des fautes ! Envoyez-moi un message sur <a href="https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org"><code>#UT3-AURO-M2-2223-Request:matrix.org</code></a> si vous en trouvez, merci.</p>
+</blockquote>
+<blockquote>
+<p>Cours donné par F. Gouaisbaut et P. Ribot</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Notes du 2023/01/11 - Start</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/PSH.Slide3.Trajectoires-01.png"></p>
+<h1 id="sommaire">Sommaire<a aria-hidden="true" class="anchor-heading icon-link" href="#sommaire"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/PSH.Slide3.Trajectoires-02.png"></p>
+<h1 id="1-remarques-sur-les-automates-hybrides">1) Remarques sur les automates hybrides<a aria-hidden="true" class="anchor-heading icon-link" href="#1-remarques-sur-les-automates-hybrides"></a></h1>
+<h2 id="retour-sur-le-modèle-en-sed">Retour sur le modèle en SED<a aria-hidden="true" class="anchor-heading icon-link" href="#retour-sur-le-modèle-en-sed"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/PSH.Slide3.Trajectoires-03.png"></p>
+<p>trajectoire en SED = séquence d'ev. du coup assez evidante comparé au STC car une fois un ev. passé on ne peut pas faire demi-tour</p>
+<p>Certains pb en SED :</p>
+<ul>
+<li>deadlock</li>
+<li>feuille non co-accessible</li>
+</ul>
+<h2 id="deadlock">Deadlock<a aria-hidden="true" class="anchor-heading icon-link" href="#deadlock"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/PSH.Slide3.Trajectoires-04.png"></p>
+<p>Pour eviter un deadlock, il faudrait respecter la formule suivante :</p>
+<div class="math math-display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>x</mi><mo mathvariant="normal">∉</mo><mi>I</mi><mi>n</mi><mi>v</mi></mrow><annotation encoding="application/x-tex">x \notin Inv</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel"><span class="mord"><span class="mrel">∈</span></span><span class="mord vbox"><span class="thinbox"><span class="llap"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="inner"><span class="mord"><span class="mord">/</span><span class="mspace" style="margin-right:0.0556em;"></span></span></span><span class="fix"></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span></span></div>
+<p>C.à.d. que l'on définit l'<span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mi>n</mi><mi>v</mi></mrow><annotation encoding="application/x-tex">Inv</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span></span> selon l'union des gardes.</p>
+<h2 id="comportement-zenon">Comportement Zenon<a aria-hidden="true" class="anchor-heading icon-link" href="#comportement-zenon"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/PSH.Slide3.Trajectoires-05.png"></p>
+<p>Solution:
+Implémenter un timer pour donner le temps  a un flot de s'établir (<em>waittime</em>)</p>
+<ul>
+<li>Dans ce cas, le temps d'attente dépend de la dynamique du systeme</li>
+<li>En fait ce délai rend le délai fini infini c'est ce qui fait tomber le phenomene zenon (on peut continuer a switcher sur un meme etat une infinité de temps mais comme a chaque fois on attend on ne fait plus c'est switch sur un temps fini)</li>
+</ul>
+<h2 id="automate-non-déterministe">Automate non déterministe<a aria-hidden="true" class="anchor-heading icon-link" href="#automate-non-déterministe"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/PSH.Slide3.Trajectoires-06.png"></p>
+<p>Lors de la modelisation on rajoute des incertitudes ce qui peut amener des indeterministes. Ce qui amene a donné les trois modification de définition ci-dessus.</p>
+<p>Si on veut faire une simulation on fait un model pour chaque CI.</p>
+<p>Ici l'idée des etudes faites sur de tels models incertains est de partir de l'etat final et reconstruire le comportement.</p>
+<h1 id="2-notions-de-trajectoires-en-stc">2) Notions de trajectoires en STC<a aria-hidden="true" class="anchor-heading icon-link" href="#2-notions-de-trajectoires-en-stc"></a></h1>
+<h2 id="le-temps-hybride">Le temps hybride<a aria-hidden="true" class="anchor-heading icon-link" href="#le-temps-hybride"></a></h2>
+<blockquote>
+<p>Keywords: domaine temporel ; temps hybride/ordinaire</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/PSH.Slide3.Trajectoires-07.png"></p>
+<h2 id="remarques">Remarques<a aria-hidden="true" class="anchor-heading icon-link" href="#remarques"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/PSH.Slide3.Trajectoires-08.png"></p>
+<h2 id="trajectoires-hybrides-stc">Trajectoires Hybrides (STC)<a aria-hidden="true" class="anchor-heading icon-link" href="#trajectoires-hybrides-stc"></a></h2>
+<blockquote>
+<p>Keywords: fonction absolument continue ; arc hybride</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/PSH.Slide3.Trajectoires-09.png"></p>
+<p>Représentation graphique :
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/PSH.BB20230111-2.png"></p>
+<h2 id="différents-types-darc-hybride">Différents types d'arc hybride<a aria-hidden="true" class="anchor-heading icon-link" href="#différents-types-darc-hybride"></a></h2>
+<blockquote>
+<p>Keywords: non trivial ; complet ; zéno ; eventuellement discret/continu ; continu</p>
+</blockquote>
+<blockquote>
+<p>ERROR: J = <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>u</mi><msub><mi>p</mi><mi>j</mi></msub><mo stretchy="false">(</mo><mi>d</mi><mi>o</mi><mi>m</mi><mi>ϕ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">sup_j(dom\phi)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">u</span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">d</span><span class="mord mathnormal">o</span><span class="mord mathnormal">m</span><span class="mord mathnormal">ϕ</span><span class="mclose">)</span></span></span></span></span>
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/PSH.Slide3.Trajectoires-10.png"></p>
+</blockquote>
+<ul>
+<li>Zenon
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/PSH.BB20230111-1.png"></li>
+<li>Discret
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/PSH.BB20230111-3.png"></li>
+</ul>
+<h2 id="solutions">Solutions<a aria-hidden="true" class="anchor-heading icon-link" href="#solutions"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/PSH.Slide3.Trajectoires-11.png"></p>
+<blockquote>
+<p>On a besoin d'ouvert pour potentiellement bien définir la dérivée</p>
+</blockquote>
+<h2 id="exemple">Exemple<a aria-hidden="true" class="anchor-heading icon-link" href="#exemple"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/PSH.Slide3.Trajectoires-12.png"></p>
+<!-- ![](/assets/images/PSH.BB20230111-4.png) -->
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/PSH.BB20230111-5.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/PSH.Slide3.Trajectoires-13.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/PSH.BB20230111-6.png"></p>
+<p>Que se passe-t-il:</p>
+<ul>
+<li>
+<p>en (0,0) ?</p>
+<p>  On se trouve alors dans D mais on switch constament en restant sur le meme point (donc purement discret) comme une sorte de point d'équilibre (on ne passe jamais sur le flot)</p>
+</li>
+<li>
+<p>en (2,-1) ?</p>
+<p>  On ne va jamais taper D donc on reste sur C donc diverge (attention on peut diverger tout en faisant des switch)</p>
+</li>
+<li>
+<p>en (2,2) ?</p>
+<p>  On va se diriger vers la frontiere de D sans jamais (ou pas) le franchir. Pour fixer si il y a franchir il faut etudier la limite</p>
+</li>
+</ul>
+<h2 id="paradoxe-de-zenon">Paradoxe de Zenon<a aria-hidden="true" class="anchor-heading icon-link" href="#paradoxe-de-zenon"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/PSH.Slide3.Trajectoires-14.png"></p>
+<p>Achile donne de l'avance au lapin</p>
+<p>achile court 2x plus vite</p>
+<p>pendant que achile court le lapin fait 50min</p>
+<p>achile court 50m et le lapin 25m de plus </p>
+<p>et ainsi de suite</p>
+<p>mais ce ainsi de suite ne doit pas nous faire penser que le sup_t C est infini il se peut qu'il existe une limite</p>
+<p>en effet <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>i</mi><msub><mi>m</mi><mi>i</mi></msub><mo>∑</mo><mo stretchy="false">(</mo><mn>1</mn><mi mathvariant="normal">/</mi><mn>2</mn><msup><mo stretchy="false">)</mo><mi>i</mi></msup><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">lim_i \sum (1/2)^i = 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0747em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">i</span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mopen">(</span><span class="mord">1/2</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8247em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span></span></p>
+<h1 id="bibliographie">Bibliographie<a aria-hidden="true" class="anchor-heading icon-link" href="#bibliographie"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/PSH.Slide3.Trajectoires-15.png"></p>
+<blockquote>
+<p>Notes du 2023/01/11 - End</p>
+</blockquote>
+<hr>
+<hr>
+<strong>Backlinks</strong>
+<ul>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/78jz34sn4cc8vqpsn87h7lp">Projet Systèmes Hybrides</a></li>
+</ul>

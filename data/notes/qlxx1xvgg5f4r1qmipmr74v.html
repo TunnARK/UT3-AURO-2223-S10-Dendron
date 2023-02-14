@@ -1,0 +1,278 @@
+<h1 id="cnn---convolutional-neural-networks">CNN - Convolutional Neural Networks<a aria-hidden="true" class="anchor-heading icon-link" href="#cnn---convolutional-neural-networks"></a></h1>
+<blockquote>
+<p><strong>Avertissement:</strong>
+Cette page peut contenir des fautes ! Envoyez-moi un message sur <a href="https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org"><code>#UT3-AURO-M2-2223-Request:matrix.org</code></a> si vous en trouvez, merci.</p>
+</blockquote>
+<blockquote>
+<p>Cours donné par P. Muller, T. Pellegrini</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Notes RKA du 2023/01/30 - Start</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-01.png"></p>
+<h1 id="problématique">Problématique<a aria-hidden="true" class="anchor-heading icon-link" href="#problématique"></a></h1>
+<h2 id="quest-ce-quune-image-pour-lordinateur-">Qu'est-ce qu'une image pour l'ordinateur ?<a aria-hidden="true" class="anchor-heading icon-link" href="#quest-ce-quune-image-pour-lordinateur-"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-02.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-05.png"></p>
+<p>La problématique est de pourvoir reconnaître des motifs à partir de cette information.</p>
+<h2 id="exemple-de-tâche-en-computer-vision">Exemple de tâche en Computer Vision<a aria-hidden="true" class="anchor-heading icon-link" href="#exemple-de-tâche-en-computer-vision"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-06.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-07.png"></p>
+<p>Pour reconnaitre des motifs, il faut d'abord définir ces motifs. C'est le role des <em>features</em> (i.e. des descripteurs).</p>
+<h2 id="premières-approches-possibles">Premières approches possibles<a aria-hidden="true" class="anchor-heading icon-link" href="#premières-approches-possibles"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-08.png"></p>
+<ul>
+<li>Approche par descripteurs --> dépendant des choix descripteurs</li>
+<li>Approche vectorielle --> pb changement d'échelle</li>
+</ul>
+<h3 id="approche-connectée">Approche connectée<a aria-hidden="true" class="anchor-heading icon-link" href="#approche-connectée"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-10.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-11.png"></p>
+<h3 id="approche-hiérarchiqueconvolutive">Approche hiérarchique/convolutive<a aria-hidden="true" class="anchor-heading icon-link" href="#approche-hiérarchiqueconvolutive"></a></h3>
+<blockquote>
+<p>Keywords: Representation Learning</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-13.png"></p>
+<h1 id="sommaire">Sommaire<a aria-hidden="true" class="anchor-heading icon-link" href="#sommaire"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-14.png"></p>
+<h1 id="i--introduction">I- Introduction<a aria-hidden="true" class="anchor-heading icon-link" href="#i--introduction"></a></h1>
+<h2 id="suivre-iss">Suivre ISS<a aria-hidden="true" class="anchor-heading icon-link" href="#suivre-iss"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-15.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-16.png"></p>
+<h2 id="terminologie">Terminologie<a aria-hidden="true" class="anchor-heading icon-link" href="#terminologie"></a></h2>
+<blockquote>
+<p>Keywords:</p>
+<ul>
+<li>entrée ; </li>
+<li>noyau/kernel ;</li>
+<li>carte de caractéristiques/feature map</li>
+</ul>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-17.png"></p>
+<p>On n'utilise pas la convolution sur des entrées de mots ou de texte car il existe de meilleurs algorithmes (même si on peut classifier des mots avec un CNN).</p>
+<h2 id="implémentation">Implémentation<a aria-hidden="true" class="anchor-heading icon-link" href="#implémentation"></a></h2>
+<blockquote>
+<p>Keywords:</p>
+<ul>
+<li>Tenseurs</li>
+</ul>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-18.png"></p>
+<h2 id="propriétés">Propriétés<a aria-hidden="true" class="anchor-heading icon-link" href="#propriétés"></a></h2>
+<blockquote>
+<p>Keywords:</p>
+<ul>
+<li>Corrélation croisée</li>
+<li>commutative (non pertinente ici)</li>
+</ul>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-19.png"></p>
+<h2 id="illustration">Illustration<a aria-hidden="true" class="anchor-heading icon-link" href="#illustration"></a></h2>
+<blockquote>
+<p>Keywords:</p>
+<ul>
+<li>Activation map = feature map</li>
+</ul>
+</blockquote>
+<p>Ici on fait de la convolution valide (l'algo s'éxécute jusqu'à qu'il n'y ait plus de pixel). D'où le fait que l'image de sortie n'est pas la même taille (il existe des formules pour connaître la taille de la sortie à l'avance).</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-20.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-21.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-22.png"></p>
+<h2 id="ex-détection-de-bords-verticaux">Ex: Détection de bords verticaux<a aria-hidden="true" class="anchor-heading icon-link" href="#ex-détection-de-bords-verticaux"></a></h2>
+<h3 id="bords-verticaux">Bords Verticaux<a aria-hidden="true" class="anchor-heading icon-link" href="#bords-verticaux"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-24.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-25.png"></p>
+<h3 id="bords-horizentaux">Bords Horizentaux<a aria-hidden="true" class="anchor-heading icon-link" href="#bords-horizentaux"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-26.png"></p>
+<h3 id="bords-complexes">Bords Complexes<a aria-hidden="true" class="anchor-heading icon-link" href="#bords-complexes"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-27.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-28.png"></p>
+<h2 id="apprentissage">Apprentissage<a aria-hidden="true" class="anchor-heading icon-link" href="#apprentissage"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-29.png"></p>
+<h3 id="exemple">Exemple<a aria-hidden="true" class="anchor-heading icon-link" href="#exemple"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-30.png"></p>
+<h2 id="couche-de-convolution">Couche de convolution<a aria-hidden="true" class="anchor-heading icon-link" href="#couche-de-convolution"></a></h2>
+<blockquote>
+<p>Keywords:</p>
+<ul>
+<li>connectivité locale ;</li>
+<li>partage des poids ;</li>
+<li>invariance par translation</li>
+</ul>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-31.png"></p>
+<h2 id="multicanal">Multicanal<a aria-hidden="true" class="anchor-heading icon-link" href="#multicanal"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-32.png"></p>
+<p>Un filtre ici est composé de 3 matrices (et optionnellement un biai). C'est pour appliquer un ou des filtres sur chaque canal. Ici il y a deux filtres donc la sortie est à deux canaux et donc la couche suivante appliquerait un filte à 2 canaux.</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-33.png"></p>
+<ul>
+<li><a href="https://cs231n.github.io/convolutional-networks/">source</a></li>
+</ul>
+<h2 id="conv2d-en-pytorch">Conv2d en Pytorch<a aria-hidden="true" class="anchor-heading icon-link" href="#conv2d-en-pytorch"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-34.png"></p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">import</span> torch
+<span class="token keyword">import</span> torch<span class="token punctuation">.</span>nn <span class="token keyword">as</span> nn
+
+m <span class="token operator">=</span> nn<span class="token punctuation">.</span>Conv2d<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token comment"># 8 canals</span>
+<span class="token comment"># 16 filters</span>
+<span class="token comment"># kernel size of 3 by 3</span>
+
+x <span class="token operator">=</span> torch<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span>
+<span class="token comment"># 2 images</span>
+<span class="token comment"># with 8 canals</span>
+<span class="token comment"># of size 50 by 100</span>
+
+out <span class="token operator">=</span> m<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+out<span class="token punctuation">.</span>size<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Combien de paramètres ?</p>
+<p><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>nb params</mtext><mspace linebreak="newline"></mspace><mo>=</mo><mo fence="false" stretchy="true" minsize="1.2em" maxsize="1.2em">(</mo><mtext>kernel cols</mtext><mo>×</mo><mtext>kernel lines</mtext><mo>×</mo><mtext>canals</mtext><mo>+</mo><mtext>bias</mtext><mo fence="false" stretchy="true" minsize="1.2em" maxsize="1.2em">)</mo><mo>×</mo><mtext>number of filters</mtext><mspace linebreak="newline"></mspace><mo>=</mo><mo stretchy="false">(</mo><mn>3</mn><mo>×</mo><mn>3</mn><mo>×</mo><mn>8</mn><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>×</mo><mn>16</mn><mo>=</mo><mn>1168</mn></mrow><annotation encoding="application/x-tex">\text{nb params}\\ = \big(\text{kernel cols}\times\text{kernel lines}\times\text{canals}+\text{bias}\big)\times\text{number of filters}\\ = (3 \times 3 \times 8 + 1) \times 16 = 1168</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">nb params</span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2em;vertical-align:-0.35em;"></span><span class="mord"><span class="delimsizing size1">(</span></span><span class="mord text"><span class="mord">kernel cols</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord text"><span class="mord">kernel lines</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord text"><span class="mord">canals</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.2em;vertical-align:-0.35em;"></span><span class="mord text"><span class="mord">bias</span></span><span class="mord"><span class="delimsizing size1">)</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">number of filters</span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">8</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">16</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1168</span></span></span></span></span></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-35.png"></p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">import</span> torch
+<span class="token keyword">import</span> torch<span class="token punctuation">.</span>nn <span class="token keyword">as</span> nn
+
+m <span class="token operator">=</span> nn<span class="token punctuation">.</span>Conv2d<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token comment"># 8 canals</span>
+<span class="token comment"># 16 filters</span>
+<span class="token comment"># kernel size of 3 by 3</span>
+
+x <span class="token operator">=</span> torch<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span>
+<span class="token comment"># 2 images</span>
+<span class="token comment"># with 8 canals</span>
+<span class="token comment"># of size 50 by 100</span>
+
+out <span class="token operator">=</span> m<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Taille de la sortie:"</span><span class="token punctuation">,</span> out<span class="token punctuation">.</span>size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Taille des tenseurs de m:"</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"  Poids: "</span><span class="token punctuation">,</span> m<span class="token punctuation">.</span>weight<span class="token punctuation">.</span>shape<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"  Biais: "</span><span class="token punctuation">,</span> m<span class="token punctuation">.</span>bias<span class="token punctuation">.</span>shape<span class="token punctuation">)</span>
+</code></pre>
+<h2 id="convolition-vizualizer">Convolition Vizualizer<a aria-hidden="true" class="anchor-heading icon-link" href="#convolition-vizualizer"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-36.png"></p>
+<p>Dans ce <a href="https://ezyang.github.io/convolution-visualizer/">Convolition Vizualizer</a>, on peut visualiser:</p>
+<ul>
+<li>comment se calcul la convolution ;</li>
+<li>l'utilité de la dilation (dilater le filtre)</li>
+<li>l'utilité de la stride (sauter le pas)</li>
+<li>l'utilité du zero-padding (rajouter des pixels à zero pour contrôler la taille de l'image en sortie)</li>
+</ul>
+<pre class="language-python"><code class="language-python">nn<span class="token punctuation">.</span>Conv2d<span class="token punctuation">(</span>
+    in_channels <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token comment"># RGB</span>
+    out_channels <span class="token operator">=</span> <span class="token number">32</span><span class="token punctuation">,</span> <span class="token comment"># 32 filters each with 3 layers</span>
+    kernel_size <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment"># filter of size 3 by 5</span>
+    bias <span class="token operator">=</span> <span class="token boolean">True</span><span class="token punctuation">,</span> <span class="token comment"># bias is by default at true !</span>
+    padding <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token comment"># no zero-padding</span>
+    dilation <span class="token operator">=</span> <span class="token number">2</span> <span class="token comment"># weights spread each 2 pixels</span>
+<span class="token punctuation">)</span>
+</code></pre>
+<h2 id="implémentation-sous-jacente-de-pytorch">Implémentation sous-jacente de PyTorch<a aria-hidden="true" class="anchor-heading icon-link" href="#implémentation-sous-jacente-de-pytorch"></a></h2>
+<h3 id="gemm---general-matrix-multiplication">GEMM - General Matrix Multiplication<a aria-hidden="true" class="anchor-heading icon-link" href="#gemm---general-matrix-multiplication"></a></h3>
+<blockquote>
+<p>Keywords: Matrices denses</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-37.png"></p>
+<h3 id="im2col">Im2Col<a aria-hidden="true" class="anchor-heading icon-link" href="#im2col"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-38.png"></p>
+<h3 id="forward">Forward<a aria-hidden="true" class="anchor-heading icon-link" href="#forward"></a></h3>
+<blockquote>
+<p>Keywords: poids ; flatten operation</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-39.png"></p>
+<h3 id="backward">Backward<a aria-hidden="true" class="anchor-heading icon-link" href="#backward"></a></h3>
+<blockquote>
+<p>Keywords: gradient de la sortie ; cuBlas</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-40.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-41.png"></p>
+<h3 id="winograd">Winograd<a aria-hidden="true" class="anchor-heading icon-link" href="#winograd"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-42.png"></p>
+<p>Cela peut être intéressant en fonction de la taille du kernel de faire la transformée de fourrier pour que le calcul de la convolution deviennent une simple opération matricielle.</p>
+<h2 id="bilan">Bilan<a aria-hidden="true" class="anchor-heading icon-link" href="#bilan"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-43.png"></p>
+<h2 id="max-pooling">Max-Pooling<a aria-hidden="true" class="anchor-heading icon-link" href="#max-pooling"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-44.png"></p>
+<p>Ce n'est plus de la convolution, on calcul ici le max des 4 pixels de la zone rouge et ainsi de suite.</p>
+<h2 id="champ-réceptif-receptive-field">Champ réceptif (Receptive Field)<a aria-hidden="true" class="anchor-heading icon-link" href="#champ-réceptif-receptive-field"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-45.png"></p>
+<h2 id="réseau-lenet">Réseau LeNet<a aria-hidden="true" class="anchor-heading icon-link" href="#réseau-lenet"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-46.png"></p>
+<h2 id="réseau-alexnet">Réseau AlexNet<a aria-hidden="true" class="anchor-heading icon-link" href="#réseau-alexnet"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-47.png"></p>
+<h2 id="réseau-vggnet">Réseau VGGNet<a aria-hidden="true" class="anchor-heading icon-link" href="#réseau-vggnet"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-48.png"></p>
+<h2 id="démo-en-ligne">Démo en ligne<a aria-hidden="true" class="anchor-heading icon-link" href="#démo-en-ligne"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-49.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-50.png"></p>
+<h2 id="couche-de-batch-normalisation">Couche de Batch-normalisation<a aria-hidden="true" class="anchor-heading icon-link" href="#couche-de-batch-normalisation"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-51.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-52.png"></p>
+<h2 id="autres-couches-de-normalisation">Autres couches de normalisation<a aria-hidden="true" class="anchor-heading icon-link" href="#autres-couches-de-normalisation"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-53.png"></p>
+<h2 id="fcn---fully-convolutional-network">FCN - Fully convolutional Network<a aria-hidden="true" class="anchor-heading icon-link" href="#fcn---fully-convolutional-network"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-54.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-55.png"></p>
+<h2 id="residual-networks-resnet">Residual Networks (ResNet)<a aria-hidden="true" class="anchor-heading icon-link" href="#residual-networks-resnet"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-56.png"></p>
+<p>sur-apprentissage</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-57.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-58.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-59.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-60.png"></p>
+<h2 id="autres-types-de-convolution">Autres types de convolution<a aria-hidden="true" class="anchor-heading icon-link" href="#autres-types-de-convolution"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-61.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-62.png"></p>
+<p>depthwise c'est rajouté le groups = 8</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-63.png"></p>
+<p>on somme comb lin</p>
+<h2 id="larchitecture-xception">L'architecture Xception<a aria-hidden="true" class="anchor-heading icon-link" href="#larchitecture-xception"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-64.png"></p>
+<h2 id="larchitecture-convmixer">L'architecture Convmixer<a aria-hidden="true" class="anchor-heading icon-link" href="#larchitecture-convmixer"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-65.png"></p>
+<h2 id="la-convolution-dilatée">La convolution dilatée<a aria-hidden="true" class="anchor-heading icon-link" href="#la-convolution-dilatée"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-66.png"></p>
+<h2 id="la-convolution-sur-un-signal-sonore">La convolution sur un signal sonore<a aria-hidden="true" class="anchor-heading icon-link" href="#la-convolution-sur-un-signal-sonore"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-67.png"></p>
+<h2 id="la-convolution-sur-des-données-textuelles">La convolution sur des données textuelles<a aria-hidden="true" class="anchor-heading icon-link" href="#la-convolution-sur-des-données-textuelles"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-68.png"></p>
+<h3 id="plongements-de-mots-word-embeddings">Plongements de mots (word embeddings)<a aria-hidden="true" class="anchor-heading icon-link" href="#plongements-de-mots-word-embeddings"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-69.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-70.png"></p>
+<h3 id="remarques">Remarques<a aria-hidden="true" class="anchor-heading icon-link" href="#remarques"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-71.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-72.png"></p>
+<h2 id="vers-linterpratibilité-des-cnn">Vers l'interpratibilité des CNN<a aria-hidden="true" class="anchor-heading icon-link" href="#vers-linterpratibilité-des-cnn"></a></h2>
+<blockquote>
+<p>Keywords:</p>
+<ul>
+<li>visualisation de cartes par maximisation des activations</li>
+<li>Deepviz: Deep Visualization Toolbox</li>
+<li>Images adversaires</li>
+<li>Softmax</li>
+<li>Régularisation</li>
+<li>Flouttage gaussien</li>
+<li>Mise à zéro</li>
+</ul>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-73.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-74.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-75.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-76.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-77.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.TP2.BB20230130-1.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.TP2.BB20230130-2.png"></p>
+<p>Dans l'idée on cherche à approximer un nuage de point par une fonction qui passe aux plus proche de ces points. Plus la fonction sera précise plus cela induira de variance. C'est pourquoi il est parfois préférable de régulariser le taux d'apprentrissage pour éviter ces excès de variations tout en ayant un apprentissage efficace/optimal.</p>
+<h2 id="résumé-cnn">Résumé CNN<a aria-hidden="true" class="anchor-heading icon-link" href="#résumé-cnn"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.CNN.Slide-78.png"></p>
+<blockquote>
+<p>Notes RKA du 2023/01/30 - End</p>
+</blockquote>
+<hr>
+<hr>
+<strong>Backlinks</strong>
+<ul>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/wyd35u3oxvhvedd1pwhct4j">AA - Apprentissage Automatique</a></li>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/snuwegzdfkojmt8uzvtrvt8">TD2 - Convolution</a></li>
+</ul>

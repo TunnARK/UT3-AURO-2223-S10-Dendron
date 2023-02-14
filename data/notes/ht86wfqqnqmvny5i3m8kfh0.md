@@ -1,0 +1,364 @@
+
+> **Avertissement:**
+Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-2223-Request:matrix.org`](https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org) si vous en trouvez, merci.
+
+> Cours donné par G. Saurel et H. Demmou
+
+Support de cours:
+- [B2.SATR.CM.Partie1.Slide2020.pdf](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/B2.SATR.CM.Partie1.Slide2020.pdf)
+- [B2.SATR.CM.Partie1.Slide2021.pdf](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/B2.SATR.CM.Partie1.Slide2021.pdf)
+
+
+---
+
+> Notes du 2022/11/16 - Start
+
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-01.png)
+
+# Premiere Partie
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-02.png)
+
+## I-1. Définition et Caractéristiques des STR
+
+### Définitions
+
+> Keywords: Embedded System, Real-Time System, Safety Critical System, Reactive System
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-03.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-04.png)
+
+Drone ou robot en général sont de types Safety Critical System
+
+### Quel choix ?
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-05.png)
+
+### Caractéristiques
+
+> Keywords: Contraintes Temporelles, Temps Logique, Temps Physique
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-06.png)
+
+- HTR:
+    - Horloge plus précise et non variable (donc indépendante de la fréquence du CPU qui elle est variable)
+    - ne retourne pas une heure mais ne fait que donner des tics à interval régulier
+- syst. asynchrone: capacité d'attendre un evenement tout en agissant sur n'importe quel temps indépendamment des tics d'horloge
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-07.png)
+
+### Types (Soft vs Hard Real Time)
+
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-08.png)
+
+
+### Systèmes Multitâches
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-09.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-10.png)
+
+### Exemple: Véhicule Automobile
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-11.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-12.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-13.png)
+
+À l'époque, CAN (controller Area Network) était reservé pour les modules critiques et VAN (Vehicule Area Network) pour les autres modules [de nos jours tous est sur CAN]
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-14.png)
+
+### Mise en Oeuvre
+
+> hors programme ici
+
+#### Synchrone
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-15.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-16.png)
+
+#### Asynchrone
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-17.png)
+
+## I-2. RTOS Systèmes d'Exploitation Temps Réel
+
+### Fonctions Principales
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-18.png)
+
+### Exemple d'OS
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-19.png)
+
+### Définitions
+
+> Keywords: OS, exécutif et noyau temps réel
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-20.png)
+
+### Illustrations
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-21.png)
+
+
+
+
+
+> Notes du 2022/11/16 - End
+
+---
+
+> Notes du 2022/11/22 - Start
+
+
+
+
+
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-22.png)
+
+### Calculateur pour la commande
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-23.png)
+
+### Noyau Temps Réel
+
+> Keywords: Interface ; Ordonnanceur ; Dispatcher (Lanceur) ; Gestionnaire Objet/Interruptions 
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-24.png)
+
+Attention que les taches ne sont pas conscientes si d'autres taches accedent à des ressources communes ce qui peut amener à des problématiques de gestion de zone critique pour des ressources partagées.
+
+### Objets d'un noyau
+
+> Keywords: Tâches ; Messages ; Pipes ; Sémaphores
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-25.png)
+
+### Etats d'une tâche
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-26.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-27.png)
+
+- préempte connu dans le jargon des développeurs
+
+### Commutation de contexte
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-28.png)
+
+Attention en Temps Réel ce n'est pas toujours intéressant de chercher à optimiser un programme et ainsi perdre la connaissance sur la durée d'exécution d'un processus (car l'optimisation rend incertain cette durée). En effet, le temps gagné ne pourra peut etre meme pas être profiter par l'ordannceur car l'ordonnancement des tâches ne permet pas toujours d'être flexible.
+
+### Critères de performances
+
+> Keywords: latence ; occurence ; scrutation
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-29.png)
+
+Souvent les contraintes liée à la gestion des protocoles rend inutile l'utilisation du procole Ethernet. Du coup, d'autre protocol réseau ont été conçu pour garantir le temps réel.
+
+### Délai de latence
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-30.png)
+
+### Les interruptions
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-31.png)
+
+## I-3. Les ordonnancements
+
+> Keywords: [gigue (fr) / jitter (en)](https://fr.wikipedia.org/wiki/Gigue_(informatique)) ; ordonnançabilité ; hors/en ligne ; Préemptif ; Statique ; Dynamique
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-32.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-33.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-34.png)
+
+## I-4. Ordannacement de tâches avec partage de ressources
+
+### I-4.a) Inversion de priorité 
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-35.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-36.png)
+
+#### Exemple
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-37.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-38.png)
+
+### I-4.b) Algorithms
+
+#### Heritage de priorité
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-39.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-40.png)
+
+Attention ceci n'est pas une solution miracle car l'implémentation d'une telle méthode nécessite la mémorisation des dépendances entre tâches ainsi que la modification de priorité à la volée ce qui prend du temps.
+
+#### Priority Ceiling Protocol (PCP)
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-41.png)
+
+> Attention Erreur sur T1 où ~~R1~~ --> R2
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-42.png)
+
+#### Imeediate Priority Ceiling Protocol (IPCP)
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-43.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-44.png)
+
+## I-5. Ordonnancement Temps Réel
+
+#### Caractéristiques temporelles d'une tâche
+ 
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-45.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-46.png)
+
+#### Configuration de tâches
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-47.png)
+
+#### Tâches Non Périodiques
+
+> Keywords: sporadique ; apériodique 
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-48.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-49.png)
+
+
+
+
+> Notes du 2022/11/22 - End
+
+---
+
+> Notes du 2022/11/23 - Start
+
+
+
+
+
+#### Qlqs algorithms classiques
+
+> Keywords: Firs In First Out (FIFO) ; Shortest Job First (SJF)
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-50.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-51.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-52.png)
+
+![](/assets/images/B2.SATR.CM.BB20221123-01.png)
+
+### I-5.a) Rate Monotonic Algorithm (RMA)
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-53.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-54.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-55.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-56.png)
+
+### I-5.b) Inverse Deadline or Deadline Monotonic (DM)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-57.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-58.png)
+
+### I-5.c) Earliest Deadline First (EDF)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-59.png)
+
+## I-6. Worst Case Response Time (WCRT)
+ 
+### Tâche à priorité fixe et indépendantes
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-60.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-61.png)
+![](/assets/images/B2.SATR.CM.BB20221123-02.png)
+![](/assets/images/B2.SATR.CM.BB20221123-03.png)
+![](/assets/images/B2.SATR.CM.BB20221123-04.png)
+
+### Tâche avec partage de ressources
+
+#### Durée de blocage
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-62.png)
+
+#### Usage 
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-63.png)
+
+#### Exemple
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-64.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-65.png)
+
+### Exercices d'ordonnancements
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-66.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-67.png)
+
+## I-7. Worst Case Execution Time (WCET)
+
+### Forumula
+
+> error --> recheck formula
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-68.png)
+
+### Illustration
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-69.png)
+
+### Méthodologie
+
+> Keywords: combinaison des entrées ; marge de sécurité
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-70.png)
+
+En aviation, on parle du critère $6\;\sigma$.
+
+
+### Problème
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-71.png)
+
+### Méthodes d'analyse statique
+
+#### Méthode à base de flot
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-72.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-73.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-74.png)
+
+#### Influences du matériel
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-75.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-76.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-77.png)
+
+Faire attention que cette méthode hiérarchique présente une faiblaisse où il est possible de récupérer des mot de passe en claire en envoyant une bonne attaque sur le système (ce qui fut le cas il y a 2, 3 ans)
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-78.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-79.png)
+
+#### Méthode à base d'arbres
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-80.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-81.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-82.png)
+
+#### Méthode à base de chemins
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-83.png)
+
+#### Implicit Path Enumeration Technique (IPET)
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-84.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-85.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-86.png)
+
+### Exercices d'ordonnancements
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-87.png)
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-88.png)
+
+
+
+
+> Notes du 2022/11/23 - End
+
+---

@@ -1,0 +1,425 @@
+<h1 id="containers">Containers<a aria-hidden="true" class="anchor-heading icon-link" href="#containers"></a></h1>
+<p><strong>Source:</strong> <a href="https://gitlab.laas.fr/gsaurel/talks">GitLab Repo 'Talks'</a></p>
+<hr>
+<!--
+title: Containers
+subtitle: what, how, which and when
+theme: laas
+author: Guilhem Saurel
+date: 10/02/2022
+mainfont: Source Serif 4
+monofont: Source Code Pro
+...
+-->
+<h3 id="this-presentation">This presentation<a aria-hidden="true" class="anchor-heading icon-link" href="#this-presentation"></a></h3>
+<h4 id="available-at">Available at<a aria-hidden="true" class="anchor-heading icon-link" href="#available-at"></a></h4>
+<p>\centering</p>
+<p><a href="https://homepages.laas.fr/gsaurel/talks/containers.pdf"><code>https://homepages.laas.fr/gsaurel/talks/ containers.pdf</code></a></p>
+<h4 id="under-license">Under License<a aria-hidden="true" class="anchor-heading icon-link" href="#under-license"></a></h4>
+<p>\centering</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/media/cc.png" alt="CC" style="">
+<img src="/UT3-AURO-2223-S10-Dendron/media/by.png" alt="BY" style="">
+<img src="/UT3-AURO-2223-S10-Dendron/media/sa.png" alt="SA" style=""></p>
+<p><a href="https://creativecommons.org/licenses/by-sa/4.0/">https://creativecommons.org/licenses/by-sa/4.0/</a></p>
+<h3 id="this-presentation-continued">This presentation (continued)<a aria-hidden="true" class="anchor-heading icon-link" href="#this-presentation-continued"></a></h3>
+<h4 id="source">Source<a aria-hidden="true" class="anchor-heading icon-link" href="#source"></a></h4>
+<p>\centering</p>
+<p><a href="https://gitlab.laas.fr/gsaurel/talks/-/blob/main/containers.md"><code>https://gitlab.laas.fr/gsaurel/talks : containers.md</code></a></p>
+<h4 id="discussions">Discussions<a aria-hidden="true" class="anchor-heading icon-link" href="#discussions"></a></h4>
+<p>\centering</p>
+<!-- \href doesn't like #, so let's directly use \url -->
+<p>\url{<a href="https://im.laas.fr/%5C#/room/%5C#containers:laas.fr%7D">https://im.laas.fr/\#/room/\#containers:laas.fr}</a></p>
+<h3 id="outline">Outline<a aria-hidden="true" class="anchor-heading icon-link" href="#outline"></a></h3>
+<p>\setcounter{tocdepth}{1}
+\tableofcontents</p>
+<h1 id="concepts">Concepts<a aria-hidden="true" class="anchor-heading icon-link" href="#concepts"></a></h1>
+<h2 id="filesystem">Filesystem<a aria-hidden="true" class="anchor-heading icon-link" href="#filesystem"></a></h2>
+<h3 id="image">Image<a aria-hidden="true" class="anchor-heading icon-link" href="#image"></a></h3>
+<ul>
+<li>A read-only tar of the filesystem</li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>Metadata
+<ul>
+<li>ID, Checksum, Size</li>
+<li>Author, creation date</li>
+<li>Environment variables</li>
+<li>Working directory, User</li>
+<li>Architecture, OS</li>
+<li>Entrypoint and/or default command</li>
+<li>History</li>
+</ul>
+</li>
+</ul>
+<h3 id="layers">Layers<a aria-hidden="true" class="anchor-heading icon-link" href="#layers"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/media/container-layers.jpg" alt="docs.docker.com"></p>
+<h3 id="internals">Internals<a aria-hidden="true" class="anchor-heading icon-link" href="#internals"></a></h3>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">docker</span> pull ubuntu:20.04
+$ <span class="token function">docker</span> save ubuntu:20.04 <span class="token operator">|</span> <span class="token function">tar</span> x
+$ <span class="token function">cat</span> 54c9d8*.json <span class="token operator">|</span> jq .history
+</code></pre>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    <span class="token property">"created"</span><span class="token operator">:</span> <span class="token string">"2022-02-02T02:14:45.667699167Z"</span><span class="token punctuation">,</span>
+    <span class="token property">"created_by"</span><span class="token operator">:</span> <span class="token string">"ADD file:3ccf74… in / "</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    <span class="token property">"created"</span><span class="token operator">:</span> <span class="token string">"2022-02-02T02:14:46.177066251Z"</span><span class="token punctuation">,</span>
+    <span class="token property">"created_by"</span><span class="token operator">:</span> <span class="token string">"CMD [\"bash\"]"</span><span class="token punctuation">,</span>
+    <span class="token property">"empty_layer"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+</code></pre>
+<h3 id="history">History<a aria-hidden="true" class="anchor-heading icon-link" href="#history"></a></h3>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">docker</span> <span class="token function">history</span> ubuntu:20.04
+IMAGE          CREATED      CREATED BY         SIZE
+54c9d81cbb44   <span class="token number">6</span> days ago   CMD <span class="token punctuation">[</span><span class="token string">"bash"</span><span class="token punctuation">]</span>       0B
+<span class="token operator">&#x3C;</span>missing<span class="token operator">></span>      <span class="token number">6</span> days ago   ADD file:3ccf74…   <span class="token number">72</span>.8MB
+</code></pre>
+<h3 id="copy-on-write">Copy on Write<a aria-hidden="true" class="anchor-heading icon-link" href="#copy-on-write"></a></h3>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">docker</span> inspect ubuntu:20.04 <span class="token operator">|</span> jq .<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>.Size
+$ <span class="token function">docker</span> run --rm -it ubuntu:20.04 <span class="token function">du</span> -sxB1 /
+</code></pre>
+<p>. . .</p>
+<p>Image          docker inspect  docker run</p>
+<hr>
+<p>ubuntu:20.04         72775208    81620992</p>
+<h3 id="copy-on-write-continued">Copy on Write (Continued)<a aria-hidden="true" class="anchor-heading icon-link" href="#copy-on-write-continued"></a></h3>
+<pre class="language-dockerfile"><code class="language-Dockerfile"><span class="token instruction"><span class="token keyword">FROM</span> ubuntu:20.04</span>
+<span class="token instruction"><span class="token keyword">RUN</span> rm -rf /usr/share/doc</span>
+</code></pre>
+<p>. . .</p>
+<p>Image          docker inspect  docker run</p>
+<hr>
+<p>ubuntu:20.04         72775208    81620992
+custom               72775208    80019456</p>
+<h3 id="from-the-host">From the host<a aria-hidden="true" class="anchor-heading icon-link" href="#from-the-host"></a></h3>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">mount</span>
+<span class="token punctuation">[</span>…<span class="token punctuation">]</span>
+overlay on /var/lib/docker/overlay2/eeaff…/merged …
+</code></pre>
+<p>. . .</p>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">sudo</span> <span class="token function">ls</span> /var/lib/docker/overlay2/eeaff*/merged
+bin   etc   lib32   media  proc  sbin  tmp
+boot  home  lib64   mnt    root  srv   usr
+dev   lib   libx32  opt    run   sys   var
+</code></pre>
+<h2 id="network">Network<a aria-hidden="true" class="anchor-heading icon-link" href="#network"></a></h2>
+<h3 id="container-side">Container side<a aria-hidden="true" class="anchor-heading icon-link" href="#container-side"></a></h3>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">docker</span> run --rm -it ubuntu:20.04
+root@a4c1089933e0:/<span class="token comment"># apt update &#x26;&#x26; apt install iproute2</span>
+<span class="token punctuation">[</span>…<span class="token punctuation">]</span>
+root@a4c1089933e0:/<span class="token comment"># ip address</span>
+<span class="token number">1</span>: lo: <span class="token operator">&#x3C;</span>LOOPBACK,UP,LOWER_UP<span class="token operator">></span> mtu <span class="token number">65536</span> qdisc noqueue
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00
+    inet <span class="token number">127.0</span>.0.1/8 scope <span class="token function">host</span> lo
+<span class="token number">359</span>: eth0@if360: <span class="token operator">&#x3C;</span>BROADCAST,MULTICAST,UP,LOWER_UP<span class="token operator">></span> mtu
+    link/ether 02:42:ac:11:00:02 brd ff:ff:ff:ff:ff:ff
+    inet <span class="token number">172.17</span>.0.2/16 brd <span class="token number">172.17</span>.255.255 scope global
+</code></pre>
+<h3 id="host-side">Host side<a aria-hidden="true" class="anchor-heading icon-link" href="#host-side"></a></h3>
+<pre class="language-bash"><code class="language-bash"><span class="token number">359</span>: eth0@if360: <span class="token operator">&#x3C;</span>BROADCAST,MULTICAST,UP,LOWER_UP<span class="token operator">></span> mtu
+    link/ether 02:42:ac:11:00:02 brd ff:ff:ff:ff:ff:ff
+    inet <span class="token number">172.17</span>.0.2/16 brd <span class="token number">172.17</span>.255.255 scope global
+</code></pre>
+<p>. . .</p>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">ip</span> address show docker0
+<span class="token punctuation">[</span>…<span class="token punctuation">]</span>
+<span class="token number">4</span>: docker0: <span class="token operator">&#x3C;</span>BROADCAST,MULTICAST,UP,LOWER_UP<span class="token operator">></span> mtu <span class="token number">1500</span>
+    link/ether 02:42:19:c7:ea:42 brd ff:ff:ff:ff:ff:ff
+    inet <span class="token number">172.17</span>.0.1/16 brd <span class="token number">172.17</span>.255.255 scope global
+    inet6 fe80::42:19ff:fec7:ea42/64 scope <span class="token function">link</span>
+<span class="token number">360</span>: veth80c16b5@if359: <span class="token operator">&#x3C;</span>BROADCAST,MULTICAST,UP,LOWER_UP<span class="token operator">></span>
+    link/ether de:9b:10:58:45:70 brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::dc9b:10ff:fe58:4570/64 scope <span class="token function">link</span>
+</code></pre>
+<h3 id="network-namespaces">Network Namespaces<a aria-hidden="true" class="anchor-heading icon-link" href="#network-namespaces"></a></h3>
+<pre class="language-bash"><code class="language-bash">$ <span class="token assign-left variable">pid</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">docker</span> inspect -f <span class="token string">'{{.State.Pid}}'</span> $cont<span class="token variable">)</span></span>
+$ <span class="token function">sudo</span> <span class="token function">mkdir</span> -p /var/run/netns/
+$ <span class="token function">sudo</span> <span class="token function">ln</span> -sT /proc/<span class="token variable">$pid</span>/ns/net /var/run/netns/<span class="token variable">$cont</span>
+$ <span class="token function">sudo</span> <span class="token function">ip</span> netns <span class="token builtin class-name">exec</span> <span class="token string">"<span class="token variable">$cont</span>"</span> <span class="token function">ip</span> address
+<span class="token number">1</span>: lo: <span class="token operator">&#x3C;</span>LOOPBACK,UP,LOWER_UP<span class="token operator">></span> mtu <span class="token number">65536</span> qdisc noqueue
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00
+    inet <span class="token number">127.0</span>.0.1/8 scope <span class="token function">host</span> lo
+<span class="token number">359</span>: eth0@if360: <span class="token operator">&#x3C;</span>BROADCAST,MULTICAST,UP,LOWER_UP<span class="token operator">></span> mtu
+    link/ether 02:42:ac:11:00:02 brd ff:ff:ff:ff:ff:ff
+    inet <span class="token number">172.17</span>.0.2/16 brd <span class="token number">172.17</span>.255.255 scope global
+</code></pre>
+<h3 id="network-drivers">Network drivers<a aria-hidden="true" class="anchor-heading icon-link" href="#network-drivers"></a></h3>
+<ul>
+<li><code>bridge</code>: default, with NAT</li>
+<li><code>host</code>: remove isolation</li>
+<li><code>none</code>: remove network</li>
+<li><code>ipvlan</code>, <code>macvlan</code>: advanced use cases</li>
+</ul>
+<h2 id="other-isolations">Other isolations<a aria-hidden="true" class="anchor-heading icon-link" href="#other-isolations"></a></h2>
+<h3 id="env">ENV<a aria-hidden="true" class="anchor-heading icon-link" href="#env"></a></h3>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">docker</span> run --rm -it ubuntu:20.04 <span class="token function">env</span>
+<span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span>/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+<span class="token assign-left variable"><span class="token environment constant">HOSTNAME</span></span><span class="token operator">=</span>14e30a0c1bc7
+<span class="token assign-left variable"><span class="token environment constant">TERM</span></span><span class="token operator">=</span>xterm
+<span class="token assign-left variable"><span class="token environment constant">HOME</span></span><span class="token operator">=</span>/root
+</code></pre>
+<h3 id="cgroups">Cgroups<a aria-hidden="true" class="anchor-heading icon-link" href="#cgroups"></a></h3>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">docker</span> run --rm -it ubuntu:20.04
+root@a4c1089933e0:/<span class="token comment"># apt update &#x26;&#x26; apt install stress</span>
+<span class="token punctuation">[</span>…<span class="token punctuation">]</span>
+root@a4c1089933e0:/<span class="token comment"># stress --cpu 3</span>
+</code></pre>
+<p>. . .</p>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">top</span>
+ PID UTIL PR NI VIRT RES SHR S  %CPU %MEM  TEMPS+ COM.
+<span class="token number">3694</span> root <span class="token number">20</span>  <span class="token number">0</span> <span class="token number">3856</span> <span class="token number">100</span>   <span class="token number">0</span> R <span class="token number">100,0</span>  <span class="token number">0,0</span> <span class="token number">1</span>:52.95 stress
+<span class="token number">3692</span> root <span class="token number">20</span>  <span class="token number">0</span> <span class="token number">3856</span> <span class="token number">100</span>   <span class="token number">0</span> R  <span class="token number">99,7</span>  <span class="token number">0,0</span> <span class="token number">1</span>:52.94 stress
+<span class="token number">3693</span> root <span class="token number">20</span>  <span class="token number">0</span> <span class="token number">3856</span> <span class="token number">100</span>   <span class="token number">0</span> R  <span class="token number">99,7</span>  <span class="token number">0,0</span> <span class="token number">1</span>:52.94 stress
+<span class="token punctuation">[</span>…<span class="token punctuation">]</span>
+</code></pre>
+<h2 id="performances">Performances<a aria-hidden="true" class="anchor-heading icon-link" href="#performances"></a></h2>
+<h3 id="performances-1">Performances<a aria-hidden="true" class="anchor-heading icon-link" href="#performances-1"></a></h3>
+<ul>
+<li>processes, CPU, RAM: native</li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>network: NAT by default / native with <code>host</code></li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>filesystem: CoW, bind mounts</li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>size: ubuntu: 72M, debian: 12M, alpine: 5M</li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>isolation: namespaces</li>
+</ul>
+<h1 id="usage">Usage<a aria-hidden="true" class="anchor-heading icon-link" href="#usage"></a></h1>
+<h2 id="run-a-container">Run a container<a aria-hidden="true" class="anchor-heading icon-link" href="#run-a-container"></a></h2>
+<h3 id="hello-world">Hello World<a aria-hidden="true" class="anchor-heading icon-link" href="#hello-world"></a></h3>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">docker</span> run --rm -it hello-world
+Unable to <span class="token function">find</span> image <span class="token string">'hello-world:latest'</span> locally
+latest: Pulling from library/hello-world
+2db29710123e: Pull complete
+Digest: sha256:97a379f4f88575512824f3b352bc03cd75e23917…
+Status: Downloaded newer image <span class="token keyword">for</span> hello-world:latest
+
+Hello from Docker<span class="token operator">!</span>
+<span class="token punctuation">[</span>…<span class="token punctuation">]</span>
+</code></pre>
+<h3 id="where-is-my-work-">Where is my work ?<a aria-hidden="true" class="anchor-heading icon-link" href="#where-is-my-work-"></a></h3>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">docker</span> run -it my-project
+root@ad2955960ee7:/<span class="token comment"># vim my-script.sh</span>
+root@ad2955960ee7:/<span class="token comment"># exit</span>
+$ <span class="token function">docker</span> run -it my-project <span class="token function">bash</span> ./my-script.sh
+</code></pre>
+<p>. . .</p>
+<pre class="language-bash"><code class="language-bash">bash: ./my-script.sh: No such <span class="token function">file</span> or directory
+</code></pre>
+<h3 id="how-you-could-find-your-work-back">How you could find your work back…<a aria-hidden="true" class="anchor-heading icon-link" href="#how-you-could-find-your-work-back"></a></h3>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">docker</span> <span class="token function">ps</span>
+CONTAINER ID IMAGE      COMMAND CREATED        STATUS
+$ <span class="token function">docker</span> <span class="token function">ps</span> -a
+CONTAINER ID IMAGE      COMMAND CREATED        STATUS
+ad2955960ee7 my-project <span class="token string">"bash"</span>  <span class="token number">15</span> seconds ago Exited
+$ <span class="token function">docker</span> start ad2955960ee7
+ad2955960ee7
+$ <span class="token function">docker</span> <span class="token function">ps</span>
+CONTAINER ID IMAGE      COMMAND CREATED        STATUS
+ad2955960ee7 my-project <span class="token string">"bash"</span>  <span class="token number">42</span> seconds ago Up <span class="token number">4</span> sec…
+$ <span class="token function">docker</span> attach ad2955960ee7
+root@ad2955960ee7:/<span class="token comment"># bash ./my-script.sh</span>
+Hi <span class="token operator">!</span> ./my-script.sh is starting<span class="token punctuation">..</span>.
+</code></pre>
+<h3 id="volumes">Volumes<a aria-hidden="true" class="anchor-heading icon-link" href="#volumes"></a></h3>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">docker</span> volume create my-workspace
+my-workspace
+$ <span class="token function">docker</span> run --rm -it -v my-workspace:/ws ubuntu:20.04
+root@1ab7b3188c76:/<span class="token comment"># ls /ws</span>
+root@1ab7b3188c76:/<span class="token comment"># touch /ws/hello</span>
+root@1ab7b3188c76:/<span class="token comment"># exit</span>
+$ <span class="token function">docker</span> run --rm -it -v my-workspace:/ws ubuntu:20.04
+root@0994f95db805:/<span class="token comment"># ls /ws</span>
+hello
+</code></pre>
+<h3 id="bind-mounts">Bind Mounts<a aria-hidden="true" class="anchor-heading icon-link" href="#bind-mounts"></a></h3>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">docker</span> run --rm -it -v ~/my-ws:/ws ubuntu:20.04
+root@1ab7b3188c76:/<span class="token comment"># ls /ws</span>
+Dockerfile  README.md  requirements.txt  script.py
+root@1ab7b3188c76:/<span class="token comment"># touch /ws/hi</span>
+root@1ab7b3188c76:/<span class="token comment"># exit</span>
+$ <span class="token function">ls</span> ~/my-ws
+Dockerfile  hi  README.md  requirements.txt  script.py
+</code></pre>
+<h3 id="other-run-arguments">Other run arguments<a aria-hidden="true" class="anchor-heading icon-link" href="#other-run-arguments"></a></h3>
+<h4 id="name">Name<a aria-hidden="true" class="anchor-heading icon-link" href="#name"></a></h4>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">docker</span> run --rm -it --name my-container ubuntu:20.04
+</code></pre>
+<p>. . .</p>
+<h4 id="network-1">Network<a aria-hidden="true" class="anchor-heading icon-link" href="#network-1"></a></h4>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">docker</span> run --rm -it -p <span class="token number">8000</span>:8000 ubuntu:20.04
+$ <span class="token function">docker</span> run --rm -it --net <span class="token function">host</span> ubuntu:20.04
+</code></pre>
+<p>. . .</p>
+<h4 id="detach">Detach<a aria-hidden="true" class="anchor-heading icon-link" href="#detach"></a></h4>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">docker</span> run --rm -it -d ubuntu:20.04
+</code></pre>
+<p>. . .</p>
+<h4 id="ressources">Ressources<a aria-hidden="true" class="anchor-heading icon-link" href="#ressources"></a></h4>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">docker</span> run --rm -it --cpus <span class="token number">2</span> ubuntu:20.04
+$ <span class="token function">docker</span> run --rm -it --gpus all ubuntu:20.04
+</code></pre>
+<h3 id="share-images">Share images<a aria-hidden="true" class="anchor-heading icon-link" href="#share-images"></a></h3>
+<h4 id="tag">Tag<a aria-hidden="true" class="anchor-heading icon-link" href="#tag"></a></h4>
+<pre class="language-bash"><code class="language-bash"><span class="token function">docker</span> tag my-project <span class="token punctuation">\</span>
+    gitlab.laas.fr:4567/my-name/my-project
+</code></pre>
+<p>. . .</p>
+<h4 id="push">Push<a aria-hidden="true" class="anchor-heading icon-link" href="#push"></a></h4>
+<pre class="language-bash"><code class="language-bash"><span class="token function">docker</span> push gitlab.laas.fr:4567/my-name/my-project
+</code></pre>
+<p>. . .</p>
+<h4 id="pull">Pull<a aria-hidden="true" class="anchor-heading icon-link" href="#pull"></a></h4>
+<pre class="language-bash"><code class="language-bash"><span class="token function">docker</span> pull gitlab.laas.fr:4567/my-name/my-project
+</code></pre>
+<p>. . .</p>
+<p>NB: <a href="https://hub.docker.com">https://hub.docker.com</a> by default</p>
+<h2 id="build-an-image">Build an image<a aria-hidden="true" class="anchor-heading icon-link" href="#build-an-image"></a></h2>
+<h3 id="dockerfile">Dockerfile<a aria-hidden="true" class="anchor-heading icon-link" href="#dockerfile"></a></h3>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">cat</span> Dockerfile
+</code></pre>
+<pre class="language-dockerfile"><code class="language-Dockerfile"><span class="token instruction"><span class="token keyword">FROM</span> python:3.10</span>
+<span class="token instruction"><span class="token keyword">WORKDIR</span> /app</span>
+<span class="token instruction"><span class="token keyword">ADD</span> requirements.txt .</span>
+<span class="token instruction"><span class="token keyword">RUN</span> python -m pip install -r requirements.txt</span>
+<span class="token instruction"><span class="token keyword">ADD</span> . .</span>
+<span class="token instruction"><span class="token keyword">CMD</span> ./manage.py test</span>
+<span class="token instruction"><span class="token keyword">ENV</span> PYTHONUNBUFFERED=1</span>
+</code></pre>
+<p>. . .</p>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">docker</span> build -t my-app <span class="token builtin class-name">.</span>
+</code></pre>
+<p>. . .</p>
+<p>NB: Build context</p>
+<h3 id="commit">Commit<a aria-hidden="true" class="anchor-heading icon-link" href="#commit"></a></h3>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">docker</span> run --rm -it ubuntu:20.04
+root@40e14372a5b9:/<span class="token comment"># apt update</span>
+root@40e14372a5b9:/<span class="token comment"># apt install python3-pip</span>
+root@40e14372a5b9:/<span class="token comment"># pip install django numpy</span>
+root@40e14372a5b9:/<span class="token comment"># vim script.py</span>
+</code></pre>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">docker</span> commit 42491f28c1f6 my-app
+</code></pre>
+<h2 id="tips">Tips<a aria-hidden="true" class="anchor-heading icon-link" href="#tips"></a></h2>
+<h3 id="buildkit">Buildkit<a aria-hidden="true" class="anchor-heading icon-link" href="#buildkit"></a></h3>
+<pre class="language-bash"><code class="language-bash">$ <span class="token builtin class-name">export</span> <span class="token assign-left variable">DOCKER_BUILDKIT</span><span class="token operator">=</span><span class="token number">1</span>
+</code></pre>
+<p>. . .</p>
+<pre class="language-dockerfile"><code class="language-Dockerfile"><span class="token instruction"><span class="token keyword">FROM</span> python:3.10</span>
+<span class="token instruction"><span class="token keyword">RUN</span> <span class="token options"><span class="token property">--mount</span><span class="token punctuation">=</span><span class="token string">type=cache,target=/var/cache/apt</span> <span class="token operator">\</span>
+    <span class="token property">--mount</span><span class="token punctuation">=</span><span class="token string">type=cache,target=/var/lib/apt</span> <span class="token operator">\</span>
+    <span class="token property">--mount</span><span class="token punctuation">=</span><span class="token string">type=cache,target=/root/.cache</span></span> <span class="token operator">\</span>
+    apt-get update -y &#x26;&#x26; apt-get install -qqy <span class="token operator">\</span>
+    gcc <span class="token operator">\</span>
+    libpq-dev <span class="token operator">\</span>
+ &#x26;&#x26; python -m pip install -U pip <span class="token operator">\</span>
+ &#x26;&#x26; python -m pip install <span class="token operator">\</span>
+    psycopg2 <span class="token operator">\</span>
+ &#x26;&#x26; apt-get autoremove -qqy gcc</span>
+</code></pre>
+<h3 id="dockerignore">Dockerignore<a aria-hidden="true" class="anchor-heading icon-link" href="#dockerignore"></a></h3>
+<pre class="language-bash"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token string">'build'</span> <span class="token operator">>></span> .dockerignore
+$ <span class="token builtin class-name">echo</span> <span class="token string">'*.tar.gz'</span> <span class="token operator">>></span> .dockerignore
+</code></pre>
+<h3 id="prune">Prune<a aria-hidden="true" class="anchor-heading icon-link" href="#prune"></a></h3>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">docker</span> system prune
+</code></pre>
+<p>. . .</p>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">docker</span> system prune -a --volumes
+</code></pre>
+<h3 id="compose-file">Compose file<a aria-hidden="true" class="anchor-heading icon-link" href="#compose-file"></a></h3>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">cat</span> docker-compose.yml
+</code></pre>
+<pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">"3"</span>
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">worker</span><span class="token punctuation">:</span>
+    <span class="token key atrule">build</span><span class="token punctuation">:</span> .
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> .<span class="token punctuation">:</span>/code
+      <span class="token punctuation">-</span> worker<span class="token punctuation">-</span>vol<span class="token punctuation">:</span>/data
+  <span class="token key atrule">cache</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> redis
+<span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+  <span class="token key atrule">worker-vol</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</code></pre>
+<h3 id="compose-usage">Compose usage<a aria-hidden="true" class="anchor-heading icon-link" href="#compose-usage"></a></h3>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">docker</span> compose up -d
+$ <span class="token function">docker</span> compose logs
+$ <span class="token function">docker</span> compose down
+</code></pre>
+<h1 id="container-platforms">Container platforms<a aria-hidden="true" class="anchor-heading icon-link" href="#container-platforms"></a></h1>
+<h3 id="cloud-native-computing-foundation">Cloud Native Computing Foundation<a aria-hidden="true" class="anchor-heading icon-link" href="#cloud-native-computing-foundation"></a></h3>
+<p><a href="https://cncf.io">https://cncf.io</a></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/media/cncf.jpg" alt="Cloud Native Landscape"></p>
+<h3 id="podman">Podman<a aria-hidden="true" class="anchor-heading icon-link" href="#podman"></a></h3>
+<ul>
+<li>Daemonless container engine</li>
+<li>Root is not required</li>
+</ul>
+<p>. . .</p>
+<pre class="language-bash"><code class="language-bash">$ <span class="token builtin class-name">alias</span> <span class="token assign-left variable">docker</span><span class="token operator">=</span>podman
+</code></pre>
+<h3 id="singularity--apptainer">Singularity / Apptainer<a aria-hidden="true" class="anchor-heading icon-link" href="#singularity--apptainer"></a></h3>
+<ul>
+<li>Secure container platform</li>
+<li>Made for use on HPC / large clusters</li>
+<li>Use Singularity files (<code>.sif</code>)</li>
+</ul>
+<p>. . .</p>
+<pre class="language-bash"><code class="language-bash">$ singularity pull docker://ubuntu:20.04
+$ singularity shell ubuntu_20.04.sif
+Singularity<span class="token operator">></span> <span class="token function">whoami</span>
+gsaurel
+Singularity<span class="token operator">></span> <span class="token builtin class-name">pwd</span>
+/home/gsaurel/talks
+Singularity<span class="token operator">></span> <span class="token function">ls</span>
+Dockerfile  Makefile  README.md  containers.md	containers.pdf
+</code></pre>
+<h3 id="singularity--apptainer-definition-files">Singularity / Apptainer Definition Files<a aria-hidden="true" class="anchor-heading icon-link" href="#singularity--apptainer-definition-files"></a></h3>
+<pre><code>Bootstrap: docker
+From: python:3.10
+
+%post
+    apt-get update
+    apt-get -qy install gcc libpq-dev
+    python -m pip install psycopg2
+
+%environment
+    export PYTHONUNBUFFERED=1
+
+%runscript
+    ./manage.py test
+</code></pre>
+<pre class="language-bash"><code class="language-bash">$ singularity build my-container.sif my-container.def
+</code></pre>
+<h1 id="use-cases">Use cases<a aria-hidden="true" class="anchor-heading icon-link" href="#use-cases"></a></h1>
+<h3 id="reproducible-environment">Reproducible environment<a aria-hidden="true" class="anchor-heading icon-link" href="#reproducible-environment"></a></h3>
+<ul>
+<li>continuous integration</li>
+<li>complex dependency setup</li>
+<li>software debugging</li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>reproducible science</li>
+</ul>
+<h3 id="production">Production<a aria-hidden="true" class="anchor-heading icon-link" href="#production"></a></h3>
+<ul>
+<li>HPC</li>
+<li>host web services</li>
+<li>run single statically linked binary with metadata</li>
+</ul>
+<h3 id="questions-">Questions ?<a aria-hidden="true" class="anchor-heading icon-link" href="#questions-"></a></h3>
+<p>Thanks for your time :)</p>

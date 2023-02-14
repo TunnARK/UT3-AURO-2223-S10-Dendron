@@ -1,0 +1,56 @@
+
+> **Avertissement:**
+Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-2223-Request:matrix.org`](https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org) si vous en trouvez, merci.
+
+> Cours donné par P. Muller, T. Pellegrini
+
+---
+
+> Notes RKA du 2023/02/08 - Start
+
+# Exercice 1: RNN "Elman"
+
+![](/assets/images/B3.AA.TD3.RNN.Sujet-Ex-01.png)
+![](/assets/images/B3.AA.TD3.RNN.BB20230208-01.png)
+![](/assets/images/B3.AA.TD3.RNN.BB20230208-02.png)
+
+Pour $h_{-1}$ il existe un argument sur PyTorch (par défaut ce sera un vecteur de zéro).  (On peut même demander d'entrainer ce vecteur.)
+
+Exemple de réseau qui nécessite tous les sorties: générer du texte.
+
+Pour générer des mots c'est plus intéressant d'utiliser cette fonction :
+![](/assets/images/B3.AA.TD3.RNN.BB20230208-03.png)
+
+Exemple de réseau qui ne nécessite que la dernière sortie: detecter des sentiments à partir d'un texte, prédire le projet point sur une trajectoire, ...
+
+![](/assets/images/B3.AA.TD3.RNN.BB20230208-04.png)
+
+
+
+# Exercice 2: Implantation Pytorch d'un RNN "à la main"
+
+![](/assets/images/B3.AA.TD3.RNN.Sujet-Ex-02-01.png)
+![](/assets/images/B3.AA.TD3.RNN.Sujet-Ex-02-02.png)
+
+## Question 1:
+![](/assets/images/B3.AA.TD3.RNN.Sujet-Ex-02-03.png)
+
+## Question 2:
+![](/assets/images/B3.AA.TD3.RNN.Sujet-Ex-02-04.png)
+![](/assets/images/B3.AA.TD3.RNN.Sujet-Ex-02-05.png)
+
+
+# Exercice 3: Backprop Through Time (BPTT)
+![](/assets/images/B3.AA.TD3.RNN.Sujet-Ex-03.png)
+![](/assets/images/B3.AA.TD3.RNN.BB20230208-05.png)
+![](/assets/images/B3.AA.TD3.RNN.BB20230208-06.png)
+![](/assets/images/B3.AA.TD3.RNN.BB20230208-07.png)
+![](/assets/images/B3.AA.TD3.RNN.BB20230208-08.png)
+![](/assets/images/B3.AA.TD3.RNN.BB20230208-09.png)
+
+
+
+
+> Notes RKA du 2023/02/08 - End
+
+---

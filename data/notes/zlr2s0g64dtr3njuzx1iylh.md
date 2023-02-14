@@ -1,0 +1,63 @@
+
+> **Avertissement:**
+Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-2223-Request:matrix.org`](https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org) si vous en trouvez, merci.
+
+> Cours donné par G. Saurel
+
+---
+
+
+# À Retenir
+
+![](/assets/images/B2.SATR.CM.Partie1.Slide2021-27.png)
+
+
+# Cours Magistraux
+
+- [[B2.SATR.CM.Partie1]]
+
+
+# Travaux Dirigés
+
+- [[B2.SATR.TD1]]
+
+# Travaux Pratiques
+
+- [[B2.SATR.TP1]]
+
+# Support de Cours
+
+## Fichiers Moodles
+
+### CM
+
+- [B2.SATR.CM.Partie1.Slide2020.pdf](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/B2.SATR.CM.Partie1.Slide2020.pdf)
+
+
+
+### TD
+
+- [filetitle](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/filetitle)
+
+
+### TP
+
+- [filetitle](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/filetitle)
+
+
+## Scans
+
+### Blackbard
+
+- [filetitle](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/filetitle)
+
+### GEA
+
+- [filetitle](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/filetitle)
+
+
+### RKA
+
+- [filetitle](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/filetitle)
+
+

@@ -1,0 +1,170 @@
+<h1 id="probability-review-bayes-filters-and-gaussians-for-advanced-robotics">Probability Review, Bayes Filters and Gaussians (for Advanced Robotics)<a aria-hidden="true" class="anchor-heading icon-link" href="#probability-review-bayes-filters-and-gaussians-for-advanced-robotics"></a></h1>
+<p>Source:</p>
+<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=xamzdNUN1o0">Lecture 11 Probability Review, Bayes Filters, Gaussians -- CS287-FA19 Advanced Robotics</a></li>
+<li>Slide: <a href="https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/CS287FA19-AdvancedRobotics.Lecture11-ProbabilityReviewBayesFiltersGaussians.pdf">CS287FA19-AdvancedRobotics.Lecture11-ProbabilityReviewBayesFiltersGaussians.pdf</a></li>
+<li>Course given by Pieter Abbeel</li>
+</ul>
+<hr>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-01.png"></p>
+<ul>
+<li>LQR</li>
+<li>Shorcutting</li>
+</ul>
+<h1 id="introduction">Introduction<a aria-hidden="true" class="anchor-heading icon-link" href="#introduction"></a></h1>
+<h2 id="why-probability-in-robotics-">Why Probability in Robotics ?<a aria-hidden="true" class="anchor-heading icon-link" href="#why-probability-in-robotics-"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-02.png"></p>
+<ul>
+<li>Can take actions/decisions to search for more sensory information in order to improve state estimation.</li>
+</ul>
+<h2 id="example-1-helicopter">Example 1: Helicopter<a aria-hidden="true" class="anchor-heading icon-link" href="#example-1-helicopter"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-03.png"></p>
+<ul>
+<li>magnometer gives an idea of orientation </li>
+<li>We don't have a direct knowledge of the state of the heli but can inderectly know its state through thoses instruments</li>
+</ul>
+<h2 id="example-2-mobile-robot">Example 2: Mobile robot<a aria-hidden="true" class="anchor-heading icon-link" href="#example-2-mobile-robot"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-04.png"></p>
+<ul>
+<li>Carefull with laser and reflecting surfaces as it renders the measures unusable</li>
+</ul>
+<h1 id="probability-review">Probability Review<a aria-hidden="true" class="anchor-heading icon-link" href="#probability-review"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-05.png"></p>
+<h2 id="probabilty-axioms">Probabilty Axioms<a aria-hidden="true" class="anchor-heading icon-link" href="#probabilty-axioms"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-06.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-07.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-08.png"></p>
+<h2 id="discrete-random-variables">Discrete Random Variables<a aria-hidden="true" class="anchor-heading icon-link" href="#discrete-random-variables"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-09.png"></p>
+<h2 id="continuous-random-variables">Continuous Random Variables<a aria-hidden="true" class="anchor-heading icon-link" href="#continuous-random-variables"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-10.png"></p>
+<ul>
+<li>Continuum => Integration</li>
+<li>In continuous proba space, we can't say that a probability takes an exact value but we should say that it lies in an interval</li>
+</ul>
+<h2 id="joint-and-conditional-probability">Joint and Conditional Probability<a aria-hidden="true" class="anchor-heading icon-link" href="#joint-and-conditional-probability"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-11.png"></p>
+<ul>
+<li>
+<p>Very important in robotics because we will always compare the state of the robot with the measurements taken</p>
+<ul>
+<li>We indeed try to use the measurement to tell smth about the state</li>
+<li>Or we want to know the dynamic now and relate it to the dynamic in the future </li>
+<li>Both require joint distributions over two random variables instead of just one</li>
+</ul>
+</li>
+<li>
+<p>If two variables are independent then you cannot tell anything about X when using Y since they are unrelated</p>
+</li>
+<li>
+<p>Joint Distribution</p>
+<div class="math math-display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>X</mi><mo>=</mo><mi>x</mi><mtext>  </mtext><mi>a</mi><mi>n</mi><mi>d</mi><mtext>  </mtext><mi>Y</mi><mo>=</mo><mi>y</mi><mo stretchy="false">)</mo><mo>=</mo><mi>P</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(X=x\;and\;Y=y) = P(x,y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">an</span><span class="mord mathnormal">d</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span></span></div>
+</li>
+<li>
+<p>Conditional Probability</p>
+<div class="math math-display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>x</mi><mtext>  </mtext><mi mathvariant="normal">∣</mi><mtext>  </mtext><mi>y</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mtext>  </mtext><mi>P</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo><mtext>  </mtext></mrow><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">P(x\;|\;y) = \dfrac{\;P(x,y)\;}{P(y)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.363em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></div>
+</li>
+</ul>
+<h2 id="law-of-total-probability-marginals">Law of Total Probability, Marginals<a aria-hidden="true" class="anchor-heading icon-link" href="#law-of-total-probability-marginals"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-12.png"></p>
+<!--![](/assets/images/P1K.Lecture11.BB-01.png)-->
+<h2 id="bayes-rule">Bayes' Rule<a aria-hidden="true" class="anchor-heading icon-link" href="#bayes-rule"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-13.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.BB-02.png"></p>
+<ul>
+<li>If there is a state, it will cause distribution of a reading</li>
+<li>Therefore the conditional <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>y</mi><mi mathvariant="normal">∣</mi><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(y|x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mord">∣</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span></span> reflect causal effect and <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span></span> represent the state deduced from previous estimates</li>
+<li>The division by <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span></span> often written <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle displaystyle="true" scriptlevel="0"><mfrac><mn>1</mn><mi>z</mi></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\dfrac{1}{z}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.0074em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span> or <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi></mrow><annotation encoding="application/x-tex">\eta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">η</span></span></span></span></span> is simply a normalisation</li>
+</ul>
+<h2 id="normalisation">Normalisation<a aria-hidden="true" class="anchor-heading icon-link" href="#normalisation"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-14.png"></p>
+<h2 id="conditionning">Conditionning<a aria-hidden="true" class="anchor-heading icon-link" href="#conditionning"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-15.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-16.png"></p>
+<!--![](/assets/images/P1K.Lecture11.BB-03.png)
+![](/assets/images/P1K.Lecture11.BB-04.png)-->
+<h2 id="conditional-independance">Conditional Independance<a aria-hidden="true" class="anchor-heading icon-link" href="#conditional-independance"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-17.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.BB-05.png"></p>
+<!--
+![](/assets/images/P1K.Lecture11.BB-06.png)-->
+<h2 id="example-of-state-estimation">Example of State Estimation<a aria-hidden="true" class="anchor-heading icon-link" href="#example-of-state-estimation"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-18.png"></p>
+<h2 id="casual-vs-diagnostic-reasoning">Casual vs Diagnostic Reasoning<a aria-hidden="true" class="anchor-heading icon-link" href="#casual-vs-diagnostic-reasoning"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-19.png"></p>
+<h2 id="door-example-one-measurement">Door Example (one measurement)<a aria-hidden="true" class="anchor-heading icon-link" href="#door-example-one-measurement"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-20.png"></p>
+<blockquote>
+<p>Does it mean that the sensor measuring <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi></mrow><annotation encoding="application/x-tex">z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span></span></span></span></span> can detect the door is open at 67% chance ??? (if so the conditional probability would return the precision of the instrument ???)</p>
+</blockquote>
+<h2 id="combining-evidence">Combining Evidence<a aria-hidden="true" class="anchor-heading icon-link" href="#combining-evidence"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-21.png"></p>
+<h2 id="recursive-bayesian-updating">Recursive Bayesian Updating<a aria-hidden="true" class="anchor-heading icon-link" href="#recursive-bayesian-updating"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-22.png"></p>
+<p><strong>Posterior Distribution</strong></p>
+<div class="math math-display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>x</mi><mtext>  </mtext><mi mathvariant="normal">∣</mi><mtext>  </mtext><msub><mi>z</mi><mn>1</mn></msub><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><msub><mi>z</mi><mi>n</mi></msub><mo stretchy="false">)</mo><mo>=</mo><mi>η</mi><mo>×</mo><munderover><mo>∏</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mo fence="false" stretchy="true" minsize="1.8em" maxsize="1.8em">(</mo><mtext>  </mtext><mi>P</mi><mo stretchy="false">(</mo><msub><mi>z</mi><mi>i</mi></msub><mtext>  </mtext><mi mathvariant="normal">∣</mi><mtext>  </mtext><mi>x</mi><mo stretchy="false">)</mo><mtext>  </mtext><mo fence="false" stretchy="true" minsize="1.8em" maxsize="1.8em">)</mo><mo>×</mo><mi>P</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(x\;|\;z_1,\dots,z_n) = \eta \times \prod_{i=1}^n \Big(\; P(z_i\;|\;x) \;\Big) \times P(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">η</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.9291em;vertical-align:-1.2777em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6514em;"><span style="top:-1.8723em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∏</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2777em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="delimsizing size2">(</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="delimsizing size2">)</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span></span></div>
+<h2 id="door-example-second-measurement">Door Example (second measurement)<a aria-hidden="true" class="anchor-heading icon-link" href="#door-example-second-measurement"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-23.png"></p>
+<h2 id="a-typical-pitfall">A Typical Pitfall<a aria-hidden="true" class="anchor-heading icon-link" href="#a-typical-pitfall"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-24.png"></p>
+<p><strong>BE CAREFUL ! Are the reading truly independent ? <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\implies</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span></span> OVERCONFIDENCE</strong></p>
+<h1 id="bayes-filters">Bayes' Filters<a aria-hidden="true" class="anchor-heading icon-link" href="#bayes-filters"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-25.png"></p>
+<h2 id="actions">Actions<a aria-hidden="true" class="anchor-heading icon-link" href="#actions"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-26.png"></p>
+<h2 id="typical-actions">Typical Actions<a aria-hidden="true" class="anchor-heading icon-link" href="#typical-actions"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-27.png"></p>
+<p>Actions increase uncertainty because they usually introduce new uncertainties.</p>
+<h2 id="modeling-acitons">Modeling Acitons<a aria-hidden="true" class="anchor-heading icon-link" href="#modeling-acitons"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-28.png"></p>
+<h2 id="example-closing-the-door">Example: Closing the door<a aria-hidden="true" class="anchor-heading icon-link" href="#example-closing-the-door"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-29.png"></p>
+<h2 id="state-transitions">State Transitions<a aria-hidden="true" class="anchor-heading icon-link" href="#state-transitions"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-30.png"></p>
+<h2 id="integrating-outcome-of-actions">Integrating Outcome of Actions<a aria-hidden="true" class="anchor-heading icon-link" href="#integrating-outcome-of-actions"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-31.png"></p>
+<h2 id="example-the-resulting-belief">Example: The Resulting Belief<a aria-hidden="true" class="anchor-heading icon-link" href="#example-the-resulting-belief"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-32.png"></p>
+<h2 id="measurements">Measurements<a aria-hidden="true" class="anchor-heading icon-link" href="#measurements"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-33.png"></p>
+<h2 id="bayes-fitlers-framework">Bayes Fitlers: Framework<a aria-hidden="true" class="anchor-heading icon-link" href="#bayes-fitlers-framework"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-34.png"></p>
+<h2 id="markov-assumption">Markov Assumption<a aria-hidden="true" class="anchor-heading icon-link" href="#markov-assumption"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-35.png"></p>
+<h2 id="bayes-filters-development">Bayes Filters Development<a aria-hidden="true" class="anchor-heading icon-link" href="#bayes-filters-development"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-36.png"></p>
+<h2 id="bayes-filters-algorithm">Bayes Filters Algorithm<a aria-hidden="true" class="anchor-heading icon-link" href="#bayes-filters-algorithm"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-37.png"></p>
+<h2 id="summary">Summary<a aria-hidden="true" class="anchor-heading icon-link" href="#summary"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-38.png"></p>
+<h2 id="example-robot-localization">Example: Robot Localization<a aria-hidden="true" class="anchor-heading icon-link" href="#example-robot-localization"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-39.png"></p>
+<h1 id="gaussians">Gaussians<a aria-hidden="true" class="anchor-heading icon-link" href="#gaussians"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-40.png"></p>
+<h2 id="outline">Outline<a aria-hidden="true" class="anchor-heading icon-link" href="#outline"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-41.png"></p>
+<h2 id="univariate-gaussian">Univariate Gaussian<a aria-hidden="true" class="anchor-heading icon-link" href="#univariate-gaussian"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-42.png"></p>
+<h2 id="properties-of-gaussians">Properties of Gaussians<a aria-hidden="true" class="anchor-heading icon-link" href="#properties-of-gaussians"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-43.png"></p>
+<h2 id="central-limit-theorem">Central Limit Theorem<a aria-hidden="true" class="anchor-heading icon-link" href="#central-limit-theorem"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-44.png"></p>
+<h2 id="multivariate-gaussians">Multivariate Gaussians<a aria-hidden="true" class="anchor-heading icon-link" href="#multivariate-gaussians"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-45.png"></p>
+<blockquote>
+<p><strong>"Symmetric Matrices are just a rotation away from being Diagonal Matrices"</strong></p>
+</blockquote>
+<h3 id="multivariate-gaussians-expectation">Multivariate Gaussians Expectation<a aria-hidden="true" class="anchor-heading icon-link" href="#multivariate-gaussians-expectation"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-46.png"></p>
+<h3 id="multivariate-gaussians-examples">Multivariate Gaussians Examples<a aria-hidden="true" class="anchor-heading icon-link" href="#multivariate-gaussians-examples"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-47.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-48.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-49.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-50.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/P1K.Lecture11.Slide-51.png"></p>
+<hr>
+<strong>Backlinks</strong>
+<ul>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/g54kxj2u0t1wl4x6uo6vgbt">Projet</a></li>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/wi1jfofxzsjcbjj3ciyfq2z">Chap 5 - SLAM - Simultaneous Localization and Mapping</a></li>
+</ul>

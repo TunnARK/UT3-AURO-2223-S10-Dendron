@@ -1,0 +1,72 @@
+
+> **Avertissement:**
+Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-2223-Request:matrix.org`](https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org) si vous en trouvez, merci.
+
+> Cours donné par C. Briand, B. Roussel
+
+---
+
+# À Retenir
+
+## Gestion par Processus
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-07.png)
+
+## Formules Methode Kanban
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-53.png)
+
+## Ordonnancement de Production
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-57.png)
+
+# Cours Magistraux
+
+- [[Gestion Production Logistique|B3.AOH.GestionProductionLogistique]]
+- [[Aspect Humains|B3.AOH.AH]]
+
+
+# Travaux Dirigés
+
+- [[TD1 - MRP/DRP/Ordonnancement|B3.AOH.GPL.TD1]]
+
+<!-- 
+# Travaux Pratiques
+
+- [[...|...]] -->
+
+<!-- # Support de Cours
+
+## Fichiers Moodles
+
+### CM
+
+- [filetitle](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/filetitle)
+
+
+### TD
+
+- [filetitle](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/filetitle)
+
+
+### TP
+
+- [filetitle](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/filetitle)
+
+
+## Scans
+
+### Blackbard
+
+- [filetitle](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/filetitle)
+
+### GEA
+
+- [filetitle](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/filetitle)
+
+
+### RKA
+
+- [filetitle](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/filetitle)
+
+ -->

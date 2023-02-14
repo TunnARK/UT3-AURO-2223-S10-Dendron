@@ -1,0 +1,303 @@
+
+> **Avertissement:**
+Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-2223-Request:matrix.org`](https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org) si vous en trouvez, merci.
+
+> Cours donné par F. Gouaisbaut
+
+Support de cours:
+- [Slide Partie 2](https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/B2.CNL.CM.SlidePartie2.20221109.pdf)
+
+---
+
+> Notes du 2022/11/09 - Start
+
+
+
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-01.png)
+
+# Partie II - Stabilité des systèmes non linéaires
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-02.png)
+
+## Sommaire
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-03.png)
+
+## II-1. Introduction à la stabilité
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-04.png)
+
+## II-2. Stabilité au sens de Lyapunov
+
+### Définitions
+
+#### Points d'équilibres
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-05.png)
+
+Si le pt d'équilibre n'est pas au point 0 on fait un changement de variable.
+
+#### Stabilité
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-06.png)
+
+On doit reste autour du pt equi pour **tous les temps** !
+
+Évidemment, la stabilité n'est que locale ???
+
+
+#### Attractivité
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-07.png)
+
+Il existe un $\delta$ donc la notion d'attraction est une notion locale (ou globale uniquement quand il n'y a qu'un seul point d'équilibre)
+
+#### Stabilité asymptotique
+
+> Correction: !!! L'ensemble des **conditions initiales** (et non pas ~~des points d'équilibres~~) pour lequel  le point d'équilibre est asymptotiquement stavle est appelée **bassin d'attraction du point d'équilibre**
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-08.png)
+
+### Exemples
+
+#### Attracteur Local Instable
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-09.png)
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-10.png)
+
+#### Attracteur Global Instable
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-11.png)
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-12.png)
+
+#### Non-Attracteur Stable
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-13.png)
+
+Autre exemple de stabilité non attractive :
+
+![](/assets/images/B2.CNL.CM.BB20221109-01.png)
+
+## II-3. Les fonctions de Lyapunov
+
+### II-3.1) Vers une généralisatin de la fonction énergie
+
+#### Comment analyser la stabilité ?
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-14.png)
+
+![](/assets/images/B2.CNL.CM.BB20221109-02.png)
+
+#### Exemple: Pendule Inverse
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-15.png)
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-16.png)
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-17.png)
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-18.png)
+
+> Correction !!! Si $k>0$ (et non pas ~~k<0~~)
+
+Énergie tj positive donc il nous faut une courbe decroissante positive qui converge vers 0 mais pour cela il faudrait que $x_2$ soit nul uniquement quand $x_1$ l'est aussi et ça ce n'est pas évident ni garantie. On se rapproche de l'idée de stabilité.
+
+### II-3.2) Définition et utilisation des fonctions lyapunov
+
+#### Thm Fondamentale de la Stabilité (Locale)
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-19.png)
+
+> Attention: il s'agit d'une Condition Suffisante !
+
+#### Preuve
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-20.png)
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-21.png)
+![](/assets/images/B2.CNL.CM.BB20221109-03.png)
+> Incomplet
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-22.png)
+**Idée de l'absurde:** dire qu'on ne peut pas rentrer dans une boule d'$x$ tel que $V(x)=c$ mais utiliser le fait que $V$ est strictement décroissante pour impliquer que forcément il arrivera un moment où il faudra rentre dans la boule et donc avoir un $x'$ tel que $V(x')<c$ 
+
+#### Illustration
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-23.png)
+
+> Remarque: ce système étant linéaire on aurait pu aussi prouver la stabilité (et meme une stab globale) on utilise les valeurs propres de la matrice dynamique (cf les outils des systèmes linéaires)
+
+#### Exemples
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-24.png)
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-25.png)
+
+Attention:
+$$
+d_t V = 0 \implies x_2 = 0
+$$
+mais pas forcément $x_1 = 0$
+
+Par contre, oui on peut en déduire que $x_1 = cst$ vu que $\dot x_1 = x_2$
+
+#### Comment estimer le bassin d'attraction ?
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-26.png)
+
+Attention:
+$$
+\dot x = x^2 \quad\quad \dot x = -x^3
+$$
+Ces deux systemes non linéaires pointent sur un meme système linéaire qui n'est que simplement stable.
+Or un syst linearisé simplement stable ne permet de conclure sur la stabilité des systèmes non linéaires associée
+
+Rem:
+- Il n'existe pas d'outils garantissant des conditions suffisantes pour connaître le bassin d'attraction
+
+#### Thm Fondamentale de la Stabilité/Stabilité Asymptotique Globale
+
+> Keywords: radialement non bornée
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-27.png)
+
+### II-3.3) Principes d'invariance de Lasalle
+
+#### Problématique
+
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-28.png)
+
+**Exercice:** Tracer sur Matlab les lignes de niveaux de
+$$
+V(x) = \dfrac{x_1^2}{\; 1+x_1^2 \;} + x_2^2
+$$
+
+**Solution:**
+...
+
+> À faire à la maison
+
+#### Principe d'invariance de Lasalle
+
+Un **ensemble invariant** typique est le point d'équilibre par exemple. De même, l'estimation d'un bassin d'équilibre est lui aussi un ensemble invariant (pareil pour le bassin d'attraction lui-même peu utile puisqu'on ne sait pas en général définir cette ensemble exactement).
+
+Au final le principe de Lasalle est utile non pas pour prouver la stabilité mais surtout pour prouver l'attractivité d'un point d'équilibre.
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-29.png)
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-30.png)
+
+
+#### Exemple
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-31.png)
+
+On suppose $a>0$ et $b>0$
+
+![](/assets/images/B2.CNL.CM.BB20221109-04.png)
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-32.png)
+
+### II-3.4) Condition nécessaire de stabilité asymptotique
+
+#### Thm Inverse de Stabilité
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-33.png)
+
+
+
+
+> Notes du 2022/11/09 - End
+
+---
+
+> Notes du 2022/11/17 - Start
+
+
+## II-4. Les systèmes linéaires et la linéarisation
+
+### Stabilité des systèmes linéaires
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-34.png)
+
+### Méthode de Lyapunov indirecte
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-35.png)
+
+![](/assets/images/B2.CNL.CM.BB20221117-01.png)
+
+Sur les deux systèmes linéarisés, on peut conclure qu'ils sont simplement stable mais cela ne nous permet pas sur la stabilité sur les NLs
+
+
+Remarque:
+
+Toute fonction polynomiale a la mauvaise propriete de ne pas etre une bonne echelle de comparaison car elle peut etre ecrase et ne reprensete correctement notre fonction
+
+Comme la linéarisation suivante autour de 0 de $x^3$
+$$
+x^3 = 0 + 0 + ... 
+$$
+
+## II-5. La stabilité Entrée/Sorties
+
+### Introduction
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-36.png)
+
+En NL, ce n'est pas parce que le système est stable qu'après une interconnection entre etat ou une pertubation que la sortie restera bornée comme linéaire
+
+Typiquement les systèmes en cascades posent bcp de problèmes en NL
+
+En NL on ne va pas regarder la sortie mais se concentré sur le comportement entrée/état
+
+### Cas Syst. Linéaires
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-37.png)
+
+la borne sur les états est proport. à la borne de l'entrée **si les conditions initiales sont nulles**
+
+### Exemple NL
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-38.png)
+
+Autre exemple: $\dot x = -x + (x+x^2)u$ et là on pert la stabilité juste en modifiant l'entrée
+
+Pour pallier à ces problèmes on définit les notions suivantes :
+
+### Définition des Fonctions de Classe
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-39.png)
+
+> Les fonctions de comparaisons sont des fonctions de classe $\mathcal{K}$
+
+### Thm de Lyapunov (avec fonctions de comparaison)
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-40.png)
+
+### Déf. ISS - Input to State Stability
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-41.png)
+
+### Qlqs Propriétés
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-42.png)
+
+### Thm de Lyapunov (avec ISS)
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-43.png)
+
+Le système (8)
+$$
+\dot x(t) = f(t,x(t),u(t))
+$$
+
+Une propriété magique de l'ISS, c'est que le couplage $0\;GAN \rightarrow 0\;ISS$ est lui aussi $0\;GAN$
+
+Très utilisé pour les phases d'atterissages automatiques
+
+### Exemples
+
+![](/assets/images/B2.CNL.CM.SystCompl.SlidePartie1.20221109-44.png)
+
+
+
+
+
+> Notes du 2022/11/17
+
+---

@@ -1,0 +1,338 @@
+
+> **Avertissement:**
+Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-2223-Request:matrix.org`](https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org) si vous en trouvez, merci.
+
+> Cours donné par M. Thaix
+
+---
+
+> Notes RKA du 2023/01/25 - Start
+
+
+
+
+![](/assets/images/B3.RIA.CM.Slide-01.png)
+
+# I- Utilisation et intérêt de la jacobienne
+
+## I-1. MGI - Modèle Géométrique Inverse
+
+### Problème non-linéaire
+
+![](/assets/images/B3.RIA.CM.Slide-02.png)
+
+- un des 1er bras manipulateur envoyé dans l'espace ne possèdait pas de solution ; il fallait passer par des calucls numériques (ce qui prenait du temps)
+
+### Méthode de Newton
+
+![](/assets/images/B3.RIA.CM.Slide-03.png)
+
+Dès que le robot réalise une manoeuvre qui passe par une singularité, les degrés de liberté et comme la jacobienne devient non inversible sur ces singularités le robot peut se bloquer et ne pas réaliser la manip.
+
+![](/assets/images/B3.RIA.CM.BB20230125-1.png)
+![](/assets/images/B3.RIA.CM.BB20230125-2.png)
+
+## I-2. MDI - Modèle Différentiel Inverse
+
+### Problématique
+
+![](/assets/images/B3.RIA.CM.Slide-04.png)
+
+### Méthode
+
+![](/assets/images/B3.RIA.CM.Slide-05.png)
+
+### Principe
+
+![](/assets/images/B3.RIA.CM.Slide-06.png)
+
+### Inversion du MDD
+
+![](/assets/images/B3.RIA.CM.Slide-07.png)
+
+#### Etape 1
+
+![](/assets/images/B3.RIA.CM.Slide-08.png)
+
+#### Etape 2 et 3
+
+![](/assets/images/B3.RIA.CM.Slide-09.png)
+
+### Résolution du MDI pour du non-redondants
+
+![](/assets/images/B3.RIA.CM.Slide-10.png)
+
+#### Système Compatible
+
+![](/assets/images/B3.RIA.CM.Slide-11.png)
+
+Pour les syst. non compatible la solution la plus proche au sens des moindres carrées
+
+#### Inverse Généralisée & Pseudo-Inverse
+
+![](/assets/images/B3.RIA.CM.Slide-12.png)
+
+Comme le montre l'équation de $X$, un robot redondant se trouve dans le cas $m<n$. Du coup il y aura tj un infinité de solution pour les robots redondants.
+
+#### SVD - Singular Value Decomposition
+
+![](/assets/images/B3.RIA.CM.Slide-13.png)
+![](/assets/images/B3.RIA.CM.Slide-14.png)
+
+Grand advantage de cette decomposition, c'est que la pseudo-inverse est très facile à calculer !
+
+### Exemple: RRPRRR
+
+#### Etape 1
+
+![](/assets/images/B3.RIA.CM.Slide-15.png)
+
+#### Etape 2
+
+![](/assets/images/B3.RIA.CM.Slide-16.png)
+![](/assets/images/B3.RIA.CM.Slide-17.png)
+
+#### Etape 3
+
+![](/assets/images/B3.RIA.CM.Slide-18.png)
+![](/assets/images/B3.RIA.CM.BB20230125-3.png)
+
+
+#### Cas non-inversible
+
+![](/assets/images/B3.RIA.CM.Slide-19.png)
+
+Si $q_3 = s_5 = 0$, alors le rang est de max 4.
+
+![](/assets/images/B3.RIA.CM.BB20230125-4.png)
+
+Lorsqu'il y a une infinité de solution, on fera un choix de solution pour pouvoir implémenter la commande.
+
+## I-3. Définition des espaces des vitesses
+
+### Espaces des vitesses articulaires vs des vitesses opérationnelles
+
+> Nakamura-REdundancy and Optimization
+
+![](/assets/images/B3.RIA.CM.Slide-20.png)
+
+Dans le cas de robots avec une jacobienne carrée, quelle est la conséquence des singularités ?
+- le noyau n'est pas nulle donc il existe un ensemble de vitesses qui ne vont pas faire évoluer la configuration ;
+- en effet si le rang de $J$ est plein alors le noyau sera nul et la question ne se pose pas.
+
+### Indice de manipulabitité
+
+#### Ellipsoide de vitesse
+
+![](/assets/images/B3.RIA.CM.Slide-21.png)
+![](/assets/images/B3.RIA.CM.BB20230125-5.png)
+![](/assets/images/B3.RIA.CM.BB20230125-6.png)
+
+Cette ellipse indique combien de vitesse il faut pour réaliser une quantité de mouvement.
+
+Si l'ellipse est très resérrée on en conclut qu'il faut bcp de vitesse pour faire peu de mouvement (donc on force sur les articulations).
+
+$U$ donne l'orientation de l'ellipse et $\Sigma$ donne son etallement (sachant que $\sigma_1>\dots>\sigma_r$).
+
+C'est pourquoi les robots de nos jours ne marche pas encore comme les humains puisqu'on évite les singularités (d'où l'importance de l'indice de manipulabilité).
+
+Un robot qui se déplacerait proche des singularités comme nous apporterait l'advantage d'économiser énormément d'énergie (moins de liaisons utilisées).
+
+#### Indice en vitesse
+
+![](/assets/images/B3.RIA.CM.Slide-22.png)
+
+### Efforts statiques - Indice en effort
+
+![](/assets/images/B3.RIA.CM.Slide-23.png)
+
+Pour générer bcp d'effort, il faudra évoluer sur des vitesses faibles.
+
+### Dualité vittesse effort
+
+![](/assets/images/B3.RIA.CM.Slide-24.png)
+
+
+
+
+> Notes RKA du 2023/01/25 - End
+
+---
+
+> Notes RKA du 2023/01/26 - Start
+
+
+
+
+# II- Les Robots redondants
+
+![](/assets/images/B3.RIA.CM.Slide-25.png)
+
+## II-1. Généralités et intérêt
+
+### Définitions
+
+![](/assets/images/B3.RIA.CM.Slide-26.png)
+![](/assets/images/B3.RIA.CM.Slide-27.png)
+![](/assets/images/B3.RIA.CM.BB20230126-1.png)
+
+- $J^+\dot x$ correspond a la translation de la droite du kernel vers la droite de la tache
+- Le pojecteur sur le noyau de la jacobienne $\mathbb{I} - J^+J$ lui va projeter $\dot q_0$ sur la droite du kernel
+- on peut montrer au sens des moindres carrées que cette norme est minimale
+
+### Signification des espaces
+
+![](/assets/images/B3.RIA.CM.Slide-28.png)
+![](/assets/images/B3.RIA.CM.Slide-29.png)
+
+
+## II-2. Méthodes de résolution
+
+### Redondance vis-à-vis de la tâche
+
+![](/assets/images/B3.RIA.CM.Slide-30.png)
+
+Tache de pointage m=2 site/azimut
+
+### Trois classe de méthode
+
+![](/assets/images/B3.RIA.CM.Slide-31.png)
+
+L'augmentation de tache est une méthode utilié historiquement mais plus aujourd'hui les deux autres méthodes sont plus adaptées.
+
+#### 1) Méthode basées Jacobienne
+
+##### Pseudo-inverse
+
+![](/assets/images/B3.RIA.CM.Slide-32.png)
+
+Mathématiquement il n'y a rien à dire mais en pratique il y a peu d'intérêt car aucun choix n'est possible.
+
+Du coup mieux vaut utiliser la pseudo-inverse pondérée.
+
+##### Pseudo-inverse pondérée
+
+![](/assets/images/B3.RIA.CM.Slide-33.png)
+
+Attention J_W^+ n'est pas une pseudo-inverse seul deux des trois propriétés de la pseudo-inverse sont respectées.
+
+Idée résolution:
+![](/assets/images/B3.RIA.CM.BB20230126-2.png)
+
+Exemple 2R:
+![](/assets/images/B3.RIA.CM.BB20230126-3.png)
+
+Intérêt de la pondération est de permettre un choix sur l'espace des configurations de telles sortes que l'on peut augmenter les possibilités de l'espace des vitesses.
+
+Souvent $b=0$m on prend une pondération diagonale.
+
+Cependant cette méthode se comporte mal lorsqu'on est proche d'une singularité.
+
+##### DLS - Damped Least Square
+
+Le moindre carrées amortis :
+![](/assets/images/B3.RIA.CM.Slide-34.png)
+
+Aussi calculable en SDD.
+
+![](/assets/images/B3.RIA.CM.BB20230126-4.png)
+
+À noter que ${U^T}^{-1} = U$
+
+Maintenant pourquoi cette méthode est robuste proche des singularités ?
+
+C'est somme des $\sigma$ avec les $\mu$ qui permet d'empêcher d'avoir une limite en 0 dans une singularité.
+
+Désadvantage de cette méthode c'est qu'elle introduit une erreur selon $\dot q$ et $\dot x$
+
+##### Interprétation géométrique: effet $\mu$
+
+![](/assets/images/B3.RIA.CM.Slide-35.png)
+
+##### Pseudo-inverse vs DLS
+
+![](/assets/images/B3.RIA.CM.Slide-36.png)
+
+Par contre il n'a pas de garantie sur l'unicité des configs. D'un cycle à un autre on ne peut pas savoir qu'elle solution équivalente sera choisie.
+
+![](/assets/images/B3.RIA.CM.BB20230126-5.png)
+
+#### 2) Méthode basée sur le kernel
+
+![](/assets/images/B3.RIA.CM.Slide-37.png)
+
+Ici on choisit $\dot q_0$ loin des singularités pour s'éviter les soucis précédents.
+
+On peut choisir ce $\dot q_0$ selon l'indice de manipulabilité ou de sortes que les obstacles soient aussi évités.
+
+#### 3) Méthode par tâche augmentée
+
+![](/assets/images/B3.RIA.CM.Slide-38.png)
+
+Exemple 2R :
+![](/assets/images/B3.RIA.CM.BB20230126-6.png)
+
+Mais on introduit une _singularité algorithmique_ qui n'est pas liée au robot.
+
+## II-3. Tâches prioritaires
+
+Aussi appelé piles de tâches (au-delà de 5 tâches on commence à être limitée).
+
+### Idée
+
+![](/assets/images/B3.RIA.CM.Slide-39.png)
+
+### Propriété
+
+![](/assets/images/B3.RIA.CM.Slide-40.png)
+
+Comme on projète sur une tache, on peut réaliser au mieux une tache sans être embêté par la seconde et inversement.
+
+### Exemple/Illustration
+
+![](/assets/images/B3.RIA.CM.Slide-41.png)
+![](/assets/images/B3.RIA.CM.Slide-42.png)
+![](/assets/images/B3.RIA.CM.Slide-43.png)
+
+# III- Modèle dynamique
+
+## Équations
+
+![](/assets/images/B3.RIA.CM.Slide-44.png)
+
+Quand on dit modèle dynamique, on parle de l'inverse principalement.
+
+## Rappels - Effort Statiques
+
+> Attention: avant dernière equation --> $\tau -(q)^T\;f_e$ rajouter $J$ --> $\tau -J(q)^T\;f_e$
+![](/assets/images/B3.RIA.CM.Slide-45.png)
+
+Les librairies sont principalement basées sur les equations de Newton-Euler car on peut plus facilement calculer les couples d'effort.
+
+- [RNEA - Recursive Newton Euler Agolrithm](https://scaron.info/robot-locomotion/recursive-newton-euler-algorithm.html)
+
+Soucis la matrice $A$ est souvent de taille 40x40 et le calcul de l'inverse avait une complexité de $O(n^3)$ alors que l'on travaille sur de hautes fréquences mais depuis Featherstone la compléxité a été diminué sur du $O(n)$.
+
+
+## Equations d'Euler-Lagrange
+
+![](/assets/images/B3.RIA.CM.Slide-46.png)
+
+### Energie cinétique
+![](/assets/images/B3.RIA.CM.Slide-47.png)
+
+### Matrice d'inertie et Energie Potentielle
+
+![](/assets/images/B3.RIA.CM.Slide-48.png)
+
+### Lagrangien
+
+![](/assets/images/B3.RIA.CM.Slide-49.png)
+![](/assets/images/B3.RIA.CM.Slide-50.png)
+![](/assets/images/B3.RIA.CM.Slide-51.png)
+
+
+
+> Notes RKA du 2023/01/26 - End
+
+---

@@ -1,0 +1,209 @@
+<h1 id="rnn">RNN<a aria-hidden="true" class="anchor-heading icon-link" href="#rnn"></a></h1>
+<blockquote>
+<p><strong>Avertissement:</strong>
+Cette page peut contenir des fautes ! Envoyez-moi un message sur <a href="https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org"><code>#UT3-AURO-M2-2223-Request:matrix.org</code></a> si vous en trouvez, merci.</p>
+</blockquote>
+<blockquote>
+<p>Cours donné par P. Muller, T. Pellegrini</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Notes RKA du 2023/02/06 - Start</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-01.png"></p>
+<h1 id="introduction">Introduction<a aria-hidden="true" class="anchor-heading icon-link" href="#introduction"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-02.png"></p>
+<h1 id="motivation">Motivation<a aria-hidden="true" class="anchor-heading icon-link" href="#motivation"></a></h1>
+<h2 id="analyse-de-sentiments">Analyse de sentiments<a aria-hidden="true" class="anchor-heading icon-link" href="#analyse-de-sentiments"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-03.png"></p>
+<h2 id="séries-temporelles">Séries temporelles<a aria-hidden="true" class="anchor-heading icon-link" href="#séries-temporelles"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-04.png"></p>
+<h2 id="reconnaissance-de-la-parole">Reconnaissance de la parole<a aria-hidden="true" class="anchor-heading icon-link" href="#reconnaissance-de-la-parole"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-05.png"></p>
+<h2 id="traduction-automatique">Traduction automatique<a aria-hidden="true" class="anchor-heading icon-link" href="#traduction-automatique"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-06.png"></p>
+<h2 id="génération-de-légendes-à-partir-dune-image">Génération de légendes à partir d'une image<a aria-hidden="true" class="anchor-heading icon-link" href="#génération-de-légendes-à-partir-dune-image"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-07.png"></p>
+<h2 id="création-de-résumés">Création de résumés<a aria-hidden="true" class="anchor-heading icon-link" href="#création-de-résumés"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-08.png"></p>
+<h2 id="entrée-structurée">Entrée structurée<a aria-hidden="true" class="anchor-heading icon-link" href="#entrée-structurée"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-09.png"></p>
+<h2 id="applications-à-taille-variable">Applications à taille variable<a aria-hidden="true" class="anchor-heading icon-link" href="#applications-à-taille-variable"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-10.png"></p>
+<h1 id="modélisation-de-séquences">Modélisation de séquences<a aria-hidden="true" class="anchor-heading icon-link" href="#modélisation-de-séquences"></a></h1>
+<h2 id="problème-one-to-one">Problème one-to-one<a aria-hidden="true" class="anchor-heading icon-link" href="#problème-one-to-one"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-11.png"></p>
+<h2 id="problème-one-to-many">Problème one-to-many<a aria-hidden="true" class="anchor-heading icon-link" href="#problème-one-to-many"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-12.png"></p>
+<h2 id="problème-many-to-one">Problème many-to-one<a aria-hidden="true" class="anchor-heading icon-link" href="#problème-many-to-one"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-13.png"></p>
+<h2 id="problème-many-to-many">Problème many-to-many<a aria-hidden="true" class="anchor-heading icon-link" href="#problème-many-to-many"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-14.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-15.png"></p>
+<h1 id="réseaux-de-neurones-récurrents-rnn">Réseaux de Neurones Récurrents (RNN)<a aria-hidden="true" class="anchor-heading icon-link" href="#réseaux-de-neurones-récurrents-rnn"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-16.png"></p>
+<p>h ???</p>
+<h2 id="illustration">Illustration<a aria-hidden="true" class="anchor-heading icon-link" href="#illustration"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-17.png"></p>
+<h2 id="formules">Formules<a aria-hidden="true" class="anchor-heading icon-link" href="#formules"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-18.png"></p>
+<h2 id="paramètres-partagés">Paramètres partagés<a aria-hidden="true" class="anchor-heading icon-link" href="#paramètres-partagés"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-19.png"></p>
+<h1 id="rétropropagation-à-travers-le-temps">Rétropropagation à travers le temps<a aria-hidden="true" class="anchor-heading icon-link" href="#rétropropagation-à-travers-le-temps"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-20.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-21.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-22.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-23.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-24.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-25.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-26.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-27.png"></p>
+<h1 id="limites-des-rnn">Limites des RNN<a aria-hidden="true" class="anchor-heading icon-link" href="#limites-des-rnn"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-28.png"></p>
+<h1 id="dépendances-à-longue-distance">Dépendances à longue distance<a aria-hidden="true" class="anchor-heading icon-link" href="#dépendances-à-longue-distance"></a></h1>
+<!-- ![](/assets/images/B3.AA.CM.Slide3.20230206-29.png)
+![](/assets/images/B3.AA.CM.Slide3.20230206-30.png) -->
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-31.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-32.png"></p>
+<h2 id="explosion-du-gradient-gradient-clipping">Explosion du gradient (gradient clipping)<a aria-hidden="true" class="anchor-heading icon-link" href="#explosion-du-gradient-gradient-clipping"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-33.png"></p>
+<h2 id="dissipation-du-gradient">Dissipation du gradient<a aria-hidden="true" class="anchor-heading icon-link" href="#dissipation-du-gradient"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-34.png"></p>
+<h2 id="remarques">Remarques<a aria-hidden="true" class="anchor-heading icon-link" href="#remarques"></a></h2>
+<!-- ![](/assets/images/B3.AA.CM.Slide3.20230206-35.png) -->
+<!-- ![](/assets/images/B3.AA.CM.Slide3.20230206-36.png) -->
+<blockquote>
+<p>Keywords:</p>
+<ul>
+<li>connections résiduelles</li>
+</ul>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-37.png"></p>
+<h1 id="mémoire-cell-dans-le-temps">Mémoire (cell) dans le temps<a aria-hidden="true" class="anchor-heading icon-link" href="#mémoire-cell-dans-le-temps"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-38.png"></p>
+<h2 id="portes">Portes<a aria-hidden="true" class="anchor-heading icon-link" href="#portes"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-39.png"></p>
+<h2 id="long-short-term-memory-networks-lstms">Long Short Term Memory Networks (LSTMs)<a aria-hidden="true" class="anchor-heading icon-link" href="#long-short-term-memory-networks-lstms"></a></h2>
+<h3 id="lstm-classique">LSTM Classique<a aria-hidden="true" class="anchor-heading icon-link" href="#lstm-classique"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-40.png"></p>
+<h3 id="lstm-avec-4-couches-cachées">LSTM avec 4 couches cachées<a aria-hidden="true" class="anchor-heading icon-link" href="#lstm-avec-4-couches-cachées"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-41.png"></p>
+<h3 id="lstm-idée-principale">LSTM Idée principale<a aria-hidden="true" class="anchor-heading icon-link" href="#lstm-idée-principale"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-42.png"></p>
+<h3 id="lstm-portes">LSTM Portes<a aria-hidden="true" class="anchor-heading icon-link" href="#lstm-portes"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-43.png"></p>
+<h3 id="produit-hadamard">Produit Hadamard<a aria-hidden="true" class="anchor-heading icon-link" href="#produit-hadamard"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-44.png"></p>
+<h3 id="forget-gate">Forget Gate<a aria-hidden="true" class="anchor-heading icon-link" href="#forget-gate"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-45.png"></p>
+<h3 id="input-gate-layer">Input Gate Layer<a aria-hidden="true" class="anchor-heading icon-link" href="#input-gate-layer"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-46.png"></p>
+<h3 id="mise-à-jour-de-la-mémoire">Mise à jour de la mémoire<a aria-hidden="true" class="anchor-heading icon-link" href="#mise-à-jour-de-la-mémoire"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-47.png"></p>
+<h3 id="output-gate-layer">Output Gate Layer<a aria-hidden="true" class="anchor-heading icon-link" href="#output-gate-layer"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-48.png"></p>
+<blockquote>
+<p>Le LSTM a pour advantage de ne pas présenter les problèmes de dissipation du gradient.</p>
+</blockquote>
+<h2 id="lstms-bidirectionnels">LSTMs Bidirectionnels<a aria-hidden="true" class="anchor-heading icon-link" href="#lstms-bidirectionnels"></a></h2>
+<!-- ![](/assets/images/B3.AA.CM.Slide3.20230206-49.png) -->
+<!-- ![](/assets/images/B3.AA.CM.Slide3.20230206-50.png) -->
+<!-- ![](/assets/images/B3.AA.CM.Slide3.20230206-51.png) -->
+<!-- ![](/assets/images/B3.AA.CM.Slide3.20230206-52.png) -->
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-53.png"></p>
+<p>Ceci peut etre utile pour comprendre une phrase en allemand où souvent les deniers d'une phrase sont nécessaires pour comprendre le contexte de la phrase. Le bidirectionnelle pourra permettre de prendre en compte les derniers mots pour contextualiser les premiers mots.</p>
+<h3 id="illustration-1">Illustration<a aria-hidden="true" class="anchor-heading icon-link" href="#illustration-1"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-54.png"></p>
+<h3 id="gate-recurrent-units-grus">Gate Recurrent Units (GRUs)<a aria-hidden="true" class="anchor-heading icon-link" href="#gate-recurrent-units-grus"></a></h3>
+<h4 id="principe">Principe<a aria-hidden="true" class="anchor-heading icon-link" href="#principe"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-55.png"></p>
+<h4 id="illustration-2">Illustration<a aria-hidden="true" class="anchor-heading icon-link" href="#illustration-2"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-56.png"></p>
+<h4 id="formules-1">Formules<a aria-hidden="true" class="anchor-heading icon-link" href="#formules-1"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-57.png"></p>
+<h4 id="remarques-1">Remarques<a aria-hidden="true" class="anchor-heading icon-link" href="#remarques-1"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-58.png"></p>
+<h1 id="rnns-génératifs">RNNs génératifs<a aria-hidden="true" class="anchor-heading icon-link" href="#rnns-génératifs"></a></h1>
+<!-- ![](/assets/images/B3.AA.CM.Slide3.20230206-59.png) -->
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-60.png"></p>
+<h2 id="illustration-3">Illustration<a aria-hidden="true" class="anchor-heading icon-link" href="#illustration-3"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-61.png"></p>
+<p>On réintroduit en entrée les charactères prédits précédemment.</p>
+<h2 id="exemple-textes-journalistiques">Exemple Textes Journalistiques<a aria-hidden="true" class="anchor-heading icon-link" href="#exemple-textes-journalistiques"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-62.png"></p>
+<h2 id="exemple-dutilisation">Exemple d'utilisation<a aria-hidden="true" class="anchor-heading icon-link" href="#exemple-dutilisation"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-63.png"></p>
+<p>Pour la traduction automatique et la génération des résumés, la taille de sortie n'est pas la meme que l'entrée. Ceci se modélise par du seq2seq</p>
+<h2 id="modèle-sequence-to-sequence-seq2seq">Modèle Sequence to Sequence (seq2seq)<a aria-hidden="true" class="anchor-heading icon-link" href="#modèle-sequence-to-sequence-seq2seq"></a></h2>
+<blockquote>
+<p>Aussi appelé:</p>
+<ul>
+<li>n2n</li>
+<li>bout en bout</li>
+<li>encodeur/decodeu</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>cf. Réseau d'attention</p>
+</blockquote>
+<h3 id="illustration-4">Illustration<a aria-hidden="true" class="anchor-heading icon-link" href="#illustration-4"></a></h3>
+<blockquote>
+<p>Keywords: génération de séquence</p>
+</blockquote>
+<!-- ![](/assets/images/B3.AA.CM.Slide3.20230206-64.png) -->
+<!-- ![](/assets/images/B3.AA.CM.Slide3.20230206-65.png) -->
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-66.png"></p>
+<p>Comment le réseau s'arrête de prédire ?</p>
+<p>Il faut qu'il anticipe à quel moment la séquence s'arrête. Donc il prédira aussi un caractère "stop".</p>
+<h3 id="entraînement-et-test">Entraînement et Test<a aria-hidden="true" class="anchor-heading icon-link" href="#entraînement-et-test"></a></h3>
+<blockquote>
+<p>Keywords:</p>
+<ul>
+<li>prédiction structuré</li>
+<li>Negative Log Likelihood (vraisemblance)</li>
+</ul>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-67.png"></p>
+<h3 id="décodage">Décodage<a aria-hidden="true" class="anchor-heading icon-link" href="#décodage"></a></h3>
+<blockquote>
+<p>Keywords:</p>
+<ul>
+<li>Score optimal / problème combinatoire</li>
+<li>Approche glouton (greedy search) </li>
+<li>Beam search</li>
+<li>Top-K sampling</li>
+</ul>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-68.png"></p>
+<p>Le décodage va chercher la meilleur combinaison des sorties prédites (ces sorties sont des vecteurs de probabilités). Il existe plusieurs stratégies de décodage :</p>
+<ul>
+<li>La Greedy Search va prendre le mot le plus probable localement (sans y revenir par après) comme premier mot et construire p.r.à ce mot.</li>
+<li>Problème si ce premier n'est pas le bon (sans être corrigé), le reste sera mauvais</li>
+<li>C'est pourquoi dans le Beam Search on va garder une liste des mots les plus possibles</li>
+</ul>
+<h4 id="recherche-exhaustive">Recherche Exhaustive<a aria-hidden="true" class="anchor-heading icon-link" href="#recherche-exhaustive"></a></h4>
+<!-- ![](/assets/images/B3.AA.CM.Slide3.20230206-69.png) -->
+<!-- ![](/assets/images/B3.AA.CM.Slide3.20230206-70.png) -->
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-71.png"></p>
+<h4 id="greedy-decoding">Greedy Decoding<a aria-hidden="true" class="anchor-heading icon-link" href="#greedy-decoding"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-72.png"></p>
+<h4 id="beam-search">Beam Search<a aria-hidden="true" class="anchor-heading icon-link" href="#beam-search"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-73.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-74.png"></p>
+<h4 id="top-p-sampling">Top-p Sampling<a aria-hidden="true" class="anchor-heading icon-link" href="#top-p-sampling"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-75.png"></p>
+<p>Tirer parmi les k etaptes les plus probables va permettre d'introduire un peu de créativité dans la génération de texte.</p>
+<h1 id="quiz">Quiz<a aria-hidden="true" class="anchor-heading icon-link" href="#quiz"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide3.20230206-76.png"></p>
+<p>Le nettoyage d'image ne sera pas fait avec du seq2seq.</p>
+<p>Autre exmple, le Q&#x26;A avec la particularité que l'on encode la question mais on décode la réponse.</p>
+<blockquote>
+<p>Notes RKA du 2023/02/06 - End</p>
+</blockquote>
+<hr>
+<hr>
+<strong>Backlinks</strong>
+<ul>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/wyd35u3oxvhvedd1pwhct4j">AA - Apprentissage Automatique</a></li>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/tq1n4g1yvi31cirvtnerzn4">Recap</a></li>
+</ul>

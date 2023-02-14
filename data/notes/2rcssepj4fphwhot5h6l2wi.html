@@ -1,0 +1,498 @@
+<h1 id="introduction-à-lapprentissage-automaique">Introduction à l'apprentissage automaique<a aria-hidden="true" class="anchor-heading icon-link" href="#introduction-à-lapprentissage-automaique"></a></h1>
+<blockquote>
+<p><strong>Avertissement:</strong>
+Cette page peut contenir des fautes ! Envoyez-moi un message sur <a href="https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org"><code>#UT3-AURO-M2-2223-Request:matrix.org</code></a> si vous en trouvez, merci.</p>
+</blockquote>
+<blockquote>
+<p>Cours donné par T. Pellegrini</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Notes RKA du 2023/01/18 - Start</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-001.png"></p>
+<h1 id="modalités">Modalités<a aria-hidden="true" class="anchor-heading icon-link" href="#modalités"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-002.png"></p>
+<h1 id="objectifs-généraux">Objectifs généraux<a aria-hidden="true" class="anchor-heading icon-link" href="#objectifs-généraux"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-003.png"></p>
+<p>Si pas assez de données plustôt utiliser des graphes ou des mélanges de gaussiennes (AI n'est pas toujours le plus optimale).</p>
+<h1 id="bibiliographie">Bibiliographie<a aria-hidden="true" class="anchor-heading icon-link" href="#bibiliographie"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-004.png"></p>
+<h1 id="aperçu">Aperçu<a aria-hidden="true" class="anchor-heading icon-link" href="#aperçu"></a></h1>
+<blockquote>
+<p>Keywords:</p>
+<ul>
+<li>MLP - Multi-Layer Perceptron</li>
+<li>CNN - Connbolutional Neural Networks</li>
+<li>RNN - Recurrent Neural Networks</li>
+<li>seq2seq</li>
+</ul>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-005.png"></p>
+<p>Perceptron est la base d'un réseau de neuronne.</p>
+<p>On peut combiner un CNN avec un RNN.</p>
+<p>Les modèles séquences à séquences peuvent ne pas être non récurrent.
+Les transformeurs sont des MLP sans récurrences.</p>
+<p>Limites:</p>
+<ul>
+<li>Interpratibilité: peut-on interpréter le resultat final</li>
+<li>Biais: si les données fournis sont biaisées le resultat sera biaisées aussi donc il faut mettre en place des corrections pour les eviter si possible</li>
+<li>Exemple adversaires: données un modèle erroné pour tester l'algo ???</li>
+</ul>
+<h1 id="sommaire">Sommaire<a aria-hidden="true" class="anchor-heading icon-link" href="#sommaire"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-006.png"></p>
+<h1 id="i--introduction">I- Introduction<a aria-hidden="true" class="anchor-heading icon-link" href="#i--introduction"></a></h1>
+<h2 id="quest-ce-que-lapprentissage-par-machine-learning-">Qu'est-ce que l'apprentissage par Machine Learning ?<a aria-hidden="true" class="anchor-heading icon-link" href="#quest-ce-que-lapprentissage-par-machine-learning-"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-007.png"></p>
+<h3 id="définition">Définition<a aria-hidden="true" class="anchor-heading icon-link" href="#définition"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-008.png"></p>
+<h3 id="terminologie">Terminologie<a aria-hidden="true" class="anchor-heading icon-link" href="#terminologie"></a></h3>
+<blockquote>
+<p>Keywords:</p>
+<ul>
+<li>Observations</li>
+<li>Attributs (Features)</li>
+<li>Etiquettes (Labels)</li>
+<li>Corpus (Train) </li>
+</ul>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-009.png"></p>
+<p>Exemple: trier des e-mails</p>
+<ul>
+<li>Données = titres + texte d'email
+<ul>
+<li>correspondent aux <strong>observations</strong></li>
+</ul>
+</li>
+<li>Labels = Binaire --> Spam/Non-Spam
+<ul>
+<li>y = +1 pour Spam</li>
+<li>y = 0  pour Non-Spam (<strong>dans un perceptron on mettre à -1</strong>)</li>
+</ul>
+</li>
+<li>Comment encoder le texte ?
+<ul>
+<li>on cherche à travailler avec des réelles (il existe des algo binaires mais en général <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mi mathvariant="double-struck">R</mi></mrow><annotation encoding="application/x-tex">x\in\mathbb{R}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6889em;"></span><span class="mord mathbb">R</span></span></span></span></span>)</li>
+<li>mais on ne veut pas biaisé l'attribution d'un nombre à un mot en y introduisant un ordre comme dans le cas où on liste les N mots présents dans les emails auquels on associe un nombre entier de <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span></span> à <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">N-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span></li>
+<li>ainsi on va préférer donner un vecteur de taille <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span></span> remplis de <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span></span> sauf pour la position du mot dans la liste de mots</li>
+</ul>
+</li>
+</ul>
+<p>Autre exemple: classification de chiffres manuscrites</p>
+<h3 id="paradigmes-dapprentissage">Paradigmes d'apprentissage<a aria-hidden="true" class="anchor-heading icon-link" href="#paradigmes-dapprentissage"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-010.png"></p>
+<h3 id="exemples-apprentrissage-supervisée">Exemples Apprentrissage Supervisée<a aria-hidden="true" class="anchor-heading icon-link" href="#exemples-apprentrissage-supervisée"></a></h3>
+<blockquote>
+<p>Keywords: Classification ; Régression</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-011.png"></p>
+<p>Une classification s'applique à des problèmes discret (prédiction de classe) alors que la régression s'applique aux problèmes d'estimation on cherche à calculer un score (prédiction du cours du blé).</p>
+<h2 id="deep-learning">Deep Learning<a aria-hidden="true" class="anchor-heading icon-link" href="#deep-learning"></a></h2>
+<p>L'IA est composé de Machine Learning.</p>
+<p>Le Deep Leaerning une branche du Machine Learning où les réseaux de neurons sont profond (à plusieurs couches) [peut aussi être sur d'autres niveaux que sur les réseaux de neurones].</p>
+<p>On ne sait pas encore à partir de quel seuil un réseau est profond.</p>
+<blockquote>
+<p>Keywords: niveaux d'abstraction</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-012.png"></p>
+<h3 id="avant-gout---mlpdnn">Avant Gout - MLP/DNN<a aria-hidden="true" class="anchor-heading icon-link" href="#avant-gout---mlpdnn"></a></h3>
+<blockquote>
+<p>Keywords:</p>
+<ul>
+<li>MLP - Multi-Layer Perceptron</li>
+<li>FCNN - Fully Connected Neural Network</li>
+<li>DNN - Deep Neural Network</li>
+</ul>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-013.png"></p>
+<p>Ici, on a un MLP ou aussi appelé FCNN.</p>
+<p>La cellule <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span></span> introduit un biais.</p>
+<p>Par exmple, l'image d'un nombre 6 peut être encodé pixel par pixel</p>
+<p>Ceci sera linéaire p.r.à. pixel du coup sur la prochaine couche on applique une fonction (la fonction d'activaiton) pour rendre la donnée non linéiare pour gagner en <strong>expressivité</strong>. En effet, ce serait pas intéressé d'avoir une combinaison linéaire des couches en sortir (dans le cas où toutes les couches sont linéaires).</p>
+<h3 id="définition-1">Définition<a aria-hidden="true" class="anchor-heading icon-link" href="#définition-1"></a></h3>
+<blockquote>
+<p>Keywords:</p>
+<ul>
+<li>Représentation distribuée (distributed representation)</li>
+<li>Neurones activés</li>
+<li>Partionnement de l'entrée</li>
+</ul>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-014.png"></p>
+<h3 id="origine">Origine<a aria-hidden="true" class="anchor-heading icon-link" href="#origine"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-015.png"></p>
+<h2 id="application">Application<a aria-hidden="true" class="anchor-heading icon-link" href="#application"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-016.png"></p>
+<h3 id="image-captioning">Image Captioning<a aria-hidden="true" class="anchor-heading icon-link" href="#image-captioning"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-017.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-018.png"></p>
+<h3 id="segmentation-sémantique">Segmentation sémantique<a aria-hidden="true" class="anchor-heading icon-link" href="#segmentation-sémantique"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-019.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-020.png"></p>
+<h3 id="génération-dimages">Génération d'images<a aria-hidden="true" class="anchor-heading icon-link" href="#génération-dimages"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-021.png"></p>
+<p>Repose sur les "Diffusion Models".
+Les photos ici sont créer et non pas choisis dans une base de données.</p>
+<h3 id="remarques">Remarques<a aria-hidden="true" class="anchor-heading icon-link" href="#remarques"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-022.png"></p>
+<p>ChatGPT</p>
+<h1 id="ii--les-fondamentaux">II- Les fondamentaux<a aria-hidden="true" class="anchor-heading icon-link" href="#ii--les-fondamentaux"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-023.png"></p>
+<h2 id="le-perceptron">Le Perceptron<a aria-hidden="true" class="anchor-heading icon-link" href="#le-perceptron"></a></h2>
+<p>Algorithme de classification</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-024.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-025.png"></p>
+<p>Ici le perceptron va calculer les points/scores et donner la classe.</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-026.png"></p>
+<p>Il y a autant de <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi></mrow><annotation encoding="application/x-tex">w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span></span></span></span> que la taille de <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span></span> mais un seul seuil/threshold.</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-027.png"></p>
+<div class="math math-display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mover accent="true"><mi>w</mi><mo stretchy="true">→</mo></mover><mo>=</mo><mo stretchy="false">[</mo><mi>w</mi><mn>0</mn><mo separator="true">;</mo><mi>w</mi><mn>1</mn><mo separator="true">;</mo><mi>w</mi><mn>2</mn><mo stretchy="false">]</mo><mspace linebreak="newline"></mspace><mover accent="true"><mi>x</mi><mo stretchy="true">→</mo></mover><mo>=</mo><mo stretchy="false">[</mo><mn>1</mn><mo separator="true">;</mo><mi>x</mi><mn>1</mn><mo separator="true">;</mo><mi>x</mi><mn>2</mn><mo stretchy="false">]</mo><mspace linebreak="newline"></mspace><mover accent="true"><mi>z</mi><mo stretchy="true">→</mo></mover><mo>=</mo><msup><mover accent="true"><mi>w</mi><mo stretchy="true">→</mo></mover><mi>t</mi></msup><mo>⋅</mo><mover accent="true"><mi>x</mi><mo stretchy="true">→</mo></mover></mrow><annotation encoding="application/x-tex">\overrightarrow{w} = [w0 ; w1 ; w2]\\ \overrightarrow{x} = [1 ; x1 ; x2]\\ \overrightarrow{z} = \overrightarrow{w}^t \cdot \overrightarrow{x}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9526em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9526em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span><span class="svg-align" style="top:-3.4306em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="height:0.522em;min-width:0.888em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mord">0</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mord">1</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mord">2</span><span class="mclose">]</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.9526em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9526em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">x</span></span><span class="svg-align" style="top:-3.4306em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="height:0.522em;min-width:0.888em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">1</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span><span class="mord">1</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span><span class="mord">2</span><span class="mclose">]</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.9526em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9526em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span></span><span class="svg-align" style="top:-3.4306em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="height:0.522em;min-width:0.888em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.9526em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9526em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span><span class="svg-align" style="top:-3.4306em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="height:0.522em;min-width:0.888em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8436em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.9526em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9526em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">x</span></span><span class="svg-align" style="top:-3.4306em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="height:0.522em;min-width:0.888em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span></span></span></span></span></span></span></span></span></div>
+<p>Sur Python, ceci se code:</p>
+<pre class="language-python"><code class="language-python">z <span class="token operator">=</span> w<span class="token punctuation">.</span>T @ x
+z <span class="token operator">=</span> np<span class="token punctuation">.</span>dot<span class="token punctuation">(</span>w<span class="token punctuation">.</span>T<span class="token punctuation">,</span> x<span class="token punctuation">)</span>
+</code></pre>
+<h2 id="comment-trouver-overrightarroww-">Comment trouver <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>w</mi><mo stretchy="true">→</mo></mover></mrow><annotation encoding="application/x-tex">\overrightarrow{w}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9526em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9526em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span><span class="svg-align" style="top:-3.4306em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="height:0.522em;min-width:0.888em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span></span></span></span></span></span></span></span></span> ?<a aria-hidden="true" class="anchor-heading icon-link" href="#comment-trouver-overrightarroww-"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-030.png"></p>
+<p>Graphiquement on obtient:</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-031.png"></p>
+<p>Ici, <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span></span></span></span></span> représente <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>w</mi><mo stretchy="true">→</mo></mover></mrow><annotation encoding="application/x-tex">\overrightarrow{w}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9526em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9526em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span><span class="svg-align" style="top:-3.4306em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="height:0.522em;min-width:0.888em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span></span></span></span></span></span></span></span></span>.</p>
+<p>L'équation de la droite rouge est:</p>
+<div class="math math-display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="script">D</mi><mo>:</mo><msub><mi>w</mi><mn>1</mn></msub><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><msub><mi>w</mi><mn>2</mn></msub><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><msub><mi>w</mi><mn>0</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\mathcal{D} : w_1x_1 + w_2x_2 + w_0 = 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal" style="margin-right:0.02778em;">D</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span></span></div>
+<p>Du coup <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>w</mi><mo stretchy="true">→</mo></mover></mrow><annotation encoding="application/x-tex">\overrightarrow{w}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9526em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9526em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span><span class="svg-align" style="top:-3.4306em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="height:0.522em;min-width:0.888em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span></span></span></span></span></span></span></span></span> est perpendiculaire à cette droite.</p>
+<p>Cette convergence a été démontré sous l'hypothèse que les données sont séparables (autrement il y aura oscillation).</p>
+<p>Du coup, si la droite existe il existera une solution (ou même plusieurs).</p>
+<h2 id="variante-équivalentes-de-la-règle">Variante équivalentes de la règle<a aria-hidden="true" class="anchor-heading icon-link" href="#variante-équivalentes-de-la-règle"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-032.png"></p>
+<h2 id="algorithme">Algorithme<a aria-hidden="true" class="anchor-heading icon-link" href="#algorithme"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-034.png"></p>
+<h2 id="version-batch">Version Batch<a aria-hidden="true" class="anchor-heading icon-link" href="#version-batch"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-035.png"></p>
+<h2 id="simuler-des-fonctions-booléennes">Simuler des fonctions booléennes<a aria-hidden="true" class="anchor-heading icon-link" href="#simuler-des-fonctions-booléennes"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-036.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-037.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.BB20230118-1.png"></p>
+<p><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>y</mi><mo>^</mo></mover></mrow><annotation encoding="application/x-tex">\hat y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span></span></span></span></span> est la prédiction que l'on compare au label <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span></span></p>
+<h1 id="iii--du-perceptron-au-mlp">III- Du Perceptron au MLP<a aria-hidden="true" class="anchor-heading icon-link" href="#iii--du-perceptron-au-mlp"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-038.png"></p>
+<h2 id="mlp---multi-layer-perceptron">MLP - Multi Layer Perceptron<a aria-hidden="true" class="anchor-heading icon-link" href="#mlp---multi-layer-perceptron"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-039.png"></p>
+<p>Pour les couches internes sont dites cachés quand on ne sait pas comment reconnaître la vérité (contrairement à la dernière couche).</p>
+<h2 id="frontières-de-décision">Frontières de décision<a aria-hidden="true" class="anchor-heading icon-link" href="#frontières-de-décision"></a></h2>
+<h3 id="exemple-un-polygone">Exemple: Un polygone<a aria-hidden="true" class="anchor-heading icon-link" href="#exemple-un-polygone"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-040.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-046.png"></p>
+<p>Régularisation = conserver des <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi></mrow><annotation encoding="application/x-tex">w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span></span></span></span> de norme faible</p>
+<p>Meme si avoir une grande norme donne une meilleur confiance</p>
+<h3 id="exemple-deux-polygones">Exemple: Deux polygones<a aria-hidden="true" class="anchor-heading icon-link" href="#exemple-deux-polygones"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-047.png"></p>
+<h2 id="problématique">Problématique<a aria-hidden="true" class="anchor-heading icon-link" href="#problématique"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-048.png"></p>
+<h2 id="classification-linéaire-cas-multiclasse">Classification linéaire: cas multiclasse<a aria-hidden="true" class="anchor-heading icon-link" href="#classification-linéaire-cas-multiclasse"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-049.png"></p>
+<h3 id="formule">Formule<a aria-hidden="true" class="anchor-heading icon-link" href="#formule"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-050.png"></p>
+<blockquote>
+<p>Notes RKA du 2023/01/18 - End</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Notes RKA du 2023/01/19 - Start</p>
+</blockquote>
+<p>En cas multi-class on prédit une seule classe gagnante. Du coup la classe prédite sera celle avec le meilleur score.</p>
+<p>Sur Python, on code cela ainsi:</p>
+<pre class="language-python"><code class="language-python"><span class="token comment"># how to return the max value in scores</span>
+np<span class="token punctuation">.</span><span class="token builtin">max</span><span class="token punctuation">(</span>scores<span class="token punctuation">)</span>
+y_pred <span class="token operator">=</span> np<span class="token punctuation">.</span>argmax<span class="token punctuation">(</span>scores<span class="token punctuation">)</span> <span class="token comment"># returns the index of the max value in the vector scores</span>
+
+<span class="token comment"># other option</span>
+<span class="token keyword">import</span> torch
+y_pred <span class="token operator">=</span> torch<span class="token punctuation">.</span>argmax<span class="token punctuation">(</span>scores<span class="token punctuation">)</span>
+</code></pre>
+<p><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi></mrow><annotation encoding="application/x-tex">W</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span></span></span></span></span> est de taille <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>×</mo><mi>d</mi></mrow><annotation encoding="application/x-tex">k\times d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span></span> et <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span></span> de taille <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span></span> et <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>c</mi><mi>o</mi><mi>r</mi><mi>e</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">scores</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">scores</span></span></span></span></span> est de taille <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span></span></p>
+<h3 id="exemple">Exemple<a aria-hidden="true" class="anchor-heading icon-link" href="#exemple"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-051.png"></p>
+<h3 id="cifar-10">CIFAR-10<a aria-hidden="true" class="anchor-heading icon-link" href="#cifar-10"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-052.png"></p>
+<p>On peut faire un redimensionnement de W pour l'afficher avec <code>imshow</code> ce qui donne les images dans le slide</p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+
+plt<span class="token punctuation">.</span>imshow<span class="token punctuation">(</span>W_fox_reshaped<span class="token punctuation">)</span>
+</code></pre>
+<p>Ici on a des images de taille 32x32.</p>
+<p>Comme il y a de la couleur on a un tenseur de dimension 32x32x3.</p>
+<p>Du coup x est une superposition de 3 vecteurs 1024.</p>
+<p>On peut interpréter l'image de la classe avion comme un filtre qui donnera un score elevé dès que l'image candidate possède un fond bleu.</p>
+<p>Pour le cheval le filtre ne fait pas de différence si la tete du cheval est à gauche ou à droite.</p>
+<h3 id="remarque-technique">Remarque technique<a aria-hidden="true" class="anchor-heading icon-link" href="#remarque-technique"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-053.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-054.png"></p>
+<h3 id="comment-trouver-overrightarroww--1">Comment trouver <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>w</mi><mo stretchy="true">→</mo></mover></mrow><annotation encoding="application/x-tex">\overrightarrow{w}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9526em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9526em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span><span class="svg-align" style="top:-3.4306em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="height:0.522em;min-width:0.888em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span></span></span></span></span></span></span></span></span> ?<a aria-hidden="true" class="anchor-heading icon-link" href="#comment-trouver-overrightarroww--1"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-056.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-058.png"></p>
+<h4 id="la-descente-du-gradient-dg">La descente du gradient (DG)<a aria-hidden="true" class="anchor-heading icon-link" href="#la-descente-du-gradient-dg"></a></h4>
+<blockquote>
+<p>Keywords:</p>
+<ul>
+<li><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span></span>: taux d'apprentissage</li>
+<li>régularisation</li>
+</ul>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-059.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.TP2.BB20230130-1.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.TP2.BB20230130-2.png"></p>
+<p>Dans l'idée on cherche à approximer un nuage de point par une fonction qui passe aux plus proche de ces points. Plus la fonction sera précise plus cela induira de variance. C'est pourquoi il est parfois préférable de régulariser le taux d'apprentrissage pour éviter ces excès de variations tout en ayant un apprentissage efficace/optimal.</p>
+<h3 id="quelle-fonction-loss-choisir-">Quelle fonction <em>loss</em> choisir ?<a aria-hidden="true" class="anchor-heading icon-link" href="#quelle-fonction-loss-choisir-"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-060.png"></p>
+<h4 id="heaviside">Heaviside<a aria-hidden="true" class="anchor-heading icon-link" href="#heaviside"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-062.png"></p>
+<ul>
+<li>si <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>×</mo><msup><mi>w</mi><mi>t</mi></msup><mo>×</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">y\times w^t\times x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8769em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7936em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span></span> est negatif on fait une erreur (comme <code>heaviside</code> est en logique inverse il faut le moins pour obtenir le bon <em>loss</em>)</li>
+</ul>
+<h4 id="choix-du-loss">Choix du <em>loss</em><a aria-hidden="true" class="anchor-heading icon-link" href="#choix-du-loss"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-063.png"></p>
+<h5 id="activation-sigmoide">Activation: Sigmoide<a aria-hidden="true" class="anchor-heading icon-link" href="#activation-sigmoide"></a></h5>
+<blockquote>
+<p>La fonction Sigmoide est aussi appelé fonction logistique</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-064.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-065.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-066.png"></p>
+<p>Historiquement la sigmoide a été utilisé c'est pourquoi les labels d'un perceptron étaient 0 ou +1 (on aurait tangente hyperbolique qui donne -1 +1 mais la sigmoide a été utilisé).</p>
+<p>Maintenant une autre fonction est utilisé que l'on verra plus tard.</p>
+<h5 id="critère-de-choix">Critère de choix<a aria-hidden="true" class="anchor-heading icon-link" href="#critère-de-choix"></a></h5>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-068.png"></p>
+<h5 id="bce---binary-cross-entropy">BCE - Binary Cross-Entropy<a aria-hidden="true" class="anchor-heading icon-link" href="#bce---binary-cross-entropy"></a></h5>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-069.png"></p>
+<p>Dans le cas <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">y=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span> la loss pénalise lorsque le score est proche de 0 via sa divergence en 0.</p>
+<p>Le reseau aura ou bien 1 seul neuronne binaire de sortie ou 2 neurones un pour la classe à 0 et un pour celle à 1.</p>
+<p>Ici le dernier neurone aura une sigmoide pour fonction d'activation (relu/gelu sont utilisées en général pour les couches cachées).</p>
+<h5 id="régression-logistique-ou-classification-logistique">Régression logistique (ou classification logistique)<a aria-hidden="true" class="anchor-heading icon-link" href="#régression-logistique-ou-classification-logistique"></a></h5>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-070.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-071.png"></p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">import</span> torch
+<span class="token keyword">import</span> torch<span class="token punctuation">.</span>nn <span class="token keyword">as</span> nn
+
+<span class="token keyword">class</span> <span class="token class-name">LogisticRegression</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># Constructor</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> input_dim<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span>LogiticRegression<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># we need a linear layer with weight of input_dim and a bias of 1</span>
+        self<span class="token punctuation">.</span>linear <span class="token operator">=</span> torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span>input_dim<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token comment"># if need several layers we have to define a self.linear2</span>
+
+    <span class="token comment"># Method</span>
+    <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># forward is reserved this is why we do not need to write .forward when calling it</span>
+        <span class="token comment"># We apply the function linear defined in the constructor</span>
+        a <span class="token operator">=</span> self<span class="token punctuation">.</span>linear<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+        <span class="token comment"># with several layers we would code:</span>
+        <span class="token comment"># x = self.linear(x)</span>
+        <span class="token comment"># We use sigmoid to compute our prediction</span>
+        y_pred <span class="token operator">=</span> torch<span class="token punctuation">.</span>sigmoid<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> y_pred
+
+<span class="token comment"># Object Creation of input_dim = 10</span>
+model <span class="token operator">=</span> LogiticRegression<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+
+<span class="token comment"># Random Matrix of size 100x10 filled with numbers center in 0 with variance -1:1</span>
+<span class="token builtin">input</span> <span class="token operator">=</span> torch<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token comment"># this is a tensor</span>
+output <span class="token operator">=</span> model<span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">)</span> <span class="token comment"># works better (regarding memory's management) than model.forward(input)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>output<span class="token punctuation">.</span>size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h5 id="fonctions-dactivation-g-et-o">Fonctions d'activation <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span></span></span></span></span> et <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>o</mi></mrow><annotation encoding="application/x-tex">o</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">o</span></span></span></span></span><a aria-hidden="true" class="anchor-heading icon-link" href="#fonctions-dactivation-g-et-o"></a></h5>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-073.png"></p>
+<p>Le choix de la fonction d'activaiton peut se trouver dans la doc:</p>
+<ul>
+<li><a href="https://pytorch.org/docs/stable/nn.html#non-linear-activations-weighted-sum-nonlinearity">TORCH.NN</a></li>
+</ul>
+<blockquote>
+<p>Fonctions: tanh ; hardthanh ; sigmoid ; softplus ; relu ; leakyrelu
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-074.png"></p>
+</blockquote>
+<p>Sigmoide n'est plus utilisé car lorsque la fonction est 'platte' la dérivée est nulle ce qui signifie que le gradient "s'evapore" et donc ne fait plus évoluer le W du coup le réseau n'apprend plus.</p>
+<p>Relu (Rectifier Linear Unit) est facile à coder <code>max(0,x)</code></p>
+<p>Mais de nos jours la plus utilisé est <code>nn.GELU</code> (cf <a href="https://pytorch.org/docs/stable/generated/torch.nn.GELU.html#torch.nn.GELU">doc</a>)</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-074.GELU.png"></p>
+<p>C'est une fonction d'activation basée sur erf = lagaussienne</p>
+<h5 id="softmax">Softmax<a aria-hidden="true" class="anchor-heading icon-link" href="#softmax"></a></h5>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-075.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.BB20230119-1.png"></p>
+<p><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><msup><mi>w</mi><mi>t</mi></msup><mo>×</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">a = w^t \times x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8769em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7936em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span></span> est aussi appelé la préactivation</p>
+<p>L'activation est noté <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">h</span></span></span></span></span></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.BB20230119-2.png"></p>
+<p>La couche de sortie présente des resultats probabiliste.</p>
+<h2 id="apprentissage">Apprentissage<a aria-hidden="true" class="anchor-heading icon-link" href="#apprentissage"></a></h2>
+<h3 id="cas-mlp">Cas: MLP<a aria-hidden="true" class="anchor-heading icon-link" href="#cas-mlp"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-079.png"></p>
+<h3 id="cas-réseau-de-neuronne">Cas: réseau de neuronne<a aria-hidden="true" class="anchor-heading icon-link" href="#cas-réseau-de-neuronne"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-080.png"></p>
+<p><code>forward</code> passe les exemples dans le model</p>
+<p><code>backword</code> (algorithme rétropropragation <em>backpropagation</em>) calcule le gradient de la <em>loss</em> pour chaque couches en partant de la sortie</p>
+<p>une fois le réseau entrainé il n'y a plus besoin de faire un <code>backward</code></p>
+<h3 id="algo">Algo<a aria-hidden="true" class="anchor-heading icon-link" href="#algo"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-085.png"></p>
+<h2 id="classification">Classification<a aria-hidden="true" class="anchor-heading icon-link" href="#classification"></a></h2>
+<h3 id="quelle-loss-">Quelle <em>loss</em> ?<a aria-hidden="true" class="anchor-heading icon-link" href="#quelle-loss-"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-086.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-087.png"></p>
+<p>La <em>loss</em> (cf <a href="https://pytorch.org/docs/stable/nn.html#loss-functions">doc</a> ) n'est pas à confondre avec la fonction d'activation ! La fct d'activaiton s'applique dans les couches (et peut être différent à chaque couche) elle prend pour valeur les sorties des couches. La <em>loss</em> elle prend les labels et les sorties pour mesuser l'erreur.</p>
+<p>La <em>cross-entropy loss</em> se définit comme suit:</p>
+<div class="math math-display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="script">L</mi><mo stretchy="false">(</mo><mi>y</mi><mo separator="true">,</mo><mover accent="true"><mi>y</mi><mo>^</mo></mover><mo stretchy="false">)</mo><mo>=</mo><mo>−</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><msub><mover accent="true"><mi>y</mi><mo>^</mo></mover><mi>c</mi></msub><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="double-struck">I</mi><mo stretchy="false">{</mo><mi>i</mi><mo>=</mo><mi>c</mi><mo stretchy="false">}</mo><mover accent="true"><mi>y</mi><mo stretchy="true">→</mo></mover><mtext>  </mtext><mi>l</mi><mi>o</mi><mi>g</mi><mover accent="true"><mover accent="true"><mi>y</mi><mo>^</mo></mover><mo stretchy="true">→</mo></mover></mrow><annotation encoding="application/x-tex">\mathcal{L}(y,\hat y) = -log(\hat y_c) = \mathbb{I}\{ i = c \} \overrightarrow{y} \; log \overrightarrow{\hat y}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathcal">L</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">−</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord"><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathbb">I</span><span class="mopen">{</span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.4664em;vertical-align:-0.25em;"></span><span class="mord mathnormal">c</span><span class="mclose">}</span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9526em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span><span class="svg-align" style="top:-3.4306em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="height:0.522em;min-width:0.888em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.2164em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span></span><span class="svg-align" style="top:-3.6944em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="height:0.522em;min-width:0.888em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span></span></span></span></span></div>
+<blockquote>
+<p>Notes RKA du 2023/01/19 - End</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Notes RKA du 2023/01/26 - Start</p>
+</blockquote>
+<h3 id="binary-cross-entropy-loss">Binary Cross-Entropy loss<a aria-hidden="true" class="anchor-heading icon-link" href="#binary-cross-entropy-loss"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-088.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-089.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-090.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-091.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-092.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-093.png"></p>
+<ul>
+<li><a href="https://github.com/tensorflow/tensorflow/blob/r1.10/tensorflow/python/ops/nn_impl.py">Documentation tensorflow</a></li>
+</ul>
+<hr>
+<blockquote>
+<p>Hors Programme - Start</p>
+</blockquote>
+<h3 id="divergence-de-kullback-leibler">Divergence de Kullback-Leibler<a aria-hidden="true" class="anchor-heading icon-link" href="#divergence-de-kullback-leibler"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-094.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-095.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-096.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-097.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-098.png"></p>
+<blockquote>
+<p>Hors Programme - End</p>
+</blockquote>
+<hr>
+<h2 id="régression">Régression<a aria-hidden="true" class="anchor-heading icon-link" href="#régression"></a></h2>
+<h3 id="erreur-quadratique-moyenne">Erreur quadratique moyenne<a aria-hidden="true" class="anchor-heading icon-link" href="#erreur-quadratique-moyenne"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-099.png"></p>
+<h3 id="bce-vs-mse">BCE vs MSE<a aria-hidden="true" class="anchor-heading icon-link" href="#bce-vs-mse"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-100.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-101.png"></p>
+<h3 id="régression-logistique">Régression logistique<a aria-hidden="true" class="anchor-heading icon-link" href="#régression-logistique"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-102.png"></p>
+<h2 id="bilan-choix-fonction-coûtactivation">Bilan Choix Fonction Coût/Activation<a aria-hidden="true" class="anchor-heading icon-link" href="#bilan-choix-fonction-coûtactivation"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-103.png"></p>
+<h1 id="iv--compléments">IV- Compléments<a aria-hidden="true" class="anchor-heading icon-link" href="#iv--compléments"></a></h1>
+<h2 id="apprentissage-1">Apprentissage<a aria-hidden="true" class="anchor-heading icon-link" href="#apprentissage-1"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-104.png"></p>
+<h2 id="notations">Notations<a aria-hidden="true" class="anchor-heading icon-link" href="#notations"></a></h2>
+<h3 id="1-neurone">1 neurone<a aria-hidden="true" class="anchor-heading icon-link" href="#1-neurone"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-105.png"></p>
+<h3 id="caclul-des-gradients-pour-1-neurone">Caclul des gradients pour 1 neurone<a aria-hidden="true" class="anchor-heading icon-link" href="#caclul-des-gradients-pour-1-neurone"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-106.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-108.png"></p>
+<h3 id="mlp-à-couches-cachées">MLP à couches cachées<a aria-hidden="true" class="anchor-heading icon-link" href="#mlp-à-couches-cachées"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-109.png"></p>
+<h3 id="calcul-des-gradient-pour-un-mlp">Calcul des gradient pour un MLP<a aria-hidden="true" class="anchor-heading icon-link" href="#calcul-des-gradient-pour-un-mlp"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-110.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-111.png"></p>
+<ul>
+<li><a href="https://pytorch.org/docs/stable/autograd.html">torch.autograd</a></li>
+</ul>
+<pre class="language-python"><code class="language-python"><span class="token keyword">import</span> torch
+
+x <span class="token operator">=</span> torch<span class="token punctuation">.</span>ones<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> requires_grad<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+y <span class="token operator">=</span> x <span class="token operator">+</span> <span class="token number">2</span>
+z <span class="token operator">=</span> y <span class="token operator">*</span> y <span class="token operator">*</span> <span class="token number">2</span>
+z<span class="token punctuation">.</span>backward<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># computes the gradient automatically</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span>grad<span class="token punctuation">)</span> <span class="token comment"># \partial_z x = 12</span>
+</code></pre>
+<h2 id="graphes-computationnels">Graphes computationnels<a aria-hidden="true" class="anchor-heading icon-link" href="#graphes-computationnels"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-112.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-114.png"></p>
+<h2 id="actualisation-des-poids-dun-réseau">Actualisation des poids d'un réseau<a aria-hidden="true" class="anchor-heading icon-link" href="#actualisation-des-poids-dun-réseau"></a></h2>
+<blockquote>
+<p>SDG - Stochastic Gradient Descent</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-115.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-116.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-117.png"></p>
+<h2 id="importance-de-linitialisation-des-poids">Importance de l'initialisation des poids<a aria-hidden="true" class="anchor-heading icon-link" href="#importance-de-linitialisation-des-poids"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-118.png"></p>
+<p><a href="http://www.deeplearning.ai/ai-notes/initialization/">http://www.deeplearning.ai/ai-notes/initialization/</a></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-119.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-120.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.CM.Slide1-121.png"></p>
+<p><a href="http://playground.tensorflow.org/">http://playground.tensorflow.org/</a></p>
+<blockquote>
+<p>Notes RKA du 2023/01/26 - End</p>
+</blockquote>
+<hr>
+<hr>
+<strong>Backlinks</strong>
+<ul>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/wyd35u3oxvhvedd1pwhct4j">AA - Apprentissage Automatique</a></li>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/snuwegzdfkojmt8uzvtrvt8">TD2 - Convolution</a></li>
+</ul>

@@ -1,0 +1,649 @@
+
+More information on the github repo: [SATR-TP1-ESPBank](https://github.com/TunnARK/UT3-AURO-2223-S10-Coding/tree/master/SATR-TP1-ESPBank)
+
+# Préparation du TP
+
+Se familiariser avec :
+- [FreeRTOS - Tasks and Co-Routines](https://freertos.org/taskandcr.html)
+
+    --> API Reference > Task Creation
+    - vsStackDepth
+    - vTaskDelay
+    - xTaskCreate
+    - vTaskSuspend
+
+- [les exemples d'esp-idf](https://github.com/espressif/esp-idf/tree/master/examples)
+
+# Prérequis/Installations
+
+Installer ESP-IDF et suivre le `Get Started`:
+- [Repo GitHub ESP-IDF](github.com/espressif/esp-idf)
+- [Docs - Get-Started: Manual Install (linux-macos)](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/linux-macos-setup.html)
+
+> Possibilité d'utiliser VS Code
+
+# Slide
+
+![](/assets/images/B2.SATR.TP1.RTOSESPIDF-01.png)
+
+## This Presentation
+
+![](/assets/images/B2.SATR.TP1.RTOSESPIDF-02.png)
+![](/assets/images/B2.SATR.TP1.RTOSESPIDF-03.png)
+
+## FreeRTOS
+
+![](/assets/images/B2.SATR.TP1.RTOSESPIDF-04.png)
+
+## ESP-IDF
+
+![](/assets/images/B2.SATR.TP1.RTOSESPIDF-05.png)
+
+## Hello World
+![](/assets/images/B2.SATR.TP1.RTOSESPIDF-06.png)
+
+
+## Generic GPIO
+![](/assets/images/B2.SATR.TP1.RTOSESPIDF-07.png)
+
+## Bank: Server
+
+![](/assets/images/B2.SATR.TP1.RTOSESPIDF-08.png)
+
+## Bank: UART
+
+![](/assets/images/B2.SATR.TP1.RTOSESPIDF-09.png)
+
+## Messages
+
+![](/assets/images/B2.SATR.TP1.RTOSESPIDF-10.png)
+
+## Queues
+
+![](/assets/images/B2.SATR.TP1.RTOSESPIDF-11.png)
+
+## Tasks
+
+![](/assets/images/B2.SATR.TP1.RTOSESPIDF-12.png)
+
+## Rx Task
+
+![](/assets/images/B2.SATR.TP1.RTOSESPIDF-13.png)
+
+## Bank Task
+
+![](/assets/images/B2.SATR.TP1.RTOSESPIDF-14.png)
+
+## Tx Task
+
+![](/assets/images/B2.SATR.TP1.RTOSESPIDF-15.png)
+
+## Client
+
+![](/assets/images/B2.SATR.TP1.RTOSESPIDF-16.png)
+
+
+# Suppléments
+
+## Code C
+
+> Pour de l'embarquer le RUST est plus robuste que le C
+
+[Le code à utiliser ici :](http://cliffle.com/blog/not-thread-safe/#the-bank-account-example)
+```c++
+/*
+ * Stores information about a bank account.
+ */
+struct bank_account {
+    /* How much money is in the account. */
+    int balance; /* never use floats for managing money (too much approximation) */
+};
+
+/*
+ * Deposits 'amt' into the 'account' and returns the new balance.
+ */
+int deposit(struct bank_account *account, int amt) {
+    account->balance += amt;
+    return account->balance;
+}
+
+/*
+ * Tries to withdraw 'amt' from the account. Returns 'true' if it
+ * succeeded, 'false' if the account didn't contain enough.
+ */
+bool withdraw(struct bank_account *account, int amt) {
+    if (account->balance >= amt) {
+        account->balance -= amt;
+        return true;
+    } else {
+        return false;
+    }
+}
+```
+Remarque:
+- pour connaitre l'état du compte il suffit de faire `deposit(0)` est la fct retournera ce qui reste dans le compte
+
+
+## Python
+
+```Python
+def deposit(amt int) -> int
+def withdraw(amt int) -> int
+```
+
+
+## Interruptions
+
+### GPIO
+
+Le code de gestion des interruptions`~/esp/generic_gpio/main/gpio_example_main.c`
+```C
+static QueueHandle_t gpio_evt_queue = NULL;
+
+static void IRAM_ATTR gpio_isr_handler(void* arg)
+{
+    uint32_t gpio_num = (uint32_t) arg;
+    xQueueSendFromISR(gpio_evt_queue, &gpio_num, NULL);
+}
+
+static void gpio_task_example(void* arg)
+{
+    uint32_t io_num;
+    for(;;) {
+        if(xQueueReceive(gpio_evt_queue, &io_num, portMAX_DELAY)) {
+            printf("GPIO[%"PRIu32"] intr, val: %d\n", io_num, gpio_get_level(io_num));
+        }
+    }
+}
+```
+
+## UART - Universal Asynchronus Receiver/Transmitter
+
+- [lien vers la doc UART](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/uart.html)
+- Un UART n'est pas un bus temps réel
+    buffer entre le code et les files om gere pas ca
+- Chaque UART a sa propre horloge (dans le cas d'un USRT (synchronus) on rajoute une clock de référence)
+- equivalence reseau: 2eme couche du modele OSI donc similaire a une tram avec son protocle
+
+<!--8 data graph-->
+<!-- ![](/assets/images/B2.SATR.TP1.RTOSESPIDF.NotesGEA-01.png) -->
+
+<!-- ![](/assets/images/B2.SATR.TP1.RTOSESPIDF.NotesGEA-02.png) -->
+
+<!-- ![](/assets/images/B2.SATR.TP1.RTOSESPIDF.NotesGEA-03.png) -->
+
+ATTETNION: 
+- le pc est en 64 bit mais l'ESP32 est sur du 32 bit donc la taille d'un `int` n'est pas la meme
+- cepedant avec un `int` en 32 bit on peut gérer jusqu'à 40 millions d'euros i.e. $(2*32-1)/100=42\;millions$
+
+### Messages
+
+Ces messages devront prendre en compte :
+- Header: [OxCA,OxFE,OxCA,OxFE]
+- type: REQ/REP
+- Client ID
+- Req ID
+- Operation
+- Ammount (32 bit int)
+
+Exemple:
+- 1 client et 1 serveur pour le moment
+- le client fait une requete:
+    - `M1(type=REQ, CID=1, RID=1, Amount=100, Op=1)`
+- Il recoit alors la réponse:
+    - `M1(type=REP, CID=1, RID=1, Amount=200, Op=1)`
+- On remarque alors qu'il peut y avoir un probleme avec ce jeu de parametres car on ne sait pas comment gérer l'absence et l'attente de réponse --> introduire du coup un param `time out` de 1 sec
+- Autre soucis c'est la synchronisation des canaux --> ajouter un `HEADER`
+    - une autre option aurait été de faire un `3handshake` (soit `Sync>Sync/Ack>Ack`)
+- Du coup on reprend l'échange précédant avec le header, on envoit dans l'ordre :
+    1. 4 oct(s): Header
+    2. 1 oct(s): Type
+    3. 1 oct(s): Client ID (ou mieux un **numéro de port** ! attention ceci est valide si il n'y a pas de bus commun entre les pc)
+    4. 1 oct(s): Req ID 
+        - ici peut etre 1 oct suffit pas mais en vrai avec 1 oct on doit avoir plus de 256 requetes non répondus en moins d'une seconde donc ça ira
+    5. 1 oct(s): Operation
+    6. 4 oct(s): Amount
+- Une autre organisation plus optimale niveau mémoire et temps d'envoi/recpetion (mais cela rend la programmation plus risquée lors de la conception du coup on va plustot préférencer l'option précédente)
+    1. 4 oct(s): Header
+    2. 1 oct(s): Type + Operation
+    3. 1 oct(s): Client ID
+    4. 1 oct(s): Req ID
+    5. 4 oct(s): Amount
+
+<!-- Un exemple de séquence de message : -->
+<!-- ![](/assets/images/B2.SATR.TP1.RTOSESPIDF.NotesGEA-04.png) -->
+- La configuration python avec `dep/withdraw/tx/rx` ne permettra pas d'envoyer plusieurs requetes en meme temps car les fcts `dep` et `with` appel `tx` et `rx` (si on a le temps on verra comment gerer de l'asynchrone en python)
+
+### Files d'attentes
+
+On crée un pointeur contenant toute les files d'attentes (`Rx`,`Tx1`, `Tx2`, `Tx3`, ...).
+
+Chaque files nécessite une capacité (nombre de requete qu'elle contient ici 10) et d'une taille pour chaque requete
+```C
+//create a queue to handle gpio event from isr
+    gpio_evt_queue = xQueueCreate(10, sizeof(uint32_t));
+```
+### Priorités
+
+Maintenant quelles priorités données aux tâches, il y a 3 philosophies :
+- Back Pressure: donner la prior. à Tx pour eviter des bottle neck
+- Conservative : donner la prior. à Rx pour ne pas perdre de donner
+- Fairly: donner la priorité à la tache la plus solicité ici bank puisque qu'il a 3 copie de Tx/Rx qui l'appelle
+
+## Test Unitaire
+
+TDD - Test Driver Development
+
+# Compte Rendu de TP du 2022/11/30
+
+## Hello World
+
+1. Suivre le [guide d'installation](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/linux-macos-setup.html#) jusqu'à l'étape `Configure Your Project` (etape exclue).
+2. Ignorer cette étape, mais à la place modifier le fichier `/workspace/esp/hello_world/sdkconfig` pour reconfigurer la fréquence de $40MHz$ à $26MHz$ (cf slide 6 pour plus d'info).
+3. Continuer les étapes restantes du [guide d'installation](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/linux-macos-setup.html#)
+    - Une fois le `Build Project` terminé, lancer le flash
+    - Si vous recevez une erreur du style "port introuvalbe", s'assurer que la session utilisateur a acces au groupe
+        1. `ll \dev\ttyUSB0` (ou `ll \dev\PORT`) pour connaitre les droits d'accès du port
+        2. `sudo usermod -aG GROUP USERNAME` pour ajouter un user dans un groupe
+        3. `groups` ne se met pas à jour directement (visuellement) donc faire `newgrp GROUP` pour mettre à jour le groupe et relancer `groups` pour lister les utilisateurs (vérifier que l'utilisateur ajouter et bien présent).
+
+## Generic GPIO
+
+1. Se placer dans le workspace (ici `/esp/`) et copier-coller le dossier exemple gpio `cp -r $IDF_PATH/examples/peripherals/gpio/generic_gpio .`
+2. Se placer dans `/workspace/generic_gpio` et lancer `idf.py set-target esp32`
+3. Modifier le fichier `/workspace/generic_gpio/sdkconfig` pour reconfigurer la fréquence de $40MHz$ à $26MHz$ (cf slide 7 pour plus d'info).
+4. Lancer le build `idf.py build`
+5. Flasher la carte `idf.py flash` (ou `idf.py -p PORT flash`)
+6. Le code est déjà en train de s'exécuter en background pour le voir lancer `idf.py monitor` (ou `idf.py -p PORT monitor`)
+7. Se familiariser avec le code de communication `/workspace/generic_gpio/main/`
+
+# Compte Rendu de TP du 2022/12/09
+
+## Sys. Emb.
+
+### Liens utiles
+
+- [Get Started](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/index.html#)
+- [Docs UART](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/uart.html)
+
+### Booting
+
+1. Se placer dans le workspace (ici `/esp/`) et copier-coller le dossier exemple gpio
+`cp -r /esp/esp-idf/examples/peripherals/uart/uart_async_rxtxtasks/ .`
+2. Se placer dans `/workspace/uart_async_rxtxtasks` et lancer `idf.py set-target esp32`
+3. Modifier le fichier `/workspace/uart_async_rxtxtasks/sdkconfig` pour reconfigurer la fréquence de $40MHz$ à $26MHz$ (cf slide 7 pour plus d'info).
+4. Lancer le build `idf.py build`
+5. Flasher la carte `idf.py flash` (ou `idf.py -p PORT flash`)
+6. Le code est déjà en train de s'exécuter en background pour le voir lancer `idf.py monitor` (ou `idf.py -p PORT monitor`)
+
+### Configuration des ports
+
+1. Ouvrir le fichier `main/uart_async_rxtxtasks_main.c`
+2. Modifier les ports par défaut par :
+    - ```C
+        // Dans /main/uart_async_rxtxtasks_main.c
+        #define TXD_PIN (GPIO_NUM_1)
+        #define RXD_PIN (GPIO_NUM_3)
+        ```
+3. De plus, remplacer dans ce code toute apparition de `UART_NUM_1` par `UART_NUM_0`
+
+### Codage
+
+
+
+
+## Python
+
+### Objectif
+
+Créer un code python pour instancier et visualiser les fonctionnalités du projet Bank
+    - une fonciton `Création/Suppression` de compte bancaire
+    - une fonction `Deposit`
+    - une fonction `Withdraw`
+
+### Module recommandé
+
+Module `struct`, `bserial`
+
+### Creation d'une interface
+
+Lien Utile: [Interface Python avec Tkinter](https://www.cours-gratuit.com/tutoriel-python/tutoriel-python-programmer-une-interface-graphique-avec-tkinter-partie-1#_Toc52998640)
+
+### Class Client
+
+- sur python le typage est dynamic donc le type est assigné selon ce qui arrive
+- le header n'est pas a mettre dans le struct.pack car il précéde le message
+
+### Class Message
+
+class message
+
+# Testings on 2023/01/08
+
+## Coding on ESP32
+
+### How to run the code
+
+1. Open New Terminal 
+2. Install Environment
+    - `cd /workspace/esp-idf/`
+    - `./install.sh esp32`
+    - `. ./export.sh`
+3. Sett up UART Environment
+    - `cd /workspace/uart_async_rxtxtasks/`
+    - `idf.py set-target esp32`
+    - `idf.py build`
+    - `idf.py -p /dev/ttyUSB0 flash` (check Port ID in `/dev/` before running the command)
+    - `idf.py -p /dev/ttyUSB0 monitor`
+
+### Results
+
+Running `idf.py build` returns :
+```shell
+Executing action: all (aliases: build)
+Running ninja in directory /home/tunn/esp/uart_async_rxtxtasks/build
+Executing "ninja all"...
+[1/1] cd /home/tunn/esp/uart_async_rxtxtasks/build/bootloader/esp-idf/e...000 /home/tunn/esp/uart_async_rxtxtasks/build/bootloader/bootloader.binBootloader binary size 0x6720 bytes. 0x8e0 bytes (8%) free.
+[2/7] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/uart_async_rxtxtasks_main.c.obj/home/tunn/esp/uart_async_rxtxtasks/main/uart_async_rxtxtasks_main.c: In function 'tx_task':
+/home/tunn/esp/uart_async_rxtxtasks/main/uart_async_rxtxtasks_main.c:98:19: warning: unused variable 'nb_transmit' [-Wunused-variable]
+   98 |         const int nb_transmit=uart_write_bytes(UART_NUM_0, transmit, sizeof(transmit));
+      |                   ^~~~~~~~~~~
+/home/tunn/esp/uart_async_rxtxtasks/main/uart_async_rxtxtasks_main.c:93:19: warning: unused variable 'nb_transmitH' [-Wunused-variable]
+   93 |         const int nb_transmitH=uart_write_bytes(UART_NUM_0, Header, sizeof(Header));
+      |                   ^~~~~~~~~~~~
+/home/tunn/esp/uart_async_rxtxtasks/main/uart_async_rxtxtasks_main.c: In function 'rx_task':
+/home/tunn/esp/uart_async_rxtxtasks/main/uart_async_rxtxtasks_main.c:143:19: warning: unused variable 'nb_bitM' [-Wunused-variable]
+  143 |         const int nb_bitM=uart_read_bytes(UART_NUM_0, message, sizeof(message_t), 1000 / portTICK_PERIOD_MS);
+      |                   ^~~~~~~
+/home/tunn/esp/uart_async_rxtxtasks/main/uart_async_rxtxtasks_main.c: In function 'bank_task':
+/home/tunn/esp/uart_async_rxtxtasks/main/uart_async_rxtxtasks_main.c:156:9: warning: unused variable 'balance' [-Wunused-variable]
+  156 |     int balance; //Solde du compte
+      |         ^~~~~~~
+[6/7] Generating binary image from built executableesptool.py v4.5.dev0
+Creating esp32 image...
+Merged 2 ELF sections
+Successfully created esp32 image.
+Generated /home/tunn/esp/uart_async_rxtxtasks/build/uart_async_rxtxtasks.bin
+[7/7] cd /home/tunn/esp/uart_async_rxtxtasks/build/esp-idf/esptool_py &....bin /home/tunn/esp/uart_async_rxtxtasks/build/uart_async_rxtxtasks.binuart_async_rxtxtasks.bin binary size 0x31b00 bytes. Smallest app partition is 0x100000 bytes. 0xce500 bytes (81%) free.
+
+Project build complete. To flash, run this command:
+/home/tunn/.espressif/python_env/idf5.1_py3.10_env/bin/python ../esp-idf/components/esptool_py/esptool/esptool.py -p (PORT) -b 460800 --before default_reset --after hard_reset --chip esp32  write_flash --flash_mode dio --flash_size 2MB --flash_freq 40m 0x1000 build/bootloader/bootloader.bin 0x8000 build/partition_table/partition-table.bin 0x10000 build/uart_async_rxtxtasks.bin
+or run 'idf.py -p (PORT) flash'
+```
+
+Running `idf.py -p /dev/ttyUSB0 flash` returns:
+```shell
+Executing action: flash
+Running ninja in directory /home/tunn/esp/uart_async_rxtxtasks/build
+Executing "ninja flash"...
+[1/5] cd /home/tunn/esp/uart_async_rxtxtasks/build/esp-idf/esptool_py && /home/tunn/.espressif/python_env/idf5.1_py3.10_env/bin/python /home/tunn/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /home/tunn/esp/uart_async_rxtxtasks/build/partition_table/partition-table.bin /home/tunn/esp/uart_async_rxtxtasks/build/uart_async_rxtxtasks.bin
+uart_async_rxtxtasks.bin binary size 0x31b00 bytes. Smallest app partition is 0x100000 bytes. 0xce500 bytes (81%) free.
+[2/5] Performing build step for 'bootloader'
+[1/1] cd /home/tunn/esp/uart_async_rxtxtasks/build/bootloader/esp-idf/esptool_py && /home/tunn/.espressif/python_env/idf5.1_py3.10_env/bin/python /home/tunn/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /home/tunn/esp/uart_async_rxtxtasks/build/bootloader/bootloader.bin
+Bootloader binary size 0x6720 bytes. 0x8e0 bytes (8%) free.
+[2/3] cd /home/tunn/esp/esp-idf/components/esptool_py && /usr/bin/cmake -D IDF_PATH=/home/tunn/esp/esp-idf -D "SERIAL_TOOL=/home/tunn/.espressif/python_env/idf5.1_py3.10_env/bin/python;;/home/tunn/esp/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32" -D "SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args" -D WORKING_DIRECTORY=/home/tunn/esp/uart_async_rxtxtasks/build -P /home/tunn/esp/esp-idf/components/esptool_py/run_serial_tool.cmake
+esptool esp32 -p /dev/ttyUSB0 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 40m --flash_size 2MB 0x1000 bootloader/bootloader.bin 0x10000 uart_async_rxtxtasks.bin 0x8000 partition_table/partition-table.bin
+esptool.py v4.5.dev0
+Serial port /dev/ttyUSB0
+Connecting.....
+Chip is ESP32-D0WDQ6 (revision v1.0)
+Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
+Crystal is 26MHz
+MAC: 84:0d:8e:07:4c:fc
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00001000 to 0x00007fff...
+Flash will be erased from 0x00010000 to 0x00041fff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+Compressed 26400 bytes to 16472...
+Writing at 0x00001000... (50 %)
+Writing at 0x000076ac... (100 %)
+Wrote 26400 bytes (16472 compressed) at 0x00001000 in 0.7 seconds (effective 288.5 kbit/s)...
+Hash of data verified.
+Compressed 203520 bytes to 107510...
+Writing at 0x00010000... (14 %)
+Writing at 0x0001ca42... (28 %)
+Writing at 0x0002230b... (42 %)
+Writing at 0x0002810b... (57 %)
+Writing at 0x0002e59c... (71 %)
+Writing at 0x00038b81... (85 %)
+Writing at 0x0003e481... (100 %)
+Wrote 203520 bytes (107510 compressed) at 0x00010000 in 2.6 seconds (effective 614.6 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 103...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (103 compressed) at 0x00008000 in 0.1 seconds (effective 490.8 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...
+Done
+```
+
+Running `idf.py -p /dev/ttyUSB0 monitor` returns:
+```shell
+[...]
+Hello world
+I (46335) TX_TASK: Wrote 13 bytes
+
+
+�'�?Hello worldI (48335) TX_TASK: Wrote 13 bytes
+
+
+�'�?Hello worldI (50335) TX_TASK: Wrote 13 bytes
+```
+
+### Our main.c
+
+```c
+/* UART asynchronous example, that uses separate RX and TX tasks
+
+   This example code is in the Public Domain (or CC0 licensed, at your option.)
+
+   Unless required by applicable law or agreed to in writing, this
+   software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+   CONDITIONS OF ANY KIND, either express or implied.
+*/
+
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "esp_system.h"
+#include "esp_log.h"
+#include "driver/uart.h"
+#include "string.h"
+#include "driver/gpio.h"
+
+
+static const int RX_BUF_SIZE = 1024;
+
+#define TXD_PIN (GPIO_NUM_1)
+#define RXD_PIN (GPIO_NUM_3)
+
+//Declaration d une structure pour le message
+typedef struct 
+{
+uint8_t Type;
+uint8_t  Action;
+uint8_t RequestID;
+uint8_t PortID;
+uint32_t Amount;
+} message_t ;
+
+
+//Declaration des queues
+static QueueHandle_t rx_queue = NULL;
+static QueueHandle_t tx_queue = NULL;
+
+//Declaration du HEADER pour verifier le bon etat de la communication
+const uint8_t HEADER[4] = {0xCA, 0xFE, 0xCA, 0xFE};
+
+
+
+
+void init(void) {
+    const uart_config_t uart_config = {
+        .baud_rate = 115200,
+        .data_bits = UART_DATA_8_BITS,
+        .parity = UART_PARITY_DISABLE,
+        .stop_bits = UART_STOP_BITS_1,
+        .flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
+        .source_clk = UART_SCLK_DEFAULT,
+    };
+    // We won't use a buffer for sending data.
+    uart_driver_install(UART_NUM_0, RX_BUF_SIZE * 2, 0, 0, NULL, 0);
+    uart_param_config(UART_NUM_0, &uart_config);
+    uart_set_pin(UART_NUM_0, TXD_PIN, RXD_PIN, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
+  
+    //Initialisation des queues
+     rx_queue = xQueueCreate(10, sizeof(uint32_t));
+     tx_queue=xQueueCreate(10, sizeof(uint32_t));
+}
+
+
+
+
+
+int sendData(const char* logName, const char* data)
+{
+    const int len = strlen(data);
+    const int txBytes = uart_write_bytes(UART_NUM_0, data, len);
+    ESP_LOGI(logName, "Wrote %d bytes\n\n", txBytes);
+    return txBytes;
+}
+
+static void tx_task(void *arg)
+{
+    static const char *TX_TASK_TAG = "TX_TASK";
+    ////Allocation dynamique de la memoire pour les buffers de messages
+     uint32_t *transmit=(uint32_t*) malloc(sizeof(message_t)); 
+      uint8_t *Header=(uint8_t*) malloc(4*sizeof(uint8_t)); 
+    esp_log_level_set(TX_TASK_TAG, ESP_LOG_INFO);
+    while (1) {
+    	//Stockage du premier message sur la queue dans le buffer avant envoi
+    	 xQueueReceive(tx_queue,transmit,1000 / portTICK_PERIOD_MS);
+    	 
+    	 //Envoi du header
+    	const int nb_transmitH=uart_write_bytes(UART_NUM_0, Header, sizeof(Header));
+    	
+    	vTaskDelay(2000 / portTICK_PERIOD_MS);
+    	
+    	//Envoi du message
+        const int nb_transmit=uart_write_bytes(UART_NUM_0, transmit, sizeof(transmit));
+        vTaskDelay(2000 / portTICK_PERIOD_MS);
+    }
+    
+    //Liberation des buffers
+    free(transmit);
+    free(Header);
+}
+
+static void rx_task(void *arg)
+{	
+    int i;
+    static const char *RX_TASK_TAG = "RX_TASK";
+    esp_log_level_set(RX_TASK_TAG, ESP_LOG_INFO);
+    //Allocation dynamique de la memoire pour les buffers de messages
+    uint8_t* data = (uint8_t*) malloc(RX_BUF_SIZE+1);
+    uint8_t *R_Head=(uint8_t*) malloc(4*sizeof(uint8_t)); 
+    uint32_t *message=(uint32_t*) malloc(4*sizeof(uint32_t)); 
+    
+    while (1) {
+        const int rxBytes = uart_read_bytes(UART_NUM_0, data, RX_BUF_SIZE, 1000 / portTICK_PERIOD_MS);
+        if (rxBytes > 0) {
+            data[rxBytes] = 0;
+            ESP_LOGI(RX_TASK_TAG, "Read %d bytes: '%s'\n\n", rxBytes, data);
+            ESP_LOG_BUFFER_HEXDUMP(RX_TASK_TAG, data, rxBytes, ESP_LOG_INFO);
+        }
+        
+        //Reception du header
+        const int nb_bitH=uart_read_bytes(UART_NUM_0, R_Head, 4*sizeof(uint8_t), 1000 / portTICK_PERIOD_MS);
+        
+        if(nb_bitH==4)
+        {
+        	for(i=0;i<nb_bitH;i++)
+        	{        	
+        		if(R_Head[i]!=HEADER[i])
+        			{
+        			printf("Wrong Header ! Communication Failed !");
+        			break;	
+        			}
+        	        	        		
+        	}
+        	       
+        }
+        
+        //Reception du message et stockage dans la queue        
+        const int nb_bitM=uart_read_bytes(UART_NUM_0, message, sizeof(message_t), 1000 / portTICK_PERIOD_MS);
+        xQueueSend(rx_queue,message,1000 / portTICK_PERIOD_MS); 
+      
+    }
+    // Liberation des buffers
+    free(data);
+    free(R_Head);
+    free(message);
+}
+
+
+static void bank_task(void *arg)
+{
+    int balance; //Solde du compte
+    static const char *TX_TASK_TAG = "TX_TASK";
+    esp_log_level_set(TX_TASK_TAG, ESP_LOG_INFO);
+    while (1) {
+        sendData(TX_TASK_TAG, "Hello world\n\n");
+        vTaskDelay(2000 / portTICK_PERIOD_MS);
+    }
+}
+
+
+void app_main(void)
+{
+    init();
+    xTaskCreate(rx_task, "uart_rx_task", 1024*2, NULL, configMAX_PRIORITIES, NULL);
+    xTaskCreate(tx_task, "uart_tx_task", 1024*2, NULL, configMAX_PRIORITIES-2, NULL);
+    xTaskCreate(bank_task, "bank_task", 1024*2, NULL, configMAX_PRIORITIES-1, NULL);
+}
+
+```
+
+## Our Python Code
+
+```python
+# -------------------------------------------- #
+# Class Client                                 #
+# Tasks:                                       #
+# - emit serial messages to the ESP card       #
+# - receive serial messages from the ESP card  #
+# -------------------------------------------- #
+
+# This module encapsulates the access for the serial port.
+import serial
+# This module converts between Python values and C structs
+# represented as Python bytes objects.
+from struct import *
+
+class client:
+    # initializing values and properties of objects
+    def __init__(self, st_type, st_cid, st_rid, st_operation, st_ammount) -> None:
+        self.st_type = st_type              # 0 or 1 w.r.t. being resp. REQUEST or RESPONSE
+        self.st_cid = st_cid                # 0 .. 255 identification number for the client
+        self.st_rid = st_rid                # 0 .. 255 identification number for the request
+        self.st_operation = st_operation    # 0 or 1 w.r.t. being resp. withdraw or deposit
+        self.st_ammount = st_ammount        # positive integer for the ammount 
+    
+    # method structurizing the message with struct.pack
+    def structurer(self)-> bytes:
+        st = struct.pack("<IIIQ", self.st_type, self.st_cid, self.st_rid, self.st_operation, self.st_ammount) 
+        return st
+    
+    # method sending a message throw the serial port
+    def send_message(self) -> None:
+        ser = serial.Serial('/dev/ttyUSB0') # open serial port
+        print(ser.name)                     # check which port was really used
+        ser.write(self.structurer(self))    # write a string
+        ser.close()                         # close port
+```

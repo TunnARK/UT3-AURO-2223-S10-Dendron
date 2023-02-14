@@ -1,0 +1,314 @@
+<h1 id="coo-101">COO 101<a aria-hidden="true" class="anchor-heading icon-link" href="#coo-101"></a></h1>
+<blockquote>
+<p><strong>Avertissement:</strong>
+Cette page peut contenir des fautes ! Envoyez-moi un message sur <a href="https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org"><code>#UT3-AURO-M2-2223-Request:matrix.org</code></a> si vous en trouvez, merci.</p>
+</blockquote>
+<blockquote>
+<p>Cours donné par G. Saurel</p>
+</blockquote>
+<p>Support de cours:</p>
+<ul>
+<li><a href="https://homepages.laas.fr/gsaurel/talks/conception-orientee-objet-101.pdf">conception-orientee-objet-101.pdf</a></li>
+<li><a href="https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/COOSTART.NotesGEA.20220831.pdf">COOSTART.NotesGEA.20220831.pdf</a></li>
+</ul>
+<hr>
+<blockquote>
+<p>Notes du 2022/08/31 - Start</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCours101.01.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCours101.02.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCours101.03.png"></p>
+<h2 id="hello-world">Hello World<a aria-hidden="true" class="anchor-heading icon-link" href="#hello-world"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCours101.04.png"></p>
+<h3 id="hello-world-c">Hello World: C++<a aria-hidden="true" class="anchor-heading icon-link" href="#hello-world-c"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCours101.05.png"></p>
+<pre><code>#include &#x3C;iostream>
+auto main() -> int {
+std::cout &#x3C;&#x3C; "hello\n";
+return 0;
+}
+</code></pre>
+<ul>
+<li>
+<p>a.out:</p>
+<ul>
+<li>fichier binaire directement compréhensible par l'ordinateur</li>
+</ul>
+</li>
+<li>
+<p><code>g++ hello.cpp &#x26;&#x26; ./a.out</code></p>
+<ul>
+<li>ecriture shell -> langague unix</li>
+<li>commande de compilation</li>
+<li>puis excecute le fichier a.out</li>
+</ul>
+</li>
+<li>
+<p><code>true &#x26;&#x26; echo "Hello"</code> -> affiche</p>
+</li>
+<li>
+<p><code>false &#x26;&#x26; echo "Hello"</code> -> n'affiche pas</p>
+</li>
+</ul>
+<h3 id="hello-world-python">Hello World: Python<a aria-hidden="true" class="anchor-heading icon-link" href="#hello-world-python"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCours101.06.png"></p>
+<pre><code>#!/usr/bin/env python
+
+if __name__ == "__main__":
+print("hello")
+</code></pre>
+<ul>
+<li><code>#!</code> shybang indique à l'OS le type de fichier
+<ul>
+<li>comportement différent selon l'OS</li>
+</ul>
+</li>
+</ul>
+<pre><code>chmod +x hello.py &#x26;&#x26; ./hello.py
+</code></pre>
+<h3 id="data-types">Data Types<a aria-hidden="true" class="anchor-heading icon-link" href="#data-types"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCours101.07.png"></p>
+<ul>
+<li>
+<p>compilateur choisit pour nous le type</p>
+</li>
+<li>
+<p><code>auto ga{3}; // int</code></p>
+<ul>
+<li>prends 4 places dans la mémoire</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><code>auto bu{3.14}; // double</code>
+<ul>
+<li>prends 8 places dans la mémoire</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><code>auto to{"tau"};</code> devient automatiquement <code>const auto *const zo{"tau"}; // const char *const</code>
+<ul>
+<li>magnière compliquée de corriger l'input </li>
+<li><code>const</code> empêche toute modification de la variable (sinon retourne variable en lecture seule donc pas d'affectation)</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><code>std::string meu{"pi"};</code>
+<ul>
+<li>manière plus propre/optimale pour créer un string</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>Attention</strong>: ne pas optimiser avant d'avoir un programme lisible</li>
+</ul>
+<ul>
+<li>concepts similaire en Python</li>
+</ul>
+<pre><code>ga: int = 3
+bu: float = 3.14
+zo: str = "pi"
+</code></pre>
+<blockquote>
+<p>Python et C++ sont des langages <strong>fortement typés</strong> (ecriture restrictive)</p>
+</blockquote>
+<h2 id="counter-flow">Counter Flow<a aria-hidden="true" class="anchor-heading icon-link" href="#counter-flow"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCours101.08.png"></p>
+<h3 id="functions">Functions<a aria-hidden="true" class="anchor-heading icon-link" href="#functions"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCours101.09.png"></p>
+<p><code>auto add(int first, int second) -> int {</code></p>
+<ul>
+<li>auto pour choisir le type de la fonction</li>
+<li>add nom de la fct</li>
+<li>deux parametres</li>
+<li>retourne un int</li>
+</ul>
+<p><code>return first + second;</code></p>
+<ul>
+<li>réalise la somme</li>
+</ul>
+<p><code>}</code></p>
+<blockquote>
+<p>L'execution est linéaire mais le compilateur lui regarde le code par unité de compilation (de façon plus globale que linéaire)</p>
+</blockquote>
+<h3 id="conditions-c">Conditions: C++<a aria-hidden="true" class="anchor-heading icon-link" href="#conditions-c"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCours101.10.png"></p>
+<h3 id="conditions-python">Conditions: Python<a aria-hidden="true" class="anchor-heading icon-link" href="#conditions-python"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCours101.11.png"></p>
+<h3 id="loops-while">Loops: While<a aria-hidden="true" class="anchor-heading icon-link" href="#loops-while"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCours101.12.png"></p>
+<h4 id="c">C++<a aria-hidden="true" class="anchor-heading icon-link" href="#c"></a></h4>
+<pre><code>auto user_input{0};
+while (user_input != 42) {
+std::cout &#x3C;&#x3C; "guess: ";
+std::cin >> user_input;
+}
+</code></pre>
+<p>TODO: Rajouter un indice chaud/froid à l'utilisateur</p>
+<h4 id="python">Python<a aria-hidden="true" class="anchor-heading icon-link" href="#python"></a></h4>
+<pre><code>user_input: int = 0
+while user_input != 42:
+user_input = int(input("guess: "))
+</code></pre>
+<ul>
+<li><code>int(input(...))</code> sur python il faut lui indiquer le type</li>
+</ul>
+<h4 id="walrus">Walrus<a aria-hidden="true" class="anchor-heading icon-link" href="#walrus"></a></h4>
+<pre><code>while (user_input := int(input("guess: "))) != 42:
+print("it's not", user_input)
+</code></pre>
+<ul>
+<li><code>:=</code> symbol/technique <em>walrus</em></li>
+</ul>
+<blockquote>
+<p>Contrairement au C++, Python "<em>impose</em>" une manière de coder selon que cela soit plus convenable pour la communauté donc Walrus n'est pas recommandé puisqu'il est plus difficile à lire</p>
+</blockquote>
+<h3 id="loops-break-c">Loops: Break C++<a aria-hidden="true" class="anchor-heading icon-link" href="#loops-break-c"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCours101.13.png"></p>
+<h3 id="loops-break-python">Loops: Break Python<a aria-hidden="true" class="anchor-heading icon-link" href="#loops-break-python"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCours101.14.png"></p>
+<h3 id="loops-forbreak-c">Loops: for/break C++<a aria-hidden="true" class="anchor-heading icon-link" href="#loops-forbreak-c"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCours101.15.png"></p>
+<blockquote>
+<p>pas obliger d'avoir un break dans une boucle for</p>
+</blockquote>
+<h3 id="loops-forbreak-python">Loops: for/break Python<a aria-hidden="true" class="anchor-heading icon-link" href="#loops-forbreak-python"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCours101.16.png"></p>
+<h3 id="loops-continue">Loops: continue<a aria-hidden="true" class="anchor-heading icon-link" href="#loops-continue"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCours101.17.png"></p>
+<blockquote>
+<p><code>continue</code> fait retourner au début de la boucle et ne s'applique que sur la boucle la plus proche</p>
+</blockquote>
+<blockquote>
+<p>CPU ne sait pas faire de boucle mais fait des <strong>saut conditionnel</strong></p>
+</blockquote>
+<h3 id="loops-containers">Loops: containers<a aria-hidden="true" class="anchor-heading icon-link" href="#loops-containers"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCours101.18.png"></p>
+<ul>
+<li>
+<p>sur C++ peu de types primitifs le reste c'est des objets</p>
+</li>
+<li>
+<p>sur python il n'y a que des objets</p>
+</li>
+<li>
+<p>containers est un type d'objet (i.e. de type vecteur)</p>
+</li>
+</ul>
+<h4 id="c-1">C++<a aria-hidden="true" class="anchor-heading icon-link" href="#c-1"></a></h4>
+<p><code>using Colors = std::vector&#x3C;std::string>;</code></p>
+<p><code>Colors colors{"orange", "blue", "pink"};</code></p>
+<ul>
+<li>ici on ne peut pas utiliser <code>auto</code></li>
+</ul>
+<p><code>for (const auto &#x26;color: colors) {</code></p>
+<ul>
+<li>ici le compilateur propose de rajouter <code>&#x26;</code> à colors</li>
+<li>on définit une variable <code>color</code> comme indice</li>
+</ul>
+<p><code>std::cout &#x3C;&#x3C; color &#x3C;&#x3C; "\n";</code></p>
+<p><code>}</code></p>
+<h4 id="python-1">Python<a aria-hidden="true" class="anchor-heading icon-link" href="#python-1"></a></h4>
+<pre><code>colors = ["orange", "blue", "pink"]
+for color in colors:
+print(color)
+</code></pre>
+<blockquote>
+<p>plus facile qu'en C++</p>
+</blockquote>
+<h2 id="objects">Objects<a aria-hidden="true" class="anchor-heading icon-link" href="#objects"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCours101.19.png"></p>
+<h3 id="c-2">C++<a aria-hidden="true" class="anchor-heading icon-link" href="#c-2"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCours101.20.png"></p>
+<pre><code>class Robot {
+  public:
+    auto work() { battery -= 5; }
+    \\ methode pour changer le niveau de la batterie
+    auto get_battery() const -> int { return battery; }
+    \\ methode pour donner la valeur de la batterie a d autre partie du code
+    \\ methode avec effet de bord constant elle ne modifie pas le contenu de la classe
+  protected:
+    int battery{100}; \\ initialise la batterie a 100
+};
+
+auto main() -> int {
+  auto robot = Robot{};
+  std::cout &#x3C;&#x3C; robot.get_battery() &#x3C;&#x3C; "%remaining\n";
+  robot.work();
+  std::cout &#x3C;&#x3C; robot.get_battery() &#x3C;&#x3C; "%remaining\n";
+  return 0;
+}
+</code></pre>
+<ul>
+<li>
+<p>L'objet "correspond" à la variable et la méthode "correspond" à la fonction</p>
+</li>
+<li>
+<p>On ne peut pas faire une méthode charge avec une entete contenant <code>const</code> puisqu'on veut modifier la valeur d'un attribut de la classe mais const nous en empêche.</p>
+<p>exemple: <code>auto charge(int new_value) const -> {battery +=1:}</code> ce code retournera une erreur</p>
+</li>
+</ul>
+<h3 id="python-2">Python<a aria-hidden="true" class="anchor-heading icon-link" href="#python-2"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCours101.21.png"></p>
+<pre><code>class Robot:
+  battery = 100
+
+  def work(self):
+    self.battery -= 5
+  def get_battery(self) -> int:
+    return self.battery
+
+if __name__ == "__main__":
+  robot = Robot()
+  print(robot.get_battery(), "% remaining")
+  robot.work()
+  print(robot.get_battery(), "% remaining")
+</code></pre>
+<ul>
+<li>
+<p>Sur Python il n'existe pas de type <code>const</code> du coup l'utilisateur peut toujours modifier donc sur python il n'y a pas de protection des variables</p>
+</li>
+<li>
+<p><code>robot = Robot()</code> instancie une variable robot de type Robot</p>
+</li>
+</ul>
+<h3 id="inheritance-c">Inheritance: C++<a aria-hidden="true" class="anchor-heading icon-link" href="#inheritance-c"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCours101.22.png"></p>
+<pre><code>class LeggedRobot : public Robot {
+  public:
+    auto walk() { battery -= 10; }
+};
+
+auto main() -> int {
+  auto robot = LeggedRobot{};
+  std::cout &#x3C;&#x3C; robot.get_battery() &#x3C;&#x3C; "% remaining\n";
+  robot.work();
+  robot.walk();
+  std::cout &#x3C;&#x3C; robot.get_battery() &#x3C;&#x3C; "% remaining\n";
+  return 0;
+}
+</code></pre>
+<h3 id="inheritance-python">Inheritance: Python<a aria-hidden="true" class="anchor-heading icon-link" href="#inheritance-python"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/COOSATR.SlideCours101.23.png"></p>
+<pre><code>class LeggedRobot(Robot):
+  def walk(self):
+    self.battery -= 10
+
+if __name__ == "__main__":
+  robot = LeggedRobot()
+  print(robot.get_battery(), "% remaining")
+  robot.work()
+  robot.walk()
+  print(robot.get_battery(), "% remaining")
+</code></pre>
+<blockquote>
+<p>Notes du 2022/08/31 - End</p>
+</blockquote>
+<hr>
+<hr>
+<strong>Backlinks</strong>
+<ul>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/tpyb41n9fi7ze4cw7z2cuxo">COOSATR - Conception Orientee Objet</a></li>
+</ul>

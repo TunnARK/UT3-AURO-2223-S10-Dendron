@@ -1,0 +1,83 @@
+
+> **Avertissement:**
+Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-2223-Request:matrix.org`](https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org) si vous en trouvez, merci.
+
+> Cours donné par C. Briand
+
+---
+
+> Notes RKA du 2023/01/19 - Start
+
+
+
+# Exercice 1 - MRP
+
+## Tableau
+
+![](/assets/images/B3.AOH.GPL.TD1.Sujet-Ex01-01.png)
+![](/assets/images/B3.AOH.GPL.TD1.BB20230119-01.png)
+![](/assets/images/B3.AOH.GPL.TD1.BB20230119-02.png)
+![](/assets/images/B3.AOH.GPL.TD1.BB20230119-03.png)
+
+## Méthode de Wagner Whitin
+
+![](/assets/images/B3.AOH.GPL.TD1.Sujet-Ex01-02.png)
+![](/assets/images/B3.AOH.GPL.TD1.BB20230119-04.png)
+![](/assets/images/B3.AOH.GPL.TD1.BB20230119-05.png)
+
+### Méthode de Bellman
+
+![](/assets/images/B3.AOH.GPL.TD1.BB20230119-06.png)
+![](/assets/images/B3.AOH.GPL.TD1.BB20230119-07.png)
+
+## Politique de fabrication
+
+![](/assets/images/B3.AOH.GPL.TD1.Sujet-Ex01-03.png)
+![](/assets/images/B3.AOH.GPL.TD1.BB20230119-08.png)
+
+# Exercice 2 - DRP
+
+> Attention le délai de fabrication est de deux périodes
+![](/assets/images/B3.AOH.GPL.TD1.Sujet-Ex02-04.png)
+
+![](/assets/images/B3.AOH.GPL.TD1.BB20230119-09.png)
+
+> Utiliser ce [fichier excel](https://github.com/TunnARK/UT3-AURO-2223-S10-Dendron/blob/main/vault/assets/B3.AOH.GPL.TD1.DRP_vierge.xlsx)
+
+## 2-a) Tableau MRP
+
+Dans le fichier excel,
+1. Remplir la formule du besoin net en C11 (pour toute la ligne 11)
+2. Remplir la formule du stock en C10
+3. Une fois ces lignes remplit, on obtient l'évolution des stocks sans intervention
+4. Remplir C13 par D12 (pour toute la ligne)
+5. Jouer avec la ligne 12 pour trouver les bonnes livraisons:
+    - Pour cela on prend le plus petit multiple du lot min (ici 20)supérieur au nombre dans le besoin net de la période suivante 
+    - si le besoin est de 15 on garde un lot min de 20
+    - si le besoin est de 25 on prend un lot de 40
+6. Répéter ces étapes pour les autres centres de distribuiton
+
+## 2-b) Gestion de la flotte de véhicule
+
+Le nombre de véhicule en ligne 30 du fichier excel est déjà paramétré. Ce nombre est ici limité à 7 ce qui est aussi déjà implémenté en mettant en rouge tout nombre supérieur à 7.
+
+![](/assets/images/B3.AOH.GPL.TD1.BB20230119-10.png)
+![](/assets/images/B3.AOH.GPL.TD1.BB20230119-11.png)
+
+Dans le fichier excel,
+1. Choisir un centre de distribution où l'on va livrer plustot
+2. Manuellement implémenter l'ajout de lot min dans la ligne de livraison pour la période concernée
+
+## 2-c) Besoin brut en PF1
+
+Dans le fichier excel,
+1. Remplir le tableau violet
+2. Ligne 33 se calcule par la somme des commandes sur les trois distri
+3. B34 vaut 200 comme indiqué dans l'énoncé
+4. Appliquer les étapes pour le MRP comme vue précédemment
+
+
+
+> Notes RKA du 2023/01/19 - End
+
+---

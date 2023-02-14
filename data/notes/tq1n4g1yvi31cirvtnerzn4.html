@@ -1,0 +1,127 @@
+<h1 id="recap">Recap<a aria-hidden="true" class="anchor-heading icon-link" href="#recap"></a></h1>
+<blockquote>
+<p><strong>Avertissement:</strong>
+Cette page peut contenir des fautes ! Envoyez-moi un message sur <a href="https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org"><code>#UT3-AURO-M2-2223-Request:matrix.org</code></a> si vous en trouvez, merci.</p>
+</blockquote>
+<blockquote>
+<p>Cours donné par P. Muller, T. Pellegrini</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Notes RKA du 2023/02/13 - Start</p>
+</blockquote>
+<h1 id="exercice-1-étapes-dapprentissage">Exercice 1: étapes d'apprentissage<a aria-hidden="true" class="anchor-heading icon-link" href="#exercice-1-étapes-dapprentissage"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.TD4.Recap.Sujet-Ex01.png"></p>
+<ul>
+<li>
+<p>Epochs = on a vu toute les batch au moins une fois</p>
+</li>
+<li>
+<p>Pour eviter de surapprendre on va aussi mesurer la validation sans la mettre a jour</p>
+</li>
+<li>
+<p>Surapprentissage = model n'arrive plus a predire des objets generaux car trop different de ce qu'il apprit par coeur</p>
+</li>
+<li>
+<p>Exemple typique: un étudiant qui apprend par coeur ces exos de TD et n'arrive pas à faire l'examen car le sujet est trop différent de celui du TD</p>
+</li>
+<li>
+<p>Earlystopping = si validation ne diminue plus on va arreter l'apprentissage</p>
+</li>
+<li>
+<p>Dropout =</p>
+</li>
+<li>
+<p>Pour une classification, la loss diminue mais pas l'accurancy (nb error/nb prediction) pourquoi ?</p>
+<ul>
+<li>
+<p>Souvent dans les classifications (surtout les binaires) on va être intéressé par d'identifier une seule classe</p>
+</li>
+<li>
+<p>Precision "malade" = Nb Correct / Nb Predic</p>
+</li>
+<li>
+<p>Rappel "malade" = Nb Correct / il fallait predire</p>
+</li>
+<li>
+<p>Cross Entropy = evalue aussi sa confiance en ses resultat donc la loss diminue car il gagne en confiance mais cela ne change pas ses décisions donc son acc ne change plus</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.TD4.Recap.BB20230213-01.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.TD4.Recap.BB20230213-02.png"></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Data Loarders = charger les données et les adaptés au réseau si besoin</p>
+</li>
+<li>
+<p>Init Model = Donne les composants du reseau</p>
+</li>
+<li>
+<p>Puis on ajoute dans le code un forward pour structurer le model en expliquant où appliquer les filtres et quelle fonction d'activation
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.TD4.Recap.BB20230213-03.png"></p>
+</li>
+<li>
+<p>Fuite de données
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.TD4.Recap.BB20230213-04.png"></p>
+</li>
+</ul>
+<h1 id="exercice-2">Exercice 2:<a aria-hidden="true" class="anchor-heading icon-link" href="#exercice-2"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.TD4.Recap.Sujet-Ex02.png"></p>
+<ul>
+<li>Classification d'un article de journal sur sa position politique
+<ul>
+<li>Il faut des étiquettes et définir les catégories</li>
+<li>On définit un RNN (car c'est le seul qui n'a pas d'entrée fixe donc adapté aux articles de taille variable)
+<ul>
+<li>On fait du one-hot encoding pour chaque mot (eviter le soucis de donner un poids et donc devoir specifier un ordre dans le lexique)</li>
+<li>On applique ensuite un <a href="/UT3-AURO-2223-S10-Dendron/notes/xtj6oym6upzfwtoby31jakp#long-short-term-memory-networks-lstms">LSTM</a>
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.TD4.Recap.BB20230213-05.png"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Détection de nodules
+<ul>
+<li>CNN en 3D donc les filtres seront aussi </li>
+<li>mais il risque d'avoir des problèmes de métriques (un oiseau chante vs il y a un oiseau) [problème de référence multiple]
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.TD4.Recap.BB20230213-06.png"></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Audio-Captioning
+<ul>
+<li>encodeur/decodeur avec une sortie différente de l'entrée (many-to-many)</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Question/Réponse:
+<ul>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/xtj6oym6upzfwtoby31jakp#long-short-term-memory-networks-lstms">LSTM</a> on peut implémenter un encodeur et un decodeur avec un sortie de meme taille que l'entrée</li>
+<li>Comment collecter/constituer les données pour ce problème ?
+<ul>
+<li>On lui donne la réponse à l'agent de choisir la question</li>
+<li>On a une doc contenant les réponses il ne reste plus qu'à avoir les questions</li>
+<li>On peut générer des questions ou bien récupérer des questions déjà enregistrer par le passé</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="exercice-3">Exercice 3:<a aria-hidden="true" class="anchor-heading icon-link" href="#exercice-3"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.TD4.Recap.Sujet-Ex03-01.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.TD4.Recap.Sujet-Ex03-02.png"></p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B3.AA.TD4.Recap.BB20230213-07.png"></p>
+<p>Biais de la bouge : si sourire probabilité forte de ne pas etre criminel</p>
+<blockquote>
+<p>Notes RKA du 2023/02/13 - End</p>
+</blockquote>
+<hr>
+<hr>
+<strong>Backlinks</strong>
+<ul>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/wyd35u3oxvhvedd1pwhct4j">AA - Apprentissage Automatique</a></li>
+</ul>

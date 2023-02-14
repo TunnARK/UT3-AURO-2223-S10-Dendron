@@ -1,0 +1,144 @@
+<h1 id="conception-orientée-objet-outils">Conception Orientée Objet, Outils<a aria-hidden="true" class="anchor-heading icon-link" href="#conception-orientée-objet-outils"></a></h1>
+<p><strong>Source:</strong> <a href="https://gitlab.laas.fr/gsaurel/talks">GitLab Repo 'Talks'</a></p>
+<hr>
+<!--
+id: c0u829x8bg2xjzo8phnwq5h
+title: 'Conception Orientée Objet, Outils'
+desc: ''
+updated: 1664628178011
+created: 1664628178011
+subtitle: Université Toulouse Paul Sabatier - KEAR9RA1
+theme: laas
+author: Guilhem Saurel
+mainfont: Source Serif 4
+monofont: Source Code Pro
+-->
+<h2 id="this-presentation">This presentation<a aria-hidden="true" class="anchor-heading icon-link" href="#this-presentation"></a></h2>
+<h3 id="available-at">Available at<a aria-hidden="true" class="anchor-heading icon-link" href="#available-at"></a></h3>
+<p>\centering</p>
+<p><a href="https://homepages.laas.fr/gsaurel/talks/conception-orientee-objet-outils.pdf"><code>https://homepages.laas.fr/gsaurel/talks/ conception-orientee-objet-outils.pdf</code></a></p>
+<h3 id="under-license">Under License<a aria-hidden="true" class="anchor-heading icon-link" href="#under-license"></a></h3>
+<p>\centering</p>
+<p><img src="/UT3-AURO-2223-S10-Dendron/media/cc.png" alt="CC" style="">
+<img src="/UT3-AURO-2223-S10-Dendron/media/by.png" alt="BY" style="">
+<img src="/UT3-AURO-2223-S10-Dendron/media/sa.png" alt="SA" style=""></p>
+<p><a href="https://creativecommons.org/licenses/by-sa/4.0/">https://creativecommons.org/licenses/by-sa/4.0/</a></p>
+<h2 id="this-presentation-continued">This presentation (continued)<a aria-hidden="true" class="anchor-heading icon-link" href="#this-presentation-continued"></a></h2>
+<h3 id="source">Source<a aria-hidden="true" class="anchor-heading icon-link" href="#source"></a></h3>
+<p>\centering</p>
+<p><a href="https://gitlab.laas.fr/gsaurel/talks/-/blob/main/conception-orientee-objet-outils.md"><code>https://gitlab.laas.fr/gsaurel/talks : conception-orientee-objet-outils.md</code></a></p>
+<h3 id="discussions">Discussions<a aria-hidden="true" class="anchor-heading icon-link" href="#discussions"></a></h3>
+<p>\centering</p>
+<p>\url{<a href="https://im.laas.fr/%5C#/room/%5C#conception-orientee-objet:laas.fr%7D">https://im.laas.fr/\#/room/\#conception-orientee-objet:laas.fr}</a></p>
+<h1 id="vous">Vous<a aria-hidden="true" class="anchor-heading icon-link" href="#vous"></a></h1>
+<h2 id="ergonomie">Ergonomie<a aria-hidden="true" class="anchor-heading icon-link" href="#ergonomie"></a></h2>
+<ul>
+<li>hauteurs</li>
+<li>position</li>
+<li>distances</li>
+</ul>
+<p>. . .</p>
+<p>Adaptez votre environement</p>
+<h2 id="clavier">Clavier<a aria-hidden="true" class="anchor-heading icon-link" href="#clavier"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/media/b%C3%A9po.png" alt="bépo">
+<a href="https://bepo.fr"><code>https://bépo.fr</code></a></p>
+<h1 id="style">Style<a aria-hidden="true" class="anchor-heading icon-link" href="#style"></a></h1>
+<h2 id="écrire-du-code-lisible">Écrire du code lisible<a aria-hidden="true" class="anchor-heading icon-link" href="#écrire-du-code-lisible"></a></h2>
+<blockquote>
+<p>Code is read much more often than it is written</p>
+</blockquote>
+<p>\hfill --- Guido Van Rossum</p>
+<h2 id="pep-8">PEP 8<a aria-hidden="true" class="anchor-heading icon-link" href="#pep-8"></a></h2>
+<p><a href="https://peps.python.org/pep-0008/"><code>https://peps.python.org/pep-0008/</code></a></p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">print</span> <span class="token punctuation">(</span> <span class="token string">"hello"</span> <span class="token punctuation">)</span>
+</code></pre>
+<p>. . .</p>
+<pre><code>╰─>$ flake8 hello-spaces.py
+hello-spaces.py:1:6: E211 whitespace before '('
+hello-spaces.py:1:8: E201 whitespace after '('
+hello-spaces.py:1:16: E202 whitespace before ')'
+</code></pre>
+<h2 id="black">black<a aria-hidden="true" class="anchor-heading icon-link" href="#black"></a></h2>
+<p><a href="https://github.com/psf/black"><code>https://github.com/psf/black</code></a></p>
+<pre><code>╰─>$ black hello-spaces.py
+reformatted hello-spaces.py
+
+All done!
+1 file reformatted.
+</code></pre>
+<p>. . .</p>
+<pre class="language-diff"><code class="language-diff"><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">print ( "hello" )
+</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">print("hello")
+</span></span></code></pre>
+<h2 id="clang-format">clang-format<a aria-hidden="true" class="anchor-heading icon-link" href="#clang-format"></a></h2>
+<p><a href="https://clang.llvm.org/docs/ClangFormat.html">https://clang.llvm.org/docs/ClangFormat.html</a></p>
+<pre class="language-bash"><code class="language-bash">╰─<span class="token operator">></span>$ clang-format -i QGVScene.cpp
+</code></pre>
+<pre class="language-diff"><code class="language-diff"><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">for( auto node : _nodes ) {
+</span><span class="token prefix deleted">-</span><span class="token line">  node->update_layout();
+</span><span class="token prefix deleted">-</span><span class="token line">}
+</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">for (auto *node : _nodes) node->update_layout();
+</span></span></code></pre>
+<h1 id="analyse-statique">Analyse Statique<a aria-hidden="true" class="anchor-heading icon-link" href="#analyse-statique"></a></h1>
+<h2 id="mypy-motivation">Mypy: motivation<a aria-hidden="true" class="anchor-heading icon-link" href="#mypy-motivation"></a></h2>
+<pre class="language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">add</span><span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""Performs addition on integers.
+
+    >>> add(3, 4)
+    7
+    """</span>
+    <span class="token keyword">return</span> a <span class="token operator">+</span> b
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    <span class="token keyword">import</span> sys
+
+    <span class="token keyword">print</span><span class="token punctuation">(</span>add<span class="token punctuation">(</span>sys<span class="token punctuation">.</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> sys<span class="token punctuation">.</span>argv<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="mypy">Mypy<a aria-hidden="true" class="anchor-heading icon-link" href="#mypy"></a></h2>
+<pre><code>╰─>$ python add.py 3 4
+34
+</code></pre>
+<p>. . .</p>
+<pre><code>╰─>$ mypy add.py
+add.py:13: error: Argument 1 to "add" has incompatible
+                  type "str"; expected "int"
+add.py:13: error: Argument 2 to "add" has incompatible
+                  type "str"; expected "int"
+Found 2 errors in 1 file (checked 1 source file)
+</code></pre>
+<h2 id="pyupgrade">pyupgrade<a aria-hidden="true" class="anchor-heading icon-link" href="#pyupgrade"></a></h2>
+<p><a href="https://github.com/asottile/pyupgrade">https://github.com/asottile/pyupgrade</a></p>
+<pre class="language-diff"><code class="language-diff"><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">class C(Base):
+</span><span class="token prefix unchanged"> </span><span class="token line">    def f(self):
+</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">        super(C, self).f()
+</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">        super().f()
+</span></span></code></pre>
+<p>. . .</p>
+<p>En C++: <code>clang-tidy</code></p>
+<h1 id="méta">Méta<a aria-hidden="true" class="anchor-heading icon-link" href="#méta"></a></h1>
+<h2 id="éditeur-de-texte--ide">Éditeur de texte / IDE<a aria-hidden="true" class="anchor-heading icon-link" href="#éditeur-de-texte--ide"></a></h2>
+<p>Bring your own ;)</p>
+<h2 id="pre-commit">pre-commit<a aria-hidden="true" class="anchor-heading icon-link" href="#pre-commit"></a></h2>
+<p><a href="https://github.com/pre-commit/pre-commit">https://github.com/pre-commit/pre-commit</a></p>
+<pre class="language-bash"><code class="language-bash">╰─<span class="token operator">></span>$ <span class="token function">cat</span> .pre-commit-config.yaml
+</code></pre>
+<pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">repos</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span>   <span class="token key atrule">repo</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//github.com/psf/black
+    <span class="token key atrule">rev</span><span class="token punctuation">:</span> 22.8.0
+    <span class="token key atrule">hooks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span>   <span class="token key atrule">id</span><span class="token punctuation">:</span> black
+<span class="token punctuation">-</span>   <span class="token key atrule">repo</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//github.com/pre<span class="token punctuation">-</span>commit/mirrors<span class="token punctuation">-</span>clang<span class="token punctuation">-</span>format
+    <span class="token key atrule">rev</span><span class="token punctuation">:</span> v14.0.6
+    <span class="token key atrule">hooks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span>   <span class="token key atrule">id</span><span class="token punctuation">:</span> clang<span class="token punctuation">-</span>format
+</code></pre>
+<h2 id="pre-commit-utilisation">pre-commit: utilisation<a aria-hidden="true" class="anchor-heading icon-link" href="#pre-commit-utilisation"></a></h2>
+<p><a href="https://github.com/pre-commit/pre-commit">https://github.com/pre-commit/pre-commit</a></p>
+<pre><code>╰─>$ pre-commit run -a
+</code></pre>
+<p>. . .</p>
+<pre><code>╰─>$ pre-commit install
+</code></pre>
+<h2 id="pre-commit-ci">pre-commit CI<a aria-hidden="true" class="anchor-heading icon-link" href="#pre-commit-ci"></a></h2>
+<p><a href="https://pre-commit.ci/">https://pre-commit.ci/</a></p>

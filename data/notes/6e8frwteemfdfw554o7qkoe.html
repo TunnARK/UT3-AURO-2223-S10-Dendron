@@ -1,0 +1,184 @@
+<h1 id="partie-1---introduction-aux-systèmes-complexes">Partie 1 - Introduction aux Systèmes Complexes<a aria-hidden="true" class="anchor-heading icon-link" href="#partie-1---introduction-aux-systèmes-complexes"></a></h1>
+<blockquote>
+<p><strong>Avertissement:</strong>
+Cette page peut contenir des fautes ! Envoyez-moi un message sur <a href="https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org"><code>#UT3-AURO-M2-2223-Request:matrix.org</code></a> si vous en trouvez, merci.</p>
+</blockquote>
+<blockquote>
+<p>Cours donné par F. Gouaisbaut</p>
+</blockquote>
+<p>Support de cours:</p>
+<ul>
+<li><a href="https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/B2.CNL.CM.SlidePartie1.20221107.pdf">Slide Partie 1</a></li>
+<li><a href="https://raw.githubusercontent.com/TunnARK/UT3-AURO-2223-S10-Dendron/main/vault/assets/B2.CNL.CM.NotesGEA.20221107.pdf">Notes GEA du 2022/11/07</a> ***</li>
+</ul>
+<hr>
+<blockquote>
+<p>Notes du 2022/11/07 - Start</p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-01.png"></p>
+<h1 id="modalités-du-cours">Modalités du cours<a aria-hidden="true" class="anchor-heading icon-link" href="#modalités-du-cours"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-02.png"></p>
+<h1 id="sommaire-du-cours">Sommaire du cours<a aria-hidden="true" class="anchor-heading icon-link" href="#sommaire-du-cours"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-03.png"></p>
+<h1 id="partie-i---introduction-aux-systèmes-non-linéaires">Partie I - Introduction aux systèmes non linéaires<a aria-hidden="true" class="anchor-heading icon-link" href="#partie-i---introduction-aux-systèmes-non-linéaires"></a></h1>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-04.png"></p>
+<h2 id="sommaire">Sommaire<a aria-hidden="true" class="anchor-heading icon-link" href="#sommaire"></a></h2>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-05.png"></p>
+<h2 id="i-1-pourquoi-étudier-les-systèmes-non-linéaires-">I-1. Pourquoi étudier les systèmes non linéaires ?<a aria-hidden="true" class="anchor-heading icon-link" href="#i-1-pourquoi-étudier-les-systèmes-non-linéaires-"></a></h2>
+<h3 id="introduction">Introduction<a aria-hidden="true" class="anchor-heading icon-link" href="#introduction"></a></h3>
+<h4 id="étude">Étude<a aria-hidden="true" class="anchor-heading icon-link" href="#étude"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-06.png"></p>
+<blockquote>
+<p>On réintroduit la stabilité BIBO (nous n'avions vu que la stabilité interne en M1)</p>
+</blockquote>
+<h4 id="déf-sys-stationnaire--autonomes">Déf. Sys. Stationnaire &#x26; Autonomes<a aria-hidden="true" class="anchor-heading icon-link" href="#déf-sys-stationnaire--autonomes"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-07.png"></p>
+<blockquote>
+<p><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>x</mi><mo>˙</mo></mover></mrow><annotation encoding="application/x-tex">\dot x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6679em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6679em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">x</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1111em;"><span class="mord">˙</span></span></span></span></span></span></span></span></span></span></span> ne dépend pas du temps</p>
+</blockquote>
+<h4 id="pourquoi-">Pourquoi ?<a aria-hidden="true" class="anchor-heading icon-link" href="#pourquoi-"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-08.png"></p>
+<blockquote>
+<p>Matlab permet d'utiliser bcp de prop d'alg lin du coup les resultats sont certifiés</p>
+</blockquote>
+<h3 id="difficultés-inhérentes-aux-systèmes-non-linéaires">Difficultés inhérentes aux systèmes non linéaires<a aria-hidden="true" class="anchor-heading icon-link" href="#difficultés-inhérentes-aux-systèmes-non-linéaires"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-09.png"></p>
+<ul>
+<li>
+<p>echap. en temps fini (ou convergence en temps fini)</p>
+<ul>
+<li>le temps d'allumer la machine la divergence arrive trop vite</li>
+<li>FIR finite impulse response</li>
+</ul>
+</li>
+<li>
+<p>Pts equil multiples</p>
+<ul>
+<li>comport sys depend fortement aux CIs (alors qu'en lin a cause des deux principes le sys est independant des CIs)</li>
+</ul>
+</li>
+<li>
+<p>Cycles Limites</p>
+<ul>
+<li>trajectoire fermée périodique qui n'existe pas en lin</li>
+</ul>
+</li>
+<li>
+<p>Repons entree sinus</p>
+<ul>
+<li>on perd toute l'automatique frequentielle en non lin
+<ul>
+<li>mais <strong>methode du premier harmonique</strong> permet de reutiliser une partie des outils de l'autom freq en non lin</li>
+<li>on recupere la premiere harmonique du developpement en trans de fourrier</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Phenomenes chaotiques</p>
+<ul>
+<li>attracteurs etranges</li>
+</ul>
+</li>
+</ul>
+<h2 id="i-2-phénomènes-non-lin-classiques">I-2. Phénomènes non lin classiques<a aria-hidden="true" class="anchor-heading icon-link" href="#i-2-phénomènes-non-lin-classiques"></a></h2>
+<h3 id="exemple-échappement-en-temps-fini">Exemple échappement en temps fini<a aria-hidden="true" class="anchor-heading icon-link" href="#exemple-échappement-en-temps-fini"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-10.png"></p>
+<ul>
+<li>tres observable dans les convertisseurs d'energies</li>
+<li>pour les convergences tres rapides on en trouve dans les vanes de remplissage où les acationneurs agissent en mode "tout ou rien"
+<ul>
+<li>different de l'hysteresisse ??? car dans ces cas on converge vers un matelas (un couloir contenant la consigne)</li>
+</ul>
+</li>
+</ul>
+<h3 id="points-déquilibre">Points d'équilibre<a aria-hidden="true" class="anchor-heading icon-link" href="#points-déquilibre"></a></h3>
+<h4 id="définitons-et-remarques">Définitons et Remarques<a aria-hidden="true" class="anchor-heading icon-link" href="#définitons-et-remarques"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-11.png"></p>
+<ul>
+<li>l'interet de chercher un pt equi c'est parce qu'on sait qu'une fois le sys atteint ce point on est sûr qu'il va y rester en boucle fermée</li>
+<li>en non lin se rajoute la notion de global/local pour la stabilite d'un pt equi</li>
+</ul>
+<h4 id="exemple">Exemple<a aria-hidden="true" class="anchor-heading icon-link" href="#exemple"></a></h4>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-12.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-13.png"></p>
+<h3 id="cycles-limites">Cycles Limites<a aria-hidden="true" class="anchor-heading icon-link" href="#cycles-limites"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-14.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-15.png"></p>
+<p>Grand interet des cycles limites c'est de creer des sys perio robuste (ex montre non numerique)</p>
+<h3 id="systèmes-chaotiques">Systèmes Chaotiques<a aria-hidden="true" class="anchor-heading icon-link" href="#systèmes-chaotiques"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-16.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-17.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-18.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-19.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-20.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-21.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-22.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-23.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-24.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-25.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-26.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-27.png"></p>
+<p>tres utile (plus utilisé) en cryptologie pour des encryptions analogique car il faut la fonction et le lambda pour definir la porteuse et permettre la decryption</p>
+<p>ces objet chaotiques vivent dans des espaces de dimension non entière... !</p>
+<ul>
+<li>observateur sur le modele de lorentz
+<ul>
+<li>nudging utiliser un observateur grand gain (rendre négligeable le système en prenant des gains tres grand)</li>
+<li>approche physicienne vont sur la simulation</li>
+</ul>
+</li>
+</ul>
+<h2 id="i-3-etude-local-de-sys-dordre-2">I-3. Etude Local de sys d'ordre 2<a aria-hidden="true" class="anchor-heading icon-link" href="#i-3-etude-local-de-sys-dordre-2"></a></h2>
+<h3 id="position-du-probleme">Position du probleme<a aria-hidden="true" class="anchor-heading icon-link" href="#position-du-probleme"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-28.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-29.png"></p>
+<h3 id="comportement-qualitatif-des-systèmes-linéaires-de-dim-2">Comportement qualitatif des systèmes linéaires de dim 2<a aria-hidden="true" class="anchor-heading icon-link" href="#comportement-qualitatif-des-systèmes-linéaires-de-dim-2"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-30.png"></p>
+<p>Corriger le slide :</p>
+<div class="math math-display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>J</mi><mo>=</mo><mrow><mo fence="true">[</mo><mtable rowspacing="0.16em" columnalign="center center" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mtext>  </mtext><mi>α</mi></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mstyle mathcolor="red"><mo>−</mo></mstyle><mi>β</mi><mtext>  </mtext></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mtext>  </mtext><mi>β</mi></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mi>α</mi></mstyle></mtd></mtr></mtable><mo fence="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">J = \begin{bmatrix} \;\alpha &#x26; \textcolor{red}{-}\beta\;\\ \;\beta &#x26; \alpha \end{bmatrix}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.09618em;">J</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.4em;vertical-align:-0.95em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">[</span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.45em;"><span style="top:-3.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.95em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.45em;"><span style="top:-3.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:red;">−</span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.95em;"><span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">]</span></span></span></span></span></span></span></div>
+<p>???</p>
+<h3 id="valeurs-propres-réelles-différentes-de-zéro">Valeurs propres réelles différentes de zéro<a aria-hidden="true" class="anchor-heading icon-link" href="#valeurs-propres-réelles-différentes-de-zéro"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-31.png">
+<img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-32.png"></p>
+<h3 id="valeurs-propres-complexes">Valeurs propres complexes<a aria-hidden="true" class="anchor-heading icon-link" href="#valeurs-propres-complexes"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-33.png"></p>
+<p>???</p>
+<h2 id="i-4-notions-de-solutions">I-4. Notions de solutions<a aria-hidden="true" class="anchor-heading icon-link" href="#i-4-notions-de-solutions"></a></h2>
+<blockquote>
+<p>Problème de Cauchy</p>
+</blockquote>
+<blockquote>
+<p>Importance de l'existence et de l'unicité</p>
+</blockquote>
+<blockquote>
+<p><strong>Dépendance continue</strong> </p>
+</blockquote>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-37.png"></p>
+<h3 id="exemples">Exemples<a aria-hidden="true" class="anchor-heading icon-link" href="#exemples"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-38.png"></p>
+<p>Corriger le slide :</p>
+<div class="math math-display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>x</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mi>t</mi><mi>a</mi><mi>n</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mtext>  </mtext><mo separator="true">,</mo><mspace width="1em"></mspace><mi mathvariant="normal">∀</mi><mi>t</mi><mo>∈</mo><mo fence="false" stretchy="true" minsize="1.8em" maxsize="1.8em">[</mo><mn>0</mn><mo separator="true">,</mo><mstyle mathcolor="red"><mfrac><mi>π</mi><mn>2</mn></mfrac></mstyle><mo fence="false" stretchy="true" minsize="1.8em" maxsize="1.8em">[</mo></mrow><annotation encoding="application/x-tex">x(t) = tan(t)\;,\quad \forall t \in \Big[0,\textcolor{red}{\frac{\pi}{2}}\Big[</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">x</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">an</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:1em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">∀</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.836em;vertical-align:-0.686em;"></span><span class="mord"><span class="delimsizing size2">[</span></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord" style="color:red;"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1076em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="color:red;"><span class="mord" style="color:red;">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="color:red;border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="color:red;"><span class="mord mathnormal" style="margin-right:0.03588em;color:red;">π</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord"><span class="delimsizing size2">[</span></span></span></span></span></span></div>
+<h3 id="existence-et-unicité">Existence et Unicité<a aria-hidden="true" class="anchor-heading icon-link" href="#existence-et-unicité"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-39.png"></p>
+<blockquote>
+<p>Utiliser matlab et simuler le sys pour voir quelle solution est choisie</p>
+</blockquote>
+<h3 id="condition-suffisante-dexistence-et-dunicité">Condition suffisante d'existence et d'unicité<a aria-hidden="true" class="anchor-heading icon-link" href="#condition-suffisante-dexistence-et-dunicité"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-40.png"></p>
+<p>si le taux d'accroissement est limité dans un temps alors l'unicité est assuré localement</p>
+<h3 id="condition-lipschitz-locale">Condition Lipschitz Locale<a aria-hidden="true" class="anchor-heading icon-link" href="#condition-lipschitz-locale"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-41.png"></p>
+<h3 id="interpretation-graphique">Interpretation Graphique<a aria-hidden="true" class="anchor-heading icon-link" href="#interpretation-graphique"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-42.png"></p>
+<h3 id="lemme">Lemme<a aria-hidden="true" class="anchor-heading icon-link" href="#lemme"></a></h3>
+<p><img src="/UT3-AURO-2223-S10-Dendron/assets/images/B2.CR.CM.SystCompl.Slide-43.png"></p>
+<blockquote>
+<p>Notes du 2022/11/07 - End</p>
+</blockquote>
+<hr>
+<hr>
+<strong>Backlinks</strong>
+<ul>
+<li><a href="/UT3-AURO-2223-S10-Dendron/notes/33kq3966868a11qjvsttfra">CNL - Commande Non Linéaire</a></li>
+</ul>

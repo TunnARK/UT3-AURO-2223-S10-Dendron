@@ -1,0 +1,171 @@
+
+> **Avertissement:**
+Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-2223-Request:matrix.org`](https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org) si vous en trouvez, merci.
+
+> Cours donné par V. Cadenat
+
+---
+
+> Notes RKA du 2023/01/17 - Start
+
+
+
+![](/assets/images/B3.RIA.CM.MGD.Slide-01.png)
+
+# But
+
+Problème principale du MGD c'est qu'il n'est pas générique d'un robot à l'autre.
+Ce cours introduit la méthode pour obtenir un MGD générique indépendant du type de robot (qlq soit la chaine prisma-rotoidique simple).
+
+# Principe de la méthode
+
+![](/assets/images/B3.RIA.CM.MGD.Slide-02.png)
+![](/assets/images/B3.RIA.CM.MGD.Slide-03.png)
+![](/assets/images/B3.RIA.CM.MGD.Slide-05.png)
+
+Principe:
+- Positionner les repères $\mathcal{R}_0$ à $\mathcal{R}_n$ en respectant un ensemble de règles.
+- Respecter ces règles permet l'automatisation du calcul des $T_{i-1,i}$
+
+# I- Règles de positionnement
+
+> Paramètres de Denavit-Hartengberg modifiés
+
+## Règles génériques pour $\mathcal{R}_1$ et $\mathcal{R}_{n-1}$
+
+![](/assets/images/B3.RIA.CM.MGD.Slide-06.png)
+
+Mise en place itérative de $\mathcal{R}_1$ et $\mathcal{R}_{n-1}$
+
+## Règles spécifiques pour $\mathcal{R}_0$ et $\mathcal{R}_n$
+
+![](/assets/images/B3.RIA.CM.MGD.Slide-07.png)
+
+## Protocole
+
+1. Choisir le repère $\mathcal{R}_0$
+
+    ![](/assets/images/B3.RIA.BB20230117-01.png)
+
+2. Définir les corps du robot
+
+    ![](/assets/images/B3.RIA.BB20230117-02.png)
+
+3. Donner un axes à chaque corps
+
+    ![](/assets/images/B3.RIA.BB20230117-03.png)
+
+4. Déterminer les perpendiculaires communes
+
+    ![](/assets/images/B3.RIA.BB20230117-04.png)
+
+    Perpendiculaire commune à $\Delta_i$ et $\Delta_j$ = droite perpendiculaire aux deux droites en mêmes temps !
+
+    Si les deux droites sont colinéaires alors on est libre de choisir n'importe quel droite (car infinité de solutions). Dans ce cas, on attend de trouver les autres perp. comm. pour faire un choix approprié.
+
+5. Définir les points d'intersections
+
+    ![](/assets/images/B3.RIA.BB20230117-05.png)
+    ![](/assets/images/B3.RIA.BB20230117-06.png)
+
+6. Fixer les axes $\overrightarrow{z}$
+
+    Attention:
+    - Tous les mouvements se feront selon les axes $z$
+    - Formule: $\overrightarrow{z}_{i-1}$ porté par $\Delta_i$ selon la convention (avant,droite,haut)
+    - avant = de la feuille vers le lecteur
+
+    ![](/assets/images/B3.RIA.BB20230117-07.png)
+
+7. Fixer les axes $\overrightarrow{x}$
+
+    Formule: $\overrightarrow{x}_{i-1}$ porté par la perp. comm. $i-1$ selon la convention (avant,droite,haut)
+
+    ![](/assets/images/B3.RIA.BB20230117-08.png)
+
+8. Trouver le repère $\mathcal{R}_n$
+
+    ![](/assets/images/B3.RIA.BB20230117-09.png)
+    ![](/assets/images/B3.RIA.BB20230117-10.png)
+
+
+
+> Notes RKA du 2023/01/17 - End
+
+---
+
+> Notes RKA du 2023/01/18 - Start
+
+
+
+# II- Calcul des $T_{i-1,i}$ avec les params. de D/H modifiés
+
+![](/assets/images/B3.RIA.CM.MGD.Slide-08.png)
+
+But:
+- Permettre d'automatiser le calcul des $T_{i-1,i}$
+- Permettre d'exprimer la situation du corps $C_i$ p.r.à $C_{i-1}$ (ou de $\mathcal{R}_i$ p.r.à $\mathcal{R}_{i-1}$)
+
+Il y a 4 params. au total:
+- 2 pour caractériser les **translations** entre les 2 repères
+- 2 pour caractériser les **ratoations** entre les 2 repères
+
+![](/assets/images/B3.RIA.CM.BB20230118-01.png)
+![](/assets/images/B3.RIA.CM.MGD.Slide-09.png)
+
+Les mouvements sur les liaisons se font sur les axes $\overrightarrow{z}$ du coup $a_{i-1}$ et $\alpha_{i-1}$ sont des paramètres de _formes_ car ils s'expriment selon $\overrightarrow{x}$ alors que $r_{i}$ et $\theta_{i}$ sont des paramètres de _liaison_ vu qu'ils s'expriment selon $\overrightarrow{z}$.
+
+![](/assets/images/B3.RIA.CM.MGD.Slide-10.png)
+![](/assets/images/B3.RIA.CM.BB20230118-02.png)
+![](/assets/images/B3.RIA.CM.MGD.Slide-11.png)
+![](/assets/images/B3.RIA.CM.MGD.Slide-12.png)
+
+## Exemple
+
+![](/assets/images/B3.RIA.CM.MGD.Slide-20.png)
+![](/assets/images/B3.RIA.CM.BB20230118-03.png)
+
+Etapes pour remplir le tableau:
+1. Remplir $\sigma_i$
+    ![](/assets/images/B3.RIA.CM.BB20230118-04.png)
+2. Définir $r_i$ et $\theta_i$
+3. Calculer TOUS les $a_{i-1}$
+    ![](/assets/images/B3.RIA.CM.BB20230118-05.png)
+4. Calculer TOUS les $\alpha_{i-1}$
+    ![](/assets/images/B3.RIA.CM.BB20230118-06.png)
+5. Calculer TOUS les $r_i$ non marqués par un $q_i$
+    ![](/assets/images/B3.RIA.CM.BB20230118-07.png)
+6. Calculer TOUS les $\theta_i$ non marqués par un $q_i$
+7. Trouver les configurations figures
+    ![](/assets/images/B3.RIA.CM.BB20230118-08.png)
+
+<!-- ![](/assets/images/B3.RIA.CM.MGD.Slide-21.png) -->
+![](/assets/images/B3.RIA.CM.MGD.Slide-22.png)
+
+Pour calculer les $T_{i-1,i}$m utiliser ce tableau pour faire correspondre les paramètres:
+![](/assets/images/B3.RIA.CM.BB20230118-09.png)
+
+![](/assets/images/B3.RIA.CM.MGD.Slide-23.png)
+
+## Remarques
+
+![](/assets/images/B3.RIA.CM.MGD.Slide-24.png)
+
+# III- Calcul des $T_{0n}$ et de $x$
+
+![](/assets/images/B3.RIA.CM.BB20230118-10.png)
+![](/assets/images/B3.RIA.CM.MGD.Slide-25.png)
+![](/assets/images/B3.RIA.CM.MGD.Slide-26.png)
+![](/assets/images/B3.RIA.CM.MGD.Slide-27.png)
+![](/assets/images/B3.RIA.CM.MGD.Slide-28.png)
+![](/assets/images/B3.RIA.CM.MGD.Slide-29.png)
+![](/assets/images/B3.RIA.CM.MGD.Slide-30.png)
+![](/assets/images/B3.RIA.CM.MGD.Slide-31.png)
+![](/assets/images/B3.RIA.CM.BB20230118-11.png)
+![](/assets/images/B3.RIA.CM.BB20230118-12.png)
+
+
+
+> Notes RKA du 2023/01/18 - End
+
+---

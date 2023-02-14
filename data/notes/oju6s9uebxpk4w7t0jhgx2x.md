@@ -1,0 +1,537 @@
+
+> **Avertissement:**
+Cette page peut contenir des fautes ! Envoyez-moi un message sur [`#UT3-AURO-M2-2223-Request:matrix.org`](https://matrix.to/#/#UT3-AURO-M2-2223-Request:matrix.org) si vous en trouvez, merci.
+
+> Cours donné par C. Briand
+
+---
+
+> Notes RKA du 2023/01/17 - Start
+
+
+
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-01.png)
+
+# 1- Introduction
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-02.png)
+
+## Définition: Logistique
+
+> Keywords:
+- logistique
+- planning
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-03.png)
+
+## Industrie et Chaine logistique
+
+> Keywords: 
+- chaine logistique 
+- réseau 
+- maillon
+- frontières juridiques
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-04.png)
+
+## Structures de chaine logistique
+
+> Keywords:
+- réseau entreprise/logistique
+- entreprise étendue/virtuelle
+- type série/divergente/convergente/dyadique/réseau
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-05.png)
+
+Les arcs représentent à la fois les flux de produits mais aussi l'échange d'informations.
+
+Par contre, le flux de produits est unidirectionnelle contrairement aux échanges d'informations qui sont bidirectionnels.
+
+## Gestion de chaine logistique
+
+> Keywords:
+- Supply Chain Management (SCM)
+- système d'information 
+- Progiciel de Gestion Intégré (PGI) / Enterprise Resource Planning (ERP)
+- ??? (BDD)
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-06.png)
+
+## Gestion par processus
+
+> Keywords:
+- Workflow
+- Processus
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-07.png)
+
+Processus sont propres à l'entreprise (appliqué et adapté à son activité spécifique).
+
+<!-- extract chart -->
+
+## Systèmes d'informations et SCM
+
+> Keywords: 
+- ERP / SCM / PLM
+- Manufacturing Execution Systeme (MES)
+- SCADA-HMI
+- SNCC-CN
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-08.png)
+
+MES est souvent utilisé dans les autres entreprises travaillant avec des automates.
+
+SCADA est composé d'une réplique 2D d'un outils pour gérer l'information
+
+## Niveaux de Décision
+
+> Keywords:
+- centres de décision
+- horizon/aggrégation de décision
+- stratégique/tactique/opérationnel
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-09.png)
+![](/assets/images/B3.AOH.GPL.CM.Slide-10.png)
+
+> La production est toujours régit par le triptyque : **coût**, **qualité** et **délai** !!!
+
+On cherche aujourd'hui à intégrer (grâce au numérique) les trois niveaux (strat.tact./opér.) plustôt que de les séparer tant comme c'est le cas depuis longtemps.
+
+# 2- La 4ème Révolution Industrielle
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-11.png)
+
+## Un peu d'histoire
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-12.png)
+
+## Changement de paradigme
+
+> Keywords: 
+- Modèles
+    - standardisation (taylor-fordien)
+    - variété
+    - réactivité
+    - global
+    - personnalisation de masse
+- Lean Manufacturing
+    
+![](/assets/images/B3.AOH.GPL.CM.Slide-13.png)
+
+## Les technologies supports
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-14.png)
+
+## Une vision globale
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-15.png)
+
+## Une vision centrée sur l'Homme
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-16.png)
+
+# 3- Robotique pour la logistique
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-17.png)
+
+## Facteurs du changement
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-18.png)
+
+## Exemples
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-19.png)
+![](/assets/images/B3.AOH.GPL.CM.Slide-20.png)
+![](/assets/images/B3.AOH.GPL.CM.Slide-21.png)
+![](/assets/images/B3.AOH.GPL.CM.Slide-22.png)
+
+# 4- Planification de la production et des approvisionnements
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-23.png)
+
+## Positionnement
+
+> Keywords:
+- besoin matières/en capacité
+- programmation prévisionnelle
+- méthode à flux poussés/tirés
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-24.png)
+
+Flux poussés = guidé par la prédiction
+
+Flux tirés = dynamique selon la demande
+
+## Manufacturing Resource Planning (MRP2)
+
+> Keywords:
+- Programme Directeur de Production (PDP)
+- Planification des Besoins en Composants (MRP)
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-25.png)
+
+## Calcul des Besoins Nets
+
+> Keywords:
+- Gammes (recette/protocol de production)
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-26.png)
+![](/assets/images/B3.AOH.GPL.CM.Slide-27.png)
+
+## Prise en compte des délais d'approvisionnement
+
+> Keywords:
+- délai d'approvisionnement/d'obtention
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-28.png)
+
+## Exemple: Fabrication d'une servante
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-29.png)
+![](/assets/images/B3.AOH.GPL.CM.Slide-30.png)
+![](/assets/images/B3.AOH.GPL.CM.Slide-31.png)
+
+Légendes:
+- BB: Besoin Brut
+- AD: À Disposition (stock)
+- BN: Besoin Net
+- OP: Ordre Production
+- SS: Stock Sécurité
+
+Décalage:
+$$
+OP_i = BN_{i+delai}
+$$
+
+## Intégration Planification production et distribution
+
+> Keywords:
+- synchronisation d'offres/demandes
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-32.png)
+
+## Exemple
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-33.png)
+
+## Détermination des commandes prévisionnelles
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-34.png)
+![](/assets/images/B3.AOH.GPL.CM.Slide-35.png)
+
+Formules:
+- Stockage
+    $$
+    Stock_i = Stock_{i-1} - BB_i + OP_{i-délai}
+    $$
+
+- Besoin Net
+    $$
+    BN_i = max(0 ; BB_i - Stock_{i-1} + SS_i)
+    $$
+
+# 5- Gestion d'inventaires
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-36.png)
+
+## Le stock: nature et fonctions
+
+> Keywords:
+- zéro stock
+- coincidence entre besoin et espace de production
+- stock de spéculation, d'approvisionnement/d'en-cours/de distribution
+- économie d'échelle
+- logique du juste-à-temps
+- gestion périodique/apériodique de la régulation
+- flux sortant interne/externe
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-37.png)
+![](/assets/images/B3.AOH.GPL.CM.Slide-38.png)
+![](/assets/images/B3.AOH.GPL.CM.Slide-39.png)
+
+Les bars en rouge représente les frontières juridiques de l'entreprise.
+
+Un flux sortant interne est une demande dépendante de la production (e.g. flêche à l'intérieur de la frontière juridique).
+Un flux sortant externe est une demande indépendante de la production.
+
+## Coûts associés à un stock
+
+> Keywords:
+- coûts d'acquisition/de possession/de rupture (de pénurie)
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-40.png)
+
+## Problématique
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-41.png)
+
+## Heuristique
+
+### Lot for Lot (LfL)
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-42.png)
+
+### Economic Order Quantity (EOQ)
+
+> Keywords:
+- Formule de Wilson
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-43.png)
+
+Hypothèse:
+- La demande est constante de $k$ en moyenne.
+
+Coût de stockage sur la période $T$:
+-   $$
+    C(T) = \dfrac{\;C_c\;}{T} + C_p\;\dfrac{\;kT\;}{2}
+    $$
+- c'est le cout de commande plus le cout de possession
+
+![](/assets/images/B3.AOH.BB20230117-1.png)
+
+Le minimum est obtenu pour:
+$$
+d_T\;C(T) = 0 \iff T^* = \sqrt{\dfrac{\;2C_c\;}{kC_p}} \quad\wedge\quad Q^* = kT^* = \sqrt{\dfrac{\;2kC_c\;}{C_p}} 
+$$
+
+## Méthode Exacte/Wagner
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-44.png)
+![](/assets/images/B3.AOH.BB20230117-2.png)
+![](/assets/images/B3.AOH.BB20230117-3.png)
+![](/assets/images/B3.AOH.BB20230117-4.png)
+![](/assets/images/B3.AOH.BB20230117-5.png)
+![](/assets/images/B3.AOH.BB20230117-6.png)
+![](/assets/images/B3.AOH.BB20230117-7.png)
+
+La politique optimale peut être obtenue par l'algorithme de Bellman sans circuit en déterminant le chemin le plus court reliant le sommet 6 au sommet 13.
+
+## Planification à horizon glissant
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-45.png)
+
+## Autre exemple: alimentation automatique
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-46.png)
+![](/assets/images/B3.AOH.GPL.CM.Slide-47.png)
+
+
+
+
+> Notes RKA du 2023/01/17 - End
+
+---
+
+> Notes RKA du 2023/01/23 - Start
+
+
+
+
+# 6- Juste-à-Temps (JAT)
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-48.png)
+
+## Pourquoi le JAT
+
+> Keywords:
+- flux tirés (dépendance sur la demande)
+- petite/grande série
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-49.png)
+
+En gestion à flux tirés (ou tendus), la production est **égale** à la demande.
+
+## Le paradigme JAT
+
+> Keywords:
+- réactivité
+- rationalisation
+- flexibilité quantitative/qualitative
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-50.png)
+
+## La méthode Kanban
+
+> Keywords: 
+- kanban = étiquette
+
+### Idée
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-51.png)
+
+### Système à une boucle
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-52.png)
+
+### Formules
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-53.png)
+
+## Exemple: Plateforme Logistique
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-54.png)
+![](/assets/images/B3.AOH.GPL.CM.Slide-55.png)
+
+# 7- Ordonnancement
+
+> Keywords:
+- Atelier
+- Gamme de fabrication = recette/protocole/processus
+- Nommenclature = ingédrient
+- Travail(_Job_)
+- Operation = Tâche
+- Durée totale (_completion_)
+- Plus Grand Retard (_lateness_)
+- Cheminement unique/multiple/libre
+- Machines Parallèles/Flow Shop (hybride)/Job Shop/Open Shop
+- Temps de préparation 
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-56.png)
+
+## Contexte
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-57.png)
+
+- Gamme = séquence d'opérations $(i,j)$ du travail i
+- [NP-Difficles](https://waytolearnx.com/2019/03/difference-entre-un-probleme-np-complet-et-np-difficile.html) = existe pas de solution non polynomiale
+
+## Classification
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-58.png)
+![](/assets/images/B3.AOH.GPL.CM.Slide-59.png)
+
+Open Shop surtout utilié dans les chaines de conformités où le produit doit passer par une batterie de tests sans ordre particulier.
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-60.png)
+
+## Machine Seule
+
+> Keywords:
+- SPT - Short Processing Time
+- Règle de Jackson
+- EDD - Earliest Due Date = EDF - Earliest Deadline First
+- Règle de Hodgson-Moore
+- Date de lancement
+- Date d'échéance (_Release Date_)
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-61.png)
+
+### Exemple: Une seule cellule robotisée
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-62.png)
+![](/assets/images/B3.AOH.GPL.CM.BB20230123-01.png)
+![](/assets/images/B3.AOH.GPL.CM.BB20230123-02.png)
+
+## Machine en parallèle
+
+> Keywords:
+- Heuristique LPT (_Longest Processing Time first_)
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-63.png)
+
+### Exemple
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-63-ExampleCase.png)
+![](/assets/images/B3.AOH.GPL.CM.BB20230123-03.png)
+
+$C_{max} = \max_i f_i = \max_i c_i \quad$ où $c_i$ completion time of job $i$
+
+
+## Flow Shop
+
+> Keywords: contrainte de précédence ; diagramme de Gant
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-64.png)
+![](/assets/images/B3.AOH.GPL.CM.BB20230123-04.png)
+![](/assets/images/B3.AOH.GPL.CM.BB20230123-05.png)
+![](/assets/images/B3.AOH.GPL.CM.BB20230123-06.png)
+![](/assets/images/B3.AOH.GPL.CM.BB20230123-07.png)
+![](/assets/images/B3.AOH.GPL.CM.BB20230123-08.png)
+![](/assets/images/B3.AOH.GPL.CM.BB20230123-09.png)
+
+- $p_i$: processing time of job $i$
+
+Illustration du max:
+![](/assets/images/B3.AOH.GPL.CM.BB20230123-10.png)
+
+Illustration du min:
+![](/assets/images/B3.AOH.GPL.CM.BB20230123-11.png)
+
+
+
+
+> Notes RKA du 2023/01/23 - End
+
+---
+
+> Notes RKA du 2023/01/31 - Start
+
+
+
+
+
+### Algorithme de Johnson
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-65.png)
+
+### Exemple
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-66.png)
+![](/assets/images/B3.AOH.GPL.CM.BB20230131-01.png)
+![](/assets/images/B3.AOH.GPL.CM.BB20230131-02.png)
+
+Les opérations de la machine 1 sont toutes critiques !
+
+## Job Shop
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-67.png)
+
+Les traits pleins représente une précédence.
+Les pointillés représente les opérations qui se font sur une même machine.
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-68.png)
+![](/assets/images/B3.AOH.GPL.CM.BB20230131-03.png)
+
+Les flèches horizentales indiquent que Travail 1 est en cours et Travail 2 en attente.
+Les flèches verticales indiquent que Travail 2 est en cours et Travail 1 en attente.
+Les flèches diagonales indiquent que les deux Travaux sont en cours en même temps.
+
+![](/assets/images/B3.AOH.GPL.CM.BB20230131-04.png)
+
+Le chemin C2 est optimal avec une longueur de 14 alors que le chemin C1 a une longueur de 16.
+
+On pourrait faire le même exercice en 3D mais alors il n'est plus vrai que la diagonale est optimale en 3D.
+
+### Algorithme de Jackson
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-69.png)
+![](/assets/images/B3.AOH.GPL.CM.BB20230131-05.png)
+![](/assets/images/B3.AOH.GPL.CM.BB20230131-06.png)
+
+## SGS - Serial Generation Scheme
+
+> Keywords: itération ; tâche éligible capacité restante
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-70.png)
+
+### Exemple 1
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-71.png)
+![](/assets/images/B3.AOH.GPL.CM.Slide-72.png)
+![](/assets/images/B3.AOH.GPL.CM.BB20230131-07.png)
+
+Mais il y a plus optimale:
+![](/assets/images/B3.AOH.GPL.CM.Slide-73.png)
+
+### Exemple 2
+
+![](/assets/images/B3.AOH.GPL.CM.Slide-74.png)
+![](/assets/images/B3.AOH.GPL.CM.BB20230131-08.png)
+
+Cf [Excel File B3.AOH.GPL.CM.ORDO_vierge.xlsx](https://github.com/TunnARK/UT3-AURO-2223-S10-Dendron/blob/main/vault/assets/B3.AOH.GPL.CM.ORDO_vierge.xlsx)
+
+
+> Notes RKA du 2023/01/31 - End
+
+---
